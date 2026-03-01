@@ -1,15 +1,14 @@
-
-   <!DOCTYPE html>
+!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clinic Media Tech</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <style>
         @font-face {
             font-family: 'Mona Sans';
-            src: url('https://github.githubassets.com/assets/mona-sans-variable.woff2') format('woff2');
+            
             font-weight: 100 900;
         }
     </style>
@@ -83,6 +82,40 @@
             transition: color 0.3s;
         }
         .nav-links a:hover { color: var(--gold); }
+
+        /* ─── LANG SWITCHER ─── */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(192,192,192,0.12);
+            border-radius: 980px;
+            padding: 0.3rem 0.4rem;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--grey);
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            padding: 0.3rem 0.7rem;
+            border-radius: 980px;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .lang-btn:hover { color: var(--white); }
+        .lang-btn.active {
+            background: rgba(192,192,192,0.15);
+            color: var(--white);
+        }
+        /* RTL support for Arabic */
+        body[dir="rtl"] .problem-item { flex-direction: row-reverse; }
+        body[dir="rtl"] .problem-item::before { left: auto; right: 0; }
+        body[dir="rtl"] .why-statement { border-left: none; border-right: 2px solid var(--gold); padding-left: 0; padding-right: 1.5rem; }
 
         /* ─── HERO with VIDEO BG ─── */
         #hero {
@@ -392,6 +425,392 @@
             margin-bottom: 2rem;
         }
 
+        /* ─── HİZMET SEÇİCİ ─── */
+        #services {
+            background: transparent;
+            min-height: auto;
+            padding: 5rem 4rem;
+        }
+        .services-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: rgba(192,192,192,0.08);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: rgba(8,8,8,0.95);
+            padding: 3.5rem 3rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.4s;
+            text-decoration: none;
+            display: block;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            transform: scaleX(0);
+            transition: transform 0.5s;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { background: rgba(16,16,16,0.98); }
+
+        .service-card-tag {
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .service-card-tag::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(192,192,192,0.15);
+        }
+        .service-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            line-height: 1;
+        }
+        .service-card-title {
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        .service-card-desc {
+            color: var(--grey);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+        .service-card-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .service-card-features li {
+            font-size: 0.85rem;
+            color: rgba(192,192,192,0.7);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .service-card-features li::before {
+            content: '→';
+            color: var(--gold);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        .service-card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--white);
+            border-bottom: 1px solid rgba(192,192,192,0.3);
+            padding-bottom: 0.25rem;
+            transition: border-color 0.3s, gap 0.3s;
+        }
+        .service-card:hover .service-card-cta {
+            border-color: var(--gold);
+            gap: 1.2rem;
+        }
+        .service-card-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(192,192,192,0.08);
+            border: 1px solid rgba(192,192,192,0.2);
+            padding: 0.3rem 0.8rem;
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+        /* Anim: ikinci kart "YENİ" badgeli */
+        .service-card.new-service .service-card-badge {
+            background: rgba(78,205,196,0.08);
+            border-color: rgba(78,205,196,0.3);
+            color: #4ECDC4;
+        }
+
+        /* ─── İNTERAKTİF VİDEO SECTION ─── */
+        #interactive { background: transparent; }
+
+        .interactive-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        .interactive-visual {
+            position: relative;
+        }
+        .iv-mockup {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(192,192,192,0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Fake video still */
+        .iv-mockup-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(40,40,70,0.7) 0%, transparent 70%);
+        }
+        /* Overlay butonları simüle eden elemanlar */
+        .iv-overlay-btns {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 2;
+        }
+        .iv-btn-sim {
+            padding: 0.6rem 1.2rem;
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            border-radius: 980px;
+            animation: ivBtnPulse 3s ease-in-out infinite;
+        }
+        .iv-btn-sim:nth-child(1) {
+            background: rgba(255,255,255,0.95);
+            color: #080808;
+            border: none;
+        }
+        .iv-btn-sim:nth-child(2) {
+            background: transparent;
+            color: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.4);
+            animation-delay: 0.4s;
+        }
+        .iv-btn-sim:nth-child(3) {
+            background: transparent;
+            color: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.4);
+            animation-delay: 0.8s;
+        }
+        @keyframes ivBtnPulse {
+            0%, 100% { opacity: 0.7; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-3px); }
+        }
+        /* Progress bar */
+        .iv-progress {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+        }
+        .iv-progress-fill {
+            height: 100%;
+            background: var(--gold);
+            animation: ivProgress 6s linear infinite;
+        }
+        @keyframes ivProgress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        /* Branş seçim noktaları */
+        .iv-branch-nodes {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 2;
+        }
+        .iv-node {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.5px;
+        }
+        .iv-node-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: rgba(192,192,192,0.3);
+            flex-shrink: 0;
+            animation: nodeBlink 2s ease-in-out infinite;
+        }
+        .iv-node.active .iv-node-dot { background: var(--gold); }
+        .iv-node.active { color: rgba(255,255,255,0.9); }
+        @keyframes nodeBlink {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; transform: scale(1.4); }
+        }
+        .iv-node:nth-child(1) .iv-node-dot { animation-delay: 0s; }
+        .iv-node:nth-child(2) .iv-node-dot { animation-delay: 0.5s; }
+        .iv-node:nth-child(3) .iv-node-dot { animation-delay: 1s; }
+        /* Küçük istatistik banner */
+        .iv-stat-strip {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2px;
+            background: rgba(192,192,192,0.08);
+            margin-top: 2px;
+        }
+        .iv-stat-item {
+            background: rgba(8,8,8,0.9);
+            padding: 1rem;
+            text-align: center;
+        }
+        .iv-stat-num {
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+        .iv-stat-label {
+            font-size: 0.65rem;
+            color: var(--grey);
+            margin-top: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .interactive-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .iv-step {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.75rem 0;
+            border-bottom: 1px solid rgba(192,192,192,0.06);
+            position: relative;
+        }
+        .iv-step:last-child { border-bottom: none; }
+        .iv-step-num {
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            min-width: 32px;
+            padding-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        .iv-step-content {}
+        .iv-step-title {
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+        }
+        .iv-step-desc {
+            font-size: 0.88rem;
+            color: var(--grey);
+            line-height: 1.7;
+        }
+
+        /* ─── PRİCİNG TABS ─── */
+        .pricing-service-tabs {
+            display: flex;
+            gap: 0;
+            margin: 2.5rem 0 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .pricing-service-tab {
+            padding: 1rem 2.5rem;
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--grey);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .pricing-service-tab.active, .pricing-service-tab:hover {
+            color: var(--white);
+            border-bottom-color: var(--gold);
+        }
+        .pricing-panel { display: none; }
+        .pricing-panel.active { display: block; }
+        .iv-pricing-card {
+            background: rgba(8,8,8,0.95);
+            padding: 3rem 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(192,192,192,0.08);
+        }
+        .iv-pricing-card:hover { transform: translateY(-5px); border-color: rgba(192,192,192,0.2); }
+        .iv-pricing-card.featured { border-color: rgba(192,192,192,0.2); background: rgba(15,15,18,0.98); }
+        .iv-pricing-card.featured::before {
+            content: 'EN POPÜLER';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            text-align: center;
+            padding: 0.4rem;
+            font-family: 'Mona Sans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #4ECDC4;
+            border-bottom: 1px solid rgba(78,205,196,0.2);
+        }
+        .iv-pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: rgba(192,192,192,0.08);
+        }
+
+        @media (max-width: 1024px) {
+            #services { padding: 4rem 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .interactive-split { grid-template-columns: 1fr; gap: 3rem; }
+            .iv-pricing-grid { grid-template-columns: 1fr; }
+            .pricing-service-tab { padding: 0.8rem 1.2rem; font-size: 0.75rem; }
+        }
+
         /* ─── DIVIDER LINE ─── */
         .section-divider {
             position: absolute;
@@ -500,28 +919,35 @@
         /* Mini animation preview in each step */
         .how-step-preview {
             width: 100%;
-            height: 120px;
-            border: 1px solid rgba(192,192,192,0.1);
-            background: rgba(0,0,0,0.4);
+            height: 140px;
+            border: 1px solid rgba(192,192,192,0.08);
+            background: rgba(8,8,8,0.7);
             margin-bottom: 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            border-radius: 2px;
+        }
+        .how-step-preview::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(192,192,192,0.03) 0%, transparent 70%);
         }
 
-        /* Step 1 preview: typing scenario animation */
+        /* ── Step 1: typewriter senaryo ── */
         .preview-scenario {
-            width: 80%;
+            width: 75%;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 8px;
         }
         .preview-line {
-            height: 4px;
-            background: rgba(192,192,192,0.15);
-            border-radius: 2px;
+            height: 3px;
+            background: rgba(192,192,192,0.07);
+            border-radius: 1px;
             position: relative;
             overflow: hidden;
         }
@@ -529,66 +955,191 @@
             content: '';
             position: absolute;
             left: 0; top: 0; bottom: 0;
-            background: rgba(192,192,192,0.6);
-            animation: lineWrite 2s ease-in-out infinite;
-            border-radius: 2px;
+            border-radius: 1px;
+            background: linear-gradient(to right, rgba(192,192,192,0.7), rgba(192,192,192,0.3));
+            animation: lineWrite 3s cubic-bezier(0.4,0,0.2,1) infinite;
         }
-        .preview-line:nth-child(1)::after { width: 85%; animation-delay: 0s; }
-        .preview-line:nth-child(2)::after { width: 70%; animation-delay: 0.15s; }
-        .preview-line:nth-child(3)::after { width: 55%; animation-delay: 0.3s; }
-        .preview-line:nth-child(4)::after { width: 40%; animation-delay: 0.45s; }
+        .preview-line:nth-child(1)::after { width: 88%; animation-delay: 0s; }
+        .preview-line:nth-child(2)::after { width: 72%; animation-delay: 0.4s; }
+        .preview-line:nth-child(3)::after { width: 60%; animation-delay: 0.8s; }
+        .preview-line:nth-child(4)::after { width: 45%; animation-delay: 1.2s; }
 
         @keyframes lineWrite {
-            0% { transform: scaleX(0); transform-origin: left; }
-            50% { transform: scaleX(1); transform-origin: left; }
-            100% { transform: scaleX(1); transform-origin: left; }
+            0%   { transform: scaleX(0); transform-origin: left; opacity: 0; }
+            10%  { opacity: 1; }
+            55%  { transform: scaleX(1); transform-origin: left; opacity: 1; }
+            80%  { transform: scaleX(1); opacity: 0.6; }
+            100% { transform: scaleX(1); opacity: 0; }
         }
 
-        /* Step 2 preview: waveform animation */
+        /* ── Step 2: seslendirme waveform ── */
         .preview-wave {
             display: flex;
             align-items: center;
-            gap: 3px;
-            height: 60px;
+            gap: 4px;
+            height: 70px;
         }
         .wave-bar {
-            width: 4px;
-            background: rgba(192,192,192,0.5);
+            width: 3px;
+            background: rgba(192,192,192,0.45);
             border-radius: 2px;
-            animation: wavePulse 1s ease-in-out infinite alternate;
+            animation: wavePulse 1.2s ease-in-out infinite alternate;
         }
         @keyframes wavePulse {
-            from { height: 8px; opacity: 0.3; }
-            to { height: 50px; opacity: 0.9; }
+            from { height: 4px; opacity: 0.15; }
+            to   { height: 54px; opacity: 0.85; }
         }
 
-        /* Step 3 preview: export formats */
-        .preview-formats {
+        /* ── İnteraktif: branş seçim ── */
+        .preview-branch {
+            width: 78%;
             display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 80%;
+            flex-direction: column;
+            gap: 7px;
         }
-        .format-badge {
-            padding: 0.2rem 0.6rem;
-            border: 1px solid rgba(192,192,192,0.2);
-            font-size: 0.6rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-family: 'Mona Sans', sans-serif;
-            color: rgba(192,192,192,0.7);
-            animation: badgeFade 2s ease-in-out infinite alternate;
+        .branch-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        @keyframes badgeFade {
-            from { opacity: 0.3; border-color: rgba(192,192,192,0.1); }
-            to { opacity: 1; border-color: rgba(192,192,192,0.5); }
+        .branch-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: rgba(192,192,192,0.2);
+            transition: background 0.3s;
         }
-        .format-badge:nth-child(2) { animation-delay: 0.2s; }
-        .format-badge:nth-child(3) { animation-delay: 0.4s; }
-        .format-badge:nth-child(4) { animation-delay: 0.6s; }
-        .format-badge:nth-child(5) { animation-delay: 0.8s; }
-        .format-badge:nth-child(6) { animation-delay: 1s; }
+        .branch-dot.active {
+            background: var(--gold);
+            box-shadow: 0 0 6px rgba(192,192,192,0.4);
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+        @keyframes dotPulse {
+            0%, 100% { box-shadow: 0 0 4px rgba(192,192,192,0.3); }
+            50% { box-shadow: 0 0 10px rgba(192,192,192,0.6); }
+        }
+        .branch-bar {
+            height: 3px;
+            border-radius: 1px;
+            background: rgba(192,192,192,0.1);
+        }
+        .branch-bar.active {
+            background: linear-gradient(to right, rgba(192,192,192,0.7), rgba(192,192,192,0.2));
+            animation: barCycle 3s ease-in-out infinite;
+        }
+        @keyframes barCycle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* ── İnteraktif: soru akışı ── */
+        .preview-questions {
+            width: 78%;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+        .q-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .q-line {
+            height: 3px;
+            border-radius: 1px;
+            background: rgba(78,205,196,0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        .q-line::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            border-radius: 1px;
+            background: rgba(78,205,196,0.6);
+            animation: qWrite 4s ease-in-out infinite;
+        }
+        .q-row:nth-child(1) .q-line::after { width: 80%; animation-delay: 0s; }
+        .q-row:nth-child(2) .q-line::after { width: 60%; animation-delay: 1s; }
+        .q-row:nth-child(3) .q-line::after { width: 70%; animation-delay: 2s; }
+        .q-btn {
+            display: flex; gap: 5px; margin-top: 2px;
+        }
+        .q-btn-pill {
+            height: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(78,205,196,0.25);
+            background: rgba(78,205,196,0.06);
+            animation: pillPulse 3s ease-in-out infinite alternate;
+        }
+        .q-btn-pill:nth-child(1) { width: 36px; animation-delay: 0s; }
+        .q-btn-pill:nth-child(2) { width: 28px; animation-delay: 0.5s; }
+        @keyframes qWrite {
+            0%   { transform: scaleX(0); transform-origin: left; opacity: 0; }
+            15%  { opacity: 1; }
+            60%  { transform: scaleX(1); opacity: 1; }
+            85%  { transform: scaleX(1); opacity: 0.4; }
+            100% { transform: scaleX(1); opacity: 0; }
+        }
+        @keyframes pillPulse {
+            from { border-color: rgba(78,205,196,0.15); background: rgba(78,205,196,0.04); }
+            to   { border-color: rgba(78,205,196,0.45); background: rgba(78,205,196,0.12); }
+        }
+
+        /* ── İnteraktif: lead teslim ── */
+        .preview-lead {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 78%;
+        }
+        .lead-circle {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(78,205,196,0.35);
+            display: flex; align-items: center; justify-content: center;
+            animation: leadRing 2.5s ease-in-out infinite;
+        }
+        .lead-circle-inner {
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: rgba(78,205,196,0.5);
+            animation: leadDot 2.5s ease-in-out infinite;
+        }
+        @keyframes leadRing {
+            0%, 100% { border-color: rgba(78,205,196,0.2); box-shadow: none; }
+            50%  { border-color: rgba(78,205,196,0.6); box-shadow: 0 0 14px rgba(78,205,196,0.2); }
+        }
+        @keyframes leadDot {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+        .lead-lines {
+            display: flex; flex-direction: column; gap: 5px; width: 100%;
+        }
+        .lead-line {
+            height: 3px; border-radius: 1px;
+            background: rgba(192,192,192,0.08);
+            position: relative; overflow: hidden;
+        }
+        .lead-line::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            border-radius: 1px;
+            background: rgba(192,192,192,0.4);
+            animation: leadFill 3s ease-in-out infinite;
+        }
+        .lead-line:nth-child(1)::after { width: 75%; animation-delay: 0s; }
+        .lead-line:nth-child(2)::after { width: 55%; animation-delay: 0.6s; }
+        .lead-line:nth-child(3)::after { width: 65%; animation-delay: 1.2s; }
+        @keyframes leadFill {
+            0%   { transform: scaleX(0); transform-origin: left; opacity: 0; }
+            20%  { opacity: 1; }
+            70%  { transform: scaleX(1); opacity: 0.9; }
+            100% { transform: scaleX(1); opacity: 0; }
+        }
 
         .how-step-num {
             width: 52px; height: 52px;
@@ -1075,6 +1626,7 @@
             transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal { opacity: 1 !important; transform: none !important; }
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
@@ -1093,6 +1645,11 @@
             .nav-links { display: none; }
         }
     </style>
+<style>
+* { animation-delay: 0s !important; }
+[class*="hero-"] { opacity: 1 !important; }
+.hero-eyebrow, .hero-data-ref, .hero-main-headline, .hero-sub, .hero-cta, .hero-ticker-wrap, .scroll-indicator { opacity: 1 !important; }
+</style>
 </head>
 <body>
 
@@ -1103,12 +1660,18 @@
 <nav>
     <div class="logo">CLINIC <span>MEDIA</span> TECH</div>
     <ul class="nav-links">
-        <li><a href="#problem">PROBLEM</a></li>
-        <li><a href="#how">NASIL</a></li>
-        <li><a href="#offer">NE SUNUYORUZ</a></li>
-        <li><a href="#pricing">PAKETLER</a></li>
-        <li><a href="#contact">BAŞLA</a></li>
+        <li><a href="#services" data-i18n="nav_services">HİZMETLER</a></li>
+        <li><a href="#how" data-i18n="nav_how">NASIL</a></li>
+        <li><a href="#interactive" data-i18n="nav_interactive">İNTERAKTİF VİDEO</a></li>
+        <li><a href="#pricing" data-i18n="nav_pricing">PAKETLER</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">BAŞLA</a></li>
     </ul>
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('tr')">TR</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('ar')">AR</button>
+        <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    </div>
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -1123,19 +1686,17 @@
 
     <div class="hero-content">
         <p class="hero-data-ref">
-            SAĞLIK TURİZMİNDE YILLIK %35 BÜYÜME
+            <span data-i18n="hero_eyebrow">SAĞLIK TURİZMİNDE YILLIK %35 BÜYÜME</span>
             <span class="hero-data-source">MEDICAL TOURISM INDEX 2025</span>
         </p>
 
-        <h1 class="hero-main-headline">
+        <h1 class="hero-main-headline" data-i18n-html="hero_headline">
             Bu büyümeden pay alanların<br>ortak özelliği var —<br>
             <em>hastanın dilinde konuşuyorlar.</em>
         </h1>
 
-
-
         <a href="#problem" class="hero-cta">
-            KLİNİĞİNİZ İÇİN ADIMLAR
+            <span data-i18n="hero_cta">KLİNİĞİNİZ İÇİN ADIMLAR</span>
             <span class="arrow"></span>
         </a>
     </div>
@@ -1166,6 +1727,64 @@
     </div>
 </section>
 
+<!-- ─── HİZMET SEÇİCİ ─── -->
+<section id="services">
+    <div class="section-divider"></div>
+    <div class="section-inner">
+        <div class="services-intro reveal">
+            <div style="display:flex; align-items:center; justify-content:center; gap:1.5rem; margin-bottom:2rem;">
+                <div style="height:1px; width:60px; background:linear-gradient(to right, transparent, rgba(192,192,192,0.3));"></div>
+                <p class="section-label" style="margin:0;" data-i18n="services_label">ÇÖZÜMLERİMİZ</p>
+                <div style="height:1px; width:60px; background:linear-gradient(to left, transparent, rgba(192,192,192,0.3));"></div>
+            </div>
+            <h2 style="font-family:'Mona Sans',sans-serif; font-size:clamp(2.2rem,4.5vw,3.8rem); font-weight:300; line-height:1.2; letter-spacing:-1px; text-align:center; margin-bottom:1.5rem;" data-i18n-html="services_title">
+                Tanıtımdan randevuya —<br><em style="font-style:italic; color:var(--gold); font-weight:600;">tüm yolculuk bizde.</em>
+            </h2>
+            <p style="color:var(--grey); max-width:500px; margin:0 auto 0; line-height:1.8; font-size:0.9rem; text-align:center; letter-spacing:0.2px;" data-i18n="services_desc">
+                İki hizmet, tek çatı. İlki hastayı kliniğinize çeker — ikincisi onu randevuya götürür.
+            </p>
+        </div>
+
+        <div class="services-grid reveal reveal-delay-1">
+            <!-- Hizmet 1 -->
+            <a href="#how" class="service-card">
+                <div class="service-card-badge" data-i18n="svc1_badge">TEMEL HİZMET</div>
+                <span class="service-card-icon">🎬</span>
+                <p class="service-card-tag" data-i18n="svc1_tag">ÇOK DİLLİ TANITIM VİDEOSU</p>
+                <h3 class="service-card-title" data-i18n-html="svc1_title">Hastanın dilinde<br>konuş, güven kazan.</h3>
+                <p class="service-card-desc" data-i18n="svc1_desc">
+                    Kliniğinizi 20+ dilde, kültüre uyarlanmış senaryolarla tanıtın. Her hasta kendi dilini, kendi aksanını duyar. Güven anında kurulur.
+                </p>
+                <ul class="service-card-features">
+                    <li data-i18n="svc1_f1">20+ dilde native seslendirme</li>
+                    <li data-i18n="svc1_f2">Kültüre özel senaryo yazımı</li>
+                    <li data-i18n="svc1_f3">4K prodüksiyon, tüm platformlar</li>
+                    <li data-i18n="svc1_f4">3 iş günü teslimat</li>
+                </ul>
+                <span class="service-card-cta" data-i18n="svc_learn">DETAYLARI GÖR →</span>
+            </a>
+
+            <!-- Hizmet 2 -->
+            <a href="#interactive" class="service-card new-service">
+                <div class="service-card-badge" data-i18n="svc2_badge">YENİ</div>
+                <span class="service-card-icon">⚡</span>
+                <p class="service-card-tag" data-i18n="svc2_tag">İNTERAKTİF VİDEO</p>
+                <h3 class="service-card-title" data-i18n-html="svc2_title">Hasta izler, sorununu iletir.<br>Siz hazır lead alırsınız.</h3>
+                <p class="service-card-desc" data-i18n="svc2_desc">
+                    Hasta videoyu izlerken kendisine yöneltilen sorularla sorununu ve beklentisini adım adım aktarır. Video sonunda tüm bilgiler derlenerek size iletilir — form yok, bekleme yok, satışa en kısa yol.
+                </p>
+                <ul class="service-card-features">
+                    <li data-i18n="svc2_f1">Video izlerken interaktif sorular</li>
+                    <li data-i18n="svc2_f2">Hasta bilgileri video sonunda toplanır</li>
+                    <li data-i18n="svc2_f3">Sıfır form — sıfır sürtüşme</li>
+                    <li data-i18n="svc2_f4">Kliniğe nitelikli lead iletimi</li>
+                </ul>
+                <span class="service-card-cta" data-i18n="svc_learn">DETAYLARI GÖR →</span>
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- ─── PROBLEM ─── -->
 <section id="problem">
     <div class="section-divider"></div>
@@ -1174,28 +1793,26 @@
             <div class="problem-left reveal">
 
                 <h2 class="section-title">
-                    Yurtdışındaki hasta<br>
-                    karar verirken<br>
-                    <strong>ne düşünür?</strong>
+                    <span data-i18n-html="problem_title">Hastalar kliniğe<br>karar verirken<br><strong>ne düşünür?</strong></span>
                 </h2>
-                <p style="color: var(--grey); line-height: 1.8; margin-bottom: 2.5rem; font-size: 1rem;">
-                    Araştırmalar gösteriyor: uluslararası hastalar bir kliniği seçmeden önce her zaman aynı 3 soruyu soruyor.
+                <p style="color: var(--grey); line-height: 1.8; margin-bottom: 2.5rem; font-size: 1rem;" data-i18n="problem_desc">
+                    Araştırmalar gösteriyor: klinik arayan hastalar karar vermeden önce her zaman aynı 3 soruyu soruyor.
                 </p>
             </div>
             <div class="problem-items reveal reveal-delay-2">
                 <div class="problem-item">
                     <span class="problem-num">01</span>
-                    <span class="problem-text">"Benim dilimde mi konuşuyorlar?"</span>
+                    <span class="problem-text" data-i18n="problem_q1">"Benim dilimde mi konuşuyorlar?"</span>
                 </div>
                 <div class="problem-item">
                     <span class="problem-num">02</span>
-                    <span class="problem-text">"Bu kliniğe güvenebilir miyim?"</span>
+                    <span class="problem-text" data-i18n="problem_q2">"Bu kliniğe güvenebilir miyim?"</span>
                 </div>
                 <div class="problem-item">
                     <span class="problem-num">03</span>
-                    <span class="problem-text">"Bu tedavi benim için mi yapılmış?"</span>
+                    <span class="problem-text" data-i18n="problem_q3">"Bu tedavi benim için mi yapılmış?"</span>
                 </div>
-                <p style="margin-top: 2rem; color: var(--grey); font-size: 0.95rem; border-left: 2px solid rgba(192,192,192,0.2); padding-left: 1.5rem; line-height: 1.7;">
+                <p style="margin-top: 2rem; color: var(--grey); font-size: 0.95rem; border-left: 2px solid rgba(192,192,192,0.2); padding-left: 1.5rem; line-height: 1.7;" data-i18n-html="problem_answer">
                     Bu 3 sorunun cevabı — <strong style="color: var(--white);">tek bir videoda.</strong>
                 </p>
 
@@ -1209,11 +1826,16 @@
     <div class="section-divider"></div>
     <div class="section-inner">
         <div class="reveal" style="text-align: center;">
-            <p class="section-label">SÜREÇ</p>
-            <h2 class="section-title" style="letter-spacing: -2px;">Senaryo → Video → Dil</h2>
-            <p style="color: var(--grey); max-width: 500px; margin: 0 auto 1rem; line-height: 1.7; font-size: 0.95rem;">
+            <p class="section-label" data-i18n="how_label">SÜREÇ</p>
+            <h2 class="section-title" style="letter-spacing: -2px;" data-i18n="how_title">Senaryo → Video → Dil</h2>
+            <p style="color: var(--grey); max-width: 500px; margin: 0 auto 1rem; line-height: 1.7; font-size: 0.95rem;" data-i18n="how_desc">
                 Her adımda ne yaptığımızı — ve nasıl göründüğünü — aşağıda görün.
             </p>
+        </div>
+
+        <!-- ── Çok Dilli Tanıtım Akışı ── -->
+        <div style="margin-bottom:1.5rem;" class="reveal">
+            <p style="font-size:0.65rem; letter-spacing:3px; color:var(--grey); font-family:'Mona Sans',sans-serif; font-weight:700; text-align:center; margin-bottom:2rem;">🎬 &nbsp;ÇOK DİLLİ TANITIM VİDEOSU</p>
         </div>
 
         <div class="how-steps reveal reveal-delay-1">
@@ -1228,9 +1850,9 @@
                     </div>
                 </div>
                 <div class="how-step-num">01</div>
-                <h3 class="how-step-title">Brifing & Senaryo</h3>
-                <p class="how-step-desc">Kliniğinizi, hedef pazarınızı ve rakiplerinizi analiz ediyoruz. Kültürel hassasiyete uygun senaryo hazırlıyoruz.</p>
-                <span class="how-step-time">GÜN 1 – 2</span>
+                <h3 class="how-step-title" data-i18n="step1_title">Brifing & Senaryo</h3>
+                <p class="how-step-desc" data-i18n="step1_desc">Kliniğinizi, hedef pazarınızı ve rakiplerinizi analiz ediyoruz. Kültürel hassasiyete uygun senaryo hazırlıyoruz.</p>
+                <span class="how-step-time" data-i18n="step1_time">GÜN 1 – 2</span>
             </div>
 
             <!-- Step 2 -->
@@ -1252,36 +1874,114 @@
                     </div>
                 </div>
                 <div class="how-step-num">02</div>
-                <h3 class="how-step-title">Seslendirme & Video</h3>
-                <p class="how-step-desc">Native speaker seslendirme, 4K prodüksiyon. Hastanın dilini — ve aksanını — duysun.</p>
-                <span class="how-step-time">GÜN 2 – 3</span>
+                <h3 class="how-step-title" data-i18n="step2_title">Seslendirme & Video</h3>
+                <p class="how-step-desc" data-i18n="step2_desc">Native speaker seslendirme, 4K prodüksiyon. Hastanın dilini — ve aksanını — duysun.</p>
+                <span class="how-step-time" data-i18n="step2_time">GÜN 2 – 3</span>
             </div>
 
             <!-- Step 3 -->
             <div class="how-step">
                 <div class="how-step-preview">
-                    <div class="preview-formats">
-                        <div class="format-badge">INSTAGRAM</div>
-                        <div class="format-badge">YOUTUBE</div>
-                        <div class="format-badge">TIKTOK</div>
-                        <div class="format-badge">FACEBOOK</div>
-                        <div class="format-badge">REELS</div>
-                        <div class="format-badge">WEB</div>
+                    <div class="preview-lead">
+                        <div class="lead-circle">
+                            <div class="lead-circle-inner"></div>
+                        </div>
+                        <div class="lead-lines">
+                            <div class="lead-line"></div>
+                            <div class="lead-line"></div>
+                            <div class="lead-line"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="how-step-num">03</div>
-                <h3 class="how-step-title">Format & Teslimat</h3>
-                <p class="how-step-desc">Tüm sosyal medya formatlarında teslim. Her platform, her boyut — eksiksiz hazır.</p>
-                <span class="how-step-time">GÜN 3</span>
+                <h3 class="how-step-title" data-i18n="step3_title">Onay & Teslimat</h3>
+                <p class="how-step-desc" data-i18n="step3_desc">Videonuzu onaylıyorsunuz, tüm platformlara hazır formatlarla teslim ediyoruz. Yayına hazır, kullanmaya başlayın.</p>
+                <span class="how-step-time" data-i18n="step3_time">GÜN 3</span>
+            </div>
+
+        </div>
+
+        <!-- ── Ayırıcı ── -->
+        <div class="reveal" style="display:flex; align-items:center; gap:2rem; margin:4rem 0 3rem;">
+            <div style="flex:1; height:1px; background:rgba(192,192,192,0.1);"></div>
+            <p style="font-size:0.65rem; letter-spacing:3px; color:var(--gold); font-family:'Mona Sans',sans-serif; font-weight:700; white-space:nowrap;">⚡ &nbsp;İNTERAKTİF VİDEO AKIŞI</p>
+            <div style="flex:1; height:1px; background:rgba(192,192,192,0.1);"></div>
+        </div>
+
+        <!-- ── İnteraktif Video Adımları ── -->
+        <div class="how-steps reveal reveal-delay-1">
+            <div class="how-step">
+                <div class="how-step-preview">
+                    <div class="preview-branch">
+                        <div class="branch-row">
+                            <div class="branch-dot active"></div>
+                            <div class="branch-bar active" style="width:70%;"></div>
+                        </div>
+                        <div class="branch-row">
+                            <div class="branch-dot"></div>
+                            <div class="branch-bar" style="width:55%;"></div>
+                        </div>
+                        <div class="branch-row">
+                            <div class="branch-dot"></div>
+                            <div class="branch-bar" style="width:62%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="how-step-num" style="background:rgba(192,192,192,0.08); color:var(--gold);">01</div>
+                <h3 class="how-step-title" data-i18n="iv_how_step1_title">Branş & İlgi Seçimi</h3>
+                <p class="how-step-desc" data-i18n="iv_how_step1_desc">Video başladığında hasta tedavi alanını seçer. Sistem onu kendi yolculuğuna yönlendirir.</p>
+                <span class="how-step-time" style="border-color:rgba(192,192,192,0.15);" data-i18n="iv_how_step1_time">ADIM 1</span>
+            </div>
+
+            <div class="how-step">
+                <div class="how-step-preview">
+                    <div class="preview-questions">
+                        <div class="q-row">
+                            <div class="q-line"></div>
+                            <div class="q-btn"><div class="q-btn-pill"></div><div class="q-btn-pill"></div></div>
+                        </div>
+                        <div class="q-row">
+                            <div class="q-line"></div>
+                            <div class="q-btn"><div class="q-btn-pill"></div><div class="q-btn-pill"></div></div>
+                        </div>
+                        <div class="q-row">
+                            <div class="q-line"></div>
+                            <div class="q-btn"><div class="q-btn-pill"></div><div class="q-btn-pill"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="how-step-num" style="background:rgba(192,192,192,0.08); color:var(--gold);">02</div>
+                <h3 class="how-step-title" data-i18n="iv_how_step2_title">İzlerken Sorular Yöneltilir</h3>
+                <p class="how-step-desc" data-i18n="iv_how_step2_desc">Video içi etkileşimli sorular hastanın sorununu, beklentisini ve iletişim bilgilerini adım adım toplar.</p>
+                <span class="how-step-time" style="border-color:rgba(192,192,192,0.15);" data-i18n="iv_how_step2_time">ADIM 2</span>
+            </div>
+
+            <div class="how-step">
+                <div class="how-step-preview">
+                    <div class="preview-lead">
+                        <div class="lead-circle">
+                            <div class="lead-circle-inner"></div>
+                        </div>
+                        <div class="lead-lines">
+                            <div class="lead-line"></div>
+                            <div class="lead-line"></div>
+                            <div class="lead-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="how-step-num" style="background:rgba(192,192,192,0.08); color:var(--gold);">03</div>
+                <h3 class="how-step-title" data-i18n="iv_how_step3_title">Nitelikli Lead Teslimi</h3>
+                <p class="how-step-desc" data-i18n="iv_how_step3_desc">Video bittiğinde tüm yanıtlar derlenerek size iletilir. Ekibiniz hastayı tanıyarak arar — soğuk değil, sıcak lead.</p>
+                <span class="how-step-time" style="border-color:rgba(192,192,192,0.15);" data-i18n="iv_how_step3_time">ADIM 3</span>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 5rem;" class="reveal">
-            <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 1rem;">TOPLAM TESLİMAT SÜRESİ</p>
-            <p style="font-family: 'Mona Sans', sans-serif; font-size: 4rem; font-weight: 800; color: var(--white); letter-spacing: -2px;">3 iş günü</p>
-            <p style="color: var(--grey); margin-top: 0.5rem; font-size: 0.9rem;">Onaylı senaryodan itibaren</p>
+            <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 1rem;" data-i18n="delivery_label">TOPLAM TESLİMAT SÜRESİ</p>
+            <p style="font-family: 'Mona Sans', sans-serif; font-size: 4rem; font-weight: 800; color: var(--white); letter-spacing: -2px;" data-i18n="delivery_days">3 iş günü</p>
+            <p style="color: var(--grey); margin-top: 0.5rem; font-size: 0.9rem;" data-i18n="delivery_note">Onaylı senaryodan itibaren</p>
             <div style="margin-top: 3rem;">
-                <a href="#demo" class="btn-outline" style="width: auto; display: inline-block; padding: 1rem 3rem;">
+                <a href="#demo" class="btn-outline" style="width: auto; display: inline-block; padding: 1rem 3rem;" data-i18n="demo_cta">
                     ÖRNEK VİDEOLARI İZLE →
                 </a>
             </div>
@@ -1294,31 +1994,57 @@
     <div class="section-divider"></div>
     <div class="section-inner">
         <div class="reveal">
-            <p class="section-label">NE SUNUYORUZ</p>
-            <h2 class="offer-headline">
-                Tek bir video.<br>
-                <span>Tüm pazarlar.</span><br>
-                Hastanın dilinde.
+            <p class="section-label" data-i18n="offer_label">NE SUNUYORUZ</p>
+            <h2 class="offer-headline" data-i18n-html="offer_headline">
+                İki hizmet.<br>
+                <span>Tek çatı.</span><br>
+                Uçtan uca çözüm.
             </h2>
-
         </div>
 
-        <div class="offer-grid reveal reveal-delay-1">
-            <div class="offer-card">
+        <div class="offer-grid reveal reveal-delay-1" style="grid-template-columns: repeat(2, 1fr); gap: 2px;">
+            <!-- Hizmet 1: Çok Dilli Video -->
+            <div class="offer-card" style="grid-column: span 1; border-top: 2px solid rgba(192,192,192,0.15);">
+                <p style="font-size:0.62rem; letter-spacing:3px; color:var(--gold); font-family:'Mona Sans',sans-serif; font-weight:700; margin-bottom:1.5rem;">ÇOK DİLLİ TANITIM VİDEOSU</p>
                 <span class="offer-icon">🎬</span>
-                <h3 class="offer-card-title">Kültürel Senaryo</h3>
-                <p class="offer-card-desc">Her pazar için ayrı senaryo. Arap hasta Arap kültürünü, Rus hasta Rus kültürünü hisseder. Tercüme değil — yeniden yazım.</p>
+                <h3 class="offer-card-title" data-i18n="offer1_title">Kültürel Senaryo</h3>
+                <p class="offer-card-desc" data-i18n="offer1_desc">Her pazar için ayrı senaryo. Arap hasta Arap kültürünü, Rus hasta Rus kültürünü hisseder. Tercüme değil — yeniden yazım.</p>
             </div>
-            <div class="offer-card">
+            <div class="offer-card" style="grid-column: span 1; border-top: 2px solid rgba(192,192,192,0.15);">
+                <p style="font-size:0.62rem; letter-spacing:3px; color:var(--gold); font-family:'Mona Sans',sans-serif; font-weight:700; margin-bottom:1.5rem;">ÇOK DİLLİ TANITIM VİDEOSU</p>
                 <span class="offer-icon">🎙️</span>
-                <h3 class="offer-card-title">Native Speaker Seslendirme</h3>
-                <p class="offer-card-desc">20+ dilde anadili konuşan seslendirme sanatçısı. Aksan doğru olduğunda güven ikiye katlanır.</p>
+                <h3 class="offer-card-title" data-i18n="offer2_title">Native Speaker Seslendirme</h3>
+                <p class="offer-card-desc" data-i18n="offer2_desc">20+ dilde anadili konuşan seslendirme sanatçısı. Aksan doğru olduğunda güven ikiye katlanır.</p>
             </div>
-            <div class="offer-card">
-                <span class="offer-icon">📐</span>
-                <h3 class="offer-card-title">Multi-Format Teslimat</h3>
-                <p class="offer-card-desc">Instagram, YouTube, TikTok, Facebook, web — her platform formatında eksiksiz teslimat. Tek seferlik üretim, sonsuz kullanım.</p>
+
+            <!-- Hizmet 2: İnteraktif Video — tam genişlik kart -->
+            <div class="offer-card" style="grid-column: span 2; border-top: 2px solid rgba(78,205,196,0.3); background: rgba(78,205,196,0.03); display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;">
+                <div>
+                    <p style="font-size:0.62rem; letter-spacing:3px; color:#4ECDC4; font-family:'Mona Sans',sans-serif; font-weight:700; margin-bottom:1.5rem;">İNTERAKTİF VİDEO — YENİ</p>
+                    <span class="offer-icon">⚡</span>
+                    <h3 class="offer-card-title" style="font-size:1.5rem;">Hasta izler, soru sorar, randevu alır — <em style="font-style:italic; color:#4ECDC4;">hiç formdan geçmeden.</em></h3>
+                    <p class="offer-card-desc">Video içinde tıklanabilir butonlar, branş seçim akışı, anlık fiyat bilgisi ve takvim entegrasyonu. İlk temastan randevuya 90 saniye.</p>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:rgba(192,192,192,0.06);">
+                    <div style="padding:1.5rem; background:rgba(8,8,8,0.8);">
+                        <div style="font-size:1.8rem; font-weight:800; font-family:'Mona Sans',sans-serif; color:var(--white); letter-spacing:-1px; margin-bottom:0.3rem;">3×</div>
+                        <div style="font-size:0.78rem; color:var(--grey); line-height:1.5;">Geleneksel formdan yüksek dönüşüm</div>
+                    </div>
+                    <div style="padding:1.5rem; background:rgba(8,8,8,0.8);">
+                        <div style="font-size:1.8rem; font-weight:800; font-family:'Mona Sans',sans-serif; color:var(--white); letter-spacing:-1px; margin-bottom:0.3rem;">%68</div>
+                        <div style="font-size:0.78rem; color:var(--grey); line-height:1.5;">Hasta form doldurmadan devam eder</div>
+                    </div>
+                    <div style="padding:1.5rem; background:rgba(8,8,8,0.8);">
+                        <div style="font-size:1.8rem; font-weight:800; font-family:'Mona Sans',sans-serif; color:var(--white); letter-spacing:-1px; margin-bottom:0.3rem;">90s</div>
+                        <div style="font-size:0.78rem; color:var(--grey); line-height:1.5;">İzlemekten randevuya geçiş süresi</div>
+                    </div>
+                    <div style="padding:1.5rem; background:rgba(8,8,8,0.8);">
+                        <div style="font-size:1.8rem; font-weight:800; font-family:'Mona Sans',sans-serif; color:var(--white); letter-spacing:-1px; margin-bottom:0.3rem;">7–12</div>
+                        <div style="font-size:0.78rem; color:var(--grey); line-height:1.5;">Hasta klinik kıyasladığı kaynak sayısı</div>
+                    </div>
+                </div>
             </div>
+
         </div>
 
     </div>
@@ -1329,37 +2055,158 @@
     <div class="section-divider"></div>
     <div class="section-inner">
         <div class="reveal">
-            <p class="section-label">ÖRNEK ÇALIŞMALAR</p>
-            <h2 class="section-title">Aynı Klinik.<br>Farklı Dil.</h2>
-            <p style="color: var(--grey); max-width: 500px; line-height: 1.7; margin-top: 1rem;">
-                Aşağıdan bir dil seçin ve aynı kliniğin farklı pazarlara nasıl hitap ettiğini görün.
+            <p class="section-label" data-i18n="demo_label">ÖRNEK ÇALIŞMALAR</p>
+            <h2 class="section-title" data-i18n-html="demo_title">Sonuç görmeden<br>karar verme.</h2>
+            <p style="color: var(--grey); max-width: 500px; line-height: 1.7; margin-top: 1rem;" data-i18n="demo_desc">
+                Her iki hizmet için örnek çalışmaları aşağıdan inceleyin.
             </p>
         </div>
 
-        <div class="lang-tabs reveal">
-            <button class="lang-tab active" onclick="switchLang('ar', this)">🌙 ARAPÇA</button>
-            <button class="lang-tab" onclick="switchLang('ru', this)">🇷🇺 RUSÇA</button>
-            <button class="lang-tab" onclick="switchLang('en', this)">🇬🇧 İNGİLİZCE</button>
+        <!-- Demo Tabs -->
+        <div class="pricing-service-tabs reveal" style="margin:2.5rem 0 3rem;">
+            <button class="pricing-service-tab active" onclick="switchDemoTab('tanitim', this)">
+                🎬 <span>TANITIM VİDEOLARI</span>
+            </button>
+            <button class="pricing-service-tab" onclick="switchDemoTab('interaktif', this)">
+                ⚡ <span>İNTERAKTİF VİDEO</span>
+            </button>
         </div>
 
-        <div id="lang-ar" class="lang-content active reveal">
-            <div class="video-frame">
-                <div class="play-btn"></div>
-                <span class="video-label">العربية — Körfez Pazarı</span>
+        <!-- Panel: Tanıtım Videoları -->
+        <div id="demo-tanitim" class="pricing-panel active reveal">
+            <div class="lang-tabs">
+                <button class="lang-tab active" onclick="switchLang('tr', this)">🇹🇷 TÜRKÇE</button>
+                <button class="lang-tab" onclick="switchLang('ar', this)">🌙 ARAPÇA</button>
+                <button class="lang-tab" onclick="switchLang('ru', this)">🇷🇺 RUSÇA</button>
+                <button class="lang-tab" onclick="switchLang('en', this)">🇬🇧 İNGİLİZCE</button>
+            </div>
+            <div id="lang-tr" class="lang-content active">
+                <div class="video-frame">
+                    <div class="play-btn"></div>
+                    <span class="video-label">Türkçe — Yerel & Tanıtım</span>
+                </div>
+            </div>
+            <div id="lang-ar" class="lang-content">
+                <div class="video-frame">
+                    <div class="play-btn"></div>
+                    <span class="video-label">العربية — Körfez Pazarı</span>
+                </div>
+            </div>
+            <div id="lang-ru" class="lang-content">
+                <div class="video-frame">
+                    <div class="play-btn"></div>
+                    <span class="video-label">Русский — Rusya & BDT</span>
+                </div>
+            </div>
+            <div id="lang-en" class="lang-content">
+                <div class="video-frame">
+                    <div class="play-btn"></div>
+                    <span class="video-label">English — Europe & Global</span>
+                </div>
             </div>
         </div>
-        <div id="lang-ru" class="lang-content reveal">
-            <div class="video-frame">
+
+        <!-- Panel: İnteraktif Video -->
+        <div id="demo-interaktif" class="pricing-panel reveal">
+            <div class="video-frame" style="position:relative; max-width:900px; margin:0 auto;">
                 <div class="play-btn"></div>
-                <span class="video-label">Русский — Rusya & BDT</span>
+                <span class="video-label">İnteraktif Video — Örnek Akış</span>
+                <!-- Simüle edilmiş interaktif overlay -->
+                <div style="position:absolute; bottom:5rem; left:50%; transform:translateX(-50%); display:flex; gap:0.75rem; z-index:3;">
+                    <div style="padding:0.6rem 1.4rem; background:rgba(255,255,255,0.95); color:#080808; font-family:'Mona Sans',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.5px; border-radius:980px; white-space:nowrap; animation:ivBtnPulse 3s ease-in-out infinite;">Saç Ekimi</div>
+                    <div style="padding:0.6rem 1.4rem; background:transparent; color:rgba(255,255,255,0.9); font-family:'Mona Sans',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.5px; border:1px solid rgba(255,255,255,0.4); border-radius:980px; white-space:nowrap; animation:ivBtnPulse 3s ease-in-out 0.4s infinite;">Diş Tedavisi</div>
+                    <div style="padding:0.6rem 1.4rem; background:transparent; color:rgba(255,255,255,0.9); font-family:'Mona Sans',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.5px; border:1px solid rgba(255,255,255,0.4); border-radius:980px; white-space:nowrap; animation:ivBtnPulse 3s ease-in-out 0.8s infinite;">Estetik Cerrahi</div>
+                </div>
+            </div>
+            <p style="text-align:center; color:var(--grey); font-size:0.82rem; margin-top:1.5rem; letter-spacing:0.3px;">
+                Hasta bir branşı seçtiğinde video akışı ona özel devam eder — randevuya kadar.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ─── İNTERAKTİF VİDEO ─── -->
+<section id="interactive">
+    <div class="section-divider"></div>
+    <div class="section-inner">
+
+        <!-- Üst: Başlık + Kavram -->
+        <div class="reveal" style="max-width:860px; margin:0 auto 5rem; text-align:center;">
+            <p class="section-label">İNTERAKTİF VİDEO</p>
+            <h2 style="font-family:'Mona Sans',sans-serif; font-size:clamp(1.9rem,3.8vw,3.2rem); font-weight:300; line-height:1.25; letter-spacing:-1px; margin-bottom:1.5rem;">
+                Hasta video izlerken sorularını yanıtlar,<br>
+                siz video biterken <em style="font-style:italic; color:var(--gold); font-weight:600;">hazır bir lead alırsınız.</em>
+            </h2>
+            <p style="color:var(--grey); font-size:0.92rem; line-height:1.85; max-width:640px; margin:0 auto 3rem;">
+                Geleneksel videolar izlenir, kapatılır — hasta kaybolur. İnteraktif video ise izlenirken hastaya sorular yöneltir, ihtiyacını anlar ve tüm bilgilerini video sonunda size derli toplu iletir. Uzun formlar yok, bekleme yok. Klinik için dönüşüme en kısa yol.
+            </p>
+
+            <!-- Karşılaştırma -->
+            <div style="display:grid; grid-template-columns:1fr auto 1fr; align-items:stretch; background:rgba(192,192,192,0.05); border:1px solid rgba(192,192,192,0.1); margin-bottom:0;">
+                <div style="padding:2rem 2.5rem; text-align:left;">
+                    <p style="font-size:0.6rem; letter-spacing:3px; color:rgba(136,146,164,0.6); margin-bottom:1.2rem; font-family:'Mona Sans',sans-serif; font-weight:700;">STANDART VİDEO</p>
+                    <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
+                        <li style="font-size:0.85rem; color:rgba(136,146,164,0.65); display:flex; align-items:flex-start; gap:0.6rem;"><span style="color:rgba(220,80,80,0.7); margin-top:2px; flex-shrink:0;">✕</span> Hasta pasif izler, soru soramaz</li>
+                        <li style="font-size:0.85rem; color:rgba(136,146,164,0.65); display:flex; align-items:flex-start; gap:0.6rem;"><span style="color:rgba(220,80,80,0.7); margin-top:2px; flex-shrink:0;">✕</span> Video biter, hasta gider — bilgi kalmaz</li>
+                        <li style="font-size:0.85rem; color:rgba(136,146,164,0.65); display:flex; align-items:flex-start; gap:0.6rem;"><span style="color:rgba(220,80,80,0.7); margin-top:2px; flex-shrink:0;">✕</span> Formu ayrıca doldurmak gerekir</li>
+                        <li style="font-size:0.85rem; color:rgba(136,146,164,0.65); display:flex; align-items:flex-start; gap:0.6rem;"><span style="color:rgba(220,80,80,0.7); margin-top:2px; flex-shrink:0;">✕</span> Klinik neden ilgilendiğini bilmez</li>
+                    </ul>
+                </div>
+                <div style="width:1px; background:rgba(192,192,192,0.1);"></div>
+                <div style="padding:2rem 2.5rem; text-align:left;">
+                    <p style="font-size:0.6rem; letter-spacing:3px; color:var(--gold); margin-bottom:1.2rem; font-family:'Mona Sans',sans-serif; font-weight:700;">İNTERAKTİF VİDEO</p>
+                    <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
+                        <li style="font-size:0.85rem; color:rgba(192,192,192,0.85); display:flex; align-items:flex-start; gap:0.6rem;"><span style="color:rgba(78,205,196,0.9); margin-top:2px; flex-shrink:0;">✓</span> Video izlerken hastaya sorular yöneltilir</li>
+                        <li style="font-size:0.85rem; color:rgba(192,192,192,0.85); display:flex; align-items:flex-start; gap:0.6rem;"><span style="color:rgba(78,205,196,0.9); margin-top:2px; flex-shrink:0;">✓</span> Tüm yanıtlar video sonunda size iletilir</li>
+                        <li style="font-size:0.85rem; color:rgba(192,192,192,0.85); display:flex; align-items:flex-start; gap:0.6rem;"><span style="color:rgba(78,205,196,0.9); margin-top:2px; flex-shrink:0;">✓</span> Form yok — hasta hiçbir şey doldurmaz</li>
+                        <li style="font-size:0.85rem; color:rgba(192,192,192,0.85); display:flex; align-items:flex-start; gap:0.6rem;"><span style="color:rgba(78,205,196,0.9); margin-top:2px; flex-shrink:0;">✓</span> Kliniğe hazır, nitelikli lead gelir</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div id="lang-en" class="lang-content reveal">
-            <div class="video-frame">
-                <div class="play-btn"></div>
-                <span class="video-label">English — Europe & Global</span>
+
+        <!-- Adımlar — tam genişlik -->
+        <div class="reveal">
+                <p style="font-family:'Mona Sans',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:3px; color:var(--gold); margin-bottom:1.5rem;">NASIL ÇALIŞIR</p>
+                <div class="interactive-steps">
+                    <div class="iv-step">
+                        <span class="iv-step-num">01</span>
+                        <div class="iv-step-content">
+                            <h4 class="iv-step-title" data-i18n="iv_step1_title">Hasta ilgi alanını seçer</h4>
+                            <p class="iv-step-desc" data-i18n="iv_step1_desc">Video başlar başlamaz hasta tedavi alanını seçer — saç, diş, estetik. Her seçim onu kendine özel bir video yolculuğuna yönlendirir.</p>
+                        </div>
+                    </div>
+                    <div class="iv-step">
+                        <span class="iv-step-num">02</span>
+                        <div class="iv-step-content">
+                            <h4 class="iv-step-title" data-i18n="iv_step2_title">Video, hastaya sorular yöneltir</h4>
+                            <p class="iv-step-desc" data-i18n="iv_step2_desc">İzleme sırasında video içi etkileşimli sorularla hastanın sorununu, beklentisini ve iletişim bilgilerini adım adım toplar. Hasta hiçbir form doldurmaz — sadece izler ve seçer.</p>
+                        </div>
+                    </div>
+                    <div class="iv-step">
+                        <span class="iv-step-num">03</span>
+                        <div class="iv-step-content">
+                            <h4 class="iv-step-title" data-i18n="iv_step3_title">Video biter, lead hazır gelir</h4>
+                            <p class="iv-step-desc" data-i18n="iv_step3_desc">Video sonunda tüm yanıtlar derlenerek size iletilir: hangi tedavi, hangi beklenti, hangi iletişim bilgisi. Ekibiniz hastayı zaten tanıyarak arar.</p>
+                        </div>
+                    </div>
+                    <div class="iv-step">
+                        <span class="iv-step-num">04</span>
+                        <div class="iv-step-content">
+                            <h4 class="iv-step-title" data-i18n="iv_step4_title">Kısa sürede satışa dönüşür</h4>
+                            <p class="iv-step-desc" data-i18n="iv_step4_desc">Soğuk lead yerine nitelikli, bilgili hasta. İlk aramada ikna süreci çoktan başlamış olur — çünkü hasta videodan kliniğinizi zaten tanımıştır.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:2.5rem;">
+                    <a href="#contact" class="hero-cta" style="opacity:1; animation:none; font-size:0.8rem;">
+                        <span data-i18n="iv_cta">BİZE ULAŞIN</span>
+                        <span class="arrow"></span>
+                    </a>
+                </div>
             </div>
-        </div>
+
     </div>
 </section>
 
@@ -1368,65 +2215,113 @@
     <div class="section-divider"></div>
     <div class="section-inner">
         <div class="reveal">
-            <p class="section-label">PAKETLER</p>
-            <h2 class="section-title">Hedefinizi Seçin.</h2>
-            <p style="color: var(--grey); max-width: 500px; line-height: 1.7; margin-top: 1rem;">
-                Her paket aynı kalite standartlarında üretilir. Fark sadece dil sayısı ve pazardır.
+            <p class="section-label" data-i18n="pricing_label">PAKETLER</p>
+            <h2 class="section-title" data-i18n="pricing_title">Hedefinizi Seçin.</h2>
+            <p style="color: var(--grey); max-width: 500px; line-height: 1.7; margin-top: 1rem;" data-i18n="pricing_desc">
+                Her iki hizmet için de ayrı paketler sunuyoruz. İhtiyacınıza göre seçin.
             </p>
         </div>
 
-        <div class="pricing-grid reveal reveal-delay-1">
-            <div class="pricing-card">
-                <p class="pricing-lang">BAŞLANGIÇ</p>
-                <h3 class="pricing-title">Tek Pazar</h3>
-                <span class="pricing-langs-badge">+3 Dil</span>
-                <div class="pricing-price">₺14,900</div>
-                <p class="pricing-price-note">başlayan fiyatla</p>
-                <ul class="pricing-features">
-                    <li>Kliniğe özel senaryo</li>
-                    <li>3 dilde native seslendirme</li>
-                    <li>4K video prodüksiyon</li>
-                    <li>Tüm sosyal medya formatları</li>
-                    <li>2 revizyon hakkı</li>
-                    <li>3 iş günü teslimat</li>
-                </ul>
-                <a href="#contact" class="btn-outline">TEKLİF AL</a>
-            </div>
+        <!-- Hizmet Tabs -->
+        <div class="pricing-service-tabs reveal">
+            <button class="pricing-service-tab active" onclick="switchPricingTab('multilang', this)">
+                🎬 <span data-i18n="ptab_multilang">ÇOK DİLLİ TANITIM VİDEOSU</span>
+            </button>
+            <button class="pricing-service-tab" onclick="switchPricingTab('interactive', this)">
+                ⚡ <span data-i18n="ptab_interactive">İNTERAKTİF VİDEO</span>
+            </button>
+        </div>
 
-            <div class="pricing-card featured">
-                <p class="pricing-lang">BÜYÜME</p>
-                <h3 class="pricing-title">Çoklu Pazar</h3>
-                <span class="pricing-langs-badge">+10 Dil</span>
-                <div class="pricing-price">₺34,900</div>
-                <p class="pricing-price-note">başlayan fiyatla</p>
-                <ul class="pricing-features">
-                    <li>Kliniğe özel senaryo</li>
-                    <li>10 dilde native seslendirme</li>
-                    <li>4K video prodüksiyon</li>
-                    <li>Tüm sosyal medya formatları</li>
-                    <li>3 revizyon hakkı</li>
-                    <li>Pazar analizi raporu</li>
-                </ul>
-                <a href="#contact" class="btn-primary">TEKLİF AL</a>
-            </div>
-
-            <div class="pricing-card">
-                <p class="pricing-lang">GLOBAL</p>
-                <h3 class="pricing-title">Dünya Pazarı</h3>
-                <span class="pricing-langs-badge">+20 Dil</span>
-                <div class="pricing-price">Teklif</div>
-                <p class="pricing-price-note">size özel fiyatlandırma</p>
-                <ul class="pricing-features">
-                    <li>Kliniğe özel senaryo</li>
-                    <li>20+ dilde native seslendirme</li>
-                    <li>Premium 4K prodüksiyon</li>
-                    <li>Tüm platform formatları</li>
-                    <li>Sınırsız revizyon</li>
-                    <li>Stratejik danışmanlık</li>
-                </ul>
-                <a href="#contact" class="btn-outline">TEKLİF AL</a>
+        <!-- Panel 1: Çok Dilli -->
+        <div id="panel-multilang" class="pricing-panel active reveal reveal-delay-1">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <p class="pricing-lang" data-i18n="p1_tier">BAŞLANGIÇ</p>
+                    <h3 class="pricing-title" data-i18n="p1_title">Tek Pazar</h3>
+                    <span class="pricing-langs-badge" data-i18n="p1_badge">+3 Dil</span>
+                    <ul class="pricing-features" style="margin-top:1.5rem;">
+                        <li data-i18n="feat_scenario">Kliniğe özel senaryo</li>
+                        <li data-i18n="p1_feat2">3 dilde native seslendirme</li>
+                        <li data-i18n="feat_4k">4K video prodüksiyon</li>
+                        <li data-i18n="feat_formats">Tüm sosyal medya formatları</li>
+                        <li data-i18n="feat_delivery">3 iş günü teslimat</li>
+                    </ul>
+                    <a href="#contact" class="btn-outline" data-i18n="cta_quote">TEKLİF AL</a>
+                </div>
+                <div class="pricing-card featured">
+                    <p class="pricing-lang" data-i18n="p2_tier">BÜYÜME</p>
+                    <h3 class="pricing-title" data-i18n="p2_title">Çoklu Pazar</h3>
+                    <span class="pricing-langs-badge" data-i18n="p2_badge">+10 Dil</span>
+                    <ul class="pricing-features" style="margin-top:1.5rem;">
+                        <li data-i18n="feat_scenario">Kliniğe özel senaryo</li>
+                        <li data-i18n="p2_feat2">10 dilde native seslendirme</li>
+                        <li data-i18n="feat_4k">4K video prodüksiyon</li>
+                        <li data-i18n="feat_formats">Tüm sosyal medya formatları</li>
+                        <li data-i18n="p2_feat6">Pazar analizi raporu</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" data-i18n="cta_quote">TEKLİF AL</a>
+                </div>
+                <div class="pricing-card">
+                    <p class="pricing-lang" data-i18n="p3_tier">GLOBAL</p>
+                    <h3 class="pricing-title" data-i18n="p3_title">Dünya Pazarı</h3>
+                    <span class="pricing-langs-badge" data-i18n="p3_badge">+20 Dil</span>
+                    <ul class="pricing-features" style="margin-top:1.5rem;">
+                        <li data-i18n="feat_scenario">Kliniğe özel senaryo</li>
+                        <li data-i18n="p3_feat2">20+ dilde native seslendirme</li>
+                        <li data-i18n="p3_feat3">Premium 4K prodüksiyon</li>
+                        <li data-i18n="p3_feat4">Tüm platform formatları</li>
+                        <li data-i18n="p3_feat6">Stratejik danışmanlık raporu</li>
+                    </ul>
+                    <a href="#contact" class="btn-outline" data-i18n="cta_quote">TEKLİF AL</a>
+                </div>
             </div>
         </div>
+
+        <!-- Panel 2: İnteraktif Video -->
+        <div id="panel-interactive" class="pricing-panel reveal reveal-delay-1">
+            <div class="iv-pricing-grid">
+                <div class="iv-pricing-card">
+                    <p class="pricing-lang" data-i18n="iv_p1_tier">BAŞLANGIÇ</p>
+                    <h3 class="pricing-title" data-i18n="iv_p1_title">Tek Branş</h3>
+                    <ul class="pricing-features" style="margin-top:1.5rem;">
+                        <li data-i18n="iv_feat_script">İnteraktif senaryo yazımı</li>
+                        <li data-i18n="iv_p1_f2">1 branş akışı</li>
+                        <li data-i18n="iv_feat_buttons">Tıklanabilir buton entegrasyonu</li>
+                        <li data-i18n="iv_feat_booking">Lead toplama entegrasyonu</li>
+                        <li data-i18n="iv_p1_f5">Temel lead raporu</li>
+                        <li data-i18n="iv_feat_langs">2 dil desteği</li>
+                    </ul>
+                    <a href="#contact" class="btn-outline" data-i18n="cta_quote">TEKLİF AL</a>
+                </div>
+                <div class="iv-pricing-card featured">
+                    <p class="pricing-lang" data-i18n="iv_p2_tier">BÜYÜME</p>
+                    <h3 class="pricing-title" data-i18n="iv_p2_title">Çoklu Branş</h3>
+                    <ul class="pricing-features" style="margin-top:1.5rem;">
+                        <li data-i18n="iv_feat_script">İnteraktif senaryo yazımı</li>
+                        <li data-i18n="iv_p2_f2">3 branş akışı</li>
+                        <li data-i18n="iv_feat_buttons">Tıklanabilir buton entegrasyonu</li>
+                        <li data-i18n="iv_feat_booking">Lead toplama entegrasyonu</li>
+                        <li data-i18n="iv_p2_f5">Gelişmiş lead takibi & analitik</li>
+                        <li data-i18n="iv_p2_f6">5 dil desteği</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" data-i18n="cta_quote">TEKLİF AL</a>
+                </div>
+                <div class="iv-pricing-card">
+                    <p class="pricing-lang" data-i18n="iv_p3_tier">FULL FUNNEL</p>
+                    <h3 class="pricing-title" data-i18n="iv_p3_title">Tam Klinik</h3>
+                    <ul class="pricing-features" style="margin-top:1.5rem;">
+                        <li data-i18n="iv_feat_script">İnteraktif senaryo yazımı</li>
+                        <li data-i18n="iv_p3_f2">Sınırsız branş akışı</li>
+                        <li data-i18n="iv_p3_f3">CRM & WhatsApp entegrasyonu</li>
+                        <li data-i18n="iv_feat_booking">Lead toplama entegrasyonu</li>
+                        <li data-i18n="iv_p3_f5">Stratejik danışmanlık raporu</li>
+                        <li data-i18n="iv_p3_f6">10+ dil desteği</li>
+                    </ul>
+                    <a href="#contact" class="btn-outline" data-i18n="cta_quote">TEKLİF AL</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -1436,37 +2331,37 @@
     <div class="section-inner">
         <div class="why-grid">
             <div class="why-left reveal">
-                <p class="section-label">NEDEN BİZ?</p>
-                <h2 class="section-title">
+                <p class="section-label" data-i18n="why_label">NEDEN BİZ?</p>
+                <h2 class="section-title" data-i18n-html="why_title">
                     Stratejik, özgün,<br>
                     <strong>sıfırdan üretim.</strong>
                 </h2>
-                <p class="why-statement">
+                <p class="why-statement" data-i18n="why_statement">
                     Medikal turizm video pazarlamasında niş uzmanlık. Genel dijital ajanslar değil — sadece klinikler ve uluslararası hasta üzerine yapılan analizlerle edinilmiş verilerden oluşturulan doğru senaryolar ve akıcı etkileşim videolar.
                 </p>
-                <p style="color: var(--grey); font-size: 0.9rem; line-height: 1.8;">
+                <p style="color: var(--grey); font-size: 0.9rem; line-height: 1.8;" data-i18n="why_sub">
                     Her klinik farklıdır. Senaryo, dil, kültürel ton ve hedef pazar birebir analiz edilir. Şablon yok. Kopyala-yapıştır yok. Her video sıfırdan.
                 </p>
             </div>
             <div class="why-stats reveal reveal-delay-2">
                 <div class="why-stat">
                     <div class="why-stat-num">95%</div>
-                    <div class="why-stat-text">Video içeriğinden bilgi tutma oranı — metinden yalnızca %10</div>
+                    <div class="why-stat-text" data-i18n="stat1_text">Video içeriğinden bilgi tutma oranı — metinden yalnızca %10</div>
                     <div class="why-stat-source">Healthcare Marketing Research</div>
                 </div>
                 <div class="why-stat">
                     <div class="why-stat-num">87%</div>
-                    <div class="why-stat-text">Tüketicilerin video kalitesinin marka güvenini etkilediğini söyleme oranı</div>
+                    <div class="why-stat-text" data-i18n="stat2_text">Tüketicilerin video kalitesinin marka güvenini etkilediğini söyleme oranı</div>
                     <div class="why-stat-source">Video Marketing Statistics</div>
                 </div>
                 <div class="why-stat">
                     <div class="why-stat-num">+300%</div>
-                    <div class="why-stat-text">Sağlıkta video içerikli e-postalarda tıklama oranı artışı</div>
+                    <div class="why-stat-text" data-i18n="stat3_text">Sağlıkta video içerikli e-postalarda tıklama oranı artışı</div>
                     <div class="why-stat-source">Email Marketing Research</div>
                 </div>
                 <div class="why-stat">
                     <div class="why-stat-num">+65%</div>
-                    <div class="why-stat-text">Native speaker içeriklerin hedef kitlede oluşturduğu ek güven artışı</div>
+                    <div class="why-stat-text" data-i18n="stat4_text">Native speaker içeriklerin hedef kitlede oluşturduğu ek güven artışı</div>
                     <div class="why-stat-source">Cross-Cultural Marketing</div>
                 </div>
             </div>
@@ -1480,55 +2375,71 @@
     <div class="section-inner">
         <div class="contact-grid">
             <div class="contact-left reveal">
-                <p class="section-label">BAŞLAYALIM</p>
-                <h2 class="section-title">
-                    İlk videonuzu<br>
-                    <strong>birlikte yapalım.</strong>
+                <p class="section-label" data-i18n="contact_label">BAŞLAYALIM</p>
+                <h2 class="section-title" data-i18n-html="contact_title">
+                    İlk adımı<br>
+                    <strong>birlikte atalım.</strong>
                 </h2>
-                <p style="color: var(--grey); line-height: 1.8; margin-bottom: 2rem;">
-                    Kliniğinizi analiz ediyor, hedef pazarınızı belirliyoruz. Formu doldurun — 24 saat içinde size özel bir sunum hazırlıyoruz.
+                <p style="color: var(--grey); line-height: 1.8; margin-bottom: 2rem;" data-i18n="contact_desc">
+                    Hangi hizmeti istediğinizi seçin — 24 saat içinde size özel bir sunum hazırlayıp arayalım. Form yok, bekleme yok.
                 </p>
                 <div class="contact-promise">
                     <span class="contact-promise-icon">⚡</span>
                     <div class="contact-promise-text">
-                        <strong>24 Saat İçinde Dönüş Garantisi</strong>
-                        Formu doldurun, sizi arayalım.
+                        <strong data-i18n="promise_title">24 Saat İçinde Dönüş Garantisi</strong>
+                        <span data-i18n="promise_sub">Seçiminizi yapın, sizi arayalım.</span>
                     </div>
                 </div>
             </div>
 
             <div class="reveal reveal-delay-2">
-                <form class="form" onsubmit="handleSubmit(event)">
-                    <div class="form-group">
-                        <label>ADINIZ</label>
-                        <input type="text" placeholder="Dr. Ahmet Yılmaz" required>
-                    </div>
-                    <div class="form-group">
-                        <label>KLİNİK ADI</label>
-                        <input type="text" placeholder="Klinik adınız" required>
-                    </div>
-                    <div class="form-group">
-                        <label>WEBSİTE</label>
-                        <input type="url" placeholder="www.kliniginiz.com">
-                    </div>
-                    <div class="form-group">
-                        <label>HEDEF PAZAR</label>
-                        <select required>
-                            <option value="" disabled selected>Seçiniz</option>
-                            <option>Körfez Ülkeleri (Arapça)</option>
-                            <option>Rusya & BDT (Rusça)</option>
-                            <option>Avrupa (İngilizce)</option>
-                            <option>Çoklu Pazar</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>E-POSTA</label>
-                        <input type="email" placeholder="info@kliniginiz.com" required>
-                    </div>
-                    <button type="submit" class="form-submit">
-                        ÜCRETSİZ ANALİZ TALEP ET →
-                    </button>
-                </form>
+                <!-- Hizmet seçim kartları — form yok -->
+                <div style="display:flex; flex-direction:column; gap:2px; background:rgba(192,192,192,0.08);">
+
+                    <!-- Seçenek 1 -->
+                    <a href="#" class="service-card" style="padding:2.5rem 2.5rem; background:rgba(8,8,8,0.95);">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:1rem;">
+                            <div>
+                                <p style="font-size:0.62rem; letter-spacing:3px; color:var(--gold); font-family:'Mona Sans',sans-serif; font-weight:700; margin-bottom:0.75rem;">ÇOK DİLLİ TANITIM VİDEOSU</p>
+                                <h3 style="font-family:'Mona Sans',sans-serif; font-size:1.15rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; line-height:1.3;">Hastanın dilinde konuş,<br>güven kazan.</h3>
+                                <p style="font-size:0.82rem; color:var(--grey); line-height:1.6;">Kültüre uyarlanmış senaryo · 20+ dil · 4K · 3 iş günü</p>
+                            </div>
+                            <span style="font-size:1.8rem; flex-shrink:0; margin-top:0.2rem;">🎬</span>
+                        </div>
+                        <div style="margin-top:1.5rem; display:flex; align-items:center; justify-content:space-between;">
+                            <span style="font-family:'Mona Sans',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:1px; color:var(--white); border-bottom:1px solid rgba(192,192,192,0.3); padding-bottom:0.2rem;">TEKLIF TALEP ET →</span>
+                            <span style="font-size:0.65rem; color:var(--grey); letter-spacing:1px;">24 SAAT İÇİNDE DÖNÜŞ</span>
+                        </div>
+                    </a>
+
+                    <!-- Seçenek 2 -->
+                    <a href="#" class="service-card new-service" style="padding:2.5rem 2.5rem; background:rgba(10,10,14,0.97);">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:1rem;">
+                            <div>
+                                <p style="font-size:0.62rem; letter-spacing:3px; color:#4ECDC4; font-family:'Mona Sans',sans-serif; font-weight:700; margin-bottom:0.75rem;">İNTERAKTİF VİDEO — YENİ</p>
+                                <h3 style="font-family:'Mona Sans',sans-serif; font-size:1.15rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; line-height:1.3;">Form yok. Bekleme yok.<br>Direkt randevu.</h3>
+                                <p style="font-size:0.82rem; color:var(--grey); line-height:1.6;">Video içi seçim akışı · Randevu entegrasyonu · Dönüşüm takibi</p>
+                            </div>
+                            <span style="font-size:1.8rem; flex-shrink:0; margin-top:0.2rem;">⚡</span>
+                        </div>
+                        <div style="margin-top:1.5rem; display:flex; align-items:center; justify-content:space-between;">
+                            <span style="font-family:'Mona Sans',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:1px; color:var(--white); border-bottom:1px solid rgba(78,205,196,0.4); padding-bottom:0.2rem;">TEKLİF TALEP ET →</span>
+                            <span style="font-size:0.65rem; color:var(--grey); letter-spacing:1px;">24 SAAT İÇİNDE DÖNÜŞ</span>
+                        </div>
+                    </a>
+
+                    <!-- İkisi birden seçenek -->
+                    <a href="#" class="service-card" style="padding:1.75rem 2.5rem; background:rgba(5,5,5,0.98); border-top:none;">
+                        <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+                            <div>
+                                <p style="font-size:0.62rem; letter-spacing:3px; color:var(--grey); font-family:'Mona Sans',sans-serif; font-weight:700; margin-bottom:0.4rem;">HER İKİSİNİ KEŞFET</p>
+                                <h3 style="font-family:'Mona Sans',sans-serif; font-size:1rem; font-weight:600; color:rgba(255,255,255,0.7); line-height:1.3;">Hangisinin size uygun olduğuna birlikte karar verelim.</h3>
+                            </div>
+                            <span style="font-family:'Mona Sans',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:1px; color:var(--grey); white-space:nowrap; border-bottom:1px solid rgba(192,192,192,0.15); padding-bottom:0.2rem; flex-shrink:0;">GÖRÜŞELIM →</span>
+                        </div>
+                    </a>
+
+                </div>
             </div>
         </div>
     </div>
@@ -1537,16 +2448,7 @@
 <!-- ─── FOOTER ─── -->
 <footer>
     <div class="logo">CLINIC <span>MEDIA</span> TECH</div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-        <p>© 2026 Clinic Media Tech — Tüm hakları saklıdır</p>
-        <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
-            <a href="#" style="font-size: 0.7rem; color: rgba(136,146,164,0.5); text-decoration: none; letter-spacing: 1px; transition: color 0.3s;" onmouseover="this.style.color='#C0C0C0'" onmouseout="this.style.color='rgba(136,146,164,0.5)'">KİŞİSEL VERİLERİN KORUNMASI (KVKK)</a>
-            <a href="#" style="font-size: 0.7rem; color: rgba(136,146,164,0.5); text-decoration: none; letter-spacing: 1px; transition: color 0.3s;" onmouseover="this.style.color='#C0C0C0'" onmouseout="this.style.color='rgba(136,146,164,0.5)'">GİZLİLİK POLİTİKASI</a>
-            <a href="#" style="font-size: 0.7rem; color: rgba(136,146,164,0.5); text-decoration: none; letter-spacing: 1px; transition: color 0.3s;" onmouseover="this.style.color='#C0C0C0'" onmouseout="this.style.color='rgba(136,146,164,0.5)'">ÇEREZ POLİTİKASI</a>
-            <a href="#" style="font-size: 0.7rem; color: rgba(136,146,164,0.5); text-decoration: none; letter-spacing: 1px; transition: color 0.3s;" onmouseover="this.style.color='#C0C0C0'" onmouseout="this.style.color='rgba(136,146,164,0.5)'">KULLANIM KOŞULLARI</a>
-            <a href="#" style="font-size: 0.7rem; color: rgba(136,146,164,0.5); text-decoration: none; letter-spacing: 1px; transition: color 0.3s;" onmouseover="this.style.color='#C0C0C0'" onmouseout="this.style.color='rgba(136,146,164,0.5)'">İLETİŞİM</a>
-        </div>
-    </div>
+    <p data-i18n="footer_copy">© 2026 Clinic Media Tech — Tüm hakları saklıdır</p>
     <div style="font-size: 0.7rem; color: rgba(136,146,164,0.3); text-align: right; line-height: 1.6;">
         <div>Clinic Media Tech</div>
         <div>İstanbul, Türkiye</div>
@@ -1779,7 +2681,7 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // ─── LANG TABS ───
+    // ─── LANG TABS (demo section) ───
     function switchLang(lang, btn) {
         document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
@@ -1787,27 +2689,579 @@
         btn.classList.add('active');
     }
 
+    // ─── PRİCİNG TABS ───
+    function switchPricingTab(tab, btn) {
+        document.querySelectorAll('.pricing-panel').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.pricing-service-tab').forEach(el => el.classList.remove('active'));
+        document.getElementById('panel-' + tab).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    // ─── DEMO TABS ───
+    function switchDemoTab(tab, btn) {
+        document.querySelectorAll('[id^="demo-"]').forEach(el => el.classList.remove('active'));
+        // Only toggle the tab buttons in the demo section
+        btn.closest('.pricing-service-tabs').querySelectorAll('.pricing-service-tab').forEach(el => el.classList.remove('active'));
+        document.getElementById('demo-' + tab).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    // ─── i18n SYSTEM ───
+    const translations = {
+        tr: {
+            nav_problem: 'PROBLEM', nav_how: 'NASIL', nav_offer: 'NE SUNUYORUZ',
+            nav_pricing: 'PAKETLER', nav_contact: 'BAŞLA',
+            nav_services: 'HİZMETLER', nav_interactive: 'İNTERAKTİF VİDEO',
+            services_label: 'ÇÖZÜMLERİMİZ',
+            services_title: 'Tanıtımdan randevuya —<br><em style="font-style:italic; color:var(--gold); font-weight:600;">tüm yolculuk bizde.</em>',
+            services_desc: 'İki hizmet, tek çatı. İlki hastayı kliniğinize çeker — ikincisi onu randevuya götürür.',
+            svc1_badge: 'TEMEL HİZMET', svc1_tag: 'ÇOK DİLLİ TANITIM VİDEOSU',
+            svc1_title: 'Hastanın dilinde<br>konuş, güven kazan.',
+            svc1_desc: 'Kliniğinizi 20+ dilde, kültüre uyarlanmış senaryolarla tanıtın. Her hasta kendi dilini, kendi aksanını duyar. Güven anında kurulur.',
+            svc1_f1: '20+ dilde native seslendirme', svc1_f2: 'Kültüre özel senaryo yazımı',
+            svc1_f3: '4K prodüksiyon, tüm platformlar', svc1_f4: '3 iş günü teslimat',
+            svc2_badge: 'YENİ', svc2_tag: 'İNTERAKTİF VİDEO',
+            svc2_title: 'Hasta izler, sorununu iletir.<br>Siz hazır lead alırsınız.',
+            svc2_desc: 'Hasta videoyu izlerken kendisine yöneltilen sorularla sorununu ve beklentisini adım adım aktarır. Video sonunda tüm bilgiler derlenerek size iletilir — form yok, bekleme yok, satışa en kısa yol.',
+            svc2_f1: 'Video izlerken interaktif sorular', svc2_f2: 'Hasta bilgileri video sonunda toplanır',
+            svc2_f3: 'Sıfır form — sıfır sürtüşme', svc2_f4: 'Kliniğe nitelikli lead iletimi',
+            svc_learn: 'DETAYLARI GÖR →',
+            iv_label: 'İNTERAKTİF VİDEO',
+            iv_title: 'Hasta videoyu izler —<br><strong>ve direkt satın alır.</strong>',
+            iv_desc: 'Geleneksel videolar izletir, ama karar verdirmez. İnteraktif video ise hastayı pasif izleyiciden aktif karar vericiye dönüştürür — kliniğinizle ilk temastan randevuya tek adımda.',
+            iv_node1: 'Saç Ekimi', iv_node2: 'Diş Tedavisi', iv_node3: 'Estetik Cerrahi',
+            iv_btn1: 'Sorunumu Anlat', iv_btn2: 'Bilgilerimi İlet', iv_btn3: 'Soru Sor',
+            iv_stat1: 'Daha yüksek lead kalitesi', iv_stat2: 'Form doldurmadan tamamlar', iv_stat3: 'Form alanı — sıfır sürtüşme',
+            iv_step1_title: 'Hasta ilgi alanını seçer',
+            iv_step1_desc: 'Video başlar başlamaz hasta tedavi alanını seçer — saç, diş, estetik. Her seçim onu kendine özel bir video yolculuğuna yönlendirir.',
+            iv_step2_title: 'Video, hastaya sorular yöneltir',
+            iv_step2_desc: 'İzleme sırasında video içi etkileşimli sorularla hastanın sorununu, beklentisini ve iletişim bilgilerini adım adım toplar. Hasta hiçbir form doldurmaz — sadece izler ve seçer.',
+            iv_step3_title: 'Video biter, lead hazır gelir',
+            iv_step3_desc: 'Video sonunda tüm yanıtlar derlenerek size iletilir: hangi tedavi, hangi beklenti, hangi iletişim bilgisi. Ekibiniz hastayı zaten tanıyarak arar.',
+            iv_step4_title: 'Kısa sürede satışa dönüşür',
+            iv_step4_desc: 'Soğuk lead yerine nitelikli, bilgili hasta. İlk aramada ikna süreci çoktan başlamış olur — çünkü hasta videodan kliniğinizi zaten tanımıştır.',
+            iv_cta: 'BİZE ULAŞIN',
+            ptab_multilang: 'ÇOK DİLLİ TANITIM VİDEOSU', ptab_interactive: 'İNTERAKTİF VİDEO',
+            pricing_desc: 'Her iki hizmet için de ayrı paketler sunuyoruz. İhtiyacınıza göre seçin.',
+            iv_p1_tier: 'BAŞLANGIÇ', iv_p1_title: 'Tek Branş', iv_p1_badge: '1–3 Tedavi',
+            iv_p2_tier: 'BÜYÜME', iv_p2_title: 'Çoklu Branş', iv_p2_badge: '3–7 Tedavi',
+            iv_p3_tier: 'FULL FUNNEL', iv_p3_title: 'Tam Klinik', iv_p3_badge: 'Sınırsız Akış',
+            iv_price_all: 'Teklif', iv_price_note: 'size özel fiyatlandırma',
+            iv_feat_script: 'İnteraktif senaryo yazımı', iv_feat_buttons: 'Tıklanabilir buton entegrasyonu',
+            iv_feat_booking: 'Lead toplama entegrasyonu', iv_feat_langs: '2 dil desteği',
+            iv_p1_f2: '1 branş akışı', iv_p1_f5: 'Temel lead raporu',
+            iv_p2_f2: '3 branş akışı', iv_p2_f5: 'Gelişmiş lead takibi & analitik', iv_p2_f6: '5 dil desteği',
+            iv_p3_f2: 'Sınırsız branş akışı', iv_p3_f3: 'CRM & WhatsApp entegrasyonu',
+            iv_p3_f5: 'Stratejik danışmanlık raporu', iv_p3_f6: '10+ dil desteği',
+            hero_eyebrow: 'SAĞLIK TURİZMİNDE YILLIK %35 BÜYÜME',
+            hero_headline: 'Bu büyümeden pay alanların<br>ortak özelliği var —<br><em>hastanın dilinde konuşuyorlar.</em>',
+            hero_cta: 'KLİNİĞİNİZ İÇİN ADIMLAR',
+            problem_title: 'Hastalar kliniğe<br>karar verirken<br><strong>ne düşünür?</strong>',
+            problem_desc: 'Araştırmalar gösteriyor: klinik arayan hastalar karar vermeden önce her zaman aynı 3 soruyu soruyor.',
+            problem_q1: '"Benim dilimde mi konuşuyorlar?"',
+            problem_q2: '"Bu kliniğe güvenebilir miyim?"',
+            problem_q3: '"Bu tedavi benim için mi yapılmış?"',
+            problem_answer: 'Bu 3 sorunun cevabı — <strong style="color:var(--white);">tek bir videoda.</strong>',
+            how_label: 'SÜREÇ', how_title: 'Senaryo → Video → Dil',
+            how_desc: 'Her adımda ne yaptığımızı — ve nasıl göründüğünü — aşağıda görün.',
+            step1_title: 'Brifing & Senaryo',
+            step1_desc: 'Kliniğinizi, hedef pazarınızı ve rakiplerinizi analiz ediyoruz. Kültürel hassasiyete uygun senaryo hazırlıyoruz.',
+            step1_time: 'GÜN 1 – 2',
+            step2_title: 'Seslendirme & Video',
+            step2_desc: 'Native speaker seslendirme, 4K prodüksiyon. Hastanın dilini — ve aksanını — duysun.',
+            step2_time: 'GÜN 2 – 3',
+            step3_title: 'Onay & Teslimat',
+            step3_desc: 'Videonuzu onaylıyorsunuz, tüm platformlara hazır formatlarla teslim ediyoruz. Yayına hazır, kullanmaya başlayın.',
+            step3_time: 'GÜN 3',
+            delivery_label: 'TOPLAM TESLİMAT SÜRESİ', delivery_days: '3 iş günü',
+            delivery_note: 'Onaylı senaryodan itibaren', demo_cta: 'ÖRNEK VİDEOLARI İZLE →',
+            iv_how_step1_title: 'Branş & İlgi Seçimi',
+            iv_how_step1_desc: 'Video başladığında hasta tedavi alanını seçer. Sistem onu kendi yolculuğuna yönlendirir.',
+            iv_how_step1_time: 'ADIM 1',
+            iv_how_step2_title: 'İzlerken Sorular Yöneltilir',
+            iv_how_step2_desc: 'Video içi etkileşimli sorular hastanın sorununu, beklentisini ve iletişim bilgilerini adım adım toplar.',
+            iv_how_step2_time: 'ADIM 2',
+            iv_how_step3_title: 'Nitelikli Lead Teslimi',
+            iv_how_step3_desc: 'Video bittiğinde tüm yanıtlar derlenerek size iletilir. Ekibiniz hastayı tanıyarak arar — soğuk değil, sıcak lead.',
+            iv_how_step3_time: 'ADIM 3',
+            offer_label: 'NE SUNUYORUZ',
+            offer_headline: 'Tek bir video.<br><span>Tüm pazarlar.</span><br>Hastanın dilinde.',
+            offer1_title: 'Kültürel Senaryo',
+            offer1_desc: 'Her pazar için ayrı senaryo. Arap hasta Arap kültürünü, Rus hasta Rus kültürünü hisseder. Tercüme değil — yeniden yazım.',
+            offer2_title: 'Native Speaker Seslendirme',
+            offer2_desc: '20+ dilde anadili konuşan seslendirme sanatçısı. Aksan doğru olduğunda güven ikiye katlanır.',
+            offer3_title: 'Multi-Format Teslimat',
+            offer3_desc: 'Instagram, YouTube, TikTok, Facebook, web — her platform formatında eksiksiz teslimat. Tek seferlik üretim, sonsuz kullanım.',
+            demo_label: 'ÖRNEK ÇALIŞMALAR',
+            demo_title: 'Aynı Klinik.<br>Farklı Dil.',
+            demo_desc: 'Aşağıdan bir dil seçin ve aynı kliniğin farklı pazarlara nasıl hitap ettiğini görün.',
+            pricing_label: 'PAKETLER', pricing_title: 'Hedefinizi Seçin.',
+            pricing_desc: 'Her paket aynı kalite standartlarında üretilir. Fark sadece dil sayısı ve pazardır.',
+            p1_tier: 'BAŞLANGIÇ', p1_title: 'Tek Pazar', p1_badge: '+3 Dil',
+            p1_feat2: '3 dilde native seslendirme',
+            p2_tier: 'BÜYÜME', p2_title: 'Çoklu Pazar', p2_badge: '+10 Dil',
+            p2_feat2: '10 dilde native seslendirme', p2_feat6: 'Pazar analizi raporu',
+            p3_tier: 'GLOBAL', p3_title: 'Dünya Pazarı', p3_badge: '+20 Dil',
+            p3_price: 'Teklif', p3_price_note: 'size özel fiyatlandırma',
+            p3_feat2: '20+ dilde native seslendirme', p3_feat3: 'Premium 4K prodüksiyon',
+            p3_feat4: 'Tüm platform formatları', p3_feat6: 'Stratejik danışmanlık raporu',
+            feat_scenario: 'Kliniğe özel senaryo', feat_4k: '4K video prodüksiyon',
+            feat_formats: 'Tüm sosyal medya formatları', feat_delivery: '3 iş günü teslimat',
+            price_from: 'başlayan fiyatla', cta_quote: 'TEKLİF AL',
+            why_label: 'NEDEN BİZ?',
+            why_title: 'Stratejik, özgün,<br><strong>sıfırdan üretim.</strong>',
+            why_statement: 'Medikal turizm video pazarlamasında niş uzmanlık. Genel dijital ajanslar değil — sadece klinikler ve uluslararası hasta üzerine yapılan analizlerle edinilmiş verilerden oluşturulan doğru senaryolar ve akıcı etkileşim videolar.',
+            why_sub: 'Her klinik farklıdır. Senaryo, dil, kültürel ton ve hedef pazar birebir analiz edilir. Şablon yok. Kopyala-yapıştır yok. Her video sıfırdan.',
+            stat1_text: 'Video içeriğinden bilgi tutma oranı — metinden yalnızca %10',
+            stat2_text: 'Tüketicilerin video kalitesinin marka güvenini etkilediğini söyleme oranı',
+            stat3_text: 'Sağlıkta video içerikli e-postalarda tıklama oranı artışı',
+            stat4_text: 'Native speaker içeriklerin hedef kitlede oluşturduğu ek güven artışı',
+            contact_label: 'BAŞLAYALIM',
+            contact_title: 'İlk videonuzu<br><strong>birlikte yapalım.</strong>',
+            contact_desc: 'Kliniğinizi analiz ediyor, hedef pazarınızı belirliyoruz. Formu doldurun — 24 saat içinde size özel bir sunum hazırlıyoruz.',
+            promise_title: '24 Saat İçinde Dönüş Garantisi', promise_sub: 'Formu doldurun, sizi arayalım.',
+            form_name: 'ADINIZ', form_name_ph: 'Dr. Ahmet Yılmaz',
+            form_clinic: 'KLİNİK ADI', form_clinic_ph: 'Klinik adınız',
+            form_website: 'WEBSİTE', form_market: 'HEDEF PAZAR', form_select: 'Seçiniz',
+            market_gulf: 'Körfez Ülkeleri (Arapça)', market_russia: 'Rusya & BDT (Rusça)',
+            market_europe: 'Avrupa (İngilizce)', market_multi: 'Çoklu Pazar',
+            form_email: 'E-POSTA', form_submit: 'ÜCRETSİZ ANALİZ TALEP ET →',
+            footer_copy: '© 2026 Clinic Media Tech — Tüm hakları saklıdır',
+        },
+        en: {
+            nav_problem: 'PROBLEM', nav_how: 'HOW IT WORKS', nav_offer: 'WHAT WE OFFER',
+            nav_pricing: 'PACKAGES', nav_contact: 'GET STARTED',
+            nav_services: 'SERVICES', nav_interactive: 'INTERACTIVE VIDEO',
+            services_label: 'OUR SOLUTIONS',
+            services_title: 'From introduction to appointment —<br><em style="font-style:italic; color:var(--gold); font-weight:600;">the full journey, handled.</em>',
+            services_desc: 'Two services, one roof. The first draws the patient to your clinic — the second takes them to booking.',
+            svc1_badge: 'CORE SERVICE', svc1_tag: 'MULTILINGUAL PROMO VIDEO',
+            svc1_title: 'Speak the patient\'s language,<br>earn their trust.',
+            svc1_desc: 'Introduce your clinic in 20+ languages with culturally adapted scripts. Every patient hears their own language and accent. Trust is built instantly.',
+            svc1_f1: 'Native voiceover in 20+ languages', svc1_f2: 'Culture-specific scriptwriting',
+            svc1_f3: '4K production, all platforms', svc1_f4: '3 business day delivery',
+            svc2_badge: 'NEW', svc2_tag: 'INTERACTIVE VIDEO',
+            svc2_title: 'Patient watches, shares their need.<br>You receive a qualified lead.',
+            svc2_desc: 'While watching, the patient is guided by interactive questions that capture their concern and expectations step by step. At the end of the video, all details are compiled and sent to you — no forms, no waiting, the fastest path to a sale.',
+            svc2_f1: 'Interactive questions during playback', svc2_f2: 'Patient info collected by video end',
+            svc2_f3: 'Zero forms — zero friction', svc2_f4: 'Qualified lead delivered to your clinic',
+            svc_learn: 'SEE DETAILS →',
+            iv_label: 'INTERACTIVE VIDEO',
+            iv_title: 'The patient watches —<br><strong>and books directly.</strong>',
+            iv_desc: 'Traditional videos inform, but don\'t convert. Interactive video transforms the patient from passive viewer to active decision-maker — from first contact to appointment in one step.',
+            iv_node1: 'Hair Transplant', iv_node2: 'Dental Treatment', iv_node3: 'Aesthetic Surgery',
+            iv_btn1: 'Describe My Issue', iv_btn2: 'Send My Info', iv_btn3: 'Ask a Question',
+            iv_stat1: 'Higher lead quality', iv_stat2: 'Complete without filling forms', iv_stat3: 'Form fields — zero friction',
+            iv_step1_title: 'Patient selects their area of interest',
+            iv_step1_desc: 'As soon as the video starts, the patient picks their treatment area — hair, dental, aesthetics. Each choice leads them into a personalised video journey.',
+            iv_step2_title: 'The video asks the patient questions',
+            iv_step2_desc: 'While watching, interactive in-video questions gather the patient\'s concerns, expectations and contact details step by step. No form to fill — they simply watch and choose.',
+            iv_step3_title: 'Video ends, a qualified lead arrives',
+            iv_step3_desc: 'All responses are compiled and delivered to you at the end of the video: which treatment, what expectation, which contact. Your team calls already knowing the patient.',
+            iv_step4_title: 'Converts to a sale — fast',
+            iv_step4_desc: 'Instead of a cold lead, you receive an informed, engaged prospect. The persuasion process has already started — because the patient knows your clinic from the video.',
+            iv_cta: 'CONTACT US',
+            ptab_multilang: 'MULTILINGUAL PROMO VIDEO', ptab_interactive: 'INTERACTIVE VIDEO',
+            pricing_desc: 'We offer separate packages for both services. Choose based on your needs.',
+            iv_p1_tier: 'STARTER', iv_p1_title: 'Single Branch', iv_p1_badge: '1–3 Treatments',
+            iv_p2_tier: 'GROWTH', iv_p2_title: 'Multi-Branch', iv_p2_badge: '3–7 Treatments',
+            iv_p3_tier: 'FULL FUNNEL', iv_p3_title: 'Full Clinic', iv_p3_badge: 'Unlimited Flows',
+            iv_price_all: 'Quote', iv_price_note: 'custom pricing for you',
+            iv_feat_script: 'Interactive scriptwriting', iv_feat_buttons: 'Clickable button integration',
+            iv_feat_booking: 'Lead collection integration', iv_feat_langs: '2 language support',
+            iv_p1_f2: '1 branch flow', iv_p1_f5: 'Basic lead report',
+            iv_p2_f2: '3 branch flows', iv_p2_f5: 'Advanced lead tracking & analytics', iv_p2_f6: '5 language support',
+            iv_p3_f2: 'Unlimited branch flows', iv_p3_f3: 'CRM & WhatsApp integration',
+            iv_p3_f5: 'Strategic consulting report', iv_p3_f6: '10+ language support',
+            hero_eyebrow: '35% ANNUAL GROWTH IN HEALTH TOURISM',
+            hero_headline: 'Those capturing this growth<br>all share one thing —<br><em>they speak the patient\'s language.</em>',
+            hero_cta: 'STEPS FOR YOUR CLINIC',
+            problem_title: 'What goes through a patient\'s mind<br>when choosing<br><strong>a clinic?</strong>',
+            problem_desc: 'Research shows: patients always ask the same 3 questions before deciding on a clinic.',
+            problem_q1: '"Do they speak my language?"',
+            problem_q2: '"Can I trust this clinic?"',
+            problem_q3: '"Was this treatment made for me?"',
+            problem_answer: 'The answer to all 3 questions — <strong style="color:var(--white);">in a single video.</strong>',
+            how_label: 'PROCESS', how_title: 'Script → Video → Language',
+            how_desc: 'See what we do at every step — and what it looks like.',
+            step1_title: 'Brief & Script',
+            step1_desc: 'We analyze your clinic, target market, and competitors. We prepare a culturally sensitive script.',
+            step1_time: 'DAY 1 – 2',
+            step2_title: 'Voiceover & Video',
+            step2_desc: 'Native speaker voiceover, 4K production. Let the patient hear their own language — and accent.',
+            step2_time: 'DAY 2 – 3',
+            step3_title: 'Approval & Delivery',
+            step3_desc: 'You approve the video, we deliver it in platform-ready formats. Ready to publish — start using it right away.',
+            step3_time: 'DAY 3',
+            delivery_label: 'TOTAL DELIVERY TIME', delivery_days: '3 business days',
+            delivery_note: 'From approved script', demo_cta: 'WATCH SAMPLE VIDEOS →',
+            iv_how_step1_title: 'Branch & Interest Selection',
+            iv_how_step1_desc: 'When the video starts, the patient selects their treatment area. The system guides them on their own personalised journey.',
+            iv_how_step1_time: 'STEP 1',
+            iv_how_step2_title: 'Questions Asked During Playback',
+            iv_how_step2_desc: 'Interactive in-video questions gather the patient\'s concern, expectations and contact details step by step.',
+            iv_how_step2_time: 'STEP 2',
+            iv_how_step3_title: 'Qualified Lead Delivered',
+            iv_how_step3_desc: 'When the video ends, all responses are compiled and sent to you. Your team calls already knowing the patient — warm, not cold.',
+            iv_how_step3_time: 'STEP 3',
+            offer_label: 'WHAT WE OFFER',
+            offer_headline: 'One video.<br><span>All markets.</span><br>In the patient\'s language.',
+            offer1_title: 'Cultural Script',
+            offer1_desc: 'A separate script for each market. Arab patients feel Arab culture, Russian patients feel Russian culture. Not translation — a full rewrite.',
+            offer2_title: 'Native Speaker Voiceover',
+            offer2_desc: 'Native speaker voiceover artists in 20+ languages. When the accent is right, trust doubles.',
+            offer3_title: 'Multi-Format Delivery',
+            offer3_desc: 'Instagram, YouTube, TikTok, Facebook, web — complete delivery in every platform format. Produce once, use forever.',
+            demo_label: 'SAMPLE WORK',
+            demo_title: 'Same Clinic.<br>Different Language.',
+            demo_desc: 'Select a language below and see how the same clinic reaches different markets.',
+            pricing_label: 'PACKAGES', pricing_title: 'Choose Your Target.',
+            pricing_desc: 'Every package is produced to the same quality standards. The difference is only in the number of languages and markets.',
+            p1_tier: 'STARTER', p1_title: 'Single Market', p1_badge: '+3 Languages',
+            p1_feat2: 'Native voiceover in 3 languages',
+            p2_tier: 'GROWTH', p2_title: 'Multi-Market', p2_badge: '+10 Languages',
+            p2_feat2: 'Native voiceover in 10 languages', p2_feat6: 'Market analysis report',
+            p3_tier: 'GLOBAL', p3_title: 'World Market', p3_badge: '+20 Languages',
+            p3_price: 'Quote', p3_price_note: 'custom pricing for you',
+            p3_feat2: 'Native voiceover in 20+ languages', p3_feat3: 'Premium 4K production',
+            p3_feat4: 'All platform formats', p3_feat6: 'Strategic consulting report',
+            feat_scenario: 'Clinic-specific script', feat_4k: '4K video production',
+            feat_formats: 'All social media formats', feat_delivery: '3 business day delivery',
+            price_from: 'starting from', cta_quote: 'GET A QUOTE',
+            why_label: 'WHY US?',
+            why_title: 'Strategic, original,<br><strong>produced from scratch.</strong>',
+            why_statement: 'Niche expertise in medical tourism video marketing. Not a general digital agency — correct scripts built from data gathered exclusively through analysis of clinics and international patients, paired with engaging videos.',
+            why_sub: 'Every clinic is different. Script, language, cultural tone, and target market are analyzed one by one. No templates. No copy-paste. Every video from scratch.',
+            stat1_text: 'Information retention rate from video content — only 10% from text',
+            stat2_text: 'Rate of consumers saying video quality affects brand trust',
+            stat3_text: 'Increase in click-through rates for healthcare emails with video',
+            stat4_text: 'Additional trust increase generated by native speaker content among target audiences',
+            contact_label: "LET'S START",
+            contact_title: "Let's create<br><strong>your first video together.</strong>",
+            contact_desc: "We analyze your clinic and identify your target market. Fill in the form — we'll prepare a custom presentation for you within 24 hours.",
+            promise_title: '24-Hour Response Guarantee', promise_sub: 'Fill in the form, we\'ll call you.',
+            form_name: 'YOUR NAME', form_name_ph: 'Dr. John Smith',
+            form_clinic: 'CLINIC NAME', form_clinic_ph: 'Your clinic name',
+            form_website: 'WEBSITE', form_market: 'TARGET MARKET', form_select: 'Select',
+            market_gulf: 'Gulf Countries (Arabic)', market_russia: 'Russia & CIS (Russian)',
+            market_europe: 'Europe (English)', market_multi: 'Multiple Markets',
+            form_email: 'EMAIL', form_submit: 'REQUEST FREE ANALYSIS →',
+            footer_copy: '© 2026 Clinic Media Tech — All rights reserved',
+        },
+        ar: {
+            nav_problem: 'المشكلة', nav_how: 'كيف نعمل', nav_offer: 'ما نقدمه',
+            nav_pricing: 'الباقات', nav_contact: 'ابدأ الآن',
+            nav_services: 'الخدمات', nav_interactive: 'الفيديو التفاعلي',
+            services_label: 'حلولنا',
+            services_title: 'من التعريف حتى الحجز —<br><em style="font-style:italic; color:var(--gold); font-weight:600;">الرحلة كاملة، بيدنا.</em>',
+            services_desc: 'خدمتان تحت سقف واحد. الأولى تجذب المريض إلى عيادتك — والثانية تأخذه حتى الحجز.',
+            svc1_badge: 'الخدمة الأساسية', svc1_tag: 'فيديو ترويجي متعدد اللغات',
+            svc1_title: 'تحدث بلغة المريض،<br>واكسب ثقته.',
+            svc1_desc: 'قدّم عيادتك بأكثر من 20 لغة مع سيناريوهات مكيّفة ثقافياً. كل مريض يسمع لغته ولهجته. تُبنى الثقة فوراً.',
+            svc1_f1: 'تعليق صوتي أصلي بـ20+ لغة', svc1_f2: 'كتابة سيناريو خاص بالثقافة',
+            svc1_f3: 'إنتاج 4K، جميع المنصات', svc1_f4: 'تسليم خلال 3 أيام عمل',
+            svc2_badge: 'جديد', svc2_tag: 'الفيديو التفاعلي',
+            svc2_title: 'يشاهد المريض ويشرح حاجته.<br>أنت تستقبل عميلاً مؤهلاً.',
+            svc2_desc: 'أثناء المشاهدة، يُوجَّه المريض بأسئلة تفاعلية تجمع مشكلته وتوقعاته خطوة بخطوة. عند انتهاء الفيديو، تُجمَّع كل المعلومات وتُرسَل إليك — لا نماذج، لا انتظار، أقصر طريق للبيع.',
+            svc2_f1: 'أسئلة تفاعلية أثناء المشاهدة', svc2_f2: 'بيانات المريض تُجمَّع بنهاية الفيديو',
+            svc2_f3: 'صفر نماذج — صفر عوائق', svc2_f4: 'عميل مؤهل يصل إلى عيادتك',
+            svc_learn: 'اعرف التفاصيل →',
+            iv_label: 'الفيديو التفاعلي',
+            iv_title: 'يشاهد المريض الفيديو —<br><strong>ويحجز مباشرة.</strong>',
+            iv_desc: 'الفيديوهات التقليدية تُعلّم لكنها لا تُحوّل. الفيديو التفاعلي يحوّل المريض من مشاهد سلبي إلى متخذ قرار فعّال — من أول تواصل حتى الموعد في خطوة واحدة.',
+            iv_node1: 'زراعة الشعر', iv_node2: 'علاج الأسنان', iv_node3: 'الجراحة التجميلية',
+            iv_btn1: 'أخبرنا عن مشكلتك', iv_btn2: 'أرسل معلوماتي', iv_btn3: 'اسأل سؤالاً',
+            iv_stat1: 'جودة عملاء محتملين أعلى', iv_stat2: 'يكملون بدون ملء نماذج', iv_stat3: 'حقول النموذج — صفر عوائق',
+            iv_step1_title: 'يختار المريض مجال اهتمامه',
+            iv_step1_desc: 'بمجرد بدء الفيديو، يختار المريض مجال العلاج — شعر، أسنان، تجميل. كل اختيار يأخذه في رحلة فيديو مخصصة له.',
+            iv_step2_title: 'الفيديو يطرح على المريض أسئلة',
+            iv_step2_desc: 'أثناء المشاهدة، تجمع الأسئلة التفاعلية داخل الفيديو مخاوف المريض وتوقعاته وبياناته خطوة بخطوة. لا نماذج للملء — يشاهد ويختار فقط.',
+            iv_step3_title: 'ينتهي الفيديو، تصلك فرصة مؤهلة',
+            iv_step3_desc: 'تُجمَّع جميع الإجابات وتُرسَل إليك عند انتهاء الفيديو: أي علاج، ما التوقعات، ما بيانات التواصل. فريقك يتصل وهو يعرف المريض مسبقاً.',
+            iv_step4_title: 'يتحول إلى مبيعات بسرعة',
+            iv_step4_desc: 'بدلاً من عميل بارد، تستقبل مريضاً مطلعاً ومهتماً. عملية الإقناع بدأت مسبقاً — لأن المريض تعرف على عيادتك من الفيديو.',
+            iv_cta: 'تواصل معنا',
+            ptab_multilang: 'فيديو ترويجي متعدد اللغات', ptab_interactive: 'الفيديو التفاعلي',
+            pricing_desc: 'نقدم باقات منفصلة لكلتا الخدمتين. اختر بناءً على احتياجاتك.',
+            iv_p1_tier: 'مبتدئ', iv_p1_title: 'تخصص واحد', iv_p1_badge: '1–3 علاجات',
+            iv_p2_tier: 'نمو', iv_p2_title: 'تخصصات متعددة', iv_p2_badge: '3–7 علاجات',
+            iv_p3_tier: 'قمع كامل', iv_p3_title: 'العيادة كاملة', iv_p3_badge: 'تدفقات غير محدودة',
+            iv_price_all: 'عرض سعر', iv_price_note: 'تسعير مخصص لك',
+            iv_feat_script: 'كتابة سيناريو تفاعلي', iv_feat_buttons: 'تكامل الأزرار القابلة للنقر',
+            iv_feat_booking: 'تكامل جمع العملاء المحتملين', iv_feat_langs: 'دعم لغتين',
+            iv_p1_f2: 'تدفق تخصص واحد', iv_p1_f5: 'تقرير عملاء محتملين أساسي',
+            iv_p2_f2: '3 تدفقات تخصص', iv_p2_f5: 'تتبع وتحليل متقدم للعملاء', iv_p2_f6: 'دعم 5 لغات',
+            iv_p3_f2: 'تدفقات تخصص وعلاج غير محدودة', iv_p3_f3: 'تكامل CRM وواتساب',
+            iv_p3_f5: 'تقرير استشارة استراتيجية', iv_p3_f6: 'دعم 10+ لغات',
+            hero_eyebrow: 'نمو سنوي بنسبة 35% في السياحة الصحية',
+            hero_headline: 'من يستفيد من هذا النمو<br>يمتلكون شيئاً واحداً مشتركاً —<br><em>يتحدثون بلغة المريض.</em>',
+            hero_cta: 'خطوات عيادتك',
+            problem_title: 'ماذا يدور في ذهن المريض<br>عند اختيار<br><strong>عيادة؟</strong>',
+            problem_desc: 'تُظهر الأبحاث: المرضى يطرحون دائماً نفس الأسئلة الثلاثة قبل اتخاذ قرار اختيار عيادة.',
+            problem_q1: '"هل يتحدثون بلغتي؟"',
+            problem_q2: '"هل يمكنني الوثوق بهذه العيادة؟"',
+            problem_q3: '"هل هذا العلاج مصنوع من أجلي؟"',
+            problem_answer: 'الإجابة على الأسئلة الثلاثة — <strong style="color:var(--white);">في مقطع فيديو واحد.</strong>',
+            how_label: 'العملية', how_title: 'السيناريو → الفيديو → اللغة',
+            how_desc: 'شاهد ما نفعله في كل خطوة — وكيف يبدو ذلك.',
+            step1_title: 'الإحاطة والسيناريو',
+            step1_desc: 'نحلل عيادتك وسوقك المستهدف ومنافسيك. نُعدّ سيناريو مراعياً للحساسيات الثقافية.',
+            step1_time: 'اليوم 1 – 2',
+            step2_title: 'التعليق الصوتي والفيديو',
+            step2_desc: 'تعليق صوتي بناطق أصلي وإنتاج بدقة 4K. دعِ المريض يسمع لغته — ولهجته.',
+            step2_time: 'اليوم 2 – 3',
+            step3_title: 'الموافقة والتسليم',
+            step3_desc: 'تسليم بجميع تنسيقات وسائل التواصل الاجتماعي. كل منصة، كل حجم — جاهز تماماً.',
+            step3_time: 'اليوم 3',
+            delivery_label: 'إجمالي وقت التسليم', delivery_days: '3 أيام عمل',
+            delivery_note: 'من السيناريو المعتمد', demo_cta: 'شاهد مقاطع فيديو نموذجية →',
+            iv_how_step1_title: 'اختيار التخصص والاهتمام',
+            iv_how_step1_desc: 'عند بدء الفيديو، يختار المريض مجال العلاج. يوجهه النظام في رحلة مخصصة له.',
+            iv_how_step1_time: 'خطوة 1',
+            iv_how_step2_title: 'أسئلة أثناء المشاهدة',
+            iv_how_step2_desc: 'تجمع الأسئلة التفاعلية داخل الفيديو مشكلة المريض وتوقعاته وبيانات التواصل خطوة بخطوة.',
+            iv_how_step2_time: 'خطوة 2',
+            iv_how_step3_title: 'تسليم عميل مؤهل',
+            iv_how_step3_desc: 'عند انتهاء الفيديو، تُجمَّع جميع الإجابات وتُرسَل إليك. فريقك يتصل وهو يعرف المريض — دافئ لا بارد.',
+            iv_how_step3_time: 'خطوة 3',
+            offer_label: 'ما نقدمه',
+            offer_headline: 'فيديو واحد.<br><span>جميع الأسواق.</span><br>بلغة المريض.',
+            offer1_title: 'سيناريو ثقافي',
+            offer1_desc: 'سيناريو منفصل لكل سوق. يشعر المريض العربي بالثقافة العربية، ويشعر المريض الروسي بالثقافة الروسية. ليس ترجمة — بل إعادة كتابة.',
+            offer2_title: 'تعليق صوتي بناطق أصلي',
+            offer2_desc: 'فنانو تعليق صوتي بناطقين أصليين في أكثر من 20 لغة. عندما يكون اللكنة صحيحة، تتضاعف الثقة.',
+            offer3_title: 'تسليم متعدد التنسيقات',
+            offer3_desc: 'إنستغرام، يوتيوب، تيك توك، فيسبوك، الويب — تسليم كامل بكل تنسيقات المنصات. إنتاج مرة واحدة، استخدام إلى الأبد.',
+            demo_label: 'أعمال نموذجية',
+            demo_title: 'نفس العيادة.<br>لغة مختلفة.',
+            demo_desc: 'اختر لغة أدناه وشاهد كيف تخاطب نفس العيادة أسواقاً مختلفة.',
+            pricing_label: 'الباقات', pricing_title: 'اختر هدفك.',
+            pricing_desc: 'تُنتج كل باقة وفق نفس معايير الجودة. الفرق فقط في عدد اللغات والأسواق.',
+            p1_tier: 'مبتدئ', p1_title: 'سوق واحد', p1_badge: '+3 لغات',
+            p1_feat2: 'تعليق صوتي أصلي بـ3 لغات', p1_feat5: 'جولتان من المراجعة',
+            p2_tier: 'نمو', p2_title: 'أسواق متعددة', p2_badge: '+10 لغات',
+            p2_feat2: 'تعليق صوتي أصلي بـ10 لغات', p2_feat6: 'تقرير تحليل السوق',
+            p3_tier: 'عالمي', p3_title: 'السوق العالمي', p3_badge: '+20 لغة',
+            p3_price: 'عرض سعر', p3_price_note: 'تسعير مخصص لك',
+            p3_feat2: 'تعليق صوتي أصلي بـ20+ لغة', p3_feat3: 'إنتاج 4K مميز',
+            p3_feat4: 'جميع تنسيقات المنصات', p3_feat6: 'تقرير استشارة استراتيجية',
+            feat_scenario: 'سيناريو مخصص للعيادة', feat_4k: 'إنتاج فيديو 4K',
+            feat_formats: 'جميع تنسيقات وسائل التواصل', feat_delivery: 'تسليم خلال 3 أيام عمل',
+            price_from: 'ابتداءً من', cta_quote: 'احصل على عرض',
+            why_label: 'لماذا نحن؟',
+            why_title: 'استراتيجي، أصيل،<br><strong>إنتاج من الصفر.</strong>',
+            why_statement: 'خبرة متخصصة في تسويق الفيديو للسياحة الطبية. لسنا وكالة رقمية عامة — سيناريوهات صحيحة وفيديوهات تفاعلية سلسة مبنية على بيانات مستقاة من تحليلات تشمل العيادات والمرضى الدوليين فقط.',
+            why_sub: 'كل عيادة مختلفة. يُحلَّل السيناريو واللغة والنبرة الثقافية والسوق المستهدف بشكل فردي. لا قوالب. لا نسخ ولصق. كل فيديو من الصفر.',
+            stat1_text: 'معدل الاحتفاظ بالمعلومات من محتوى الفيديو — مقابل 10% فقط من النص',
+            stat2_text: 'نسبة المستهلكين الذين يقولون إن جودة الفيديو تؤثر على ثقتهم بالعلامة التجارية',
+            stat3_text: 'زيادة معدل النقر في رسائل البريد الإلكتروني الصحية التي تحتوي على فيديو',
+            stat4_text: 'زيادة إضافية في الثقة يولّدها المحتوى بالناطق الأصلي لدى الجمهور المستهدف',
+            contact_label: 'لنبدأ',
+            contact_title: 'لنصنع<br><strong>أول فيديو لك معاً.</strong>',
+            contact_desc: 'نحلل عيادتك ونحدد سوقك المستهدف. املأ النموذج — سنُعدّ لك عرضاً مخصصاً خلال 24 ساعة.',
+            promise_title: 'ضمان الرد خلال 24 ساعة', promise_sub: 'املأ النموذج، سنتصل بك.',
+            form_name: 'اسمك', form_name_ph: 'د. أحمد',
+            form_clinic: 'اسم العيادة', form_clinic_ph: 'اسم عيادتك',
+            form_website: 'الموقع الإلكتروني', form_market: 'السوق المستهدف', form_select: 'اختر',
+            market_gulf: 'دول الخليج (عربي)', market_russia: 'روسيا ورابطة الدول المستقلة (روسي)',
+            market_europe: 'أوروبا (إنجليزي)', market_multi: 'أسواق متعددة',
+            form_email: 'البريد الإلكتروني', form_submit: 'طلب تحليل مجاني →',
+            footer_copy: '© 2026 Clinic Media Tech — جميع الحقوق محفوظة',
+        },
+        ru: {
+            nav_problem: 'ПРОБЛЕМА', nav_how: 'КАК МЫ РАБОТАЕМ', nav_offer: 'ЧТО МЫ ПРЕДЛАГАЕМ',
+            nav_pricing: 'ПАКЕТЫ', nav_contact: 'НАЧАТЬ',
+            nav_services: 'УСЛУГИ', nav_interactive: 'ИНТЕРАКТИВНОЕ ВИДЕО',
+            services_label: 'НАШИ РЕШЕНИЯ',
+            services_title: 'От знакомства до записи —<br><em style="font-style:italic; color:var(--gold); font-weight:600;">весь путь у нас.</em>',
+            services_desc: 'Две услуги, одна платформа. Первая привлекает пациента в вашу клинику — вторая ведёт его к записи.',
+            svc1_badge: 'ОСНОВНАЯ УСЛУГА', svc1_tag: 'МНОГОЯЗЫЧНОЕ ПРОМО-ВИДЕО',
+            svc1_title: 'Говорите на языке пациента,<br>завоёвывайте доверие.',
+            svc1_desc: 'Представляйте свою клинику на 20+ языках с культурно адаптированными сценариями. Каждый пациент слышит свой язык и свой акцент. Доверие строится мгновенно.',
+            svc1_f1: 'Озвучка носителем на 20+ языках', svc1_f2: 'Написание сценариев с учётом культуры',
+            svc1_f3: 'Производство 4K, все платформы', svc1_f4: 'Доставка за 3 рабочих дня',
+            svc2_badge: 'НОВОЕ', svc2_tag: 'ИНТЕРАКТИВНОЕ ВИДЕО',
+            svc2_title: 'Пациент смотрит и описывает проблему.<br>Вы получаете готовый лид.',
+            svc2_desc: 'Во время просмотра пациент отвечает на интерактивные вопросы, которые шаг за шагом собирают его проблему и ожидания. В конце видео все данные компилируются и передаются вам — никаких форм, никакого ожидания, кратчайший путь к продаже.',
+            svc2_f1: 'Интерактивные вопросы во время просмотра', svc2_f2: 'Данные пациента собраны к концу видео',
+            svc2_f3: 'Ноль форм — ноль барьеров', svc2_f4: 'Квалифицированный лид в вашу клинику',
+            svc_learn: 'ПОДРОБНЕЕ →',
+            iv_label: 'ИНТЕРАКТИВНОЕ ВИДЕО',
+            iv_title: 'Пациент смотрит видео —<br><strong>и записывается напрямую.</strong>',
+            iv_desc: 'Обычные видео информируют, но не конвертируют. Интерактивное видео превращает пациента из пассивного зрителя в активного принимателя решений — от первого контакта до записи за один шаг.',
+            iv_node1: 'Пересадка волос', iv_node2: 'Лечение зубов', iv_node3: 'Эстетическая хирургия',
+            iv_btn1: 'Описать проблему', iv_btn2: 'Передать данные', iv_btn3: 'Задать вопрос',
+            iv_stat1: 'Выше качество лидов', iv_stat2: 'Завершают без заполнения форм', iv_stat3: 'Полей формы — ноль барьеров',
+            iv_step1_title: 'Пациент выбирает направление',
+            iv_step1_desc: 'Как только видео начинается, пациент выбирает область лечения — волосы, зубы, эстетика. Каждый выбор ведёт к персональному видеопути.',
+            iv_step2_title: 'Видео задаёт пациенту вопросы',
+            iv_step2_desc: 'Во время просмотра интерактивные вопросы внутри видео собирают проблему, ожидания и контактные данные пациента шаг за шагом. Никаких форм — только смотрит и выбирает.',
+            iv_step3_title: 'Видео заканчивается — готовый лид у вас',
+            iv_step3_desc: 'Все ответы собираются и передаются вам по окончании видео: какое лечение, какие ожидания, какой контакт. Ваша команда звонит, уже зная пациента.',
+            iv_step4_title: 'Быстро превращается в продажу',
+            iv_step4_desc: 'Вместо холодного лида — информированный, заинтересованный пациент. Процесс убеждения уже начался, потому что пациент познакомился с клиникой через видео.',
+            iv_cta: 'СВЯЗАТЬСЯ С НАМИ',
+            ptab_multilang: 'МНОГОЯЗЫЧНОЕ ПРОМО-ВИДЕО', ptab_interactive: 'ИНТЕРАКТИВНОЕ ВИДЕО',
+            pricing_desc: 'Мы предлагаем отдельные пакеты для обеих услуг. Выбирайте по своим потребностям.',
+            iv_p1_tier: 'НАЧАЛЬНЫЙ', iv_p1_title: 'Одно направление', iv_p1_badge: '1–3 процедуры',
+            iv_p2_tier: 'РОСТ', iv_p2_title: 'Несколько направлений', iv_p2_badge: '3–7 процедур',
+            iv_p3_tier: 'ПОЛНАЯ ВОРОНКА', iv_p3_title: 'Вся клиника', iv_p3_badge: 'Неограниченные потоки',
+            iv_price_all: 'Запрос', iv_price_note: 'индивидуальное ценообразование',
+            iv_feat_script: 'Написание интерактивного сценария', iv_feat_buttons: 'Интеграция кликабельных кнопок',
+            iv_feat_booking: 'Интеграция сбора лидов', iv_feat_langs: 'Поддержка 2 языков',
+            iv_p1_f2: '1 поток направления', iv_p1_f5: 'Базовый отчёт по лидам',
+            iv_p2_f2: '3 потока направлений', iv_p2_f5: 'Расширенное отслеживание и аналитика лидов', iv_p2_f6: 'Поддержка 5 языков',
+            iv_p3_f2: 'Неограниченные потоки направлений', iv_p3_f3: 'Интеграция CRM и WhatsApp',
+            iv_p3_f5: 'Отчёт стратегического консалтинга', iv_p3_f6: 'Поддержка 10+ языков',
+            hero_eyebrow: 'ЕЖЕГОДНЫЙ РОСТ МЕДИЦИНСКОГО ТУРИЗМА НА 35%',
+            hero_headline: 'У тех, кто пользуется этим ростом,<br>есть одна общая черта —<br><em>они говорят на языке пациента.</em>',
+            hero_cta: 'ШАГИ ДЛЯ ВАШЕЙ КЛИНИКИ',
+            problem_title: 'О чём думает пациент,<br>выбирая<br><strong>клинику?</strong>',
+            problem_desc: 'Исследования показывают: пациенты всегда задают одни и те же 3 вопроса перед тем, как выбрать клинику.',
+            problem_q1: '"Говорят ли они на моём языке?"',
+            problem_q2: '"Могу ли я доверять этой клинике?"',
+            problem_q3: '"Это лечение создано для меня?"',
+            problem_answer: 'Ответ на все 3 вопроса — <strong style="color:var(--white);">в одном видео.</strong>',
+            how_label: 'ПРОЦЕСС', how_title: 'Сценарий → Видео → Язык',
+            how_desc: 'Смотрите, что мы делаем на каждом этапе — и как это выглядит.',
+            step1_title: 'Бриф и сценарий',
+            step1_desc: 'Анализируем вашу клинику, целевой рынок и конкурентов. Готовим сценарий с учётом культурных особенностей.',
+            step1_time: 'ДЕНЬ 1 – 2',
+            step2_title: 'Озвучка и видео',
+            step2_desc: 'Озвучка носителем языка, производство в 4K. Пусть пациент услышит свой язык — и свой акцент.',
+            step2_time: 'ДЕНЬ 2 – 3',
+            step3_title: 'Утверждение и доставка',
+            step3_desc: 'Доставка во всех форматах социальных сетей. Каждая платформа, каждый размер — полностью готово.',
+            step3_time: 'ДЕНЬ 3',
+            delivery_label: 'ОБЩЕЕ ВРЕМЯ ДОСТАВКИ', delivery_days: '3 рабочих дня',
+            delivery_note: 'С момента утверждения сценария', demo_cta: 'СМОТРЕТЬ ПРИМЕРЫ ВИДЕО →',
+            iv_how_step1_title: 'Выбор направления и интереса',
+            iv_how_step1_desc: 'Когда видео начинается, пациент выбирает область лечения. Система направляет его по персональному пути.',
+            iv_how_step1_time: 'ШАГ 1',
+            iv_how_step2_title: 'Вопросы во время просмотра',
+            iv_how_step2_desc: 'Интерактивные вопросы внутри видео собирают проблему пациента, ожидания и контактные данные шаг за шагом.',
+            iv_how_step2_time: 'ШАГ 2',
+            iv_how_step3_title: 'Квалифицированный лид доставлен',
+            iv_how_step3_desc: 'Когда видео заканчивается, все ответы компилируются и передаются вам. Ваша команда звонит, уже зная пациента — тёплый, не холодный.',
+            iv_how_step3_time: 'ШАГ 3',
+            offer_label: 'ЧТО МЫ ПРЕДЛАГАЕМ',
+            offer_headline: 'Одно видео.<br><span>Все рынки.</span><br>На языке пациента.',
+            offer1_title: 'Культурный сценарий',
+            offer1_desc: 'Отдельный сценарий для каждого рынка. Арабский пациент чувствует арабскую культуру, русский пациент — русскую. Не перевод — полная переработка.',
+            offer2_title: 'Озвучка носителем языка',
+            offer2_desc: 'Дикторы-носители языка на 20+ языках. Когда акцент правильный, доверие удваивается.',
+            offer3_title: 'Доставка в нескольких форматах',
+            offer3_desc: 'Instagram, YouTube, TikTok, Facebook, веб — полная доставка в каждом формате платформы. Произведите один раз, используйте бесконечно.',
+            demo_label: 'ПРИМЕРЫ РАБОТ',
+            demo_title: 'Та же клиника.<br>Другой язык.',
+            demo_desc: 'Выберите язык ниже и посмотрите, как одна и та же клиника обращается к разным рынкам.',
+            pricing_label: 'ПАКЕТЫ', pricing_title: 'Выберите свою цель.',
+            pricing_desc: 'Каждый пакет производится по одним и тем же стандартам качества. Разница только в количестве языков и рынков.',
+            p1_tier: 'НАЧАЛЬНЫЙ', p1_title: 'Один рынок', p1_badge: '+3 языка',
+            p1_feat2: 'Озвучка носителем на 3 языках', p1_feat5: '2 раунда правок',
+            p2_tier: 'РОСТ', p2_title: 'Несколько рынков', p2_badge: '+10 языков',
+            p2_feat2: 'Озвучка носителем на 10 языках', p2_feat6: 'Отчёт по анализу рынка',
+            p3_tier: 'ГЛОБАЛЬНЫЙ', p3_title: 'Мировой рынок', p3_badge: '+20 языков',
+            p3_price: 'Запрос', p3_price_note: 'индивидуальное ценообразование',
+            p3_feat2: 'Озвучка носителем на 20+ языках', p3_feat3: 'Премиум 4K производство',
+            p3_feat4: 'Все форматы платформ', p3_feat6: 'Отчёт стратегического консалтинга',
+            feat_scenario: 'Сценарий под клинику', feat_4k: 'Видеопроизводство 4K',
+            feat_formats: 'Все форматы соцсетей', feat_delivery: 'Доставка за 3 рабочих дня',
+            price_from: 'от', cta_quote: 'ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ',
+            why_label: 'ПОЧЕМУ МЫ?',
+            why_title: 'Стратегически, оригинально,<br><strong>создано с нуля.</strong>',
+            why_statement: 'Нишевая экспертиза в видеомаркетинге медицинского туризма. Не обычное диджитал-агентство — точные сценарии и динамичные видео, созданные на основе данных, полученных исключительно из анализа клиник и международных пациентов.',
+            why_sub: 'Каждая клиника уникальна. Сценарий, язык, культурный тон и целевой рынок анализируются индивидуально. Никаких шаблонов. Никакого копирования. Каждое видео с нуля.',
+            stat1_text: 'Уровень удержания информации из видеоконтента — всего 10% из текста',
+            stat2_text: 'Доля потребителей, считающих, что качество видео влияет на доверие к бренду',
+            stat3_text: 'Рост кликабельности в email-рассылках по здравоохранению с видео',
+            stat4_text: 'Дополнительный рост доверия, создаваемый контентом с носителем языка среди целевой аудитории',
+            contact_label: 'НАЧНЁМ',
+            contact_title: 'Давайте создадим<br><strong>ваше первое видео вместе.</strong>',
+            contact_desc: 'Мы анализируем вашу клинику и определяем ваш целевой рынок. Заполните форму — мы подготовим для вас индивидуальную презентацию в течение 24 часов.',
+            promise_title: 'Гарантия ответа в течение 24 часов', promise_sub: 'Заполните форму, мы вам позвоним.',
+            form_name: 'ВАШЕ ИМЯ', form_name_ph: 'Д-р Иван Иванов',
+            form_clinic: 'НАЗВАНИЕ КЛИНИКИ', form_clinic_ph: 'Название вашей клиники',
+            form_website: 'ВЕБ-САЙТ', form_market: 'ЦЕЛЕВОЙ РЫНОК', form_select: 'Выберите',
+            market_gulf: 'Страны Персидского залива (арабский)', market_russia: 'Россия и СНГ (русский)',
+            market_europe: 'Европа (английский)', market_multi: 'Несколько рынков',
+            form_email: 'ЭЛЕКТРОННАЯ ПОЧТА', form_submit: 'ЗАПРОСИТЬ БЕСПЛАТНЫЙ АНАЛИЗ →',
+            footer_copy: '© 2026 Clinic Media Tech — Все права защищены',
+        }
+    };
+
+    let currentLang = 'tr';
+
+    function setLang(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+
+        // Update active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+        });
+
+        // RTL for Arabic
+        if (lang === 'ar') {
+            document.body.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+        } else {
+            document.body.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', lang);
+        }
+
+        // Translate text nodes
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) el.textContent = t[key];
+        });
+
+        // Translate HTML nodes (with tags like <br>, <strong>, <em>)
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const key = el.getAttribute('data-i18n-html');
+            if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+
+        // Translate placeholders
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (t[key] !== undefined) el.placeholder = t[key];
+        });
+
+        // Update form success message language for next submission
+        window._currentLang = lang;
+    }
+
     // ─── FORM ───
+    const successMessages = {
+        tr: '✓ Talebiniz Alındı — 24 Saat İçinde Dönüş',
+        en: '✓ Request Received — Response Within 24 Hours',
+        ar: '✓ تم استلام طلبك — رد خلال 24 ساعة',
+        ru: '✓ Заявка получена — ответ в течение 24 часов'
+    };
     function handleSubmit(e) {
         e.preventDefault();
         const btn = e.target.querySelector('.form-submit');
-        btn.textContent = '✓ Talebiniz Alındı — 24 Saat İçinde Dönüş';
+        btn.textContent = successMessages[window._currentLang || 'tr'];
         btn.style.background = '#4ECDC4';
         btn.style.color = '#080808';
     }
 
-    // ─── SMOOTH SCROLL ───
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-            const target = a.getAttribute('href');
-            if (!target || target === '#') return;
-            e.preventDefault();
-            document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
+    // ─── SMOOTH SCROLL ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
-</script>
 
+    // ─── INIT ───
+    init();
+    setLang('tr');
+
+</script>
 </body>
 </html>
-
-  
