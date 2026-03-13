@@ -344,7 +344,7 @@
         /* ─── INTERACTIVE ─── */
         #interactive { background: transparent; }
         .interactive-split { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-        .interactive-steps { display: flex; flex-direction: column; gap: 0; }
+        .interactive-steps { display: flex; flex-direction: column; gap: 0; text-align: left; }
         .iv-step { display: flex; gap: 1.5rem; padding: 1.75rem 0; border-bottom: 1px solid rgba(192,192,192,0.06); position: relative; }
         .iv-step:last-child { border-bottom: none; }
         .iv-step-num { font-family: 'Mona Sans', sans-serif; font-size: 0.65rem; font-weight: 700; color: var(--gold); letter-spacing: 2px; min-width: 32px; padding-top: 0.2rem; flex-shrink: 0; }
@@ -362,7 +362,6 @@
         .offer-card-title { font-family: 'Mona Sans', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
         .offer-card-desc { color: var(--grey); font-size: 0.9rem; line-height: 1.7; }
 
-        /* ─── TABLET (≤1024px) ─── */
         @media (max-width: 1024px) {
             nav { padding: 1.25rem 2rem; }
             section { padding: 4.5rem 2.5rem; }
@@ -376,6 +375,7 @@
             .offer-grid { grid-template-columns: 1fr 1fr; }
             .pricing-grid { grid-template-columns: 1fr; }
             .interactive-split { grid-template-columns: 1fr; gap: 3rem; }
+            .interactive-steps { max-width: 640px; margin: 0 auto; width: 100%; }
             .why-data-row { grid-template-columns: repeat(3, 1fr); }
             .why-cards { grid-template-columns: 1fr 1fr; }
             .avatar-lang-tags { display: none; }
