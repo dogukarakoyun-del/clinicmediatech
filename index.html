@@ -252,8 +252,26 @@
         .contact-promise-text strong { display: block; color: var(--gold); font-family: 'Mona Sans', sans-serif; font-size: 1rem; margin-bottom: 0.25rem; }
 
         /* ─── FOOTER ─── */
-        footer { background: rgba(0,0,0,0.8); padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(192,192,192,0.08); position: relative; z-index: 1; gap: 2rem; }
-        footer p { font-size: 0.8rem; color: var(--grey); }
+        footer { background: rgba(0,0,0,0.95); border-top: 1px solid rgba(192,192,192,0.08); position: relative; z-index: 1; }
+        .footer-trust { border-bottom: 1px solid rgba(192,192,192,0.07); padding: 2.5rem 4rem; }
+        .footer-trust-label { font-size: 0.58rem; letter-spacing: 3px; color: rgba(136,146,164,0.4); font-family: 'Mona Sans', sans-serif; font-weight: 700; text-align: center; margin-bottom: 1.8rem; }
+        .footer-badges { display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+        .trust-badge { display: flex; align-items: center; gap: 0.55rem; padding: 0.6rem 1.1rem; border: 1px solid rgba(192,192,192,0.1); border-radius: 6px; background: rgba(255,255,255,0.02); transition: border-color 0.25s; }
+        .trust-badge:hover { border-color: rgba(192,192,192,0.22); }
+        .trust-badge svg { opacity: 0.55; flex-shrink: 0; }
+        .trust-badge-text { font-size: 0.68rem; font-family: 'Mona Sans', sans-serif; font-weight: 700; letter-spacing: 0.5px; color: rgba(192,192,192,0.55); white-space: nowrap; }
+        .trust-badge-sub { font-size: 0.55rem; color: rgba(136,146,164,0.4); letter-spacing: 0.3px; display: block; font-weight: 400; margin-top: 1px; }
+        .footer-gdpr { padding: 1.4rem 4rem; border-bottom: 1px solid rgba(192,192,192,0.06); display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+        .footer-gdpr-icon { color: rgba(78,205,196,0.5); font-size: 0.85rem; flex-shrink: 0; }
+        .footer-gdpr p { font-size: 0.72rem; color: rgba(136,146,164,0.45); line-height: 1.6; text-align: center; max-width: 720px; }
+        .footer-bottom { padding: 1.8rem 4rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+        footer .footer-copy { font-size: 0.8rem; color: var(--grey); }
+        @media(max-width:768px){
+            .footer-trust,.footer-gdpr,.footer-bottom{padding-left:1.5rem;padding-right:1.5rem;}
+            .footer-badges{gap:0.75rem;}
+            .trust-badge{padding:0.5rem 0.8rem;}
+            .footer-bottom{flex-direction:column;text-align:center;}
+        }
 
         /* ─── ANIMATIONS ─── */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -1216,7 +1234,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(192,192,192,0.06);">
                 <div style="padding:1.5rem;background:rgba(8,8,8,0.8);">
-                    <div style="font-size:1.8rem;font-weight:800;font-family:'Mona Sans',sans-serif;color:var(--white);letter-spacing:-1px;margin-bottom:0.3rem;">3×</div>
+                    <div class="counter" style="font-size:1.8rem;font-weight:800;font-family:'Mona Sans',sans-serif;color:var(--white);letter-spacing:-1px;margin-bottom:0.3rem;" data-target="3" data-suffix="×">0×</div>
                     <div style="font-size:0.78rem;color:var(--grey);line-height:1.5;" data-i18n="feat_s1">Native dilde içeriğin güven artışı</div>
                 </div>
                 <div style="padding:1.5rem;background:rgba(8,8,8,0.8);">
@@ -1224,11 +1242,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
                     <div style="font-size:0.78rem;color:var(--grey);line-height:1.5;" data-i18n="feat_s2">Kesintisiz hasta hizmeti</div>
                 </div>
                 <div style="padding:1.5rem;background:rgba(8,8,8,0.8);">
-                    <div style="font-size:1.8rem;font-weight:800;font-family:'Mona Sans',sans-serif;color:var(--white);letter-spacing:-1px;margin-bottom:0.3rem;">30+</div>
+                    <div class="counter" style="font-size:1.8rem;font-weight:800;font-family:'Mona Sans',sans-serif;color:var(--white);letter-spacing:-1px;margin-bottom:0.3rem;" data-target="30" data-suffix="+">0+</div>
                     <div style="font-size:0.78rem;color:var(--grey);line-height:1.5;" data-i18n="feat_s3">Multi pakette dil desteği</div>
                 </div>
                 <div style="padding:1.5rem;background:rgba(8,8,8,0.8);">
-                    <div style="font-size:1.8rem;font-weight:800;font-family:'Mona Sans',sans-serif;color:var(--white);letter-spacing:-1px;margin-bottom:0.3rem;" data-i18n="feat_s4_num">3 gün</div>
+                    <div class="counter" style="font-size:1.8rem;font-weight:800;font-family:'Mona Sans',sans-serif;color:var(--white);letter-spacing:-1px;margin-bottom:0.3rem;" data-target="3" data-suffix=" gün" data-i18n-suffix="stat_days_suffix" data-i18n="feat_s4_num">3 gün</div>
                     <div style="font-size:0.78rem;color:var(--grey);line-height:1.5;" data-i18n="feat_s4">Kurulum ve entegrasyon süresi</div>
                 </div>
             </div>
@@ -1289,9 +1307,9 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
                 </div>
                 <div class="avatar-stat-strip">
                     <div class="avatar-stat-item"><div class="avatar-stat-num">7/24</div><div class="avatar-stat-label" data-i18n="stat_247">Kesintisiz hizmet</div></div>
-                    <div class="avatar-stat-item"><div class="avatar-stat-num" data-i18n="stat_days_num">3 gün</div><div class="avatar-stat-label" data-i18n="stat_setup">Kurulum süresi</div></div>
-                    <div class="avatar-stat-item"><div class="avatar-stat-num">30+</div><div class="avatar-stat-label" data-i18n="stat_langs">Dil desteği</div></div>
-                    <div class="avatar-stat-item"><div class="avatar-stat-num">1000</div><div class="avatar-stat-label" data-i18n="stat_mins">Dk/ay dahil</div></div>
+                    <div class="avatar-stat-item"><div class="avatar-stat-num counter" data-target="3" data-suffix=" gün" data-i18n-suffix="stat_days_suffix" data-i18n="stat_days_num">3 gün</div><div class="avatar-stat-label" data-i18n="stat_setup">Kurulum süresi</div></div>
+                    <div class="avatar-stat-item"><div class="avatar-stat-num counter" data-target="30" data-suffix="+">0+</div><div class="avatar-stat-label" data-i18n="stat_langs">Dil desteği</div></div>
+                    <div class="avatar-stat-item"><div class="avatar-stat-num counter" data-target="1000">0</div><div class="avatar-stat-label" data-i18n="stat_mins">Dk/ay dahil</div></div>
                 </div>
             </div>
 
@@ -1356,22 +1374,22 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
             </div>
             <div class="why-stats reveal reveal-delay-2">
                 <div class="why-stat">
-                    <div class="why-stat-num">95%</div>
+                    <div class="why-stat-num counter" data-target="95" data-suffix="%">0%</div>
                     <div class="why-stat-text" data-i18n="stat1_text">Video içeriğinden bilgi tutma oranı — metinden yalnızca %10</div>
                     <div class="why-stat-source">Healthcare Marketing Research</div>
                 </div>
                 <div class="why-stat">
-                    <div class="why-stat-num">87%</div>
+                    <div class="why-stat-num counter" data-target="87" data-suffix="%">0%</div>
                     <div class="why-stat-text" data-i18n="stat2_text">Tüketicilerin video kalitesinin marka güvenini etkilediğini söyleme oranı</div>
                     <div class="why-stat-source">Video Marketing Statistics</div>
                 </div>
                 <div class="why-stat">
-                    <div class="why-stat-num">+300%</div>
+                    <div class="why-stat-num counter" data-target="300" data-prefix="+" data-suffix="%">+0%</div>
                     <div class="why-stat-text" data-i18n="stat3_text">Dijital asistan entegrasyonlu kliniklerde lead kalitesi artışı</div>
                     <div class="why-stat-source">Conversational AI Research</div>
                 </div>
                 <div class="why-stat">
-                    <div class="why-stat-num">+65%</div>
+                    <div class="why-stat-num counter" data-target="65" data-prefix="+" data-suffix="%">+0%</div>
                     <div class="why-stat-text" data-i18n="stat4_text">Native speaker içeriklerin hedef kitlede oluşturduğu ek güven artışı</div>
                     <div class="why-stat-source">Cross-Cultural Marketing</div>
                 </div>
@@ -1408,10 +1426,103 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
 
 <!-- FOOTER -->
 <footer>
-    <div class="logo">CLINIC <span>MEDIA</span> TECH</div>
-    <p data-i18n="footer_copy">© 2026 Clinic Media Tech — Tüm hakları saklıdır</p>
-    <div style="font-size:0.7rem;color:rgba(136,146,164,0.3);text-align:right;line-height:1.6;">
-        <div>Clinic Media Tech</div>
+    <!-- Trust Badges -->
+    <div class="footer-trust">
+        <p class="footer-trust-label" data-i18n="trust_label">GÜVENİLİR ALTYAPI & UYUMLULUK</p>
+        <div class="footer-badges">
+
+            <!-- SOC 2 Type II -->
+            <div class="trust-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="#C0C0C0" stroke-width="1.5" stroke-linejoin="round"/>
+                    <path d="M9 12l2 2 4-4" stroke="#4ECDC4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                    <span class="trust-badge-text">SOC 2 Type II</span>
+                    <span class="trust-badge-sub" data-i18n="badge_soc2">Güvenlik Standartı</span>
+                </div>
+            </div>
+
+            <!-- GDPR -->
+            <div class="trust-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="11" width="18" height="11" rx="2" stroke="#C0C0C0" stroke-width="1.5"/>
+                    <path d="M7 11V7a5 5 0 0110 0v4" stroke="#C0C0C0" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="12" cy="16" r="1.5" fill="#4ECDC4"/>
+                </svg>
+                <div>
+                    <span class="trust-badge-text">GDPR</span>
+                    <span class="trust-badge-sub" data-i18n="badge_gdpr">Veri Koruma Uyumlu</span>
+                </div>
+            </div>
+
+            <!-- SSL / TLS -->
+            <div class="trust-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9" stroke="#C0C0C0" stroke-width="1.5"/>
+                    <path d="M12 3c0 0-4 3.5-4 9s4 9 4 9" stroke="#C0C0C0" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M12 3c0 0 4 3.5 4 9s-4 9-4 9" stroke="#C0C0C0" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M3 12h18" stroke="#C0C0C0" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M3.5 8h17M3.5 16h17" stroke="#C0C0C0" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                </svg>
+                <div>
+                    <span class="trust-badge-text">SSL / TLS</span>
+                    <span class="trust-badge-sub" data-i18n="badge_ssl">Uçtan Uca Şifreleme</span>
+                </div>
+            </div>
+
+            <!-- 99.9% Uptime -->
+            <div class="trust-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#C0C0C0" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="12" cy="12" r="3" fill="#4ECDC4" opacity="0.7"/>
+                </svg>
+                <div>
+                    <span class="trust-badge-text">99.9% Uptime</span>
+                    <span class="trust-badge-sub" data-i18n="badge_uptime">Kesintisiz Servis SLA</span>
+                </div>
+            </div>
+
+            <!-- ISO 27001 -->
+            <div class="trust-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4" stroke="#4ECDC4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9a12.02 12.02 0 00-.382-3.016z" stroke="#C0C0C0" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                    <span class="trust-badge-text">ISO 27001</span>
+                    <span class="trust-badge-sub" data-i18n="badge_iso">Bilgi Güvenliği</span>
+                </div>
+            </div>
+
+            <!-- HIPAA Aligned -->
+            <div class="trust-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="#C0C0C0" stroke-width="1.5" stroke-linejoin="round"/>
+                    <path d="M12 8v8M8 12h8" stroke="#4ECDC4" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <div>
+                    <span class="trust-badge-text">HIPAA Aligned</span>
+                    <span class="trust-badge-sub" data-i18n="badge_hipaa">Sağlık Veri Gizliliği</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- GDPR Notice -->
+    <div class="footer-gdpr">
+        <span class="footer-gdpr-icon">🔒</span>
+        <p data-i18n="gdpr_notice">Veri işleme süreçlerimiz, SOC 2 Type II güvenlik standartlarını destekleyen ve GDPR veri koruma gerekliliklerine uygun altyapı sağlayıcıları üzerinden yürütülmektedir.</p>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <div class="logo" style="font-size:1rem;">CLINIC <span>MEDIA</span> TECH</div>
+        <p class="footer-copy" data-i18n="footer_copy">© 2026 Clinic Media Tech — Tüm hakları saklıdır</p>
+        <div style="font-size:0.7rem;color:rgba(136,146,164,0.3);text-align:right;line-height:1.6;">
+            <div>Clinic Media Tech</div>
+        </div>
     </div>
 </footer>
 
@@ -1632,6 +1743,11 @@ const translations = {
         cta_explore_tag:'HANGİSİ SİZE UYGUN?', cta_explore_title:'Birlikte karar verelim — ücretsiz danışma görüşmesi.',
         cta_quote_btn:'TEKLİF TALEP ET →', cta_24h:'24 SAAT İÇİNDE DÖNÜŞ', cta_talk:'GÖRÜŞELIM →',
         footer_copy:'© 2026 Clinic Media Tech — Tüm hakları saklıdır',
+        trust_label:'GÜVENİLİR ALTYAPI & UYUMLULUK',
+        badge_soc2:'Güvenlik Standartı', badge_gdpr:'Veri Koruma Uyumlu',
+        badge_ssl:'Uçtan Uca Şifreleme', badge_uptime:'Kesintisiz Servis SLA',
+        badge_iso:'Bilgi Güvenliği', badge_hipaa:'Sağlık Veri Gizliliği',
+        gdpr_notice:'Veri işleme süreçlerimiz, SOC 2 Type II güvenlik standartlarını destekleyen ve GDPR veri koruma gerekliliklerine uygun altyapı sağlayıcıları üzerinden yürütülmektedir.',
         // Ticker
         tick1_text:'Ana dilde canlı hasta deneyimi', tick1_src:'Clinic Media Tech · 2026',
         tick2_text:'Desteklenen dünya dili', tick2_src:'Multi Paket',
@@ -1655,6 +1771,7 @@ const translations = {
         // Avatar stat strip
         stat_247:'Kesintisiz hizmet', stat_setup:'Kurulum süresi',
         stat_langs:'Dil desteği', stat_mins:'Dk/ay dahil', stat_days_num:'3 gün',
+        stat_days_suffix:' gün',
         // Feature card (Premium & Multi)
         feat_label:'PREMİUM & MULTİ — ÖZEL ÖZELLİK',
         feat_title:'Video avatarı = web sitesi asistanı.<br><em style="font-style:italic;color:#4ECDC4;">Hasta, izlediği yüzle anında konuşur.</em>',
@@ -1770,6 +1887,11 @@ const translations = {
         cta_explore_tag:'WHICH IS RIGHT FOR YOU?', cta_explore_title:'Let\'s decide together — free consultation call.',
         cta_quote_btn:'REQUEST A QUOTE →', cta_24h:'RESPONSE WITHIN 24 HOURS', cta_talk:"LET'S TALK →",
         footer_copy:'© 2026 Clinic Media Tech — All rights reserved',
+        trust_label:'TRUSTED INFRASTRUCTURE & COMPLIANCE',
+        badge_soc2:'Security Standard', badge_gdpr:'Data Protection Compliant',
+        badge_ssl:'End-to-End Encryption', badge_uptime:'Uptime Service SLA',
+        badge_iso:'Information Security', badge_hipaa:'Healthcare Data Privacy',
+        gdpr_notice:'Our data processing operations are conducted through infrastructure providers that support SOC 2 Type II security standards and comply with GDPR data protection requirements.',
         // Ticker
         tick1_text:'Live patient experience in native language', tick1_src:'Clinic Media Tech · 2026',
         tick2_text:'Supported world languages', tick2_src:'Multi Package',
@@ -1793,6 +1915,7 @@ const translations = {
         // Avatar stat strip
         stat_247:'Uninterrupted service', stat_setup:'Setup time',
         stat_langs:'Language support', stat_mins:'Min/month included', stat_days_num:'3 days',
+        stat_days_suffix:' days',
         // Feature card (Premium & Multi)
         feat_label:'PREMIUM & MULTI — EXCLUSIVE FEATURE',
         feat_title:'Video avatar = website assistant.<br><em style="font-style:italic;color:#4ECDC4;">The patient instantly talks to the face they watched.</em>',
@@ -1831,6 +1954,67 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'});}
     });
 });
+
+// ─── COUNTER ANIMATION ───
+function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const startTime = performance.now();
+    const isFloat = target % 1 !== 0;
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutCubic(progress);
+        const current = isFloat
+            ? (eased * target).toFixed(1)
+            : Math.round(eased * target);
+
+        // Respect current language for suffix (e.g. "gün" vs "days")
+        let displaySuffix = suffix;
+        if (el.dataset.i18nSuffix && window._currentLang) {
+            const t = translations[window._currentLang];
+            if (t && t[el.dataset.i18nSuffix]) displaySuffix = t[el.dataset.i18nSuffix];
+        }
+
+        el.textContent = prefix + current + displaySuffix;
+        if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+}
+
+// Observe counters — fire once when visible
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+            entry.target.dataset.counted = 'true';
+            animateCounter(entry.target);
+        }
+    });
+}, { threshold: 0.4 });
+
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// Also add translation keys for day suffix
+const _origSetLang = setLang;
+setLang = function(lang) {
+    _origSetLang(lang);
+    // Re-render already-counted counters with correct suffix
+    document.querySelectorAll('.counter[data-counted]').forEach(el => {
+        const prefix = el.dataset.prefix || '';
+        const target = el.dataset.target;
+        let suffix = el.dataset.suffix || '';
+        if (el.dataset.i18nSuffix) {
+            const t = translations[lang];
+            if (t && t[el.dataset.i18nSuffix]) suffix = t[el.dataset.i18nSuffix];
+        }
+        el.textContent = prefix + target + suffix;
+    });
+};
 
 init();
 setLang('tr');
