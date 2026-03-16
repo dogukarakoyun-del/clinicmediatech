@@ -523,10 +523,7 @@
             <button class="lang-btn active" onclick="setLang('tr')">TR</button>
             <button class="lang-btn" onclick="setLang('en')">EN</button>
         </div>
-        <button class="live-assistant-btn" onclick="connectLiveAssistant()" id="liveAssistantBtn">
-            <span class="live-dot" id="liveDot"></span>
-            <span class="live-btn-text" id="liveBtnText" data-i18n="live_btn">Canlı Asistan</span>
-        </button>
+        
     </div>
 </nav>
 
@@ -1331,6 +1328,122 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
     </div>
 </section>
 
+
+<!-- PAKETLER -->
+<section id="paketler" style="background:transparent;">
+    <div class="section-divider"></div>
+    <div class="section-inner">
+        <div class="reveal" style="max-width:700px;margin-bottom:4rem;">
+            <p class="section-label" data-i18n="pkg_label">PACKAGES</p>
+            <h2 style="font-family:'Mona Sans',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin-bottom:1.5rem;" data-i18n-html="pkg_headline">
+                Built for your clinic, <span style="color:var(--gold);">scaled to your needs.</span>
+            </h2>
+            <p style="color:var(--grey);font-size:0.95rem;line-height:1.8;" data-i18n="pkg_desc">All packages include 3-day setup. Pricing is determined based on your business needs after consultation.</p>
+        </div>
+
+        <!-- 4 Paket Kartı -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(192,192,192,0.08);margin-bottom:2px;" class="reveal reveal-delay-1">
+
+            <!-- TEMEL -->
+            <div style="background:rgba(8,8,8,0.95);padding:2.5rem 2rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column;" onmouseover="this.style.background='rgba(16,16,16,0.98)'" onmouseout="this.style.background='rgba(8,8,8,0.95)'">
+                <div style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:1.5rem;" data-i18n="pkg1_tag">STARTER</div>
+                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.5rem;line-height:1.2;" data-i18n="pkg1_title">Starter Plan</h3>
+                <p style="font-size:0.8rem;color:var(--grey);margin-bottom:2rem;line-height:1.6;" data-i18n="pkg1_desc">Core features for visitor engagement and data collection.</p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg1_f1"> 200 monthly conversations</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span> Visitor welcome & question answering</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg1_f3"> 2 language support</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg1_f4" data-i18n="pkg2_f4" data-i18n="pkg3_f4"> Mail / WhatsApp / CRM integration</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg1_f5" data-i18n="pkg2_f5"> Conversation logs delivered daily</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg1_f6"> 24/7 instant connection</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg1_f7"> Responses based on approved information</li>
+                </ul>
+                <button onclick="openModal('form')" style="margin-top:2rem;background:transparent;border:1px solid rgba(192,192,192,0.25);color:var(--white);padding:0.85rem 1.5rem;font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;width:100%;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">APPLY →</button>
+            </div>
+
+            <!-- PRO -->
+            <div style="background:rgba(10,10,14,0.98);padding:2.5rem 2rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column;border-top:2px solid var(--gold);" onmouseover="this.style.background='rgba(20,20,28,0.98)'" onmouseout="this.style.background='rgba(10,10,14,0.98)'">
+                <div style="position:absolute;top:-1px;left:0;right:0;text-align:center;background:var(--gold);padding:0.25rem;font-family:'Mona Sans',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:3px;color:#080808;">EN POPÜLER</div>
+                <div style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:1.5rem;margin-top:0.5rem;" data-i18n="pkg2_tag">PRO</div>
+                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.5rem;line-height:1.2;" data-i18n="pkg2_title">Pro Plan</h3>
+                <p style="font-size:0.8rem;color:var(--grey);margin-bottom:2rem;line-height:1.6;" data-i18n="pkg2_desc">End-to-end patient guidance and structured data delivery.</p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg2_f1"> 400 monthly conversations</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span> Visitor welcome & question answering</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg2_f3"> 5 language support</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span> Mail / WhatsApp / CRM integration</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span> Conversation logs delivered daily</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg2_f6"> Smart visitor routing</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span> End-to-end patient briefing & data delivery</li>
+                </ul>
+                <button onclick="openModal('form')" style="margin-top:2rem;background:var(--white);border:none;color:#080808;padding:0.85rem 1.5rem;font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;width:100%;" onmouseover="this.style.background='#E0E0E0'" onmouseout="this.style.background='var(--white)'">APPLY →</button>
+            </div>
+
+            <!-- MULTİ -->
+            <div style="background:rgba(8,8,8,0.95);padding:2.5rem 2rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column;" onmouseover="this.style.background='rgba(16,16,16,0.98)'" onmouseout="this.style.background='rgba(8,8,8,0.95)'">
+                <div style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:4px;color:var(--teal);margin-bottom:1.5rem;" data-i18n="pkg3_tag">MULTI</div>
+                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.5rem;line-height:1.2;" data-i18n="pkg3_title">Multi Plan</h3>
+                <p style="font-size:0.8rem;color:var(--grey);margin-bottom:2rem;line-height:1.6;" data-i18n="pkg3_desc">Uninterrupted operations at a global scale.</p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg3_f1"> 1000 monthly conversations</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span> Visitor welcome & question answering</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg3_f3"> 30 language options</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span> Mail / WhatsApp / CRM integration</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg3_f5"> Conversations analysed and delivered in real time</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg3_f6"> Optional digital twin cloning</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg3_f7"> Seamless global-scale operations</li>
+                </ul>
+                <button onclick="openModal('form')" style="margin-top:2rem;background:transparent;border:1px solid rgba(78,205,196,0.4);color:var(--teal);padding:0.85rem 1.5rem;font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;width:100%;" onmouseover="this.style.background='rgba(78,205,196,0.08)'" onmouseout="this.style.background='transparent'">APPLY →</button>
+            </div>
+
+            <!-- ENTERPRİSE -->
+            <div style="background:rgba(8,8,8,0.95);padding:2.5rem 2rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column;" onmouseover="this.style.background='rgba(16,16,16,0.98)'" onmouseout="this.style.background='rgba(8,8,8,0.95)'">
+                <div style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:1.5rem;" data-i18n="pkg4_tag">ENTERPRISE</div>
+                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.5rem;line-height:1.2;" data-i18n="pkg4_title">Enterprise Plan</h3>
+                <p style="font-size:0.8rem;color:var(--grey);margin-bottom:2rem;line-height:1.6;" data-i18n="pkg4_desc">If standard packages aren't enough, we'll build a custom plan for you.</p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg4_f1"> Custom conversation capacity</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span> All languages & integrations</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg4_f3"> Built from scratch configuration</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg4_f4"> Promotional Video Service</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg4_f5"> Strategic Consulting</li>
+                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span data-i18n="pkg4_f6"> Pricing determined after team consultation</li>
+                </ul>
+                <button onclick="openModal('form')" style="margin-top:2rem;background:transparent;border:1px solid rgba(192,192,192,0.25);color:var(--white);padding:0.85rem 1.5rem;font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;width:100%;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">APPLY →</button>
+            </div>
+        </div>
+
+        <!-- DEMO DENEME BANDI -->
+        <div class="reveal" style="margin-top:2px;background:linear-gradient(135deg,rgba(78,205,196,0.06) 0%,rgba(8,8,8,0.95) 100%);border:1px solid rgba(78,205,196,0.2);padding:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+            <div>
+                <p style="font-family:'Mona Sans',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:4px;color:var(--teal);margin-bottom:0.75rem;">TRY NOW</p>
+                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.6rem;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:0.75rem;" data-i18n-html="demo_headline">Try your personalised<br>assistant for 15 minutes.</h3>
+                <p style="font-size:0.88rem;color:var(--grey);line-height:1.7;max-width:500px;" data-i18n="demo_desc">Share your details and test a clinic-specific assistant live for 15 minutes. See exactly how it works. Sistemin nasıl çalıştığını bizzat görün.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;flex-shrink:0;">
+                <div style="text-align:center;">
+                    <div style="font-family:'Mona Sans',sans-serif;font-size:2.5rem;font-weight:800;color:var(--white);letter-spacing:-1px;">$49.90</div>
+                    <div style="font-size:0.72rem;color:var(--grey);letter-spacing:1px;margin-top:0.2rem;" data-i18n="demo_price_note">one-time · 15 minute demo</div>
+                </div>
+                <button onclick="openModal('demo')" style="background:var(--teal);border:none;color:#080808;padding:1rem 2.5rem;font-family:'Mona Sans',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;white-space:nowrap;" onmouseover="this.style.background='#6eddd6'" onmouseout="this.style.background='var(--teal)'" data-i18n="demo_cta_btn">SUBMIT MY DETAILS →</button>
+                <p style="font-size:0.65rem;color:rgba(136,146,164,0.5);text-align:center;">Demo ready within 24 hours after payment</p>
+            </div>
+        </div>
+
+        <!-- MOBİL RESPONSIVE -->
+        <style>
+        @media(max-width:1024px){
+            #paketler [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr !important;}
+        }
+        @media(max-width:600px){
+            #paketler [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr !important;}
+            #paketler [style*="justify-content:space-between"]{flex-direction:column !important;}
+        }
+        </style>
+
+    </div>
+</section>
+
 <!-- INTERACTIVE — Post-Op & Features -->
 <section id="interactive">
     <div class="section-divider"></div>
@@ -1454,16 +1567,16 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
             </div>
             <form id="contact-form" style="display:flex;flex-direction:column;gap:1rem;">
                 <div>
-                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="form_name_label">AD SOYAD *</label>
-                    <input type="text" name="name" required data-i18n-placeholder="form_name_ph" placeholder="Adınız Soyadınız" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(192,192,192,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
+                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="form_name_label" data-i18n="demo_f_name">FULL NAME *</label>
+                    <input type="text" name="name" required data-i18n-placeholder="form_name_ph" placeholder="Your Full Name" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(192,192,192,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
                 </div>
                 <div>
-                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="form_email_label">E-POSTA *</label>
-                    <input type="email" name="email" required data-i18n-placeholder="form_email_ph" placeholder="ornek@mail.com" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(192,192,192,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
+                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="form_email_label" data-i18n="demo_f_email">EMAIL *</label>
+                    <input type="email" name="email" required data-i18n-placeholder="form_email_ph" placeholder="example@mail.com" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(192,192,192,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
                 </div>
                 <div>
                     <label style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="form_phone_label">TELEFON <span style="font-weight:400;letter-spacing:0;text-transform:none;" data-i18n="form_optional">(isteğe bağlı)</span></label>
-                    <input type="tel" name="phone" data-i18n-placeholder="form_phone_ph" placeholder="+90 5xx xxx xx xx" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(192,192,192,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
+                    <input type="tel" name="phone" data-i18n-placeholder="form_phone_ph" placeholder="+1 xxx xxx xx xx" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(192,192,192,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
                 </div>
                 <button type="submit" id="form-submit-btn" class="hero-cta" style="opacity:1;animation:none;font-size:0.8rem;cursor:pointer;width:100%;justify-content:center;margin-top:0.5rem;">
                     <span id="form-btn-text" data-i18n="form_submit">GÖNDER</span>
@@ -1599,11 +1712,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
         <p style="font-family:'Mona Sans',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:1rem;" data-i18n="contact_modal_label">İLETİŞİM</p>
         <h2 style="font-family:'Mona Sans',sans-serif;font-size:1.8rem;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:2rem;" data-i18n="contact_modal_title">Bize ulaşın.</h2>
         <div style="display:flex;flex-direction:column;gap:1rem;">
-            <a href="mailto:info@clinicmediatech.com" style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;border:1px solid rgba(192,192,192,0.1);background:rgba(255,255,255,0.02);text-decoration:none;transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(192,192,192,0.3)'" onmouseout="this.style.borderColor='rgba(192,192,192,0.1)'">
+            <a href="/cdn-cgi/l/email-protection#c9a0a7afa689aaa5a0a7a0aaa4acada0a8bdacaaa1e7aaa6a4" style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;border:1px solid rgba(192,192,192,0.1);background:rgba(255,255,255,0.02);text-decoration:none;transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(192,192,192,0.3)'" onmouseout="this.style.borderColor='rgba(192,192,192,0.1)'">
                 <span style="font-size:1.1rem;">✉️</span>
                 <div>
                     <div style="font-family:'Mona Sans',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:0.25rem;" data-i18n="contact_modal_email_label">E-POSTA</div>
-                    <div style="font-size:0.9rem;color:var(--white);">info@clinicmediatech.com</div>
+                    <div style="font-size:0.9rem;color:var(--white);"><span class="__cf_email__" data-cfemail="026b6c646d42616e6b6c6b616f67666b637667616a2c616d6f">[email&#160;protected]</span></div>
                 </div>
             </a>
 
@@ -1611,6 +1724,114 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
         <p style="font-size:0.75rem;color:rgba(136,146,164,0.4);margin-top:1.5rem;text-align:center;" data-i18n="contact_modal_note">24 saat içinde dönüş garantisi</p>
     </div>
 </div>
+
+
+<!-- DEMO MODAL -->
+<div id="modal-demo" onclick="if(event.target===this)closeModal('demo')" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;overflow-y:auto;padding:2rem 1rem;">
+    <div style="background:#0a0a0a;border:1px solid rgba(78,205,196,0.2);max-width:560px;width:100%;position:relative;overflow:hidden;margin:auto;">
+        <div style="height:2px;background:linear-gradient(to right,transparent,#4ECDC4,transparent);opacity:0.6;"></div>
+        <div style="padding:2.5rem 2.5rem 2rem;border-bottom:1px solid rgba(192,192,192,0.07);">
+            <button onclick="closeModal('demo')" style="position:absolute;top:1.5rem;right:1.8rem;background:none;border:none;color:rgba(136,146,164,0.5);font-size:1rem;cursor:pointer;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(136,146,164,0.5)'">✕</button>
+            <p style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:4px;color:var(--teal);margin-bottom:0.8rem;" data-i18n="demo_tag" data-i18n="demo_tag">15-MINUTE DEMO · $49.90</p>
+            <h2 style="font-family:'Mona Sans',sans-serif;font-size:1.4rem;font-weight:800;color:var(--white);line-height:1.2;" data-i18n="demo_modal_title">Try your clinic's personalised assistant.</h2>
+            <p style="font-size:0.82rem;color:var(--grey);margin-top:0.6rem;line-height:1.6;" data-i18n="demo_modal_desc">Bilgilerinizi doldurun, 24 saat içinde ödeme linki ve demo erişiminiz iletilir.</p>
+        </div>
+        <div style="padding:2rem 2.5rem 2.5rem;">
+            <div id="demo-success" style="display:none;text-align:center;padding:2rem 0;">
+                <div style="font-size:2.5rem;margin-bottom:1rem;">✓</div>
+                <p style="font-family:'Mona Sans',sans-serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;" data-i18n="demo_success_title">Application received!</p>
+                <p style="font-size:0.85rem;color:var(--grey);line-height:1.6;" data-i18n="demo_success_desc">24 saat içinde ödeme linki ve demo detayları mail adresinize iletilecek.</p>
+            </div>
+            <form id="demo-form" style="display:flex;flex-direction:column;gap:1rem;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                    <div>
+                        <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;">FULL NAME *</label>
+                        <input type="text" name="fullname" id="demo-name-ph" required placeholder="Your Full Name" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.88rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
+                    </div>
+                    <div>
+                        <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="demo_f_phone">TELEFON (isteğe bağlı)</label>
+                        <input type="tel" name="phone" id="demo-phone-ph" placeholder="+1 xxx xxx xx xx" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.88rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
+                    </div>
+                </div>
+                <div>
+                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;">EMAIL *</label>
+                    <input type="email" name="email" id="demo-email-ph" required placeholder="example@mail.com" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.88rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
+                </div>
+                <div>
+                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="demo_f_business">BUSINESS NAME *</label>
+                    <input type="text" name="business" id="demo-business-ph" required placeholder="Clinic / Business name" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.88rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
+                </div>
+                <div>
+                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="demo_f_about">İŞLETMENİZ HAKKINDA (maks. 2500 karakter)</label>
+                    <textarea name="about" id="demo-about-ph" maxlength="2500" rows="5" placeholder="Tell us briefly about your clinic, services and target audience. We'll configure the demo assistant based on this." style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.85rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;resize:vertical;line-height:1.6;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'" oninput="updateDemoCharCount(this)"></textarea>
+                    <div style="text-align:right;font-size:0.65rem;color:rgba(136,146,164,0.4);margin-top:0.3rem;"><span id="demo-char-count">0</span> / 2500</div>
+                </div>
+                <div style="background:rgba(78,205,196,0.05);border:1px solid rgba(78,205,196,0.15);padding:1.25rem 1.5rem;margin-top:0.5rem;display:flex;flex-direction:column;gap:0.6rem;">
+                    <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+                        <span style="color:var(--teal);flex-shrink:0;font-size:0.9rem;">✓</span>
+                        <p style="font-size:0.78rem;color:rgba(192,192,192,0.8);line-height:1.6;">Our team will <strong style="color:var(--white);">get in touch with you</strong> after receiving your application.</p>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+                        <span style="color:var(--teal);flex-shrink:0;font-size:0.9rem;">✓</span>
+                        <p style="font-size:0.78rem;color:rgba(192,192,192,0.8);line-height:1.6;">Your demo assistant is configured <strong style="color:var(--white);">specifically for your clinic</strong> — no templates used.</p>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+                        <span style="color:var(--teal);flex-shrink:0;font-size:0.9rem;">✓</span>
+                        <p style="font-size:0.78rem;color:rgba(192,192,192,0.8);line-height:1.6;">Payment is processed via secure infrastructure. Your <strong style="color:var(--white);">invoice is sent instantly</strong> to your email.</p>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+                        <span style="color:var(--teal);flex-shrink:0;font-size:0.9rem;">✓</span>
+                        <p style="font-size:0.78rem;color:rgba(192,192,192,0.8);line-height:1.6;">Upon a successful demo, a <strong style="color:var(--white);">$49.90 discount</strong> is applied to your package price.</p>
+                    </div>
+                </div>
+                <button type="submit" id="demo-submit-btn" style="background:var(--teal);border:none;color:#080808;padding:1rem 2rem;font-family:'Mona Sans',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:1px;cursor:pointer;width:100%;transition:all 0.3s;border-radius:980px;margin-top:0.5rem;" onmouseover="this.style.background='#6eddd6'" onmouseout="this.style.background='var(--teal)'">
+                    <span id="demo-btn-text" data-i18n="demo_submit">SUBMIT APPLICATION →</span>
+                </button>
+                <p id="demo-error" style="display:none;font-size:0.78rem;color:#ff6b6b;text-align:center;">Bir hata oluştu, lütfen tekrar deneyin.</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function updateDemoCharCount(el) {
+    document.getElementById('demo-char-count').textContent = el.value.length;
+}
+
+document.getElementById('demo-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('demo-submit-btn');
+    const btnText = document.getElementById('demo-btn-text');
+    const error = document.getElementById('demo-error');
+    btnText.textContent = '...';
+    btn.style.opacity = '0.7';
+    btn.disabled = true;
+    error.style.display = 'none';
+    try {
+        const res = await fetch('https://formspree.io/f/xeerzeev', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                type: 'DEMO BAŞVURUSU - $49.90',
+                fullname: this.fullname.value,
+                phone: this.phone.value,
+                email: this.email.value,
+                business: this.business.value,
+                about: this.about.value
+            })
+        });
+        if (res.ok) {
+            document.getElementById('demo-form').style.display = 'none';
+            document.getElementById('demo-success').style.display = 'block';
+        } else { throw new Error(); }
+    } catch {
+        error.style.display = 'block';
+        btnText.textContent = 'BAŞVURUYU GÖNDER →';
+        btn.style.opacity = '1';
+        btn.disabled = false;
+    }
+});
+</script>
 
 <footer>
     <!-- Footer Nav Links -->
@@ -1631,7 +1852,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── GLOBAL CANVAS ───
 const canvas = document.getElementById('globalCanvas');
 const ctx = canvas.getContext('2d');
@@ -1946,6 +2167,48 @@ const translations = {
         feat_desc:'Tanıtım videosundaki sunucu ile web sitesi asistanı aynı avatar kimliğini taşır. Ziyaretçi videodan tanıdığı yüzle web sitenizde iletişime geçer — marka tutarlılığı güveni somutlaştırır.',
         feat_s1:'Anadilde içeriğin güven artışı', feat_s2:'Kesintisiz kullanıcı desteği',
         feat_s3:'Multi pakette dil desteği', feat_s4_num:'3 gün', feat_s4:'Kurulum ve entegrasyon süresi',
+        pkg1_f1:'200 aylık görüşme', pkg1_f2:'Ziyaretçi karşılama & sorulara yanıt',
+        pkg1_f3:'2 dil desteği', pkg1_f4:'Mail / WhatsApp / CRM entegrasyon',
+        pkg1_f5:'Görüşme kayıtları günlük iletilir', pkg1_f6:'7/24 anında bağlantı',
+        pkg1_f7:'Onaylı bilgiler doğrultusunda yanıt',
+        pkg2_f1:'400 aylık görüşme', pkg2_f2:'Ziyaretçi karşılama & sorulara yanıt',
+        pkg2_f3:'5 dil desteği', pkg2_f4:'Mail / WhatsApp / CRM entegrasyon',
+        pkg2_f5:'Görüşme kayıtları günlük iletilir', pkg2_f6:'Ziyaretçiyi akıllı yönlendirme',
+        pkg2_f7:'Uçtan uca bilgilendirme & veri iletimi',
+        pkg3_f1:'1000 aylık görüşme', pkg3_f2:'Ziyaretçi karşılama & sorulara yanıt',
+        pkg3_f3:'30 dil seçeneği', pkg3_f4:'Mail / WhatsApp / CRM entegrasyon',
+        pkg3_f5:'Görüşmeler anlık analiz edilip iletilir', pkg3_f6:'İsteğe bağlı dijital ikiz klonlaması',
+        pkg3_f7:'Global ölçekte kesintisiz işleyiş',
+        pkg4_f1:'İşletmenize özel görüşme kapasitesi', pkg4_f2:'Tüm diller & entegrasyonlar',
+        pkg4_f3:'Sıfırdan özel yapılandırma', pkg4_f4:'Tanıtım Video Servisi',
+        pkg4_f5:'Stratejik Danışmanlık', pkg4_f6:'Fiyat ekiple görüşme sonrası belirlenir',
+        demo_trust4:'Upon a successful demo, a <strong style="color:var(--white);">$49.90 discount</strong> is applied to your package price.',
+        pkg_label:'PAKETLER',
+        pkg_headline:'Built for your clinic, <span style="color:var(--gold);">scaled to your needs.</span>',
+        pkg_desc:'All packages include 3-day setup. Pricing is determined based on your business needs after consultation.',
+        pkg1_tag:'TEMEL', pkg1_title:'Başlangıç Paketi', pkg1_desc:'Bilgilendirme ve veri toplama için temel işlevler.',
+        pkg2_tag:'PRO', pkg2_title:'Pro Paket', pkg2_desc:'Uçtan uca hasta yönlendirme ve veri iletimi.',
+        pkg3_tag:'MULTİ', pkg3_title:'Multi Paket', pkg3_desc:'Global ölçekte kesintisiz operasyon.',
+        pkg4_tag:'ENTERPRİSE', pkg4_title:'Kurumsal Plan', pkg4_desc:'Standart paketler yeterli değilse, size özel bir plan tasarlayalım.',
+        demo_tag:'15-MINUTE DEMO · $49.90',
+        demo_headline:'Try your personalised<br>assistant for 15 minutes.',
+        demo_desc:'Share your details and test a clinic-specific assistant live for 15 minutes. See exactly how it works.',
+        demo_price_note:'one-time · 15 minute demo',
+        demo_cta_btn:'BİLGİLERİMİ İLET →',
+        demo_modal_title:"Try your clinic's personalised assistant.",
+        demo_modal_desc:'Fill in your details and our team will get in touch with you.',
+        demo_success_title:'Application received!',
+        demo_success_desc:'Payment link and demo details will be sent to your email within 24 hours.',
+        demo_submit:'BAŞVURUYU GÖNDER →',
+        demo_f_name:'AD SOYAD *', demo_f_phone:'TELEFON (isteğe bağlı)',
+        demo_f_email:'E-POSTA *', demo_f_business:'İŞLETME ADI *',
+        demo_f_about:'İŞLETMENİZ HAKKINDA (maks. 2500 karakter)',
+        demo_f_about_ph:'Kliniğiniz, hizmetleriniz, hedef kitleniz hakkında kısaca bilgi verin.',
+        demo_f_name_ph:'Adınız Soyadınız', demo_f_phone_ph:'+90 5xx xxx xx xx',
+        demo_f_email_ph:'ornek@mail.com', demo_f_business_ph:'Klinik / İşletme adı',
+        demo_trust1:'Our team will <strong style="color:var(--white);">get in touch with you</strong> after receiving your application.',
+        demo_trust2:'Your demo assistant is configured <strong style="color:var(--white);">specifically for your clinic</strong> — no templates used.',
+        demo_trust3:'Payment is processed via secure infrastructure. Your <strong style="color:var(--white);">invoice is sent instantly</strong> to your email.',
     },
     en: {
         nav_services:'SOLUTIONS', nav_problem:'THE COST OF SILENCE', nav_interactive:'HOW IT WORKS', nav_how:'INTEGRATION PROCESS', nav_offer:'USE CASES', nav_pricing:'PACKAGES', nav_contact:'GET STARTED',
@@ -2153,6 +2416,49 @@ const translations = {
         feat_desc:'The presenter in your promo video and the digital assistant on your website share the same avatar. The patient experiences an incredible sense of familiarity and trust.',
         feat_s1:'Trust increase from native language content', feat_s2:'Uninterrupted patient service',
         feat_s3:'Language support in Multi package', feat_s4_num:'3 days', feat_s4:'Setup and integration time',
+        pkg_label:'PACKAGES',
+        pkg_headline:'Built for your clinic, <span style="color:var(--gold);">scaled to your needs.</span>',
+        pkg_desc:'All packages include 3-day setup. Pricing is determined based on your business needs after consultation.',
+        pkg1_tag:'STARTER', pkg1_title:'Starter Plan', pkg1_desc:'Core features for visitor engagement and data collection.',
+        pkg2_tag:'PRO', pkg2_title:'Pro Plan', pkg2_desc:'End-to-end patient guidance and structured data delivery.',
+        pkg3_tag:'MULTI', pkg3_title:'Multi Plan', pkg3_desc:'Uninterrupted operations at a global scale.',
+        pkg4_tag:'ENTERPRISE', pkg4_title:'Enterprise Plan', pkg4_desc:"If standard packages aren't enough, we'll build a custom plan for you.",
+        pkg_apply:'APPLY →', pkg_contact:'APPLY →',
+        demo_tag:'15-MINUTE DEMO · $49.90',
+        demo_headline:'Try your personalised<br>assistant for 15 minutes.',
+        demo_desc:'Share your details and test a clinic-specific assistant live for 15 minutes. See exactly how the system works.',
+        demo_price_note:'one-time · 15 minute demo',
+        demo_cta_btn:'SUBMIT MY DETAILS →',
+        demo_modal_title:"Try your clinic's personalised assistant.",
+        demo_modal_desc:'Fill in your details and we will send your payment link and demo access within 24 hours.',
+        demo_success_title:'Application received!',
+        demo_success_desc:'Your payment link and demo details will be sent to your email within 24 hours.',
+        demo_submit:'SUBMIT APPLICATION →',
+        demo_f_name:'FULL NAME *', demo_f_phone:'PHONE (optional)',
+        demo_f_email:'EMAIL *', demo_f_business:'BUSINESS NAME *',
+        demo_f_about:'ABOUT YOUR BUSINESS',
+        demo_f_about_ph:"Tell us briefly about your clinic, services and target audience. We'll configure the demo assistant based on this.",
+        demo_f_name_ph:'Your Full Name', demo_f_phone_ph:'+1 xxx xxx xx xx',
+        demo_f_email_ph:'example@mail.com', demo_f_business_ph:'Clinic / Business name',
+        demo_trust1:'Once your application is received, our team will <strong style="color:var(--white);">get in touch with you.</strong>',
+        demo_trust2:'Your demo assistant is configured <strong style="color:var(--white);">specifically for your clinic</strong> — no templates used.',
+        demo_trust3:'Payment is processed via secure infrastructure. Your <strong style="color:var(--white);">invoice is sent instantly</strong> to your email.',
+        demo_trust4:'Upon a successful demo, a <strong style="color:var(--white);">$49.90 discount</strong> is applied to your package price.',
+        pkg1_f1:'200 monthly conversations', pkg1_f2:'Visitor welcome & question answering',
+        pkg1_f3:'2 language support', pkg1_f4:'Mail / WhatsApp / CRM integration',
+        pkg1_f5:'Conversation logs delivered daily', pkg1_f6:'24/7 instant connection',
+        pkg1_f7:'Responses based on approved information',
+        pkg2_f1:'400 monthly conversations', pkg2_f2:'Visitor welcome & question answering',
+        pkg2_f3:'5 language support', pkg2_f4:'Mail / WhatsApp / CRM integration',
+        pkg2_f5:'Conversation logs delivered daily', pkg2_f6:'Smart visitor routing',
+        pkg2_f7:'End-to-end patient briefing & data delivery',
+        pkg3_f1:'1000 monthly conversations', pkg3_f2:'Visitor welcome & question answering',
+        pkg3_f3:'30 language options', pkg3_f4:'Mail / WhatsApp / CRM integration',
+        pkg3_f5:'Conversations analysed and delivered in real time', pkg3_f6:'Optional digital twin cloning',
+        pkg3_f7:'Seamless global-scale operations',
+        pkg4_f1:'Custom conversation capacity', pkg4_f2:'All languages & integrations',
+        pkg4_f3:'Built from scratch configuration', pkg4_f4:'Promotional Video Service',
+        pkg4_f5:'Strategic Consulting', pkg4_f6:'Pricing determined after team consultation',
     }
 };
 
@@ -2206,6 +2512,20 @@ function setLang(lang) {
     // Chat placeholder
     const chatInput = document.getElementById('chatInput');
     if (chatInput) chatInput.placeholder = t.chat_placeholder;
+
+    // Demo form placeholders
+    const demoFields = {
+        'demo-name-ph': 'demo_f_name_ph',
+        'demo-phone-ph': 'demo_f_phone_ph',
+        'demo-email-ph': 'demo_f_email_ph',
+        'demo-business-ph': 'demo_f_business_ph',
+        'demo-about-ph': 'demo_f_about_ph',
+    };
+    Object.entries(demoFields).forEach(([id, key]) => {
+        const el = document.getElementById(id);
+        if (el && t[key]) el.placeholder = t[key];
+    });
+
     window._currentLang = lang;
 }
 
@@ -2286,7 +2606,7 @@ function closeModal(name) {
     const el = document.getElementById('modal-' + name);
     if (el) { el.style.display = 'none'; document.body.style.overflow = ''; }
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('about'); closeModal('contact'); closeModal('faq'); closeModal('form'); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('about'); closeModal('contact'); closeModal('faq'); closeModal('form'); closeModal('demo'); } });
 
 // ─── FORM SUBMIT ───
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
