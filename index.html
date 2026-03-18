@@ -523,7 +523,10 @@
             <button class="lang-btn active" onclick="setLang('tr')">TR</button>
             <button class="lang-btn" onclick="setLang('en')">EN</button>
         </div>
-        
+        <button class="live-assistant-btn" onclick="connectLiveAssistant()" id="liveAssistantBtn">
+            <span class="live-dot" id="liveDot"></span>
+            <span class="live-btn-text" id="liveBtnText" data-i18n="live_btn">Canlı Asistan</span>
+        </button>
     </div>
 </nav>
 
@@ -1328,151 +1331,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
     </div>
 </section>
 
-
-<!-- PAKETLER -->
-<section id="paketler" style="background:transparent;">
-    <div class="section-divider"></div>
-    <div class="section-inner">
-        <div class="reveal" style="max-width:700px;margin-bottom:4rem;">
-            <p class="section-label" data-i18n="pkg_label">PAKETLER</p>
-            <h2 style="font-family:'Mona Sans',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin-bottom:1.5rem;" data-i18n-html="pkg_headline">Kliniğinize özel, <span style="color:var(--gold);">ölçeğinize uygun.</span>
-            </h2>
-            <p style="color:var(--grey);font-size:0.95rem;line-height:1.8;" data-i18n="pkg_desc">Tüm paketlerde kurulum 3 iş günü. Fiyatlandırma, görüşme sonrası işletmenizin ihtiyaçlarına göre belirlenir.</p>
-        </div>
-
-        <!-- 4 Paket Kartı -->
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(192,192,192,0.08);margin-bottom:2px;" class="reveal reveal-delay-1">
-
-            <!-- TEMEL -->
-            <div style="background:rgba(8,8,8,0.95);padding:2.5rem 2rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column;" onmouseover="this.style.background='rgba(16,16,16,0.98)'" onmouseout="this.style.background='rgba(8,8,8,0.95)'">
-                <div style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:1.5rem;" data-i18n="pkg1_tag">TEMEL</div>
-                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.5rem;line-height:1.2;" data-i18n="pkg1_title">Başlangıç Paketi</h3>
-                <p style="font-size:0.8rem;color:var(--grey);margin-bottom:1.5rem;line-height:1.6;" data-i18n="pkg1_desc">Bilgilendirme ve veri toplama için temel işlevler.</p>
-                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg1_f1"> 200 aylık görüşme</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg1_f2"> Ziyaretçi karşılama & sorulara yanıt</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg1_f3"> 2 dil desteği</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg1_f4"> Mail / WhatsApp / CRM entegrasyon</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg1_f5"> Görüşme kayıtları günlük iletilir</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg1_f6"> 7/24 anında bağlantı</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg1_f7"> Onaylı bilgiler doğrultusunda yanıt</span></li>
-                </ul>
-                <button onclick="openModal('form')" style="margin-top:2rem;background:transparent;border:1px solid rgba(192,192,192,0.25);color:var(--white);padding:0.85rem 1.5rem;font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;width:100%;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'"><span data-i18n="pkg_apply">BAŞVUR →</span></button>
-                <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(192,192,192,0.08);">
-                    <div style="display:flex;align-items:baseline;gap:0.4rem;flex-wrap:wrap;">
-                        <span style="font-family:'Mona Sans',sans-serif;font-size:2.1rem;font-weight:800;color:var(--white);letter-spacing:-1px;" data-i18n="pkg1_monthly_price">$385</span>
-                        <span style="font-size:0.75rem;color:rgba(192,192,192,0.4);" data-i18n="price_per_month">/ay</span>
-                        <span style="font-size:0.78rem;color:rgba(192,192,192,0.28);margin-left:0.15rem;">+</span>
-                        <span style="font-family:'Mona Sans',sans-serif;font-size:0.88rem;font-weight:700;color:rgba(192,192,192,0.55);letter-spacing:-0.3px;" data-i18n="pkg1_setup_inline">$795</span>
-                        <span style="font-size:0.7rem;color:rgba(192,192,192,0.32);" data-i18n="price_setup_label">kurulum</span>
-                    </div>
-                    <p style="font-size:0.65rem;color:rgba(192,192,192,0.35);margin-top:0.45rem;letter-spacing:0.3px;" data-i18n="price_vat">KDV dahildir</p>
-                </div>
-            </div>
-
-            <!-- PRO -->
-            <div style="background:rgba(10,10,14,0.98);padding:2.5rem 2rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column;border-top:2px solid var(--gold);" onmouseover="this.style.background='rgba(20,20,28,0.98)'" onmouseout="this.style.background='rgba(10,10,14,0.98)'">
-                <div style="position:absolute;top:-1px;left:0;right:0;text-align:center;background:var(--gold);padding:0.25rem;font-family:'Mona Sans',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:3px;color:#080808;">EN POPÜLER</div>
-                <div style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:1.5rem;margin-top:0.5rem;" data-i18n="pkg2_tag">PRO</div>
-                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.5rem;line-height:1.2;" data-i18n="pkg2_title">Pro Paket</h3>
-                <p style="font-size:0.8rem;color:var(--grey);margin-bottom:1.5rem;line-height:1.6;" data-i18n="pkg2_desc">Uçtan uca hasta yönlendirme ve veri iletimi.</p>
-                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg2_f1"> 400 aylık görüşme</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg1_f2"> Ziyaretçi karşılama & sorulara yanıt</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg2_f3"> 5 dil desteği</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg2_f4"> Mail / WhatsApp / CRM entegrasyon</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg2_f5"> Görüşme kayıtları günlük iletilir</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg2_f6"> Ziyaretçiyi akıllı yönlendirme</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg2_f7"> Uçtan uca bilgilendirme & veri iletimi</span></li>
-                </ul>
-                <button onclick="openModal('form')" style="margin-top:2rem;background:var(--white);border:none;color:#080808;padding:0.85rem 1.5rem;font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;width:100%;" onmouseover="this.style.background='#E0E0E0'" onmouseout="this.style.background='var(--white)'"><span data-i18n="pkg_apply">BAŞVUR →</span></button>
-                <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(192,192,192,0.1);">
-                    <div style="display:flex;align-items:baseline;gap:0.4rem;flex-wrap:wrap;">
-                        <span style="font-family:'Mona Sans',sans-serif;font-size:2.1rem;font-weight:800;color:var(--white);letter-spacing:-1px;" data-i18n="pkg2_monthly_price">$950</span>
-                        <span style="font-size:0.75rem;color:rgba(192,192,192,0.4);" data-i18n="price_per_month">/ay</span>
-                        <span style="font-size:0.78rem;color:rgba(192,192,192,0.28);margin-left:0.15rem;">+</span>
-                        <span style="font-family:'Mona Sans',sans-serif;font-size:0.88rem;font-weight:700;color:rgba(192,192,192,0.55);letter-spacing:-0.3px;" data-i18n="pkg2_setup_inline">$1,050</span>
-                        <span style="font-size:0.7rem;color:rgba(192,192,192,0.32);" data-i18n="price_setup_label">kurulum</span>
-                    </div>
-                    <p style="font-size:0.65rem;color:rgba(192,192,192,0.35);margin-top:0.45rem;letter-spacing:0.3px;" data-i18n="price_vat">KDV dahildir</p>
-                </div>
-            </div>
-
-            <!-- MULTİ -->
-            <div style="background:rgba(8,8,8,0.95);padding:2.5rem 2rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column;" onmouseover="this.style.background='rgba(16,16,16,0.98)'" onmouseout="this.style.background='rgba(8,8,8,0.95)'">
-                <div style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:4px;color:var(--teal);margin-bottom:1.5rem;" data-i18n="pkg3_tag">MULTİ</div>
-                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.5rem;line-height:1.2;" data-i18n="pkg3_title">Multi Paket</h3>
-                <p style="font-size:0.8rem;color:var(--grey);margin-bottom:1.5rem;line-height:1.6;" data-i18n="pkg3_desc">Global ölçekte kesintisiz operasyon.</p>
-                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg3_f1"> 1000 aylık görüşme</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg1_f2"> Ziyaretçi karşılama & sorulara yanıt</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg3_f3"> 30 dil seçeneği</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg3_f4"> Mail / WhatsApp / CRM entegrasyon</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg3_f5"> Görüşmeler anlık analiz edilip iletilir</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg3_f6"> İsteğe bağlı dijital ikiz klonlaması</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--teal);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg3_f7"> Global ölçekte kesintisiz işleyiş</span></li>
-                </ul>
-                <button onclick="openModal('form')" style="margin-top:2rem;background:transparent;border:1px solid rgba(78,205,196,0.4);color:var(--teal);padding:0.85rem 1.5rem;font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;width:100%;" onmouseover="this.style.background='rgba(78,205,196,0.08)'" onmouseout="this.style.background='transparent'"><span data-i18n="pkg_apply">BAŞVUR →</span></button>
-                <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(78,205,196,0.12);">
-                    <div style="display:flex;align-items:baseline;gap:0.4rem;flex-wrap:wrap;">
-                        <span style="font-family:'Mona Sans',sans-serif;font-size:2.1rem;font-weight:800;color:var(--teal);letter-spacing:-1px;" data-i18n="pkg3_monthly_price">$1,350</span>
-                        <span style="font-size:0.75rem;color:rgba(192,192,192,0.4);" data-i18n="price_per_month">/ay</span>
-                        <span style="font-size:0.78rem;color:rgba(192,192,192,0.28);margin-left:0.15rem;">+</span>
-                        <span style="font-family:'Mona Sans',sans-serif;font-size:0.88rem;font-weight:700;color:rgba(78,205,196,0.6);letter-spacing:-0.3px;" data-i18n="pkg3_setup_inline">$1,550</span>
-                        <span style="font-size:0.7rem;color:rgba(192,192,192,0.32);" data-i18n="price_setup_label">kurulum</span>
-                    </div>
-                    <p style="font-size:0.65rem;color:rgba(192,192,192,0.35);margin-top:0.45rem;letter-spacing:0.3px;" data-i18n="price_vat">KDV dahildir</p>
-                </div>
-            </div>
-
-            <!-- ENTERPRİSE -->
-            <div style="background:rgba(8,8,8,0.95);padding:2.5rem 2rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column;" onmouseover="this.style.background='rgba(16,16,16,0.98)'" onmouseout="this.style.background='rgba(8,8,8,0.95)'">
-                <div style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:1.5rem;" data-i18n="pkg4_tag">ENTERPRİSE</div>
-                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.5rem;line-height:1.2;" data-i18n="pkg4_title">Kurumsal Plan</h3>
-                <p style="font-size:0.8rem;color:var(--grey);margin-bottom:1.5rem;line-height:1.6;" data-i18n="pkg4_desc">Standart paketler yeterli değilse, size özel bir plan tasarlayalım.</p>
-                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;">
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg4_f1"> İşletmenize özel görüşme kapasitesi</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg4_f2"> Tüm diller & entegrasyonlar</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg4_f3"> Sıfırdan özel yapılandırma</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg4_f4"> Tanıtım Video Servisi</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg4_f5"> Stratejik Danışmanlık</span></li>
-                    <li style="font-size:0.82rem;color:rgba(192,192,192,0.75);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--gold);flex-shrink:0;margin-top:1px;">→</span><span data-i18n="pkg4_f6"> Fiyat ekiple görüşme sonrası belirlenir</span></li>
-                </ul>
-                <button onclick="openModal('form')" style="margin-top:2rem;background:transparent;border:1px solid rgba(192,192,192,0.25);color:var(--white);padding:0.85rem 1.5rem;font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;width:100%;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'"><span data-i18n="pkg_apply">BAŞVUR →</span></button>
-            </div>
-        </div>
-
-        <!-- DEMO DENEME BANDI -->
-        <div class="reveal" style="margin-top:2px;background:linear-gradient(135deg,rgba(78,205,196,0.06) 0%,rgba(8,8,8,0.95) 100%);border:1px solid rgba(78,205,196,0.2);padding:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
-            <div>
-                <p style="font-family:'Mona Sans',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:4px;color:var(--teal);margin-bottom:0.75rem;" data-i18n="demo_tag">HEMEN DENE</p>
-                <h3 style="font-family:'Mona Sans',sans-serif;font-size:1.6rem;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:0.75rem;" data-i18n-html="demo_headline" data-i18n-html="demo_headline">15 dakikalık asistanınızı<br>şimdi deneyin.</h3>
-                <p style="font-size:0.88rem;color:var(--grey);line-height:1.7;max-width:500px;" data-i18n="demo_desc">Bilgilerinizi iletin, kliniğinize özel yapılandırılmış asistanı 15 dakika boyunca canlı test edin. Sistemin nasıl çalıştığını bizzat görün.</p>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;flex-shrink:0;">
-                <div style="text-align:center;">
-                    <div style="font-family:'Mona Sans',sans-serif;font-size:2.5rem;font-weight:800;color:var(--white);letter-spacing:-1px;">$49.90</div>
-                    <div style="font-size:0.72rem;color:var(--grey);letter-spacing:1px;margin-top:0.2rem;" data-i18n="demo_price_note" data-i18n="demo_price_note">tek seferlik · 15 dakika demo</div>
-                </div>
-                <button onclick="openModal('demo')" style="background:var(--teal);border:none;color:#080808;padding:1rem 2.5rem;font-family:'Mona Sans',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border-radius:980px;white-space:nowrap;" onmouseover="this.style.background='#6eddd6'" onmouseout="this.style.background='var(--teal)'" data-i18n="demo_cta_btn" data-i18n="demo_cta_btn">BİLGİLERİMİ İLET →</button>
-                <p style="font-size:0.65rem;color:rgba(136,146,164,0.5);text-align:center;" data-i18n="demo_payment_note">Ödeme sonrası demo 24 saat içinde hazır</p>
-            </div>
-        </div>
-
-        <!-- MOBİL RESPONSIVE -->
-        <style>
-        @media(max-width:1024px){
-            #paketler [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr !important;}
-        }
-        @media(max-width:600px){
-            #paketler [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr !important;}
-            #paketler [style*="justify-content:space-between"]{flex-direction:column !important;}
-        }
-        </style>
-
-    </div>
-</section>
-
 <!-- INTERACTIVE — Post-Op & Features -->
 <section id="interactive">
     <div class="section-divider"></div>
@@ -1496,22 +1354,22 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
                     <div class="avatar-pulse-ring"></div>
                     <div class="avatar-lang-tags">
                         <div class="avatar-lang-col avatar-lang-col-left">
-                            <div class="avatar-lang-tag" data-i18n="lang_tr">🇹🇷 TÜRKÇE</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_ru">🇷🇺 RUSÇA</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_de">🇩🇪 ALMANCA</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_es">🇪🇸 İSPANYOLCA</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_zh">🇨🇳 ÇİNCE</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_ko">🇰🇷 KORECE</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_nl">🇳🇱 HOLLANDACA</div>
+                            <div class="avatar-lang-tag">🇹🇷 TÜRKÇE</div>
+                            <div class="avatar-lang-tag">🇷🇺 RUSÇA</div>
+                            <div class="avatar-lang-tag">🇩🇪 ALMANCA</div>
+                            <div class="avatar-lang-tag">🇪🇸 İSPANYOLCA</div>
+                            <div class="avatar-lang-tag">🇨🇳 ÇİNCE</div>
+                            <div class="avatar-lang-tag">🇰🇷 KORECE</div>
+                            <div class="avatar-lang-tag">🇳🇱 HOLLANDACA</div>
                         </div>
                         <div class="avatar-lang-col avatar-lang-col-right">
-                            <div class="avatar-lang-tag" data-i18n="lang_ar">🌙 ARAPÇA</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_en">🇬🇧 İNGİLİZCE</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_fr">🇫🇷 FRANSIZCA</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_it">🇮🇹 İTALYANCA</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_ja">🇯🇵 JAPONCA</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_pt">🇧🇷 PORTEKİZCE</div>
-                            <div class="avatar-lang-tag" data-i18n="lang_more">✦ + 20 DİL</div>
+                            <div class="avatar-lang-tag">🌙 ARAPÇA</div>
+                            <div class="avatar-lang-tag">🇬🇧 İNGİLİZCE</div>
+                            <div class="avatar-lang-tag">🇫🇷 FRANSIZCA</div>
+                            <div class="avatar-lang-tag">🇮🇹 İTALYANCA</div>
+                            <div class="avatar-lang-tag">🇯🇵 JAPONCA</div>
+                            <div class="avatar-lang-tag">🇧🇷 PORTEKİZCE</div>
+                            <div class="avatar-lang-tag">✦ + 20 DİL</div>
                         </div>
                     </div>                    </div>
                 </div>
@@ -1596,11 +1454,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
             </div>
             <form id="contact-form" style="display:flex;flex-direction:column;gap:1rem;">
                 <div>
-                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="form_name_label" data-i18n="demo_f_name" data-i18n="demo_f_name">AD SOYAD *</label>
+                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="form_name_label">AD SOYAD *</label>
                     <input type="text" name="name" required data-i18n-placeholder="form_name_ph" placeholder="Adınız Soyadınız" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(192,192,192,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
                 </div>
                 <div>
-                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="form_email_label" data-i18n="demo_f_email" data-i18n="demo_f_email">E-POSTA *</label>
+                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="form_email_label">E-POSTA *</label>
                     <input type="email" name="email" required data-i18n-placeholder="form_email_ph" placeholder="ornek@mail.com" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.9rem;padding:0.85rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(192,192,192,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
                 </div>
                 <div>
@@ -1741,11 +1599,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
         <p style="font-family:'Mona Sans',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:1rem;" data-i18n="contact_modal_label">İLETİŞİM</p>
         <h2 style="font-family:'Mona Sans',sans-serif;font-size:1.8rem;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:2rem;" data-i18n="contact_modal_title">Bize ulaşın.</h2>
         <div style="display:flex;flex-direction:column;gap:1rem;">
-            <a href="/cdn-cgi/l/email-protection#c9a0a7afa689aaa5a0a7a0aaa4acada0a8bdacaaa1e7aaa6a4" style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;border:1px solid rgba(192,192,192,0.1);background:rgba(255,255,255,0.02);text-decoration:none;transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(192,192,192,0.3)'" onmouseout="this.style.borderColor='rgba(192,192,192,0.1)'">
+            <a href="/cdn-cgi/l/email-protection#f59c9b939ab596999c9b9c969890919c948190969ddb969a98" style="display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;border:1px solid rgba(192,192,192,0.1);background:rgba(255,255,255,0.02);text-decoration:none;transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(192,192,192,0.3)'" onmouseout="this.style.borderColor='rgba(192,192,192,0.1)'">
                 <span style="font-size:1.1rem;">✉️</span>
                 <div>
                     <div style="font-family:'Mona Sans',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:0.25rem;" data-i18n="contact_modal_email_label">E-POSTA</div>
-                    <div style="font-size:0.9rem;color:var(--white);"><span class="__cf_email__" data-cfemail="026b6c646d42616e6b6c6b616f67666b637667616a2c616d6f">[email&#160;protected]</span></div>
+                    <div style="font-size:0.9rem;color:var(--white);"><span class="__cf_email__" data-cfemail="51383f373e11323d383f38323c34353830253432397f323e3c">[email&#160;protected]</span></div>
                 </div>
             </a>
 
@@ -1753,114 +1611,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
         <p style="font-size:0.75rem;color:rgba(136,146,164,0.4);margin-top:1.5rem;text-align:center;" data-i18n="contact_modal_note">24 saat içinde dönüş garantisi</p>
     </div>
 </div>
-
-
-<!-- DEMO MODAL -->
-<div id="modal-demo" onclick="if(event.target===this)closeModal('demo')" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;overflow-y:auto;padding:2rem 1rem;">
-    <div style="background:#0a0a0a;border:1px solid rgba(78,205,196,0.2);max-width:560px;width:100%;position:relative;overflow:hidden;margin:auto;">
-        <div style="height:2px;background:linear-gradient(to right,transparent,#4ECDC4,transparent);opacity:0.6;"></div>
-        <div style="padding:2.5rem 2.5rem 2rem;border-bottom:1px solid rgba(192,192,192,0.07);">
-            <button onclick="closeModal('demo')" style="position:absolute;top:1.5rem;right:1.8rem;background:none;border:none;color:rgba(136,146,164,0.5);font-size:1rem;cursor:pointer;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(136,146,164,0.5)'">✕</button>
-            <p style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:4px;color:var(--teal);margin-bottom:0.8rem;" data-i18n="demo_tag" data-i18n="demo_tag">15 DAKİKALIK DEMO · $49.90</p>
-            <h2 style="font-family:'Mona Sans',sans-serif;font-size:1.4rem;font-weight:800;color:var(--white);line-height:1.2;" data-i18n="demo_modal_title" data-i18n="demo_modal_title">Kliniğinize özel asistanı deneyin.</h2>
-            <p style="font-size:0.82rem;color:var(--grey);margin-top:0.6rem;line-height:1.6;" data-i18n="demo_modal_desc">Bilgilerinizi doldurun, 24 saat içinde ödeme linki ve demo erişiminiz iletilir.</p>
-        </div>
-        <div style="padding:2rem 2.5rem 2.5rem;">
-            <div id="demo-success" style="display:none;text-align:center;padding:2rem 0;">
-                <div style="font-size:2.5rem;margin-bottom:1rem;">✓</div>
-                <p style="font-family:'Mona Sans',sans-serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;" data-i18n="demo_success_title" data-i18n="demo_success_title">Başvurunuz alındı!</p>
-                <p style="font-size:0.85rem;color:var(--grey);line-height:1.6;" data-i18n="demo_success_desc">24 saat içinde ödeme linki ve demo detayları mail adresinize iletilecek.</p>
-            </div>
-            <form id="demo-form" style="display:flex;flex-direction:column;gap:1rem;">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-                    <div>
-                        <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="demo_f_name">AD SOYAD *</label>
-                        <input type="text" name="fullname" id="demo-name-ph" required placeholder="Adınız Soyadınız" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.88rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
-                    </div>
-                    <div>
-                        <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="demo_f_phone">TELEFON (isteğe bağlı)</label>
-                        <input type="tel" name="phone" id="demo-phone-ph" placeholder="+90 5xx xxx xx xx" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.88rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
-                    </div>
-                </div>
-                <div>
-                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="demo_f_email">E-POSTA *</label>
-                    <input type="email" name="email" id="demo-email-ph" required placeholder="ornek@mail.com" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.88rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
-                </div>
-                <div>
-                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="demo_f_business" data-i18n="demo_f_business">İŞLETME ADI *</label>
-                    <input type="text" name="business" id="demo-business-ph" required placeholder="Klinik / İşletme adı" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.88rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'">
-                </div>
-                <div>
-                    <label style="font-family:'Mona Sans',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:2px;color:rgba(192,192,192,0.5);display:block;margin-bottom:0.4rem;" data-i18n="demo_f_about">İŞLETMENİZ HAKKINDA (maks. 2500 karakter)</label>
-                    <textarea name="about" id="demo-about-ph" maxlength="2500" rows="5" placeholder="Kliniğiniz, hizmetleriniz, hedef kitleniz hakkında kısaca bilgi verin." style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(192,192,192,0.12);color:var(--white);font-family:'Mona Sans',sans-serif;font-size:0.85rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;resize:vertical;line-height:1.6;" onfocus="this.style.borderColor='rgba(78,205,196,0.4)'" onblur="this.style.borderColor='rgba(192,192,192,0.12)'" oninput="updateDemoCharCount(this)"></textarea>
-                    <div style="text-align:right;font-size:0.65rem;color:rgba(136,146,164,0.4);margin-top:0.3rem;"><span id="demo-char-count">0</span> / 2500</div>
-                </div>
-                <div style="background:rgba(78,205,196,0.05);border:1px solid rgba(78,205,196,0.15);padding:1.25rem 1.5rem;margin-top:0.5rem;display:flex;flex-direction:column;gap:0.6rem;">
-                    <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-                        <span style="color:var(--teal);flex-shrink:0;font-size:0.9rem;">✓</span>
-                        <p style="font-size:0.78rem;color:rgba(192,192,192,0.8);line-height:1.6;" data-i18n-html="demo_trust1">Başvurunuz alındıktan sonra ekibimiz sizinle <strong style="color:var(--white);">iletişime geçer.</strong></p>
-                    </div>
-                    <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-                        <span style="color:var(--teal);flex-shrink:0;font-size:0.9rem;">✓</span>
-                        <p style="font-size:0.78rem;color:rgba(192,192,192,0.8);line-height:1.6;" data-i18n-html="demo_trust2">Demo asistanınız <strong style="color:var(--white);">kliniğinize özel</strong> yapılandırılır — hazır şablon kullanılmaz.</p>
-                    </div>
-                    <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-                        <span style="color:var(--teal);flex-shrink:0;font-size:0.9rem;">✓</span>
-                        <p style="font-size:0.78rem;color:rgba(192,192,192,0.8);line-height:1.6;" data-i18n-html="demo_trust3">Ödeme güvenli altyapı ile gerçekleşir. <strong style="color:var(--white);">Fatura anında</strong> mail adresinize iletilir.</p>
-                    </div>
-                    <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-                        <span style="color:var(--teal);flex-shrink:0;font-size:0.9rem;">✓</span>
-                        <p style="font-size:0.78rem;color:rgba(192,192,192,0.8);line-height:1.6;" data-i18n-html="demo_trust4">Demo memnuniyeti sonucunda paket fiyatından <strong style="color:var(--white);">$49.90 indirim</strong> uygulanır.</p>
-                    </div>
-                </div>
-                <button type="submit" id="demo-submit-btn" style="background:var(--teal);border:none;color:#080808;padding:1rem 2rem;font-family:'Mona Sans',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:1px;cursor:pointer;width:100%;transition:all 0.3s;border-radius:980px;margin-top:0.5rem;" onmouseover="this.style.background='#6eddd6'" onmouseout="this.style.background='var(--teal)'">
-                    <span id="demo-btn-text" data-i18n="demo_submit">BAŞVURUYU GÖNDER →</span>
-                </button>
-                <p id="demo-error" style="display:none;font-size:0.78rem;color:#ff6b6b;text-align:center;">Bir hata oluştu, lütfen tekrar deneyin.</p>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script>
-function updateDemoCharCount(el) {
-    document.getElementById('demo-char-count').textContent = el.value.length;
-}
-
-document.getElementById('demo-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('demo-submit-btn');
-    const btnText = document.getElementById('demo-btn-text');
-    const error = document.getElementById('demo-error');
-    btnText.textContent = '...';
-    btn.style.opacity = '0.7';
-    btn.disabled = true;
-    error.style.display = 'none';
-    try {
-        const res = await fetch('https://formspree.io/f/xeerzeev', {
-            method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                type: 'DEMO BAŞVURUSU - $49.90',
-                fullname: this.fullname.value,
-                phone: this.phone.value,
-                email: this.email.value,
-                business: this.business.value,
-                about: this.about.value
-            })
-        });
-        if (res.ok) {
-            document.getElementById('demo-form').style.display = 'none';
-            document.getElementById('demo-success').style.display = 'block';
-        } else { throw new Error(); }
-    } catch {
-        error.style.display = 'block';
-        btnText.textContent = 'BAŞVURUYU GÖNDER →';
-        btn.style.opacity = '1';
-        btn.disabled = false;
-    }
-});
-</script>
 
 <footer>
     <!-- Footer Nav Links -->
@@ -1870,6 +1620,8 @@ document.getElementById('demo-form').addEventListener('submit', async function(e
         <a href="javascript:void(0)" onclick="openModal('about')" style="font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;color:var(--grey);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#C0C0C0'" onmouseout="this.style.color='var(--grey)'" data-i18n="nav_about_footer">HAKKIMIZDA</a>
         <a href="javascript:void(0)" onclick="openModal('faq')" style="font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;color:var(--grey);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#C0C0C0'" onmouseout="this.style.color='var(--grey)'" data-i18n="nav_faq_footer">SSS</a>
         <a href="javascript:void(0)" onclick="openModal('contact')" style="font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;color:var(--gold);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#E0E0E0'" onmouseout="this.style.color='var(--gold)'" data-i18n="nav_contact_footer">İLETİŞİM</a>
+        <a href="javascript:void(0)" onclick="openModal('teslimat')" id="footer-link-teslimat" style="font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;color:var(--grey);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#C0C0C0'" onmouseout="this.style.color='var(--grey)'">TESLİMAT & İADE</a>
+        <a href="javascript:void(0)" onclick="openModal('gizlilik')" id="footer-link-gizlilik" style="font-family:'Mona Sans',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;color:var(--grey);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#C0C0C0'" onmouseout="this.style.color='var(--grey)'">GİZLİLİK POLİTİKASI</a>
     </div>
     <!-- Bottom Bar -->
     <div class="footer-bottom">
@@ -1878,6 +1630,25 @@ document.getElementById('demo-form').addEventListener('submit', async function(e
         <div style="font-size:0.7rem;color:rgba(136,146,164,0.3);text-align:right;line-height:1.6;">
             <div>Clinic Media Tech</div>
         </div>
+    </div>
+    <!-- Ödeme Logoları -->
+    <div style="padding:1.2rem 4rem;border-top:1px solid rgba(192,192,192,0.06);display:flex;flex-direction:column;align-items:center;gap:0.6rem;">
+        <div style="display:flex;align-items:center;gap:2rem;">
+            <!-- Visa -->
+            <svg width="60" height="32" viewBox="0 0 60 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.45;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='0.45'">
+                <rect width="60" height="32" rx="5" fill="#1A1A6E"/>
+                <text x="8" y="22" font-family="Arial,sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#FFFFFF">VISA</text>
+            </svg>
+            <!-- MasterCard -->
+            <svg width="60" height="32" viewBox="0 0 60 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.45;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='0.45'">
+                <rect width="60" height="32" rx="5" fill="#252525"/>
+                <circle cx="23" cy="16" r="10" fill="#EB001B"/>
+                <circle cx="37" cy="16" r="10" fill="#F79E1B"/>
+                <path d="M30 8.2a10 10 0 0 1 0 15.6A10 10 0 0 1 30 8.2z" fill="#FF5F00"/>
+            </svg>
+        </div>
+        <span id="pay-iyzico-text" style="font-size:0.58rem;color:rgba(136,146,164,0.3);letter-spacing:1.5px;font-family:'Mona Sans',sans-serif;display:block;text-align:center;">iyzico ile öde</span>
+        <span id="pay-secure-text" style="font-size:0.58rem;color:rgba(136,146,164,0.2);letter-spacing:1.5px;font-family:'Mona Sans',sans-serif;display:block;text-align:center;">güvenli ödeme</span>
     </div>
 </footer>
 
@@ -2196,56 +1967,6 @@ const translations = {
         feat_desc:'Tanıtım videosundaki sunucu ile web sitesi asistanı aynı avatar kimliğini taşır. Ziyaretçi videodan tanıdığı yüzle web sitenizde iletişime geçer — marka tutarlılığı güveni somutlaştırır.',
         feat_s1:'Anadilde içeriğin güven artışı', feat_s2:'Kesintisiz kullanıcı desteği',
         feat_s3:'Multi pakette dil desteği', feat_s4_num:'3 gün', feat_s4:'Kurulum ve entegrasyon süresi',
-        pkg1_f1:'200 aylık görüşme', pkg1_f2:'Ziyaretçi karşılama & sorulara yanıt',
-        pkg1_f3:'2 dil desteği', pkg1_f4:'Mail / WhatsApp / CRM entegrasyon',
-        pkg1_f5:'Görüşme kayıtları günlük iletilir', pkg1_f6:'7/24 anında bağlantı',
-        pkg1_f7:'Onaylı bilgiler doğrultusunda yanıt',
-        pkg2_f1:'400 aylık görüşme', pkg2_f2:'Ziyaretçi karşılama & sorulara yanıt',
-        pkg2_f3:'5 dil desteği', pkg2_f4:'Mail / WhatsApp / CRM entegrasyon',
-        pkg2_f5:'Görüşme kayıtları günlük iletilir', pkg2_f6:'Ziyaretçiyi akıllı yönlendirme',
-        pkg2_f7:'Uçtan uca bilgilendirme & veri iletimi',
-        pkg3_f1:'1000 aylık görüşme', pkg3_f2:'Ziyaretçi karşılama & sorulara yanıt',
-        pkg3_f3:'30 dil seçeneği', pkg3_f4:'Mail / WhatsApp / CRM entegrasyon',
-        pkg3_f5:'Görüşmeler anlık analiz edilip iletilir', pkg3_f6:'İsteğe bağlı dijital ikiz klonlaması',
-        pkg3_f7:'Global ölçekte kesintisiz işleyiş',
-        pkg4_f1:'İşletmenize özel görüşme kapasitesi', pkg4_f2:'Tüm diller & entegrasyonlar',
-        pkg4_f3:'Sıfırdan özel yapılandırma', pkg4_f4:'Tanıtım Video Servisi',
-        pkg4_f5:'Stratejik Danışmanlık', pkg4_f6:'Fiyat ekiple görüşme sonrası belirlenir',
-        demo_payment_note:'Ödeme sonrası demo 24 saat içinde hazır',
-        demo_trust4:'Demo memnuniyeti sonucunda paket fiyatından <strong style="color:var(--white);">$49.90 indirim</strong> uygulanır.',
-        price_setup_label:'kurulum', price_monthly_label:'AYLIK', price_per_month:'/ay',
-        price_setup_note:'Kurulum tek seferlik · +KDV', price_vat:'KDV dahildir', pkg1_setup_inline:'$795 · tek seferlik kurulum', pkg2_setup_inline:'$1,050 · tek seferlik kurulum', pkg3_setup_inline:'$1,550 · tek seferlik kurulum',
-        price_enterprise_note:'Fiyat görüşme sonrası belirlenir · +KDV',
-        pkg1_setup_price:'$795', pkg1_monthly_price:'$385',
-        pkg2_setup_price:'$1,050', pkg2_monthly_price:'$950',
-        pkg3_setup_price:'$1,550', pkg3_monthly_price:'$1,350',
-        pkg4_price_custom:'GÖRÜŞME SONRASI',
-        pkg_label:'PAKETLER',
-        pkg_headline:'Kliniğinize özel, <span style="color:var(--gold);">ölçeğinize uygun.</span>',
-        pkg_desc:'Tüm paketlerde kurulum 3 iş günü. Fiyatlandırma, görüşme sonrası işletmenizin ihtiyaçlarına göre belirlenir.',
-        pkg1_tag:'TEMEL', pkg1_title:'Başlangıç Paketi', pkg1_desc:'Bilgilendirme ve veri toplama için temel işlevler.',
-        pkg2_tag:'PRO', pkg2_title:'Pro Paket', pkg2_desc:'Uçtan uca hasta yönlendirme ve veri iletimi.',
-        pkg3_tag:'MULTİ', pkg3_title:'Multi Paket', pkg3_desc:'Global ölçekte kesintisiz operasyon.',
-        pkg4_tag:'ENTERPRİSE', pkg4_title:'Kurumsal Plan', pkg4_desc:'Standart paketler yeterli değilse, size özel bir plan tasarlayalım.',
-        demo_tag:'15 DAKİKALIK DEMO · $49.90',
-        demo_headline:'15 dakikalık asistanınızı<br>şimdi deneyin.',
-        demo_desc:'Bilgilerinizi iletin, kliniğinize özel yapılandırılmış asistanı 15 dakika boyunca canlı test edin.',
-        demo_price_note:'tek seferlik · 15 dakika demo',
-        demo_cta_btn:'BİLGİLERİMİ İLET →',
-        demo_modal_title:'Kliniğinize özel asistanı deneyin.',
-        demo_modal_desc:'Bilgilerinizi doldurun, ekibimiz sizinle iletişime geçer.',
-        demo_success_title:'Başvurunuz alındı!',
-        demo_success_desc:'Ödeme linki ve demo detayları 24 saat içinde mail adresinize iletilecek.',
-        demo_submit:'BAŞVURUYU GÖNDER →',
-        demo_f_name:'AD SOYAD *', demo_f_phone:'TELEFON (isteğe bağlı)',
-        demo_f_email:'E-POSTA *', demo_f_business:'İŞLETME ADI *',
-        demo_f_about:'İŞLETMENİZ HAKKINDA (maks. 2500 karakter)',
-        demo_f_about_ph:'Kliniğiniz, hizmetleriniz, hedef kitleniz hakkında kısaca bilgi verin.',
-        demo_f_name_ph:'Adınız Soyadınız', demo_f_phone_ph:'+90 5xx xxx xx xx',
-        demo_f_email_ph:'ornek@mail.com', demo_f_business_ph:'Klinik / İşletme adı',
-        demo_trust1:'Başvurunuz alındıktan sonra ekibimiz sizinle <strong style="color:var(--white);">iletişime geçer.</strong>',
-        demo_trust2:'Demo asistanınız <strong style="color:var(--white);">kliniğinize özel</strong> yapılandırılır — hazır şablon kullanılmaz.',
-        demo_trust3:'Ödeme güvenli altyapı ile gerçekleşir. <strong style="color:var(--white);">Fatura anında</strong> mail adresinize iletilir.',
     },
     en: {
         nav_services:'SOLUTIONS', nav_problem:'THE COST OF SILENCE', nav_interactive:'HOW IT WORKS', nav_how:'INTEGRATION PROCESS', nav_offer:'USE CASES', nav_pricing:'PACKAGES', nav_contact:'GET STARTED',
@@ -2453,57 +2174,6 @@ const translations = {
         feat_desc:'The presenter in your promo video and the digital assistant on your website share the same avatar. The patient experiences an incredible sense of familiarity and trust.',
         feat_s1:'Trust increase from native language content', feat_s2:'Uninterrupted patient service',
         feat_s3:'Language support in Multi package', feat_s4_num:'3 days', feat_s4:'Setup and integration time',
-        pkg_label:'PACKAGES',
-        pkg_headline:'Built for your clinic, <span style="color:var(--gold);">scaled to your needs.</span>',
-        pkg_desc:'All packages include 3-day setup. Pricing is determined based on your business needs after consultation.',
-        pkg1_tag:'STARTER', pkg1_title:'Starter Plan', pkg1_desc:'Core features for visitor engagement and data collection.',
-        pkg2_tag:'PRO', pkg2_title:'Pro Plan', pkg2_desc:'End-to-end patient guidance and structured data delivery.',
-        pkg3_tag:'MULTI', pkg3_title:'Multi Plan', pkg3_desc:'Uninterrupted operations at a global scale.',
-        pkg4_tag:'ENTERPRISE', pkg4_title:'Enterprise Plan', pkg4_desc:"If standard packages aren't enough, we'll build a custom plan for you.",
-        pkg_apply:'APPLY →', pkg_contact:'APPLY →',
-        demo_tag:'15-MINUTE DEMO · $49.90',
-        demo_headline:'Try your personalised<br>assistant for 15 minutes.',
-        demo_desc:'Share your details and test a clinic-specific assistant live for 15 minutes. See exactly how the system works.',
-        demo_price_note:'one-time · 15 minute demo',
-        demo_cta_btn:'SUBMIT MY DETAILS →',
-        demo_modal_title:"Try your clinic's personalised assistant.",
-        demo_modal_desc:'Fill in your details and we will send your payment link and demo access within 24 hours.',
-        demo_success_title:'Application received!',
-        demo_success_desc:'Your payment link and demo details will be sent to your email within 24 hours.',
-        demo_submit:'SUBMIT APPLICATION →',
-        demo_f_name:'FULL NAME *', demo_f_phone:'PHONE (optional)',
-        demo_f_email:'EMAIL *', demo_f_business:'BUSINESS NAME *',
-        demo_f_about:'ABOUT YOUR BUSINESS',
-        demo_f_about_ph:"Tell us briefly about your clinic, services and target audience. We'll configure the demo assistant based on this.",
-        demo_f_name_ph:'Your Full Name', demo_f_phone_ph:'+1 xxx xxx xx xx',
-        demo_f_email_ph:'example@mail.com', demo_f_business_ph:'Clinic / Business name',
-        demo_trust1:'Once your application is received, our team will <strong style="color:var(--white);">get in touch with you.</strong>',
-        demo_trust2:'Your demo assistant is configured <strong style="color:var(--white);">specifically for your clinic</strong> — no templates used.',
-        demo_trust3:'Payment is processed via secure infrastructure. Your <strong style="color:var(--white);">invoice is sent instantly</strong> to your email.',
-        demo_trust4:'Upon a successful demo, a <strong style="color:var(--white);">$49.90 discount</strong> is applied to your package price.',
-        pkg1_f1:'200 monthly conversations', pkg1_f2:'Visitor welcome & question answering',
-        pkg1_f3:'2 language support', pkg1_f4:'Mail / WhatsApp / CRM integration',
-        pkg1_f5:'Conversation logs delivered daily', pkg1_f6:'24/7 instant connection',
-        pkg1_f7:'Responses based on approved information',
-        pkg2_f1:'400 monthly conversations', pkg2_f2:'Visitor welcome & question answering',
-        pkg2_f3:'5 language support', pkg2_f4:'Mail / WhatsApp / CRM integration',
-        pkg2_f5:'Conversation logs delivered daily', pkg2_f6:'Smart visitor routing',
-        pkg2_f7:'End-to-end patient briefing & data delivery',
-        pkg3_f1:'1000 monthly conversations', pkg3_f2:'Visitor welcome & question answering',
-        pkg3_f3:'30 language options', pkg3_f4:'Mail / WhatsApp / CRM integration',
-        pkg3_f5:'Conversations analysed and delivered in real time', pkg3_f6:'Optional digital twin cloning',
-        pkg3_f7:'Seamless global-scale operations',
-        pkg4_f1:'Custom conversation capacity', pkg4_f2:'All languages & integrations',
-        pkg4_f3:'Built from scratch configuration', pkg4_f4:'Promotional Video Service',
-        pkg4_f5:'Strategic Consulting', pkg4_f6:'Pricing determined after team consultation',
-        demo_payment_note:'Demo ready within 24 hours after payment',
-        price_setup_label:'SETUP', price_monthly_label:'MONTHLY', price_per_month:'/mo',
-        price_setup_note:'One-time setup · +VAT', price_vat:'VAT incl.', pkg1_setup_inline:'$795 · one-time setup', pkg2_setup_inline:'$1,050 · one-time setup', pkg3_setup_inline:'$1,550 · one-time setup',
-        price_enterprise_note:'Pricing determined after consultation · +VAT',
-        pkg1_setup_price:'$795', pkg1_monthly_price:'$385',
-        pkg2_setup_price:'$1,050', pkg2_monthly_price:'$950',
-        pkg3_setup_price:'$1,550', pkg3_monthly_price:'$1,350',
-        pkg4_price_custom:'UPON CONSULTATION',
     }
 };
 
@@ -2534,170 +2204,108 @@ function renderTicker(t) {
 function setLang(lang) {
     currentLang = lang;
     const t = translations[lang];
-    if (!t) return;
-
-    // Lang butonları
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
     });
     document.body.setAttribute('dir', 'ltr');
     document.documentElement.setAttribute('lang', lang);
-
-    // Tüm data-i18n elementlerini güncelle
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key] !== undefined) el.textContent = t[key];
     });
-
-    // data-i18n-html elementlerini güncelle
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
         const key = el.getAttribute('data-i18n-html');
         if (t[key] !== undefined) el.innerHTML = t[key];
     });
-
     // Ticker
     renderTicker(t);
-
-    // Placeholder'lar
+    // Form placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (t[key] !== undefined) el.placeholder = t[key];
     });
-
     // Chat placeholder
     const chatInput = document.getElementById('chatInput');
-    if (chatInput && t.chat_placeholder) chatInput.placeholder = t.chat_placeholder;
-
-    // Demo form placeholder'ları
-    const demoPlaceholders = {
-        'demo-name-ph':     'demo_f_name_ph',
-        'demo-phone-ph':    'demo_f_phone_ph',
-        'demo-email-ph':    'demo_f_email_ph',
-        'demo-business-ph': 'demo_f_business_ph',
-        'demo-about-ph':    'demo_f_about_ph',
-    };
-    Object.entries(demoPlaceholders).forEach(([id, key]) => {
-        const el = document.getElementById(id);
-        if (el && t[key]) el.placeholder = t[key];
-    });
-
-    // Counter suffix güncelle
-    document.querySelectorAll('.counter[data-counted]').forEach(el => {
-        const prefix = el.dataset.prefix || '';
-        const target = el.dataset.target;
-        let suffix = el.dataset.suffix || '';
-        if (el.dataset.i18nSuffix && t[el.dataset.i18nSuffix]) suffix = t[el.dataset.i18nSuffix];
-        el.textContent = prefix + target + suffix;
-    });
-
+    if (chatInput) chatInput.placeholder = t.chat_placeholder;
     window._currentLang = lang;
 
-    // Paket kartlarını direkt güncelle
-    const pkgData = {
+    // ─── FOOTER LEGAL LINKS ───
+    const legalLinks = {
+        tr: { teslimat: 'TESLİMAT & İADE', gizlilik: 'GİZLİLİK POLİTİKASI' },
+        en: { teslimat: 'DELIVERY & RETURNS', gizlilik: 'PRIVACY POLICY' }
+    };
+    if (document.getElementById('footer-link-teslimat')) document.getElementById('footer-link-teslimat').textContent = legalLinks[lang].teslimat;
+    if (document.getElementById('footer-link-gizlilik')) document.getElementById('footer-link-gizlilik').textContent = legalLinks[lang].gizlilik;
+
+    // ─── PAYMENT BAR ───
+    if (document.getElementById('pay-iyzico-text')) document.getElementById('pay-iyzico-text').textContent = lang === 'en' ? 'pay with iyzico' : 'iyzico ile öde';
+    if (document.getElementById('pay-secure-text')) document.getElementById('pay-secure-text').textContent = lang === 'en' ? 'secure payment' : 'güvenli ödeme';
+
+    // ─── TESLIMAT MODAL ───
+    const teslimatContent = {
         tr: {
-            pkg1_tag:'TEMEL', pkg1_title:'Başlangıç Paketi', pkg1_desc:'Bilgilendirme ve veri toplama için temel işlevler.',
-            pkg1_f1:'200 aylık görüşme', pkg1_f2:'Ziyaretçi karşılama & sorulara yanıt', pkg1_f3:'2 dil desteği',
-            pkg1_f4:'Mail / WhatsApp / CRM entegrasyon', pkg2_f4:'Mail / WhatsApp / CRM entegrasyon', pkg3_f4:'Mail / WhatsApp / CRM entegrasyon', pkg1_f5:'Görüşme kayıtları günlük iletilir',
-            pkg1_f6:'7/24 anında bağlantı', pkg1_f7:'Onaylı bilgiler doğrultusunda yanıt',
-            pkg2_tag:'PRO', pkg2_title:'Pro Paket', pkg2_desc:'Uçtan uca hasta yönlendirme ve veri iletimi.',
-            pkg2_f1:'400 aylık görüşme', pkg2_f2:'Ziyaretçi karşılama & sorulara yanıt', pkg2_f3:'5 dil desteği',
-            pkg2_f4:'Mail / WhatsApp / CRM entegrasyon', pkg2_f5:'Görüşme kayıtları günlük iletilir',
-            pkg2_f6:'Ziyaretçiyi akıllı yönlendirme', pkg2_f7:'Uçtan uca bilgilendirme & veri iletimi',
-            pkg3_tag:'MULTİ', pkg3_title:'Multi Paket', pkg3_desc:'Global ölçekte kesintisiz operasyon.',
-            pkg3_f1:'1000 aylık görüşme', pkg3_f2:'Ziyaretçi karşılama & sorulara yanıt', pkg3_f3:'30 dil seçeneği',
-            pkg3_f4:'Mail / WhatsApp / CRM entegrasyon', pkg3_f5:'Görüşmeler anlık analiz edilip iletilir',
-            pkg3_f6:'İsteğe bağlı dijital ikiz klonlaması', pkg3_f7:'Global ölçekte kesintisiz işleyiş',
-            pkg4_tag:'ENTERPRİSE', pkg4_title:'Kurumsal Plan', pkg4_desc:'Standart paketler yeterli değilse, size özel bir plan tasarlayalım.',
-            pkg4_f1:'İşletmenize özel görüşme kapasitesi', pkg4_f2:'Tüm diller & entegrasyonlar',
-            pkg4_f3:'Sıfırdan özel yapılandırma', pkg4_f4:'Tanıtım Video Servisi',
-            pkg4_f5:'Stratejik Danışmanlık', pkg4_f6:'Fiyat ekiple görüşme sonrası belirlenir',
-            pkg_label:'PAKETLER', pkg_headline:'Kliniğinize özel, <span style="color:var(--gold);">ölçeğinize uygun.</span>',
-            pkg_desc:'Tüm paketlerde kurulum 3 iş günü. Fiyatlandırma, görüşme sonrası işletmenizin ihtiyaçlarına göre belirlenir.',
-            pkg_apply:'BAŞVUR →',
-            demo_tag:'HEMEN DENE', demo_headline:'15 dakikalık asistanınızı<br>şimdi deneyin.',
-            demo_desc:'Bilgilerinizi iletin, kliniğinize özel yapılandırılmış asistanı 15 dakika boyunca canlı test edin.',
-            demo_price_note:'tek seferlik · 15 dakika demo', demo_cta_btn:'BİLGİLERİMİ İLET →',
-            demo_modal_label:'15 DAKİKALIK DEMO · $49.90',
-            demo_modal_title:'Kliniğinize özel asistanı deneyin.',
-            demo_modal_desc:'Bilgilerinizi doldurun, ekibimiz sizinle iletişime geçer.',
-            demo_success_title:'Başvurunuz alındı!',
-            demo_success_desc:'Ödeme linki ve demo detayları 24 saat içinde mail adresinize iletilecek.',
-            demo_submit:'BAŞVURUYU GÖNDER →',
-            demo_f_name:'AD SOYAD *', demo_f_phone:'TELEFON (isteğe bağlı)',
-            demo_f_email:'E-POSTA *', demo_f_business:'İŞLETME ADI *',
-            demo_f_about:'İŞLETMENİZ HAKKINDA (maks. 2500 karakter)',
-            demo_trust1:'Başvurunuz alındıktan sonra ekibimiz sizinle <strong style="color:var(--white);">iletişime geçer.</strong>',
-            demo_trust2:'Demo asistanınız <strong style="color:var(--white);">kliniğinize özel</strong> yapılandırılır — hazır şablon kullanılmaz.',
-            demo_trust3:'Ödeme güvenli altyapı ile gerçekleşir. <strong style="color:var(--white);">Fatura anında</strong> mail adresinize iletilir.',
-            demo_trust4:'Demo memnuniyeti sonucunda paket fiyatından <strong style="color:var(--white);">$49.90 indirim</strong> uygulanır.',
-            demo_payment_note:'Ödeme sonrası demo 24 saat içinde hazır',
-            en_popüler:'EN POPÜLER',
-            lang_tr:'🇹🇷 TÜRKÇE', lang_ru:'🇷🇺 RUSÇA', lang_de:'🇩🇪 ALMANCA',
-            lang_es:'🇪🇸 İSPANYOLCA', lang_zh:'🇨🇳 ÇİNCE', lang_ko:'🇰🇷 KORECE',
-            lang_nl:'🇳🇱 HOLLANDACA', lang_ar:'🌙 ARAPÇA', lang_en:'🇬🇧 İNGİLİZCE',
-            lang_fr:'🇫🇷 FRANSIZCA', lang_it:'🇮🇹 İTALYANCA', lang_ja:'🇯🇵 JAPONCA',
-            lang_pt:'🇧🇷 PORTEKİZCE', lang_more:'✦ + 20 DİL',
+            label: 'HUKUKİ',
+            title: 'Teslimat ve İade Politikası',
+            body: `<div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">HİZMET TESLİMATI</h3><p>Clinic Media Tech olarak sunduğumuz hizmetler tamamen dijital niteliktedir. Satın alım sonrası kurulum süreci 3 iş günü içinde tamamlanır ve hizmet, müşterinin web sitesine entegre edilerek teslim edilir. Fiziksel bir ürün gönderimi söz konusu değildir.</p></div>
+            <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">İPTAL VE İADE KOŞULLARI</h3><p>Hizmetin dijital niteliği gereği, entegrasyon süreci başladıktan sonra iade talepleri kabul edilemez. Ancak hizmetin tarafımızdan sözleşmede belirtilen koşullarda sunulamaması durumunda ödenen tutar eksiksiz iade edilir.</p><p style="margin-top:0.75rem;">Ön ödeme yapılmış ve henüz kurulum başlamamış siparişler için iptal talebi, ödeme tarihinden itibaren 48 saat içinde <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a> adresine iletilmelidir.</p></div>`
         },
         en: {
-            pkg1_tag:'STARTER', pkg1_title:'Starter Plan', pkg1_desc:'Core features for visitor engagement and data collection.',
-            pkg1_f1:'200 monthly conversations', pkg1_f2:'Visitor welcome & question answering', pkg1_f3:'2 language support',
-            pkg1_f4:'Mail / WhatsApp / CRM integration', pkg2_f4:'Mail / WhatsApp / CRM integration', pkg3_f4:'Mail / WhatsApp / CRM integration', pkg1_f5:'Conversation logs delivered daily',
-            pkg1_f6:'24/7 instant connection', pkg1_f7:'Responses based on approved information',
-            pkg2_tag:'PRO', pkg2_title:'Pro Plan', pkg2_desc:'End-to-end patient guidance and structured data delivery.',
-            pkg2_f1:'400 monthly conversations', pkg2_f2:'Visitor welcome & question answering', pkg2_f3:'5 language support',
-            pkg2_f4:'Mail / WhatsApp / CRM integration', pkg2_f5:'Conversation logs delivered daily',
-            pkg2_f6:'Smart visitor routing', pkg2_f7:'End-to-end patient briefing & data delivery',
-            pkg3_tag:'MULTI', pkg3_title:'Multi Plan', pkg3_desc:'Uninterrupted operations at a global scale.',
-            pkg3_f1:'1000 monthly conversations', pkg3_f2:'Visitor welcome & question answering', pkg3_f3:'30 language options',
-            pkg3_f4:'Mail / WhatsApp / CRM integration', pkg3_f5:'Conversations analysed and delivered in real time',
-            pkg3_f6:'Optional digital twin cloning', pkg3_f7:'Seamless global-scale operations',
-            pkg4_tag:'ENTERPRISE', pkg4_title:'Enterprise Plan', pkg4_desc:"If standard packages aren't enough, we'll build a custom plan for you.",
-            pkg4_f1:'Custom conversation capacity', pkg4_f2:'All languages & integrations',
-            pkg4_f3:'Built from scratch configuration', pkg4_f4:'Promotional Video Service',
-            pkg4_f5:'Strategic Consulting', pkg4_f6:'Pricing determined after team consultation',
-            pkg_label:'PACKAGES', pkg_headline:'Built for your clinic, <span style="color:var(--gold);">scaled to your needs.</span>',
-            pkg_desc:'All packages include 3-day setup. Pricing is determined based on your business needs after consultation.',
-            pkg_apply:'APPLY →',
-            demo_tag:'TRY NOW', demo_headline:'Try your personalised<br>assistant for 15 minutes.',
-            demo_desc:'Share your details and test a clinic-specific assistant live for 15 minutes. See exactly how it works.',
-            demo_price_note:'one-time · 15 minute demo', demo_cta_btn:'SUBMIT MY DETAILS →',
-            demo_modal_label:'15-MINUTE DEMO · $49.90',
-            demo_modal_title:"Try your clinic's personalised assistant.",
-            demo_modal_desc:'Fill in your details and our team will get in touch with you.',
-            demo_success_title:'Application received!',
-            demo_success_desc:'Payment link and demo details will be sent to your email within 24 hours.',
-            demo_submit:'SUBMIT APPLICATION →',
-            demo_f_name:'FULL NAME *', demo_f_phone:'PHONE (optional)',
-            demo_f_email:'EMAIL *', demo_f_business:'BUSINESS NAME *',
-            demo_f_about:'ABOUT YOUR BUSINESS (max. 2500 characters)',
-            demo_trust1:'Our team will <strong style="color:var(--white);">get in touch with you</strong> after receiving your application.',
-            demo_trust2:'Your demo assistant is configured <strong style="color:var(--white);">specifically for your clinic</strong> — no templates used.',
-            demo_trust3:'Payment is processed via secure infrastructure. Your <strong style="color:var(--white);">invoice is sent instantly</strong> to your email.',
-            demo_trust4:'Upon a successful demo, a <strong style="color:var(--white);">$49.90 discount</strong> is applied to your package price.',
-            demo_payment_note:'Demo ready within 24 hours after payment',
-            en_popüler:'MOST POPULAR',
-            lang_tr:'🇹🇷 TURKISH', lang_ru:'🇷🇺 RUSSIAN', lang_de:'🇩🇪 GERMAN',
-            lang_es:'🇪🇸 SPANISH', lang_zh:'🇨🇳 CHINESE', lang_ko:'🇰🇷 KOREAN',
-            lang_nl:'🇳🇱 DUTCH', lang_ar:'🌙 ARABIC', lang_en:'🇬🇧 ENGLISH',
-            lang_fr:'🇫🇷 FRENCH', lang_it:'🇮🇹 ITALIAN', lang_ja:'🇯🇵 JAPANESE',
-            lang_pt:'🇧🇷 PORTUGUESE', lang_more:'✦ + 20 MORE LANGUAGES',
+            label: 'LEGAL',
+            title: 'Delivery & Returns Policy',
+            body: `<div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">SERVICE DELIVERY</h3><p>All services provided by Clinic Media Tech are entirely digital in nature. Following purchase, the setup process is completed within 3 business days, and the service is delivered by integrating the assistant into the client's website. No physical product shipment is involved.</p></div>
+            <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">CANCELLATION & REFUND POLICY</h3><p>Due to the digital nature of our services, refund requests cannot be accepted once the integration process has commenced. However, if the service cannot be delivered by us under the conditions specified in the agreement, the full amount paid will be refunded.</p><p style="margin-top:0.75rem;">For orders where an advance payment has been made and setup has not yet begun, cancellation requests must be submitted within 48 hours of the payment date to <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a>.</p></div>`
         }
     };
+    const teslimatModal = document.getElementById('modal-teslimat');
+    if (teslimatModal) {
+        const c = teslimatContent[lang];
+        teslimatModal.querySelector('.modal-legal-label').textContent = c.label;
+        teslimatModal.querySelector('.modal-legal-title').textContent = c.title;
+        teslimatModal.querySelector('.modal-legal-body').innerHTML = c.body;
+    }
 
-    const pd = pkgData[lang];
-    if (pd) {
-        // Tüm data-i18n elementlerini pkgData ile güncelle (translations'dan önce)
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (pd[key] !== undefined) el.textContent = pd[key];
-        });
-        document.querySelectorAll('[data-i18n-html]').forEach(el => {
-            const key = el.getAttribute('data-i18n-html');
-            if (pd[key] !== undefined) el.innerHTML = pd[key];
-        });
-        // EN POPÜLER bandı
-        const popBand = document.querySelector('#paketler .featured-band');
-        if (popBand && pd.en_popüler) popBand.textContent = pd.en_popüler;
+    // ─── GİZLİLİK MODAL ───
+    const gizlilikContent = {
+        tr: {
+            label: 'HUKUKİ',
+            title: 'Gizlilik Politikası',
+            date: 'Son güncelleme: Mart 2026',
+            body: `
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">1. VERİ SORUMLUSU</h3><p>Bu Gizlilik Politikası, <strong style="color:rgba(255,255,255,0.8);">Clinic Media Tech</strong> ("Şirket", "biz") tarafından işletilen clinicmediatech.com alan adlı web sitesi ve bu site üzerinden sunulan dijital hizmetler kapsamında kişisel verilerin nasıl toplandığını, işlendiğini, saklandığını ve korunduğunu açıklamaktadır. Şirket, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca veri sorumlusu sıfatını taşımaktadır.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">2. TOPLANAN KİŞİSEL VERİLER</h3><p>Hizmetlerimizi kullanmanız veya web sitemizi ziyaret etmeniz sırasında aşağıdaki kişisel veriler toplanabilir:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">Kimlik verileri:</strong> Ad, soyad</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">İletişim verileri:</strong> E-posta adresi, telefon numarası</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">İşletme verileri:</strong> Klinik/işletme adı, hizmet kapsamı bilgileri</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">Teknik veriler:</strong> IP adresi, tarayıcı türü, işletim sistemi, ziyaret süresi, sayfa etkileşimleri (anonim olarak)</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">İletişim içerikleri:</strong> İletişim formu aracılığıyla iletilen mesajlar ve talepler</span></li></ul></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">3. VERİLERİN İŞLENME AMAÇLARI VE HUKUKİ DAYANAKLARI</h3><p>Kişisel verileriniz aşağıdaki amaçlarla işlenmektedir:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Hizmet tekliflerinin hazırlanması ve sunulması</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Sözleşme kurulması ve ifası</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Müşteri iletişimi ve destek hizmetleri</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal yükümlülüklerin yerine getirilmesi</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Web sitesi performansının ve kullanıcı deneyiminin iyileştirilmesi</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Güvenlik ve dolandırıcılık önleme faaliyetleri</span></li></ul></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">4. VERİLERİN PAYLAŞIMI</h3><p>Kişisel verileriniz üçüncü taraflara satılmaz, kiralanmaz veya ticari amaçlarla devredilmez. Verileriniz yalnızca şu durumlarda paylaşılabilir:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>GDPR ve SOC 2 Type II uyumlu altyapı iş ortakları</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal zorunluluk çerçevesinde yetkili kamu kuruluşları</span></li></ul></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">5. VERİLERİN SAKLANMA SÜRESİ</h3><p>Kişisel verileriniz, işlenme amacının gerektirdiği süre boyunca ve yasal saklama yükümlülükleri çerçevesinde muhafaza edilir. Amaç ortadan kalktığında veriler silinir, yok edilir veya anonim hale getirilir.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">6. VERİ GÜVENLİĞİ</h3><p>Verilerinizin güvenliğini sağlamak amacıyla teknik ve idari tedbirler uygulanmaktadır. Hizmet altyapımız, küresel standartlarda güvenlik sertifikalarına sahip sağlayıcılar üzerinden işletilmektedir.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">7. ÇEREZLER (COOKIES)</h3><p>Web sitemiz, kullanıcı deneyimini iyileştirmek ve site performansını analiz etmek amacıyla çerezler kullanabilir. Tarayıcı ayarlarınızı değiştirerek çerezleri devre dışı bırakabilirsiniz.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. HAKLARINIZ</h3><p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kişisel verilerinizin işlenip işlenmediğini öğrenme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yanlış veya eksik verilerin düzeltilmesini isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal koşullar çerçevesinde silinmesini talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlemenin kısıtlanmasını isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Otomatik sistemler aracılığıyla aleyhinize oluşan sonuçlara itiraz etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Zararın giderilmesini talep etme</span></li></ul><p style="margin-top:0.75rem;">Taleplerinizi <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a> adresine yazılı olarak iletebilirsiniz. Talepler en geç <strong style="color:rgba(255,255,255,0.7);">30 gün</strong> içinde yanıtlanır.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLİTİKA DEĞİŞİKLİKLERİ</h3><p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler yapılması halinde güncel metin bu sayfada yayımlanır.</p></div>
+                <div style="background:rgba(192,192,192,0.04);border:1px solid rgba(192,192,192,0.08);padding:1.25rem 1.5rem;border-radius:2px;"><p style="font-size:0.82rem;color:rgba(192,192,192,0.6);line-height:1.7;">Bu politikayla ilgili sorularınız için: <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a></p></div>`
+        },
+        en: {
+            label: 'LEGAL',
+            title: 'Privacy Policy',
+            date: 'Last updated: March 2026',
+            body: `
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">1. DATA CONTROLLER</h3><p>This Privacy Policy explains how personal data is collected, processed, stored and protected by <strong style="color:rgba(255,255,255,0.8);">Clinic Media Tech</strong> ("Company", "we") through the website clinicmediatech.com and the digital services offered through it. The Company acts as data controller under the Turkish Personal Data Protection Law No. 6698 (KVKK) and the EU General Data Protection Regulation (GDPR).</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">2. PERSONAL DATA COLLECTED</h3><p>The following personal data may be collected when you use our services or visit our website:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">Identity data:</strong> First name, last name</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">Contact data:</strong> Email address, phone number</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">Business data:</strong> Clinic/business name, service scope information</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">Technical data:</strong> IP address, browser type, operating system, visit duration, page interactions (collected anonymously)</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">Communication content:</strong> Messages and enquiries submitted via the contact form</span></li></ul></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">3. PURPOSES AND LEGAL BASIS FOR PROCESSING</h3><p>Your personal data is processed for the following purposes:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Preparing and delivering service proposals</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Entering into and performing contracts</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Customer communication and support services</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Compliance with legal obligations</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Improving website performance and user experience</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Security and fraud prevention activities</span></li></ul></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">4. DATA SHARING</h3><p>Your personal data is not sold, rented or transferred to third parties for commercial purposes. Data may only be shared in the following limited circumstances:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Infrastructure partners compliant with GDPR and SOC 2 Type II standards</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Competent public authorities, where required by law</span></li></ul></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">5. DATA RETENTION</h3><p>Your personal data is retained for as long as necessary for the purpose for which it was collected, and in accordance with applicable legal retention obligations. Once the purpose has been fulfilled, data is deleted, destroyed or anonymised.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">6. DATA SECURITY</h3><p>Technical and administrative measures are in place to ensure the security of your data. Our service infrastructure is operated through providers holding internationally recognised security certifications.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">7. COOKIES</h3><p>Our website may use cookies to improve the user experience and analyse site performance. Cookies may be session-based (deleted when the browser is closed) or persistent (stored on your device for a set period). You can disable cookies through your browser settings; however, some site functionality may be limited as a result.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. YOUR RIGHTS</h3><p>Under applicable data protection law, you have the right to:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Be informed whether your personal data is being processed</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Request correction of inaccurate or incomplete data</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Request erasure of your data under applicable legal conditions</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Request restriction of processing</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Object to automated decision-making that produces adverse effects</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Claim compensation for damages arising from unlawful processing</span></li></ul><p style="margin-top:0.75rem;">You may submit your requests in writing to <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a>. Requests will be responded to within <strong style="color:rgba(255,255,255,0.7);">30 days</strong>.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLICY UPDATES</h3><p>This policy may be updated from time to time. In the event of material changes, the updated text will be published on this page. Continued use of our website constitutes acceptance of the current policy.</p></div>
+                <div style="background:rgba(192,192,192,0.04);border:1px solid rgba(192,192,192,0.08);padding:1.25rem 1.5rem;border-radius:2px;"><p style="font-size:0.82rem;color:rgba(192,192,192,0.6);line-height:1.7;">For questions regarding this policy: <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a></p></div>`
+        }
+    };
+    const gizlilikModal = document.getElementById('modal-gizlilik');
+    if (gizlilikModal) {
+        const c = gizlilikContent[lang];
+        gizlilikModal.querySelector('.modal-legal-label').textContent = c.label;
+        gizlilikModal.querySelector('.modal-legal-title').textContent = c.title;
+        gizlilikModal.querySelector('.modal-legal-date').textContent = c.date;
+        gizlilikModal.querySelector('.modal-legal-body').innerHTML = c.body;
     }
 }
 
@@ -2752,7 +2360,22 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-// Counter suffix re-render on lang change handled inside setLang
+// Also add translation keys for day suffix
+const _origSetLang = setLang;
+setLang = function(lang) {
+    _origSetLang(lang);
+    // Re-render already-counted counters with correct suffix
+    document.querySelectorAll('.counter[data-counted]').forEach(el => {
+        const prefix = el.dataset.prefix || '';
+        const target = el.dataset.target;
+        let suffix = el.dataset.suffix || '';
+        if (el.dataset.i18nSuffix) {
+            const t = translations[lang];
+            if (t && t[el.dataset.i18nSuffix]) suffix = t[el.dataset.i18nSuffix];
+        }
+        el.textContent = prefix + target + suffix;
+    });
+};
 
 // ─── MODAL ───
 function openModal(name) {
@@ -2763,7 +2386,7 @@ function closeModal(name) {
     const el = document.getElementById('modal-' + name);
     if (el) { el.style.display = 'none'; document.body.style.overflow = ''; }
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('about'); closeModal('contact'); closeModal('faq'); closeModal('form'); closeModal('demo'); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('about'); closeModal('contact'); closeModal('faq'); closeModal('form'); closeModal('teslimat'); closeModal('gizlilik'); closeModal('imza'); } });
 
 // ─── FORM SUBMIT ───
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
@@ -2803,6 +2426,57 @@ init();
 setLang('tr');
 </script>
 
+<!-- TESLİMAT & İADE MODALİ -->
+<div id="modal-teslimat" onclick="if(event.target===this)closeModal('teslimat')" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;">
+    <div style="background:#0d0d0d;border:1px solid rgba(192,192,192,0.12);max-width:680px;width:100%;max-height:85vh;overflow-y:auto;position:relative;border-radius:2px;">
+        <div style="height:2px;background:linear-gradient(to right,transparent,#C0C0C0,transparent);opacity:0.3;"></div>
+        <button onclick="closeModal('teslimat')" style="position:sticky;top:0;left:100%;float:right;margin:1rem 1.5rem 0 0;background:none;border:none;color:var(--grey);font-size:1.2rem;cursor:pointer;z-index:2;line-height:1;">✕</button>
+        <div style="padding:2.5rem 3rem;">
+            <p class="modal-legal-label" style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:0.75rem;">HUKUKİ</p>
+            <h2 class="modal-legal-title" style="font-family:'Mona Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#FFFFFF;margin-bottom:2rem;line-height:1.2;">Teslimat ve İade Politikası</h2>
+            <div class="modal-legal-body" style="font-size:0.88rem;color:#8892A4;line-height:1.9;display:flex;flex-direction:column;gap:1.5rem;">
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">HİZMET TESLİMATI</h3><p>Clinic Media Tech olarak sunduğumuz hizmetler tamamen dijital niteliktedir. Satın alım sonrası kurulum süreci 3 iş günü içinde tamamlanır ve hizmet, müşterinin web sitesine entegre edilerek teslim edilir. Fiziksel bir ürün gönderimi söz konusu değildir.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">İPTAL VE İADE KOŞULLARI</h3><p>Hizmetin dijital niteliği gereği, entegrasyon süreci başladıktan sonra iade talepleri kabul edilemez. Ancak hizmetin tarafımızdan sözleşmede belirtilen koşullarda sunulamaması durumunda ödenen tutar eksiksiz iade edilir.</p><p style="margin-top:0.75rem;">Ön ödeme yapılmış ve henüz kurulum başlamamış siparişler için iptal talebi, ödeme tarihinden itibaren 48 saat içinde <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a> adresine iletilmelidir.</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- GİZLİLİK POLİTİKASI MODALİ -->
+<div id="modal-gizlilik" onclick="if(event.target===this)closeModal('gizlilik')" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;">
+    <div style="background:#0d0d0d;border:1px solid rgba(192,192,192,0.12);max-width:680px;width:100%;max-height:85vh;overflow-y:auto;position:relative;border-radius:2px;">
+        <div style="height:2px;background:linear-gradient(to right,transparent,#C0C0C0,transparent);opacity:0.3;"></div>
+        <button onclick="closeModal('gizlilik')" style="position:sticky;top:0;left:100%;float:right;margin:1rem 1.5rem 0 0;background:none;border:none;color:var(--grey);font-size:1.2rem;cursor:pointer;z-index:2;line-height:1;">✕</button>
+        <div style="padding:2.5rem 3rem;">
+            <p class="modal-legal-label" style="font-family:'Mona Sans',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:4px;color:var(--gold);margin-bottom:0.75rem;">HUKUKİ</p>
+            <h2 class="modal-legal-title" style="font-family:'Mona Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#FFFFFF;margin-bottom:0.5rem;line-height:1.2;">Gizlilik Politikası</h2>
+            <p class="modal-legal-date" style="font-size:0.75rem;color:rgba(136,146,164,0.45);margin-bottom:2rem;">Son güncelleme: Mart 2026</p>
+            <div class="modal-legal-body" style="font-size:0.88rem;color:#8892A4;line-height:1.9;display:flex;flex-direction:column;gap:1.75rem;">
+
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">1. VERİ SORUMLUSU</h3><p>Bu Gizlilik Politikası, <strong style="color:rgba(255,255,255,0.8);">Clinic Media Tech</strong> ("Şirket", "biz") tarafından işletilen clinicmediatech.com alan adlı web sitesi ve bu site üzerinden sunulan dijital hizmetler kapsamında kişisel verilerin nasıl toplandığını, işlendiğini, saklandığını ve korunduğunu açıklamaktadır. Şirket, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca veri sorumlusu sıfatını taşımaktadır.</p></div>
+
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">2. TOPLANAN KİŞİSEL VERİLER</h3><p>Hizmetlerimizi kullanmanız veya web sitemizi ziyaret etmeniz sırasında aşağıdaki kişisel veriler toplanabilir:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">Kimlik verileri:</strong> Ad, soyad</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">İletişim verileri:</strong> E-posta adresi, telefon numarası</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">İşletme verileri:</strong> Klinik/işletme adı, hizmet kapsamı bilgileri</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">Teknik veriler:</strong> IP adresi, tarayıcı türü, işletim sistemi, ziyaret süresi, sayfa etkileşimleri (anonim olarak)</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span><strong style="color:rgba(255,255,255,0.7);">İletişim içerikleri:</strong> İletişim formu aracılığıyla iletilen mesajlar ve talepler</span></li></ul></div>
+
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">3. VERİLERİN İŞLENME AMAÇLARI VE HUKUKİ DAYANAKLARI</h3><p>Kişisel verileriniz aşağıdaki amaçlarla ve KVKK'nın 5. maddesi kapsamındaki hukuki dayanaklara bağlı olarak işlenmektedir:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Hizmet tekliflerinin hazırlanması ve sunulması</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Sözleşme kurulması ve ifası</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Müşteri iletişimi ve destek hizmetleri</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal yükümlülüklerin yerine getirilmesi</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Web sitesi performansının ve kullanıcı deneyiminin iyileştirilmesi</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Güvenlik ve dolandırıcılık önleme faaliyetleri</span></li></ul></div>
+
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">4. VERİLERİN PAYLAŞIMI</h3><p>Kişisel verileriniz; açık rızanız olmaksızın üçüncü taraflara satılmaz, kiralanmaz veya ticari amaçlarla devredilmez. Verileriniz yalnızca aşağıdaki sınırlı durumlarda paylaşılabilir:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Hizmet altyapısını sağlayan, GDPR ve SOC 2 Type II uyumlu iş ortakları (form işleme, CRM, analitik araçları)</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kanunen yetkili kamu kurum ve kuruluşlarının talebi üzerine, yasal zorunluluk çerçevesinde</span></li></ul></div>
+
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">5. VERİLERİN SAKLANMA SÜRESİ</h3><p>Kişisel verileriniz, işlenme amacının gerektirdiği süre boyunca ve ilgili yasal saklama yükümlülükleri çerçevesinde muhafaza edilir. Amaç ortadan kalktığında veriler silinir, yok edilir veya anonim hale getirilir.</p></div>
+
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">6. VERİ GÜVENLİĞİ</h3><p>Verilerinizin güvenliğini sağlamak amacıyla teknik ve idari tedbirler uygulanmaktadır. Hizmet altyapımız, küresel standartlarda güvenlik sertifikalarına sahip sağlayıcılar üzerinden işletilmektedir. Bununla birlikte, internet üzerinden gerçekleştirilen hiçbir veri iletiminin veya elektronik depolamanın %100 güvenli olduğu garanti edilemez.</p></div>
+
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">7. ÇEREZLER (COOKIES)</h3><p>Web sitemiz, kullanıcı deneyimini iyileştirmek ve site performansını analiz etmek amacıyla çerezler kullanabilir. Çerezler; oturum çerezleri (tarayıcı kapatıldığında silinen) ve kalıcı çerezler (belirli bir süre cihazınızda kalan) olmak üzere ikiye ayrılır. Tarayıcı ayarlarınızı değiştirerek çerezleri devre dışı bırakabilirsiniz; ancak bu durumda sitenin bazı işlevleri kısıtlanabilir.</p></div>
+
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. HAKLARINIZ</h3><p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kişisel verilerinizin işlenip işlenmediğini öğrenme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlenmişse buna ilişkin bilgi talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yanlış veya eksik verilerin düzeltilmesini isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal koşullar çerçevesinde silinmesini veya yok edilmesini talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlemenin kısıtlanmasını isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Otomatik sistemler aracılığıyla aleyhinize oluşan sonuçlara itiraz etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Zararın giderilmesini talep etme</span></li></ul><p style="margin-top:0.75rem;">Taleplerinizi <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a> adresine yazılı olarak iletebilirsiniz. Talepler en geç <strong style="color:rgba(255,255,255,0.7);">30 gün</strong> içinde yanıtlanır.</p></div>
+
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLİTİKA DEĞİŞİKLİKLERİ</h3><p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler yapılması halinde güncel metin bu sayfada yayımlanır. Web sitemizi kullanmaya devam etmeniz, güncel politikayı kabul ettiğiniz anlamına gelir.</p></div>
+
+                <div style="background:rgba(192,192,192,0.04);border:1px solid rgba(192,192,192,0.08);padding:1.25rem 1.5rem;border-radius:2px;"><p style="font-size:0.82rem;color:rgba(192,192,192,0.6);line-height:1.7;">Bu politikayla ilgili sorularınız için: <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a></p></div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
