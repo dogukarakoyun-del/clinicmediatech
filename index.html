@@ -62,28 +62,6 @@
         .lang-btn:hover { color: var(--white); }
         .lang-btn.active { background: rgba(192,192,192,0.15); color: var(--white); }
 
-        .dijital-sube-btn {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: linear-gradient(135deg, rgba(78,205,196,0.15), rgba(78,205,196,0.05));
-            border: 1px solid rgba(78,205,196,0.35); border-radius: 980px;
-            padding: 0.4rem 1.1rem; font-family: 'Mona Sans', sans-serif;
-            font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
-            color: #4ECDC4; text-decoration: none;
-            transition: all 0.3s; white-space: nowrap;
-        }
-        .dijital-sube-btn:hover {
-            background: rgba(78,205,196,0.2); border-color: rgba(78,205,196,0.7);
-            box-shadow: 0 0 18px rgba(78,205,196,0.2); transform: translateY(-1px);
-        }
-        .dijital-sube-dot {
-            width: 6px; height: 6px; border-radius: 50%; background: #4ECDC4;
-            animation: pulse-dot 2s ease-in-out infinite; flex-shrink: 0;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(78,205,196,0.4); }
-            50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(78,205,196,0); }
-        }
-
         body[dir="rtl"] .problem-item { flex-direction: row-reverse; }
         body[dir="rtl"] .problem-item::before { left: auto; right: 0; }
         body[dir="rtl"] .why-statement { border-left: none; border-right: 2px solid var(--gold); padding-left: 0; padding-right: 1.5rem; }
@@ -541,10 +519,6 @@
 
     </ul>
     <div style="display:flex;align-items:center;gap:0.75rem;">
-        <a href="dijital-sube.html" class="dijital-sube-btn">
-            <span class="dijital-sube-dot"></span>
-            DİJİTAL ŞUBE
-        </a>
         <div class="lang-switcher">
             <button class="lang-btn active" onclick="setLang('tr')">TR</button>
             <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -2443,7 +2417,7 @@ setLang('tr');
             <h2 class="modal-legal-title" style="font-family:'Mona Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#FFFFFF;margin-bottom:2rem;line-height:1.2;">Teslimat ve İade Politikası</h2>
             <div class="modal-legal-body" style="font-size:0.88rem;color:#8892A4;line-height:1.9;display:flex;flex-direction:column;gap:1.5rem;">
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">HİZMET TESLİMATI</h3><p>Clinic Media Tech olarak sunduğumuz hizmetler tamamen dijital niteliktedir. Satın alım sonrası kurulum süreci 3 iş günü içinde tamamlanır ve hizmet, müşterinin web sitesine entegre edilerek teslim edilir. Fiziksel bir ürün gönderimi söz konusu değildir.</p></div>
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">İPTAL VE İADE KOŞULLARI</h3><p>Hizmetin dijital niteliği gereği, entegrasyon süreci başladıktan sonra iade talepleri kabul edilemez. Ancak hizmetin tarafımızdan sözleşmede belirtilen koşullarda sunulamaması durumunda ödenen tutar eksiksiz iade edilir.</p><p style="margin-top:0.75rem;">Ön ödeme yapılmış ve henüz kurulum başlamamış siparişler için iptal talebi, ödeme tarihinden itibaren 48 saat içinde <a href="/cdn-cgi/l/email-protection#c4adaaa2ab84a7a8adaaada7a9a1a0ada5b0a1a7aceaa7aba9" style="color:#C0C0C0;text-decoration:none;"><span class="__cf_email__" data-cfemail="a3cacdc5cce3c0cfcacdcac0cec6c7cac2d7c6c0cb8dc0ccce">[email&#160;protected]</span></a> adresine iletilmelidir.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">İPTAL VE İADE KOŞULLARI</h3><p>Hizmetin dijital niteliği gereği, entegrasyon süreci başladıktan sonra iade talepleri kabul edilemez. Ancak hizmetin tarafımızdan sözleşmede belirtilen koşullarda sunulamaması durumunda ödenen tutar eksiksiz iade edilir.</p><p style="margin-top:0.75rem;">Ön ödeme yapılmış ve henüz kurulum başlamamış siparişler için iptal talebi, ödeme tarihinden itibaren 48 saat içinde <a href="/cdn-cgi/l/email-protection#c2abaca4ad82a1aeabacaba1afa7a6aba3b6a7a1aaeca1adaf" style="color:#C0C0C0;text-decoration:none;"><span class="__cf_email__" data-cfemail="f49d9a929bb497989d9a9d979991909d958091979cda979b99">[email&#160;protected]</span></a> adresine iletilmelidir.</p></div>
             </div>
         </div>
     </div>
@@ -2474,7 +2448,7 @@ setLang('tr');
 
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">7. ÇEREZLER (COOKIES)</h3><p>Web sitemiz, kullanıcı deneyimini iyileştirmek ve site performansını analiz etmek amacıyla çerezler kullanabilir. Çerezler; oturum çerezleri (tarayıcı kapatıldığında silinen) ve kalıcı çerezler (belirli bir süre cihazınızda kalan) olmak üzere ikiye ayrılır. Tarayıcı ayarlarınızı değiştirerek çerezleri devre dışı bırakabilirsiniz; ancak bu durumda sitenin bazı işlevleri kısıtlanabilir.</p></div>
 
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. HAKLARINIZ</h3><p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kişisel verilerinizin işlenip işlenmediğini öğrenme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlenmişse buna ilişkin bilgi talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yanlış veya eksik verilerin düzeltilmesini isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal koşullar çerçevesinde silinmesini veya yok edilmesini talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlemenin kısıtlanmasını isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Otomatik sistemler aracılığıyla aleyhinize oluşan sonuçlara itiraz etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Zararın giderilmesini talep etme</span></li></ul><p style="margin-top:0.75rem;">Taleplerinizi <a href="/cdn-cgi/l/email-protection#dcb5b2bab39cbfb0b5b2b5bfb1b9b8b5bda8b9bfb4f2bfb3b1" style="color:#C0C0C0;text-decoration:none;"><span class="__cf_email__" data-cfemail="41282f272e01222d282f28222c24252820352422296f222e2c">[email&#160;protected]</span></a> adresine yazılı olarak iletebilirsiniz. Talepler en geç <strong style="color:rgba(255,255,255,0.7);">30 gün</strong> içinde yanıtlanır.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. HAKLARINIZ</h3><p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kişisel verilerinizin işlenip işlenmediğini öğrenme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlenmişse buna ilişkin bilgi talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yanlış veya eksik verilerin düzeltilmesini isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal koşullar çerçevesinde silinmesini veya yok edilmesini talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlemenin kısıtlanmasını isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Otomatik sistemler aracılığıyla aleyhinize oluşan sonuçlara itiraz etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Zararın giderilmesini talep etme</span></li></ul><p style="margin-top:0.75rem;">Taleplerinizi <a href="/cdn-cgi/l/email-protection#066f68606946656a6f686f656b63626f677263656e2865696b" style="color:#C0C0C0;text-decoration:none;"><span class="__cf_email__" data-cfemail="cca5a2aaa38cafa0a5a2a5afa1a9a8a5adb8a9afa4e2afa3a1">[email&#160;protected]</span></a> adresine yazılı olarak iletebilirsiniz. Talepler en geç <strong style="color:rgba(255,255,255,0.7);">30 gün</strong> içinde yanıtlanır.</p></div>
 
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLİTİKA DEĞİŞİKLİKLERİ</h3><p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler yapılması halinde güncel metin bu sayfada yayımlanır. Web sitemizi kullanmaya devam etmeniz, güncel politikayı kabul ettiğiniz anlamına gelir.</p></div>
 
