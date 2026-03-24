@@ -2804,3 +2804,33 @@ setLang('tr');
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLİTİKA DEĞİŞİKLİKLERİ</h3><p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler yapılması halinde güncel metin bu sayfada yayımlanır. Web sitemizi kullanmaya devam etmeniz, güncel politikayı kabul ettiğiniz anlamına gelir.</p></div>
 
                 <div style="background:rgba(192,192,192,0.04);border:1px solid rgba(192,192,192,0.08);padding:1.25rem 1.5rem;border-radius:2px;"><p style="font-size:0.
+<script type="text/javascript">
+  // 1. Tasarım ayarlarını otomatik yükle
+  var style = document.createElement('style');
+  style.innerHTML = `
+    #google_translate_element { display: flex; align-items: center; }
+    #google_translate_element select { background: rgba(255,255,255,0.04); border: 1px solid rgba(192,192,192,0.12); color: #FFFFFF; font-family: 'Mona Sans', sans-serif; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 980px; cursor: pointer; outline: none; appearance: none; }
+    #google_translate_element select option { background: #080808; color: #FFFFFF; }
+    .goog-logo-link { display: none !important; }
+    .goog-te-gadget { color: transparent !important; font-size: 0 !important; margin: 0; }
+    .goog-te-gadget .goog-te-combo { margin: 0 !important; }
+    .VIpgJd-ZVi9od-ORHb-OEVmcd, .goog-te-banner-frame { display: none !important; }
+    body { top: 0 !important; }
+  `;
+  document.head.appendChild(style);
+
+  // 2. Eski TR/EN butonlarını otomatik bul ve yeni kutuyu yerleştir
+  var eskiMenu = document.querySelector('.lang-switcher');
+  if(eskiMenu) {
+      eskiMenu.innerHTML = '<div id="google_translate_element"></div>';
+  }
+
+  // 3. Google Çeviri motorunu başlat
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'tr', 
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>                                                                                                                                                     
