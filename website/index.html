@@ -559,6 +559,187 @@
   .ds-hero-actions { flex-direction:column; }
   .ds-hero-cta, .ds-hero-cta-ghost { width:100%; justify-content:center; }
 }
+
+/* ═══════════════════════════════════════════════════
+   ÖDEME MODALİ — iyzico Checkout Form
+   ═══════════════════════════════════════════════════ */
+
+#modal-odeme {
+  display:none; position:fixed; inset:0; z-index:99998;
+  background:rgba(1,1,6,0.97); backdrop-filter:blur(60px) saturate(180%);
+  align-items:center; justify-content:center;
+  overflow-y:auto; padding:2rem 1rem;
+}
+#modal-odeme.active { display:flex; }
+
+.odeme-container {
+  max-width:560px; width:100%; margin:auto;
+  position:relative; border-radius:20px; overflow:hidden;
+  background:linear-gradient(160deg,#0c0c18 0%,#080810 50%,#05050e 100%);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 80px 200px -30px rgba(0,0,0,0.95),
+             inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.odeme-container::before {
+  content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(78,205,196,0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78,205,196,0.012) 1px, transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
+}
+
+.odeme-accent {
+  height:2px; width:100%;
+  background:linear-gradient(90deg, transparent 0%, rgba(78,205,196,0.5) 30%, rgba(192,160,96,1) 55%, rgba(78,205,196,0.5) 75%, transparent 100%);
+  animation:shimmerLine 5s ease-in-out infinite;
+  background-size:300% 100%;
+}
+
+.odeme-header {
+  position:relative; z-index:1;
+  padding:2.5rem 2.5rem 1.5rem; text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.odeme-close {
+  position:absolute; top:1.2rem; right:1.2rem; z-index:20;
+  width:34px; height:34px; border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,0.4); font-size:0.8rem;
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.25s;
+}
+.odeme-close:hover {
+  background:rgba(255,255,255,0.1); color:#fff;
+  border-color:rgba(255,255,255,0.25); transform:scale(1.08) rotate(90deg);
+}
+
+.odeme-pkg-badge {
+  display:inline-flex; align-items:center; gap:0.45rem;
+  background:rgba(78,205,196,0.06); border:1px solid rgba(78,205,196,0.2);
+  border-radius:980px; padding:0.3rem 0.9rem;
+  font-family:'Mona Sans',sans-serif; font-size:0.55rem;
+  font-weight:700; letter-spacing:3px; color:#4ECDC4;
+  margin-bottom:1rem;
+  text-transform:uppercase;
+}
+
+.odeme-pkg-name {
+  font-family:'Mona Sans',sans-serif; font-size:1.5rem;
+  font-weight:900; color:#fff; margin-bottom:0.8rem;
+  letter-spacing:-0.5px;
+}
+
+.odeme-breakdown {
+  display:flex; flex-direction:column; gap:0.4rem;
+  margin-bottom:0.5rem;
+}
+.odeme-line {
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:0.78rem; color:rgba(136,146,164,0.65);
+  padding:0.3rem 0;
+}
+.odeme-line.total {
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:0.8rem; margin-top:0.3rem;
+  font-size:1rem; font-weight:800; color:#fff;
+}
+.odeme-line .amount { font-family:'Mona Sans',sans-serif; font-weight:700; }
+.odeme-line.total .amount { color:#4ECDC4; font-size:1.2rem; }
+
+/* Müşteri bilgi formu */
+.odeme-form {
+  position:relative; z-index:1;
+  padding:1.5rem 2.5rem 1rem;
+}
+.odeme-form-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;
+  margin-bottom:0.6rem;
+}
+.odeme-form-row.full { grid-template-columns:1fr; }
+.odeme-input {
+  width:100%; padding:0.7rem 1rem; border-radius:10px;
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+  color:#fff; font-family:'Mona Sans',sans-serif; font-size:0.8rem;
+  font-weight:500; outline:none; transition:all 0.2s;
+}
+.odeme-input::placeholder { color:rgba(136,146,164,0.4); }
+.odeme-input:focus {
+  border-color:rgba(78,205,196,0.4);
+  background:rgba(78,205,196,0.04);
+  box-shadow:0 0 20px rgba(78,205,196,0.08);
+}
+
+.odeme-submit {
+  display:flex; align-items:center; justify-content:center; gap:0.6rem;
+  width:100%; padding:1rem; border-radius:12px;
+  background:linear-gradient(135deg,#fff,#e0e0e0);
+  color:#05050e; font-family:'Mona Sans',sans-serif;
+  font-size:0.85rem; font-weight:800; letter-spacing:0.4px;
+  border:none; cursor:pointer; transition:all 0.25s;
+  box-shadow:0 10px 40px rgba(255,255,255,0.12);
+  margin-top:1rem;
+}
+.odeme-submit:hover {
+  transform:translateY(-2px);
+  box-shadow:0 20px 60px rgba(255,255,255,0.2);
+}
+.odeme-submit:disabled {
+  opacity:0.5; cursor:not-allowed; transform:none;
+  box-shadow:none;
+}
+.odeme-submit .spinner {
+  width:16px; height:16px; border:2px solid rgba(5,5,14,0.2);
+  border-top-color:#05050e; border-radius:50%;
+  animation:spin 0.7s linear infinite; display:none;
+}
+.odeme-submit.loading .spinner { display:block; }
+.odeme-submit.loading .btn-text { display:none; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* iyzico checkout iframe alanı */
+.odeme-checkout-wrap {
+  position:relative; z-index:1;
+  padding:0 2.5rem 2rem;
+  min-height:200px;
+  display:none;
+}
+.odeme-checkout-wrap.active { display:block; }
+#iyzipay-checkout-form { width:100%; }
+
+.odeme-trust {
+  display:flex; align-items:center; justify-content:center;
+  gap:0.8rem; padding:1rem 2.5rem 1.5rem;
+  position:relative; z-index:1;
+}
+.odeme-trust-item {
+  font-family:'Mona Sans',sans-serif; font-size:0.55rem;
+  font-weight:700; letter-spacing:1.5px;
+  color:rgba(136,146,164,0.3); text-transform:uppercase;
+}
+
+/* Ödeme sonuç mesajları */
+.odeme-result {
+  display:none; padding:3rem 2.5rem; text-align:center;
+  position:relative; z-index:1;
+}
+.odeme-result.active { display:block; }
+.odeme-result-icon { font-size:3rem; margin-bottom:1rem; }
+.odeme-result-title {
+  font-family:'Mona Sans',sans-serif; font-size:1.3rem;
+  font-weight:800; color:#fff; margin-bottom:0.5rem;
+}
+.odeme-result-desc {
+  font-size:0.85rem; color:rgba(136,146,164,0.65);
+  line-height:1.7; margin-bottom:1.5rem;
+}
+
+@media (max-width:600px) {
+  .odeme-container { border-radius:16px; }
+  .odeme-header, .odeme-form, .odeme-checkout-wrap { padding-left:1.5rem; padding-right:1.5rem; }
+  .odeme-form-row { grid-template-columns:1fr; }
+}
 </style>
     <style>
         :root {
@@ -2455,7 +2636,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
             <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Haftalık veri analizi</li>
             <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>GDPR · HIPAA · SOC 2 · KVKK</li>
           </ul>
-          <a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" class="ds-pkg-cta">Başvur →</a>
+          <a href="javascript:void(0)" onclick="openPaymentModal('baslangic')" class="ds-pkg-cta" data-pkg-cta="baslangic">Satın Al →</a>
         </div>
 
         <!-- Pro (Featured) -->
@@ -2481,7 +2662,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
             <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Öncelikli teknik destek hattı</li>
             <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>GDPR · HIPAA · SOC 2 · KVKK</li>
           </ul>
-          <a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" class="ds-pkg-cta">Başvur →</a>
+          <a href="javascript:void(0)" onclick="openPaymentModal('pro')" class="ds-pkg-cta" data-pkg-cta="pro">Satın Al →</a>
         </div>
 
         <!-- VIP Ekosistem -->
@@ -2505,7 +2686,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
             <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Anlık veri analizi</li>
             <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>GDPR · HIPAA · SOC 2 · KVKK</li>
           </ul>
-          <a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" class="ds-pkg-cta">Başvur →</a>
+          <a href="javascript:void(0)" onclick="openPaymentModal('vip')" class="ds-pkg-cta" data-pkg-cta="vip">Satın Al →</a>
         </div>
 
       </div>
@@ -4052,7 +4233,7 @@ function setLang(lang) {
             pkg1n:'Başlangıç', pkg1q:'"Dijital dönüşüme sağlam bir adımla başlamak istiyorum."',
             pkg1f1:'1 dijital personel — kliniğe özel eğitimli', pkg1f2:'Türkçe & İngilizce dil desteği', pkg1f3:'Temel web sitesi entegrasyonu', pkg1f4:'200 aylık görüşme kapasitesi', pkg1f5:'Aylık performans raporu', pkg1f6:'Haftalık veri analizi',
             pkg1setup:'+ $950 tek seferlik kurulum ücreti',
-            pkgCta:'Başvur →',
+            pkgCta:'Satın Al →',
             pkg2star:'✦ EN ÇOK TERCİH EDİLEN',
             pkg2q:'"Uluslararası hasta tabanımı büyütmek ve rakiplerimin önüne geçmek istiyorum."',
             pkg2f1:'3 dijital personel — rol bazlı uzmanlaşma', pkg2f2:'5 dil desteği — TR, EN + 3 seçmeli', pkg2f3:'WhatsApp & CRM entegrasyonu', pkg2f4:'500 aylık görüşme kapasitesi', pkg2f5:'Post-op hasta takip desteği', pkg2f6:'Haftalık detaylı analiz raporu', pkg2f7:'Günlük veri analizi', pkg2f8:'Öncelikli teknik destek hattı',
@@ -4092,7 +4273,7 @@ function setLang(lang) {
             pkg1n:'Starter', pkg1q:'"I want to take a solid first step into digital transformation."',
             pkg1f1:'1 digital staff member — clinic-trained', pkg1f2:'Turkish & English language support', pkg1f3:'Basic website integration', pkg1f4:'200 monthly conversation capacity', pkg1f5:'Monthly performance report', pkg1f6:'Weekly data analysis',
             pkg1setup:'+ $950 one-time setup fee',
-            pkgCta:'Apply →',
+            pkgCta:'Buy Now →',
             pkg2star:'✦ MOST POPULAR',
             pkg2q:'"I want to grow my international patient base and stay ahead of competitors."',
             pkg2f1:'3 digital staff — role-based specialisation', pkg2f2:'5 language support — TR, EN + 3 elective', pkg2f3:'WhatsApp & CRM integration', pkg2f4:'500 monthly conversation capacity', pkg2f5:'Post-op patient follow-up support', pkg2f6:'Weekly detailed analysis report', pkg2f7:'Daily data analysis', pkg2f8:'Priority technical support line',
@@ -4132,7 +4313,7 @@ function setLang(lang) {
             pkg1n:'Starter', pkg1q:'"Ich möchte einen soliden ersten Schritt in die digitale Transformation machen."',
             pkg1f1:'1 digitaler Mitarbeiter — klinikgeschult', pkg1f2:'Türkisch & Englisch', pkg1f3:'Grundlegende Web-Integration', pkg1f4:'200 Gespräche/Monat', pkg1f5:'Monatlicher Leistungsbericht', pkg1f6:'Wöchentliche Datenanalyse',
             pkg1setup:'+ 950$ einmalige Einrichtungsgebühr',
-            pkgCta:'Bewerben →',
+            pkgCta:'Jetzt Kaufen →',
             pkg2star:'✦ AM BELIEBTESTEN',
             pkg2q:'"Ich möchte meine internationale Patientenbasis ausbauen."',
             pkg2f1:'3 digitale Mitarbeiter — rollenbasiert', pkg2f2:'5 Sprachen — TR, EN + 3 wählbar', pkg2f3:'WhatsApp & CRM-Integration', pkg2f4:'500 Gespräche/Monat', pkg2f5:'Post-op Patientennachsorge', pkg2f6:'Wöchentlicher Analysebericht', pkg2f7:'Tägliche Datenanalyse', pkg2f8:'Prioritäts-Supportlinie',
@@ -4172,7 +4353,7 @@ function setLang(lang) {
             pkg1n:'Starter', pkg1q:'"Je veux faire un premier pas solide vers la transformation numérique."',
             pkg1f1:'1 membre du personnel numérique — formé en clinique', pkg1f2:'Turc & Anglais', pkg1f3:'Intégration web de base', pkg1f4:'200 conversations/mois', pkg1f5:'Rapport de performance mensuel', pkg1f6:'Analyse de données hebdomadaire',
             pkg1setup:'+ 950$ frais d\'installation uniques',
-            pkgCta:'Postuler →',
+            pkgCta:'Acheter →',
             pkg2star:'✦ LE PLUS POPULAIRE',
             pkg2q:'"Je veux développer ma base de patients internationaux."',
             pkg2f1:'3 membres du personnel — spécialisation par rôle', pkg2f2:'5 langues — TR, EN + 3 au choix', pkg2f3:'Intégration WhatsApp & CRM', pkg2f4:'500 conversations/mois', pkg2f5:'Suivi post-op des patients', pkg2f6:'Rapport d\'analyse hebdomadaire', pkg2f7:'Analyse quotidienne des données', pkg2f8:'Ligne de support prioritaire',
@@ -4212,7 +4393,7 @@ function setLang(lang) {
             pkg1n:'ستارتر', pkg1q:'"أريد خطوة أولى قوية نحو التحول الرقمي."',
             pkg1f1:'موظف رقمي واحد — مدرب للعيادة', pkg1f2:'تركي وإنجليزي', pkg1f3:'تكامل ويب أساسي', pkg1f4:'200 محادثة/شهر', pkg1f5:'تقرير أداء شهري', pkg1f6:'تحليل بيانات أسبوعي',
             pkg1setup:'+ 950$ رسوم تأسيس لمرة واحدة',
-            pkgCta:'تقديم →',
+            pkgCta:'اشتر الآن →',
             pkg2star:'✦ الأكثر شعبية',
             pkg2q:'"أريد تنمية قاعدة مرضاي الدوليين."',
             pkg2f1:'3 موظفين رقميين — تخصص حسب الدور', pkg2f2:'5 لغات — TR, EN + 3 اختيارية', pkg2f3:'تكامل واتساب وCRM', pkg2f4:'500 محادثة/شهر', pkg2f5:'متابعة ما بعد العملية', pkg2f6:'تقرير تحليلي أسبوعي', pkg2f7:'تحليل بيانات يومي', pkg2f8:'خط دعم فني أولوي',
@@ -4467,6 +4648,319 @@ function checkHashAndOpenModal() {
 }
 checkHashAndOpenModal();
 window.addEventListener('hashchange', checkHashAndOpenModal);
+</script>
+
+<!-- ═══════════════════════════════════════════════
+     ÖDEME MODALİ — iyzico Checkout Form
+     ═══════════════════════════════════════════════ -->
+<div id="modal-odeme" onclick="if(event.target===this)closePaymentModal()">
+  <div class="odeme-container">
+    <div class="odeme-accent"></div>
+
+    <!-- Kapatma butonu -->
+    <button class="odeme-close" onclick="closePaymentModal()">✕</button>
+
+    <!-- ADIM 1: Paket özeti + Müşteri bilgileri formu -->
+    <div id="odeme-step-form">
+      <div class="odeme-header">
+        <div class="odeme-pkg-badge" id="odeme-badge">GÜVENLİ ÖDEME</div>
+        <div class="odeme-pkg-name" id="odeme-pkg-name">—</div>
+        <div class="odeme-breakdown">
+          <div class="odeme-line">
+            <span id="odeme-label-setup">Kurulum ücreti (tek seferlik)</span>
+            <span class="amount" id="odeme-setup-price">—</span>
+          </div>
+          <div class="odeme-line">
+            <span id="odeme-label-monthly">İlk ay abonelik</span>
+            <span class="amount" id="odeme-monthly-price">—</span>
+          </div>
+          <div class="odeme-line total">
+            <span id="odeme-label-total">Toplam</span>
+            <span class="amount" id="odeme-total-price">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="odeme-form">
+        <div class="odeme-form-row">
+          <input type="text" class="odeme-input" id="odeme-name" placeholder="Ad" required>
+          <input type="text" class="odeme-input" id="odeme-surname" placeholder="Soyad" required>
+        </div>
+        <div class="odeme-form-row full">
+          <input type="email" class="odeme-input" id="odeme-email" placeholder="E-posta adresi" required>
+        </div>
+        <div class="odeme-form-row full">
+          <input type="tel" class="odeme-input" id="odeme-phone" placeholder="Telefon (+90 5XX XXX XX XX)" required>
+        </div>
+        <div class="odeme-form-row full">
+          <input type="text" class="odeme-input" id="odeme-address" placeholder="Adres (şehir, ülke)">
+        </div>
+        <button class="odeme-submit" id="odeme-submit-btn" onclick="submitPaymentForm()">
+          <span class="spinner"></span>
+          <span class="btn-text" id="odeme-btn-text">Ödemeye Geç →</span>
+        </button>
+      </div>
+
+      <div class="odeme-trust">
+        <span class="odeme-trust-item">🔒 256-BIT SSL</span>
+        <span class="odeme-trust-item">🛡 3D SECURE</span>
+        <span class="odeme-trust-item">✓ IYZICO KORUMASINDA</span>
+      </div>
+    </div>
+
+    <!-- ADIM 2: iyzico checkout form -->
+    <div id="odeme-step-checkout" style="display:none;">
+      <div class="odeme-header" style="padding-bottom:1rem;">
+        <div class="odeme-pkg-badge">KART BİLGİLERİ</div>
+        <p style="font-size:0.78rem;color:rgba(136,146,164,0.5);margin-top:0.5rem;">Kart bilgileriniz iyzico güvencesinde işlenir.</p>
+      </div>
+      <div class="odeme-checkout-wrap active">
+        <div id="iyzipay-checkout-form" class="responsive"></div>
+      </div>
+    </div>
+
+    <!-- ADIM 3: Sonuç — Başarılı -->
+    <div id="odeme-step-success" class="odeme-result">
+      <div class="odeme-result-icon">✅</div>
+      <div class="odeme-result-title">Ödemeniz Başarıyla Alındı!</div>
+      <div class="odeme-result-desc">
+        Ekibimiz en kısa sürede sizinle iletişime geçecek ve kurulum sürecini başlatacaktır.
+        Onay e-postası belirttiğiniz adrese gönderilmiştir.
+      </div>
+      <button class="odeme-submit" onclick="closePaymentModal()" style="max-width:250px;margin:0 auto;">
+        <span class="btn-text">Tamam</span>
+      </button>
+    </div>
+
+    <!-- ADIM 3b: Sonuç — Hata -->
+    <div id="odeme-step-error" class="odeme-result">
+      <div class="odeme-result-icon">⚠️</div>
+      <div class="odeme-result-title">Ödeme Tamamlanamadı</div>
+      <div class="odeme-result-desc" id="odeme-error-msg">
+        Bir sorun oluştu. Lütfen tekrar deneyin veya farklı bir kart kullanın.
+      </div>
+      <button class="odeme-submit" onclick="resetPaymentModal()" style="max-width:250px;margin:0 auto;">
+        <span class="btn-text">Tekrar Dene</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   ÖDEME SİSTEMİ — iyzico Checkout Form JavaScript
+   ═══════════════════════════════════════════════════ */
+
+// ──────────────────────────────────────
+// AYARLAR — Backend API URL'inizi girin
+// ──────────────────────────────────────
+var PAYMENT_API_URL = 'https://clinic-payment-api.onrender.com'; // Production'da https://api.clinicmediatech.com olacak
+
+// Paket tanımları (frontend tarafı — backend ile senkron)
+var PAYMENT_PACKAGES = {
+    baslangic: { name: 'Başlangıç', monthly: 550, setup: 950, total: 1500, currency: 'USD' },
+    pro:       { name: 'Pro',       monthly: 950, setup: 1500, total: 2450, currency: 'USD' },
+    vip:       { name: 'VIP Ekosistem', monthly: 1750, setup: 3350, total: 5100, currency: 'USD' }
+};
+
+// Çok dilli paket isimleri
+var PAYMENT_LABELS = {
+    tr: { setup: 'Kurulum ücreti (tek seferlik)', monthly: 'İlk ay abonelik', total: 'Toplam', btn: 'Ödemeye Geç →', badge: 'GÜVENLİ ÖDEME' },
+    en: { setup: 'Setup fee (one-time)', monthly: 'First month subscription', total: 'Total', btn: 'Proceed to Payment →', badge: 'SECURE PAYMENT' },
+    de: { setup: 'Einrichtungsgebühr (einmalig)', monthly: 'Erster Monat Abonnement', total: 'Gesamt', btn: 'Zur Zahlung →', badge: 'SICHERE ZAHLUNG' },
+    fr: { setup: 'Frais d\'installation (uniques)', monthly: 'Premier mois d\'abonnement', total: 'Total', btn: 'Passer au paiement →', badge: 'PAIEMENT SÉCURISÉ' },
+    ar: { setup: 'رسوم التأسيس (مرة واحدة)', monthly: 'اشتراك الشهر الأول', total: 'المجموع', btn: '→ المتابعة للدفع', badge: 'دفع آمن' }
+};
+
+var currentPaymentPackage = null;
+
+// ──────────────────────────────────────
+// ÖDEME MODALI AÇ
+// ──────────────────────────────────────
+function openPaymentModal(packageId) {
+    var pkg = PAYMENT_PACKAGES[packageId];
+    if (!pkg) return;
+    currentPaymentPackage = packageId;
+
+    // Dil bilgisi
+    var lang = (typeof currentLang !== 'undefined') ? currentLang : 'tr';
+    var labels = PAYMENT_LABELS[lang] || PAYMENT_LABELS['tr'];
+
+    // Paket bilgilerini doldur
+    document.getElementById('odeme-pkg-name').textContent = pkg.name;
+    document.getElementById('odeme-setup-price').textContent = '$' + pkg.setup.toLocaleString();
+    document.getElementById('odeme-monthly-price').textContent = '$' + pkg.monthly.toLocaleString();
+    document.getElementById('odeme-total-price').textContent = '$' + pkg.total.toLocaleString();
+
+    // Etiketleri dile göre güncelle
+    document.getElementById('odeme-label-setup').textContent = labels.setup;
+    document.getElementById('odeme-label-monthly').textContent = labels.monthly;
+    document.getElementById('odeme-label-total').textContent = labels.total;
+    document.getElementById('odeme-btn-text').textContent = labels.btn;
+    document.getElementById('odeme-badge').textContent = labels.badge;
+
+    // Adımları sıfırla
+    document.getElementById('odeme-step-form').style.display = 'block';
+    document.getElementById('odeme-step-checkout').style.display = 'none';
+    document.getElementById('odeme-step-success').classList.remove('active');
+    document.getElementById('odeme-step-error').classList.remove('active');
+
+    // Formu temizle
+    document.getElementById('odeme-name').value = '';
+    document.getElementById('odeme-surname').value = '';
+    document.getElementById('odeme-email').value = '';
+    document.getElementById('odeme-phone').value = '';
+    document.getElementById('odeme-address').value = '';
+
+    // Modalı aç
+    var modal = document.getElementById('modal-odeme');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+// ──────────────────────────────────────
+// ÖDEME MODALI KAPAT
+// ──────────────────────────────────────
+function closePaymentModal() {
+    var modal = document.getElementById('modal-odeme');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    currentPaymentPackage = null;
+
+    // Checkout form'u temizle
+    var checkoutDiv = document.getElementById('iyzipay-checkout-form');
+    if (checkoutDiv) checkoutDiv.innerHTML = '';
+}
+
+// ──────────────────────────────────────
+// FORMU SIFIRLA (hata sonrası tekrar dene)
+// ──────────────────────────────────────
+function resetPaymentModal() {
+    document.getElementById('odeme-step-form').style.display = 'block';
+    document.getElementById('odeme-step-checkout').style.display = 'none';
+    document.getElementById('odeme-step-success').classList.remove('active');
+    document.getElementById('odeme-step-error').classList.remove('active');
+
+    var submitBtn = document.getElementById('odeme-submit-btn');
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+}
+
+// ──────────────────────────────────────
+// ÖDEME FORMUNU GÖNDER → Backend'e istek at
+// ──────────────────────────────────────
+function submitPaymentForm() {
+    var name = document.getElementById('odeme-name').value.trim();
+    var surname = document.getElementById('odeme-surname').value.trim();
+    var email = document.getElementById('odeme-email').value.trim();
+    var phone = document.getElementById('odeme-phone').value.trim();
+    var address = document.getElementById('odeme-address').value.trim() || 'Istanbul, Turkey';
+
+    // Validasyon
+    if (!name || !surname || !email || !phone) {
+        alert('Lütfen tüm zorunlu alanları doldurun.');
+        return;
+    }
+    if (!email.includes('@')) {
+        alert('Geçerli bir e-posta adresi girin.');
+        return;
+    }
+
+    // Loading state
+    var submitBtn = document.getElementById('odeme-submit-btn');
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+
+    var lang = (typeof currentLang !== 'undefined') ? currentLang : 'tr';
+
+    // Backend'e istek
+    fetch(PAYMENT_API_URL + '/api/payment/initialize', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            package_id: currentPaymentPackage,
+            name: name,
+            surname: surname,
+            email: email,
+            phone: phone,
+            address: address,
+            locale: lang === 'tr' ? 'tr' : 'en'
+        })
+    })
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+
+        if (data.status === 'success' && data.checkoutFormContent) {
+            // Adım 1'i gizle, Adım 2'yi göster
+            document.getElementById('odeme-step-form').style.display = 'none';
+            document.getElementById('odeme-step-checkout').style.display = 'block';
+
+            // iyzico checkout form'u render et
+            var checkoutDiv = document.getElementById('iyzipay-checkout-form');
+            checkoutDiv.innerHTML = '';
+
+            // iyzico'nun script'ini çalıştır
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data.checkoutFormContent;
+            var scripts = tempDiv.querySelectorAll('script');
+            scripts.forEach(function(script) {
+                var newScript = document.createElement('script');
+                if (script.src) {
+                    newScript.src = script.src;
+                } else {
+                    newScript.textContent = script.textContent;
+                }
+                document.head.appendChild(newScript);
+            });
+        } else {
+            // Hata göster
+            document.getElementById('odeme-step-form').style.display = 'none';
+            document.getElementById('odeme-error-msg').textContent =
+                data.message || 'Ödeme başlatılamadı. Lütfen tekrar deneyin.';
+            document.getElementById('odeme-step-error').classList.add('active');
+        }
+    })
+    .catch(function(error) {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        console.error('Ödeme hatası:', error);
+
+        document.getElementById('odeme-step-form').style.display = 'none';
+        document.getElementById('odeme-error-msg').textContent =
+            'Sunucuya bağlanılamadı. İnternet bağlantınızı kontrol edin.';
+        document.getElementById('odeme-step-error').classList.add('active');
+    });
+}
+
+// ──────────────────────────────────────
+// HASH İLE ÖDEME SONUCU KONTROLÜ
+// ──────────────────────────────────────
+function checkPaymentResult() {
+    var hash = window.location.hash;
+    if (hash === '#odeme-basarili') {
+        var modal = document.getElementById('modal-odeme');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        document.getElementById('odeme-step-form').style.display = 'none';
+        document.getElementById('odeme-step-checkout').style.display = 'none';
+        document.getElementById('odeme-step-success').classList.add('active');
+        // Hash'i temizle
+        history.replaceState(null, null, ' ');
+    } else if (hash === '#odeme-hata') {
+        var modal2 = document.getElementById('modal-odeme');
+        modal2.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        document.getElementById('odeme-step-form').style.display = 'none';
+        document.getElementById('odeme-step-checkout').style.display = 'none';
+        document.getElementById('odeme-step-error').classList.add('active');
+        history.replaceState(null, null, ' ');
+    }
+}
+checkPaymentResult();
+window.addEventListener('hashchange', checkPaymentResult);
 </script>
 
 <!-- TESLİMAT & İADE MODALİ -->
