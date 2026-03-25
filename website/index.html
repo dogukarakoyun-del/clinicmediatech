@@ -649,6 +649,23 @@
 .odeme-line.total .amount { color:#4ECDC4; font-size:1.2rem; }
 
 /* Müşteri bilgi formu */
+/* ─── ASISTAN SEÇİMİ ─── */
+.odeme-assistant-item {
+  display:flex; flex-direction:column; gap:0.2rem;
+  padding:0.65rem 0.85rem; border-radius:8px;
+  border:1px solid rgba(255,255,255,0.07);
+  background:rgba(255,255,255,0.03);
+  cursor:pointer; transition:all 0.2s;
+  position:relative;
+}
+.odeme-assistant-item:hover { background:rgba(78,205,196,0.06); border-color:rgba(78,205,196,0.3); }
+.odeme-assistant-item input[type="checkbox"] { display:none; }
+.odeme-assistant-item.selected { background:rgba(78,205,196,0.09); border-color:rgba(78,205,196,0.5); }
+.odeme-assistant-name { font-family:'Mona Sans',sans-serif; font-size:0.82rem; font-weight:700; color:rgba(255,255,255,0.85); }
+.odeme-assistant-desc { font-size:0.74rem; color:rgba(136,146,164,0.7); line-height:1.5; }
+.odeme-assistant-item.selected .odeme-assistant-name { color:#4ECDC4; }
+.odeme-assistant-item.disabled { opacity:0.35; pointer-events:none; }
+
 .odeme-form {
   position:relative; z-index:1;
   padding:1.5rem 2.5rem 1rem;
@@ -2411,6 +2428,9 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
         </a>
         <a href="javascript:void(0)" class="ds-hero-cta-ghost" onclick="document.getElementById('ds-demo-section').scrollIntoView({behavior:'smooth'})">
           Demo İzle ↓
+        </a>
+        <a href="javascript:void(0)" onclick="window.location.href='https://www.clinicmediatech.com'" class="ds-hero-cta-ghost" id="ds-hero-homepage-btn" style="border-color:rgba(192,192,192,0.18);">
+          🏠 <span id="ds-homepage-btn-text">Anasayfa</span>
         </a>
       </div>
     </div>
@@ -4180,8 +4200,7 @@ function setLang(lang) {
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">5. VERİLERİN SAKLANMA SÜRESİ</h3><p>Kişisel verileriniz, işlenme amacının gerektirdiği süre boyunca ve yasal saklama yükümlülükleri çerçevesinde muhafaza edilir. Amaç ortadan kalktığında veriler silinir, yok edilir veya anonim hale getirilir.</p></div>
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">6. VERİ GÜVENLİĞİ</h3><p>Verilerinizin güvenliğini sağlamak amacıyla teknik ve idari tedbirler uygulanmaktadır. Hizmet altyapımız, küresel standartlarda güvenlik sertifikalarına sahip sağlayıcılar üzerinden işletilmektedir.</p></div>
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">7. ÇEREZLER (COOKIES)</h3><p>Web sitemiz, kullanıcı deneyimini iyileştirmek ve site performansını analiz etmek amacıyla çerezler kullanabilir. Tarayıcı ayarlarınızı değiştirerek çerezleri devre dışı bırakabilirsiniz.</p></div>
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. HAKLARINIZ</h3><p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kişisel verilerinizin işlenip işlenmediğini öğrenme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yanlış veya eksik verilerin düzeltilmesini isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal koşullar çerçevesinde silinmesini talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlemenin kısıtlanmasını isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Otomatik sistemler aracılığıyla aleyhinize oluşan sonuçlara itiraz etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Zararın giderilmesini talep etme</span></li></ul><p style="margin-top:0.75rem;">Taleplerinizi <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a> adresine yazılı olarak iletebilirsiniz. Talepler en geç <strong style="color:rgba(255,255,255,0.7);">30 gün</strong> içinde yanıtlanır.</p></div>
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLİTİKA DEĞİŞİKLİKLERİ</h3><p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler yapılması halinde güncel metin bu sayfada yayımlanır.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. HAKLARINIZ</h3><p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kişisel verilerinizin işlenip işlenmediğini öğrenme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yanlış veya eksik verilerin düzeltilmesini isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal koşullar çerçevesinde silinmesini talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlemenin kısıtlanmasını isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Otomatik sistemler aracılığıyla aleyhinize oluşan sonuçlara itiraz etme</span></li></ul><p style="margin-top:0.75rem;">Taleplerinizi <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a> adresine yazılı olarak iletebilirsiniz. Talepler en geç <strong style="color:rgba(255,255,255,0.7);">48 saat</strong> içerisinde yanıtlanır.</p></div>
                 <div style="background:rgba(192,192,192,0.04);border:1px solid rgba(192,192,192,0.08);padding:1.25rem 1.5rem;border-radius:2px;"><p style="font-size:0.82rem;color:rgba(192,192,192,0.6);line-height:1.7;">Bu politikayla ilgili sorularınız için: <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a></p></div>`
         },
         en: {
@@ -4196,8 +4215,8 @@ function setLang(lang) {
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">5. DATA RETENTION</h3><p>Your personal data is retained for as long as necessary for the purpose for which it was collected, and in accordance with applicable legal retention obligations. Once the purpose has been fulfilled, data is deleted, destroyed or anonymised.</p></div>
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">6. DATA SECURITY</h3><p>Technical and administrative measures are in place to ensure the security of your data. Our service infrastructure is operated through providers holding internationally recognised security certifications.</p></div>
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">7. COOKIES</h3><p>Our website may use cookies to improve the user experience and analyse site performance. Cookies may be session-based (deleted when the browser is closed) or persistent (stored on your device for a set period). You can disable cookies through your browser settings; however, some site functionality may be limited as a result.</p></div>
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. YOUR RIGHTS</h3><p>Under applicable data protection law, you have the right to:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Be informed whether your personal data is being processed</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Request correction of inaccurate or incomplete data</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Request erasure of your data under applicable legal conditions</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Request restriction of processing</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Object to automated decision-making that produces adverse effects</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Claim compensation for damages arising from unlawful processing</span></li></ul><p style="margin-top:0.75rem;">You may submit your requests in writing to <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a>. Requests will be responded to within <strong style="color:rgba(255,255,255,0.7);">30 days</strong>.</p></div>
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLICY UPDATES</h3><p>This policy may be updated from time to time. In the event of material changes, the updated text will be published on this page. Continued use of our website constitutes acceptance of the current policy.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. YOUR RIGHTS</h3><p>Under applicable data protection law, you have the right to:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Be informed whether your personal data is being processed</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Request correction of inaccurate or incomplete data</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Request erasure of your data under applicable legal conditions</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Request restriction of processing</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Object to automated decision-making that produces adverse effects</span></li></ul><p style="margin-top:0.75rem;">You may submit your requests in writing to <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a>. Requests will be responded to within <strong style="color:rgba(255,255,255,0.7);">48 hours</strong>.</p></div>
+                
                 <div style="background:rgba(192,192,192,0.04);border:1px solid rgba(192,192,192,0.08);padding:1.25rem 1.5rem;border-radius:2px;"><p style="font-size:0.82rem;color:rgba(192,192,192,0.6);line-height:1.7;">For questions regarding this policy: <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a></p></div>`
         }
     };
@@ -4424,6 +4443,16 @@ function setLang(lang) {
         const subs = qa('.ds-hero-sub'); if(subs[0]) subs[0].textContent = ds.sub1; if(subs[1]) subs[1].textContent = ds.sub2;
         const heroCta = q('.ds-hero-cta'); if(heroCta) { heroCta.innerHTML = ds.cta + ' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'; }
         const ghost = q('.ds-hero-cta-ghost'); if(ghost) ghost.textContent = ds.demo;
+        const hpBtn = document.getElementById('ds-homepage-btn-text');
+        var hpLabels = {tr:'Anasayfa',en:'Homepage',de:'Startseite',fr:'Accueil',ar:'الرئيسية'};
+        if(hpBtn) hpBtn.textContent = hpLabels[lang] || hpLabels['en'];
+
+        // Gizlilik modalindeki butonları güncelle
+        var gizlilikCloseLabels = {tr:'ANLADIM, KAPAT',en:'GOT IT, CLOSE',de:'VERSTANDEN, SCHLIESSEN',fr:'COMPRIS, FERMER',ar:'فهمت، أغلق'};
+        var gizlilikCloseBtn = document.getElementById('gizlilik-close-btn');
+        var gizlilikHpBtn = document.getElementById('gizlilik-homepage-btn');
+        if(gizlilikCloseBtn) gizlilikCloseBtn.textContent = gizlilikCloseLabels[lang] || gizlilikCloseLabels['tr'];
+        if(gizlilikHpBtn) gizlilikHpBtn.textContent = '🏠 ' + (hpLabels[lang] || hpLabels['en']);
         // KPI
         const kpis = qa('.ds-kpi');
         if(kpis[0]){kpis[0].querySelector('.ds-kpi-label').textContent=ds.kpi1; kpis[0].querySelector('.ds-kpi-sub').textContent=ds.kpi1s;}
@@ -4687,14 +4716,79 @@ window.addEventListener('hashchange', checkHashAndOpenModal);
           <input type="text" class="odeme-input" id="odeme-surname" placeholder="Soyad" required>
         </div>
         <div class="odeme-form-row full">
+          <input type="url" class="odeme-input" id="odeme-website" placeholder="Web sitesi (örn: clinicmediatech.com)" required>
+        </div>
+        <div class="odeme-form-row full">
           <input type="email" class="odeme-input" id="odeme-email" placeholder="E-posta adresi" required>
         </div>
         <div class="odeme-form-row full">
           <input type="tel" class="odeme-input" id="odeme-phone" placeholder="Telefon (+90 5XX XXX XX XX)" required>
         </div>
-        <div class="odeme-form-row full">
-          <input type="text" class="odeme-input" id="odeme-address" placeholder="Adres (şehir, ülke)">
+
+        <!-- DİJİTAL ASİSTAN SEÇİMİ -->
+        <div class="odeme-form-row full" style="flex-direction:column;gap:0.6rem;">
+          <div style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:rgba(78,205,196,0.7);margin-bottom:0.2rem;" id="odeme-assistant-label">DİJİTAL ASİSTAN SEÇİMİ</div>
+          <div id="odeme-assistant-options" style="display:flex;flex-direction:column;gap:0.55rem;">
+            <label class="odeme-assistant-item" data-value="kasilama">
+              <input type="checkbox" name="odeme-assistant" value="kasilama" class="odeme-assistant-cb">
+              <span class="odeme-assistant-name" id="oa-j1-name">Karşılama & Bilgi Uzmanı</span>
+              <span class="odeme-assistant-desc" id="oa-j1-desc">İlk temas. Hastanın beklentilerini analiz ederek kliniğe uygun yönlendirme yapar.</span>
+            </label>
+            <label class="odeme-assistant-item" data-value="operasyon">
+              <input type="checkbox" name="odeme-assistant" value="operasyon" class="odeme-assistant-cb">
+              <span class="odeme-assistant-name" id="oa-j2-name">Operasyon & Süreç Desteği</span>
+              <span class="odeme-assistant-desc" id="oa-j2-desc">Arka planı yönetir. Süreçlerin sorunsuz ve hızlı ilerlemesi için tam koordinasyon sağlar.</span>
+            </label>
+            <label class="odeme-assistant-item" data-value="randevu">
+              <input type="checkbox" name="odeme-assistant" value="randevu" class="odeme-assistant-cb">
+              <span class="odeme-assistant-name" id="oa-j3-name">Randevu & Fiyatlandırma</span>
+              <span class="odeme-assistant-desc" id="oa-j3-desc">Fiyat politikanıza göre net bütçe sunar, takviminizle senkronize randevu oluşturur.</span>
+            </label>
+            <label class="odeme-assistant-item" data-value="postop">
+              <input type="checkbox" name="odeme-assistant" value="postop" class="odeme-assistant-cb">
+              <span class="odeme-assistant-name" id="oa-j4-name">Ameliyat Sonrası Destek</span>
+              <span class="odeme-assistant-desc" id="oa-j4-desc">İyileşme sürecinde hastanın aklına takılan her soruyu anında yanıtlayarak güven pekiştirir.</span>
+            </label>
+            <label class="odeme-assistant-item" data-value="vip">
+              <input type="checkbox" name="odeme-assistant" value="vip" class="odeme-assistant-cb">
+              <span class="odeme-assistant-name" id="oa-j5-name">Özel İstek Asistanı</span>
+              <span class="odeme-assistant-desc" id="oa-j5-desc">VIP & özelleştirilmiş talepler için çözüm odaklı proaktif asistan. Standart dışı senaryoları yönetir.</span>
+            </label>
+          </div>
+          <div id="odeme-assistant-hint" style="font-size:0.72rem;color:rgba(136,146,164,0.55);margin-top:0.15rem;"></div>
         </div>
+
+        <!-- EK SORULAR -->
+        <div class="odeme-form-row full" style="margin-top:0.2rem;">
+          <input type="text" class="odeme-input" id="odeme-birim" placeholder="Eklemek istediğiniz birim" style="width:100%;">
+        </div>
+        <div class="odeme-form-row full">
+          <input type="text" class="odeme-input" id="odeme-gorev" placeholder="Görev / Ünvan" style="width:100%;">
+        </div>
+        <div class="odeme-form-row full">
+          <textarea class="odeme-input" id="odeme-not" placeholder="Notlar / Özel istekler" rows="3" style="resize:vertical;min-height:72px;width:100%;line-height:1.6;padding-top:0.75rem;"></textarea>
+        </div>
+
+        <!-- SÖZLEŞME ONAYI -->
+        <div class="odeme-form-row full" style="margin-top:0.25rem;">
+          <div style="display:flex;align-items:flex-start;gap:0.65rem;">
+            <input type="checkbox" id="odeme-contract" style="margin-top:3px;accent-color:#4ECDC4;width:15px;height:15px;flex-shrink:0;" required>
+            <span style="font-size:0.78rem;color:rgba(136,146,164,0.75);line-height:1.6;">
+              <span id="odeme-contract-text"></span>
+            </span>
+          </div>
+        </div>
+
+        <!-- GİZLİLİK POLİTİKASI ONAYI -->
+        <div class="odeme-form-row full" style="margin-top:0.4rem;">
+          <div style="display:flex;align-items:flex-start;gap:0.65rem;">
+            <input type="checkbox" id="odeme-privacy" style="margin-top:3px;accent-color:#4ECDC4;width:15px;height:15px;flex-shrink:0;" required>
+            <span style="font-size:0.78rem;color:rgba(136,146,164,0.75);line-height:1.6;">
+              <span id="odeme-privacy-text"></span>
+            </span>
+          </div>
+        </div>
+
         <button class="odeme-submit" id="odeme-submit-btn" onclick="submitPaymentForm()">
           <span class="spinner"></span>
           <span class="btn-text" id="odeme-btn-text">Ödemeye Geç →</span>
@@ -4766,11 +4860,66 @@ var PAYMENT_PACKAGES = {
 
 // Çok dilli paket isimleri
 var PAYMENT_LABELS = {
-    tr: { setup: 'Kurulum ücreti (tek seferlik)', monthly: 'İlk ay abonelik', total: 'Toplam', btn: 'Ödemeye Geç →', badge: 'GÜVENLİ ÖDEME' },
-    en: { setup: 'Setup fee (one-time)', monthly: 'First month subscription', total: 'Total', btn: 'Proceed to Payment →', badge: 'SECURE PAYMENT' },
-    de: { setup: 'Einrichtungsgebühr (einmalig)', monthly: 'Erster Monat Abonnement', total: 'Gesamt', btn: 'Zur Zahlung →', badge: 'SICHERE ZAHLUNG' },
-    fr: { setup: 'Frais d\'installation (uniques)', monthly: 'Premier mois d\'abonnement', total: 'Total', btn: 'Passer au paiement →', badge: 'PAIEMENT SÉCURISÉ' },
-    ar: { setup: 'رسوم التأسيس (مرة واحدة)', monthly: 'اشتراك الشهر الأول', total: 'المجموع', btn: '→ المتابعة للدفع', badge: 'دفع آمن' }
+    tr: { setup: 'Kurulum ücreti (tek seferlik)', monthly: 'İlk ay abonelik', total: 'Toplam', btn: 'Ödemeye Geç →', badge: 'GÜVENLİ ÖDEME',
+          assistantLabel: 'DİJİTAL ASİSTAN SEÇİMİ',
+          assistantHint1: 'Bu paket için 1 asistan seçiniz.', assistantHint2: 'Bu paket için 2 asistan seçiniz.', assistantHint4: 'Bu paket için 4 asistan dahildir (hepsi seçildi).',
+          birimPlaceholder: 'Eklemek istediğiniz birim', gorevPlaceholder: 'Görev / Ünvan', notPlaceholder: 'Notlar / Özel istekler',
+          websitePlaceholder: 'Web sitesi (örn: clinicmediatech.com)',
+          contractText: '<button type="button" onclick="openContractModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">Hizmet Sözleşmesi</button>\'ni okudum ve kabul ediyorum.',
+          privacyText: '<button type="button" onclick="openPrivacyModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">Gizlilik Politikası</button>\'nı okudum ve kabul ediyorum.',
+          j1:'Karşılama & Bilgi Uzmanı', j1d:'İlk temas. Hastanın beklentilerini analiz ederek kliniğe uygun yönlendirme yapar.',
+          j2:'Operasyon & Süreç Desteği', j2d:'Arka planı yönetir. Süreçlerin sorunsuz ve hızlı ilerlemesi için tam koordinasyon sağlar.',
+          j3:'Randevu & Fiyatlandırma', j3d:'Fiyat politikanıza göre net bütçe sunar, takviminizle senkronize randevu oluşturur.',
+          j4:'Ameliyat Sonrası Destek', j4d:'İyileşme sürecinde hastanın aklına takılan her soruyu anında yanıtlayarak güven pekiştirir.',
+          j5:'Özel İstek Asistanı', j5d:'VIP & özelleştirilmiş talepler için çözüm odaklı proaktif asistan. Standart dışı senaryoları yönetir.' },
+    en: { setup: 'Setup fee (one-time)', monthly: 'First month subscription', total: 'Total', btn: 'Proceed to Payment →', badge: 'SECURE PAYMENT',
+          assistantLabel: 'DIGITAL ASSISTANT SELECTION',
+          assistantHint1: 'Please select 1 assistant for this package.', assistantHint2: 'Please select 2 assistants for this package.', assistantHint4: 'This package includes 4 assistants (all selected).',
+          birimPlaceholder: 'Unit / Department', gorevPlaceholder: 'Role / Title', notPlaceholder: 'Notes / Special requests',
+          websitePlaceholder: 'Website (e.g. clinicmediatech.com)',
+          contractText: 'I have read and accept the <button type="button" onclick="openContractModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">Service Agreement</button>.',
+          privacyText: 'I have read and accept the <button type="button" onclick="openPrivacyModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">Privacy Policy</button>.',
+          j1:'Welcome & Information Specialist', j1d:'First contact. Analyses patient expectations and routes them appropriately for your clinic.',
+          j2:'Operations & Process Support', j2d:'Manages the back-end. Ensures smooth, fast coordination across all processes.',
+          j3:'Appointment & Pricing', j3d:'Provides clear budgets based on your pricing policy and creates calendar-synced appointments.',
+          j4:'Post-Op Support', j4d:'Instantly answers every question during the recovery period, reinforcing trust.',
+          j5:'Special Request Assistant', j5d:'A solution-oriented, proactive assistant for VIP & custom requests. Handles non-standard scenarios.' },
+    de: { setup: 'Einrichtungsgebühr (einmalig)', monthly: 'Erster Monat Abonnement', total: 'Gesamt', btn: 'Zur Zahlung →', badge: 'SICHERE ZAHLUNG',
+          assistantLabel: 'DIGITALER ASSISTENT AUSWAHL',
+          assistantHint1: 'Bitte wählen Sie 1 Assistenten für dieses Paket.', assistantHint2: 'Bitte wählen Sie 2 Assistenten für dieses Paket.', assistantHint4: 'Dieses Paket enthält 4 Assistenten (alle ausgewählt).',
+          birimPlaceholder: 'Abteilung / Einheit', gorevPlaceholder: 'Rolle / Titel', notPlaceholder: 'Notizen / Sonderwünsche',
+          websitePlaceholder: 'Webseite (z.B. clinicmediatech.com)',
+          contractText: 'Ich habe die <button type="button" onclick="openContractModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">Servicevereinbarung</button> gelesen und akzeptiere sie.',
+          privacyText: 'Ich habe die <button type="button" onclick="openPrivacyModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">Datenschutzrichtlinie</button> gelesen und akzeptiere sie.',
+          j1:'Empfang & Informationsspezialist', j1d:'Erster Kontakt. Analysiert Patientenerwartungen und leitet klinikgerecht weiter.',
+          j2:'Operations- & Prozessunterstützung', j2d:'Verwaltet den Hintergrund. Sorgt für reibungslose, schnelle Koordination.',
+          j3:'Termin & Preisgestaltung', j3d:'Bietet klare Budgets und erstellt kalendersynchronisierte Termine.',
+          j4:'Post-OP-Unterstützung', j4d:'Beantwortet sofort jede Frage während der Genesungsphase.',
+          j5:'Sonderwunsch-Assistent', j5d:'Lösungsorientierter Assistent für VIP- & individuelle Anfragen.' },
+    fr: { setup: 'Frais d\'installation (uniques)', monthly: 'Premier mois d\'abonnement', total: 'Total', btn: 'Passer au paiement →', badge: 'PAIEMENT SÉCURISÉ',
+          assistantLabel: 'SÉLECTION D\'ASSISTANT NUMÉRIQUE',
+          assistantHint1: 'Veuillez sélectionner 1 assistant pour ce forfait.', assistantHint2: 'Veuillez sélectionner 2 assistants pour ce forfait.', assistantHint4: 'Ce forfait comprend 4 assistants (tous sélectionnés).',
+          birimPlaceholder: 'Unité / Département', gorevPlaceholder: 'Rôle / Titre', notPlaceholder: 'Notes / Demandes spéciales',
+          websitePlaceholder: 'Site web (ex: clinicmediatech.com)',
+          contractText: 'J\'ai lu et j\'accepte l\'<button type="button" onclick="openContractModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">Accord de Service</button>.',
+          privacyText: 'J\'ai lu et j\'accepte la <button type="button" onclick="openPrivacyModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">Politique de Confidentialité</button>.',
+          j1:'Accueil & Spécialiste info', j1d:'Premier contact. Analyse les attentes du patient et oriente vers la clinique.',
+          j2:'Support opérations & processus', j2d:'Gère l\'arrière-plan. Assure une coordination fluide et rapide.',
+          j3:'Rendez-vous & Tarification', j3d:'Fournit des budgets clairs et crée des rendez-vous synchronisés.',
+          j4:'Support post-opératoire', j4d:'Répond instantanément à chaque question pendant la période de convalescence.',
+          j5:'Assistant demandes spéciales', j5d:'Assistant proactif orienté solutions pour les demandes VIP et personnalisées.' },
+    ar: { setup: 'رسوم التأسيس (مرة واحدة)', monthly: 'اشتراك الشهر الأول', total: 'المجموع', btn: '→ المتابعة للدفع', badge: 'دفع آمن',
+          assistantLabel: 'اختيار المساعد الرقمي',
+          assistantHint1: 'يرجى اختيار مساعد واحد لهذه الباقة.', assistantHint2: 'يرجى اختيار مساعدَين لهذه الباقة.', assistantHint4: 'تشمل هذه الباقة 4 مساعدين (تم تحديد الكل).',
+          birimPlaceholder: 'الوحدة / القسم', gorevPlaceholder: 'الدور / المسمى الوظيفي', notPlaceholder: 'ملاحظات / طلبات خاصة',
+          websitePlaceholder: 'الموقع الإلكتروني',
+          contractText: 'لقد قرأت <button type="button" onclick="openContractModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">اتفاقية الخدمة</button> وأوافق عليها.',
+          privacyText: 'لقد قرأت <button type="button" onclick="openPrivacyModal()" style="background:none;border:none;color:#4ECDC4;font-weight:600;font-size:0.78rem;cursor:pointer;padding:0;">سياسة الخصوصية</button> وأوافق عليها.',
+          j1:'متخصص الاستقبال والمعلومات', j1d:'أول اتصال. يحلل توقعات المريض ويوجهه بشكل مناسب للعيادة.',
+          j2:'دعم العمليات والعمليات', j2d:'يدير الخلفية. يضمن التنسيق السلس والسريع عبر جميع العمليات.',
+          j3:'المواعيد والتسعير', j3d:'يوفر ميزانيات واضحة ويُنشئ مواعيد متزامنة مع التقويم.',
+          j4:'دعم ما بعد العملية', j4d:'يجيب فوراً على كل سؤال أثناء فترة التعافي، مما يعزز الثقة.',
+          j5:'مساعد الطلبات الخاصة', j5d:'مساعد استباقي موجه نحو الحلول للطلبات الخاصة وVIP.' }
 };
 
 var currentPaymentPackage = null;
@@ -4799,6 +4948,28 @@ function openPaymentModal(packageId) {
     document.getElementById('odeme-label-total').textContent = labels.total;
     document.getElementById('odeme-btn-text').textContent = labels.btn;
     document.getElementById('odeme-badge').textContent = labels.badge;
+    document.getElementById('odeme-assistant-label').textContent = labels.assistantLabel;
+    document.getElementById('odeme-birim').placeholder = labels.birimPlaceholder;
+    document.getElementById('odeme-gorev').placeholder = labels.gorevPlaceholder;
+    document.getElementById('odeme-not').placeholder = labels.notPlaceholder;
+    document.getElementById('odeme-website').placeholder = labels.websitePlaceholder;
+    document.getElementById('odeme-contract-text').innerHTML = labels.contractText;
+    document.getElementById('odeme-privacy-text').innerHTML = labels.privacyText;
+
+    // Asistan isimlerini dile göre güncelle
+    document.getElementById('oa-j1-name').textContent = labels.j1;
+    document.getElementById('oa-j1-desc').textContent = labels.j1d;
+    document.getElementById('oa-j2-name').textContent = labels.j2;
+    document.getElementById('oa-j2-desc').textContent = labels.j2d;
+    document.getElementById('oa-j3-name').textContent = labels.j3;
+    document.getElementById('oa-j3-desc').textContent = labels.j3d;
+    document.getElementById('oa-j4-name').textContent = labels.j4;
+    document.getElementById('oa-j4-desc').textContent = labels.j4d;
+    document.getElementById('oa-j5-name').textContent = labels.j5;
+    document.getElementById('oa-j5-desc').textContent = labels.j5d;
+
+    // Asistan seçim limitini pakete göre ayarla
+    setupAssistantSelection(packageId, labels);
 
     // Adımları sıfırla
     document.getElementById('odeme-step-form').style.display = 'block';
@@ -4811,7 +4982,12 @@ function openPaymentModal(packageId) {
     document.getElementById('odeme-surname').value = '';
     document.getElementById('odeme-email').value = '';
     document.getElementById('odeme-phone').value = '';
-    document.getElementById('odeme-address').value = '';
+    document.getElementById('odeme-website').value = '';
+    document.getElementById('odeme-birim').value = '';
+    document.getElementById('odeme-gorev').value = '';
+    document.getElementById('odeme-not').value = '';
+    document.getElementById('odeme-contract').checked = false;
+    document.getElementById('odeme-privacy').checked = false;
 
     // Modalı aç
     var modal = document.getElementById('modal-odeme');
@@ -4855,15 +5031,35 @@ function submitPaymentForm() {
     var surname = document.getElementById('odeme-surname').value.trim();
     var email = document.getElementById('odeme-email').value.trim();
     var phone = document.getElementById('odeme-phone').value.trim();
-    var address = document.getElementById('odeme-address').value.trim() || 'Istanbul, Turkey';
+    var website = document.getElementById('odeme-website').value.trim();
+    var birim = document.getElementById('odeme-birim').value.trim();
+    var gorev = document.getElementById('odeme-gorev').value.trim();
+    var notlar = document.getElementById('odeme-not').value.trim();
+    var contractChecked = document.getElementById('odeme-contract').checked;
+    var privacyChecked = document.getElementById('odeme-privacy').checked;
+
+    // Seçilen asistanlar
+    var selectedAssistants = Array.from(document.querySelectorAll('.odeme-assistant-cb:checked')).map(function(cb){ return cb.value; });
 
     // Validasyon
-    if (!name || !surname || !email || !phone) {
+    if (!name || !surname || !email || !phone || !website) {
         alert('Lütfen tüm zorunlu alanları doldurun.');
         return;
     }
     if (!email.includes('@')) {
         alert('Geçerli bir e-posta adresi girin.');
+        return;
+    }
+    if (selectedAssistants.length === 0) {
+        alert('Lütfen en az bir dijital asistan seçin.');
+        return;
+    }
+    if (!contractChecked) {
+        alert('Devam etmek için Hizmet Sözleşmesi\'ni kabul etmeniz gerekmektedir.');
+        return;
+    }
+    if (!privacyChecked) {
+        alert('Devam etmek için Gizlilik Politikası\'nı kabul etmeniz gerekmektedir.');
         return;
     }
 
@@ -4884,7 +5080,12 @@ function submitPaymentForm() {
             surname: surname,
             email: email,
             phone: phone,
-            address: address,
+            address: 'Istanbul, Turkey',
+            website: website,
+            birim: birim,
+            gorev: gorev,
+            notlar: notlar,
+            assistants: selectedAssistants,
             locale: lang === 'tr' ? 'tr' : 'en'
         })
     })
@@ -4959,8 +5160,223 @@ function checkPaymentResult() {
         history.replaceState(null, null, ' ');
     }
 }
+// ──────────────────────────────────────
+// ASİSTAN SEÇİM MANTIĞI
+// ──────────────────────────────────────
+function setupAssistantSelection(packageId, labels) {
+    var items = document.querySelectorAll('.odeme-assistant-item');
+    var hint = document.getElementById('odeme-assistant-hint');
+
+    // Pakete göre limit belirle
+    var limit = 1;
+    var hintText = labels.assistantHint1;
+    if (packageId === 'pro') { limit = 2; hintText = labels.assistantHint2; }
+    if (packageId === 'vip') { limit = 4; hintText = labels.assistantHint4; }
+    hint.textContent = hintText;
+
+    // Tüm seçimleri temizle
+    items.forEach(function(item) {
+        item.classList.remove('selected', 'disabled');
+        var cb = item.querySelector('input[type="checkbox"]');
+        cb.checked = false;
+        // Eski listener'ları kaldırmak için clone et
+        var newItem = item.cloneNode(true);
+        item.parentNode.replaceChild(newItem, item);
+    });
+
+    // VIP: ilk 4'ü otomatik seç
+    var freshItems = document.querySelectorAll('.odeme-assistant-item');
+    if (packageId === 'vip') {
+        freshItems.forEach(function(item, idx) {
+            var cb = item.querySelector('input[type="checkbox"]');
+            if (idx < 4) { cb.checked = true; item.classList.add('selected'); }
+            else { item.classList.add('disabled'); }
+        });
+        return; // VIP'te click listener gerekmiyor
+    }
+
+    // Başlangıç / Pro: tıklama ile seç/bırak
+    freshItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var cb = this.querySelector('input[type="checkbox"]');
+            var currentSelected = document.querySelectorAll('.odeme-assistant-cb:checked').length;
+
+            if (cb.checked) {
+                // Seçimi kaldır
+                cb.checked = false;
+                this.classList.remove('selected');
+            } else {
+                if (currentSelected < limit) {
+                    cb.checked = true;
+                    this.classList.add('selected');
+                }
+                // Limit dolunca seçilmemiş olanları disable et
+                var nowSelected = document.querySelectorAll('.odeme-assistant-cb:checked').length;
+                freshItems.forEach(function(it) {
+                    var itCb = it.querySelector('input[type="checkbox"]');
+                    if (!itCb.checked) {
+                        if (nowSelected >= limit) it.classList.add('disabled');
+                        else it.classList.remove('disabled');
+                    }
+                });
+            }
+            // Seçim sayısı azaldıysa disable'ı kaldır
+            var nowSelected2 = document.querySelectorAll('.odeme-assistant-cb:checked').length;
+            if (nowSelected2 < limit) {
+                freshItems.forEach(function(it) {
+                    if (!it.querySelector('input[type="checkbox"]').checked) {
+                        it.classList.remove('disabled');
+                    }
+                });
+            }
+        });
+    });
+}
+
 checkPaymentResult();
 window.addEventListener('hashchange', checkPaymentResult);
+</script>
+
+<!-- HİZMET SÖZLEŞMESİ MODALİ -->
+<div id="modal-contract" onclick="if(event.target===this)closeContractModal()" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:1rem;">
+    <div style="background:#0d0d0d;border:1px solid rgba(192,192,192,0.12);max-width:720px;width:100%;max-height:88vh;overflow-y:auto;position:relative;border-radius:4px;">
+        <div style="height:2px;background:linear-gradient(to right,transparent,#4ECDC4,transparent);opacity:0.5;"></div>
+        <button onclick="closeContractModal()" style="position:sticky;top:0;left:100%;float:right;margin:1rem 1.5rem 0 0;background:none;border:none;color:rgba(136,146,164,0.6);font-size:1.2rem;cursor:pointer;z-index:2;line-height:1;">✕</button>
+        <div style="padding:2.5rem 3rem;" id="contract-modal-body">
+            <!-- JS tarafından doldurulur -->
+        </div>
+    </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════
+// HİZMET SÖZLEŞMESİ — Çok Dilli İçerik
+// ══════════════════════════════════════════════════
+function openPrivacyModal() {
+    var modal = document.getElementById('modal-gizlilik');
+    if (modal) { modal.style.display = 'flex'; modal.style.zIndex = '99999'; }
+    return false;
+}
+
+var CONTRACT_CONTENT = {
+tr: {
+  label:'HUKUKİ', title:'Hizmet Sözleşmesi', date:'Son güncelleme: Mart 2026',
+  close:'ANLADIM, KAPAT', contact:'Danışmak ve sorularınız için: <a href="mailto:info@clinicmediatech.com" style="color:#4ECDC4;text-decoration:none;">info@clinicmediatech.com</a> adresinde bizlere ulaşabilirsiniz.',
+  privacyLink:'Gizlilik Politikası', homepage:'Anasayfa',
+  sections:[
+    {n:'1',t:'TARAFLAR',b:'Bu Hizmet Sözleşmesi ("Sözleşme"), <strong style="color:rgba(255,255,255,0.8);">Clinic Media Tech</strong> ("Hizmet Sağlayıcı") ile satın alma formunu doldurarak hizmeti talep eden klinik veya işletme sahibi ("Müşteri") arasında akdedilmektedir. Ödeme işleminin tamamlanması, Müşteri\'nin bu Sözleşme\'nin tüm koşullarını okuduğunu, anladığını ve kabul ettiğini teyit eder.'},
+    {n:'2',t:'HİZMETİN KAPSAMI',b:'Clinic Media Tech, Müşteri\'nin web sitesine entegre edilecek çok dilli dijital sanal asistan altyapısını sağlamayı taahhüt eder. Sunulacak hizmetler seçilen pakete (Başlangıç, Pro veya VIP Ekosistem) ve sipariş formunda belirlenen dijital asistan rollerine göre belirlenir. Hizmet kapsamı şunları içerir:<ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Kliniğe özel dijital asistan eğitimi ve kurulumu</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Web sitesine teknik entegrasyon (3 iş günü içinde)</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Aylık performans raporu ve veri analizi</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Seçilen paketteki dil desteği</span></li></ul>'},
+    {n:'3',t:'ÖDEME KOŞULLARI',b:'Ödeme, kurulum ücreti (tek seferlik) ve ilk ay abonelik ücretinden oluşmaktadır. Tüm ödemeler USD cinsinden alınır ve ödeme işlemi Iyzico altyapısı üzerinden 3D Secure güvencesiyle gerçekleştirilir. Abonelik aylık olup yenileme yapılmadığı takdirde otomatik olarak sona erer; herhangi bir iptal bildirimi gerekmez.'},
+    {n:'4',t:'MÜŞTERİ YÜKÜMLÜLÜKLERİ',b:'Müşteri, Hizmet Sağlayıcı\'nın asistanı eğitmesi için gereken klinik belgelerini, tedavi protokollerini ve marka bilgilerini zamanında ve eksiksiz temin etmeyi kabul eder. Asistanın yalnızca Müşteri tarafından sağlanan ve onaylanan bilgilerle çalışacağı bilinmeli; eksik veya geç iletilen bilgilerden kaynaklanan gecikmeler Hizmet Sağlayıcı\'nın sorumluluğunda değildir.'},
+    {n:'5',t:'İPTAL VE İADE',b:'Entegrasyon süreci başladıktan sonra iade talepleri kabul edilmez. Kurulum henüz başlamamışsa, ödeme tarihinden itibaren <strong style="color:rgba(255,255,255,0.7);">48 saat</strong> içinde yazılı iptal talebi iletilmesi durumunda ücretin tamamı iade edilir.'},
+    {n:'6',t:'GİZLİLİK VE VERİ GÜVENLİĞİ',b:'Müşteri\'ye ait tüm veriler ve hasta görüşme içerikleri gizli tutulur; üçüncü taraflarla paylaşılmaz. Altyapımız, GDPR ve SOC 2 Type II standartlarıyla uyumlu iş ortakları üzerinde işletilmektedir. Kişisel verilerin işlenmesine ilişkin ayrıntılı bilgi için <strong style="color:rgba(255,255,255,0.7);">Gizlilik Politikamız</strong>\'a başvurabilirsiniz.'},
+    {n:'7',t:'FİKRİ MÜLKİYET',b:'Clinic Media Tech altyapısı, yazılımı ve sistemine ait tüm fikri mülkiyet hakları Hizmet Sağlayıcı\'ya aittir. Müşteri\'ye yalnızca sözleşme süresi boyunca, münhasır olmayan ve devredilemez bir kullanım lisansı tanınır.'},
+    {n:'8',t:'DİJİTAL ASİSTANLAR HAKKINDA BİLGİ',b:'Clinic Media Tech bünyesindeki dijital asistanlar gerçek birer insan değil; eş zamanlı dijital ortamda çalışan, yüksek teknoloji altyapısıyla üretilmiş sanal temsilcilerdir. Müşteri, bu teknolojiyi kullanan diğer tüm sistemlerde olduğu gibi bir hata payı bulunabileceğini kabul eder. Bununla birlikte Clinic Media Tech\'in güçlü altyapısı sayesinde bu hata payı asgari düzeyde tutulmaktadır.<br><br><strong style="color:rgba(255,255,255,0.75);">Görüşme Süreleri:</strong> Her görüşme, aşım yaşanmaması ve hizmet kalitesinin korunması amacıyla <strong style="color:rgba(255,255,255,0.75);">3 dakika</strong> ile sınırlandırılmıştır. Bu süre, geniş bir hasta kitlesini kapsayan istatistiksel veriler incelenerek belirlenmiş olup tipik bir hasta görüşmesini karşılamaya yetecek şekilde tasarlanmıştır. Gerektiğinde klinik talebi doğrultusunda görüşme süreleri uzatılabilir.<br><br><strong style="color:rgba(255,255,255,0.75);">Görüşme Limiti ve Devir:</strong> Pakete tanımlı aylık görüşme dakikaları yalnızca ilgili ay içinde geçerlidir; kullanılmayan süreler bir sonraki aya devredilmez. Aylık limitin aşılması durumunda ek görüşme paketi için Clinic Media Tech ile iletişime geçildiği takdirde kliniğe özel avantajlı ek paket seçenekleri sunulacaktır.'},
+    {n:'9',t:'SORUMLULUĞUN SINIRLANDIRILMASI',b:'Clinic Media Tech, asistanın ürettiği bilgilerin klinik karar almada tek kaynak olarak kullanılmasından doğacak sonuçlardan sorumlu tutulamaz. Asistan, yalnızca Müşteri\'nin onayladığı protokollere göre hareket eder; tıbbi teşhis veya tedavi tavsiyesinde bulunmaz.'},
+    {n:'10',t:'UYGULANACAK HUKUK VE UYUŞMAZLIK ÇÖZÜMÜ',b:'Bu Sözleşme, Türkiye Cumhuriyeti hukukuna tabidir. Taraflar arasında doğabilecek uyuşmazlıklar öncelikle müzakere yoluyla çözülmeye çalışılır; çözüme kavuşturulamazsa İstanbul Mahkemeleri ve İcra Daireleri yetkilidir.'}
+  ]
+},
+en: {
+  label:'LEGAL', title:'Service Agreement', date:'Last updated: March 2026',
+  close:'GOT IT, CLOSE', contact:'For enquiries and questions: <a href="mailto:info@clinicmediatech.com" style="color:#4ECDC4;text-decoration:none;">info@clinicmediatech.com</a>',
+  privacyLink:'Privacy Policy', homepage:'Homepage',
+  sections:[
+    {n:'1',t:'PARTIES',b:'This Service Agreement ("Agreement") is entered into between <strong style="color:rgba(255,255,255,0.8);">Clinic Media Tech</strong> ("Service Provider") and the clinic or business owner ("Client") who has submitted the purchase form. Completion of the payment process confirms that the Client has read, understood and accepted all terms of this Agreement.'},
+    {n:'2',t:'SCOPE OF SERVICE',b:'Clinic Media Tech undertakes to provide a multilingual digital virtual assistant infrastructure to be integrated into the Client\'s website. The services to be provided are determined by the selected package (Starter, Pro or VIP Ecosystem) and the digital assistant roles specified in the order form. The scope of service includes:<ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Clinic-specific digital assistant training and setup</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Technical integration into website (within 3 business days)</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Monthly performance report and data analysis</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Language support included in the selected package</span></li></ul>'},
+    {n:'3',t:'PAYMENT TERMS',b:'Payment consists of a one-time setup fee and the first month\'s subscription fee. All payments are charged in USD and processed through Iyzico with 3D Secure protection. The subscription is monthly and expires automatically if not renewed; no cancellation notice is required.'},
+    {n:'4',t:'CLIENT OBLIGATIONS',b:'The Client agrees to provide clinic documents, treatment protocols and brand information required for the assistant\'s training in a timely and complete manner. The assistant operates solely on information provided and approved by the Client; delays arising from incomplete or late submissions are not the responsibility of the Service Provider.'},
+    {n:'5',t:'CANCELLATION & REFUNDS',b:'No refunds will be accepted once the integration process has commenced. If setup has not yet begun, a full refund will be issued provided a written cancellation request is submitted within <strong style="color:rgba(255,255,255,0.7);">48 hours</strong> of payment.'},
+    {n:'6',t:'CONFIDENTIALITY & DATA SECURITY',b:'All Client data and patient session content is kept strictly confidential and is not shared with third parties. Our infrastructure is operated through partners compliant with GDPR and SOC 2 Type II standards. For detailed information on the processing of personal data, please refer to our <strong style="color:rgba(255,255,255,0.7);">Privacy Policy</strong>.'},
+    {n:'7',t:'INTELLECTUAL PROPERTY',b:'All intellectual property rights in the Clinic Media Tech platform, software and systems belong to the Service Provider. The Client is granted only a non-exclusive, non-transferable licence to use the platform for the duration of the agreement.'},
+    {n:'8',t:'INFORMATION ABOUT DIGITAL ASSISTANTS',b:'The digital assistants within Clinic Media Tech are not real humans; they are virtual representatives produced using advanced technology operating in a simultaneous digital environment. The Client acknowledges that, as with all systems using this technology, a margin of error may exist. However, thanks to Clinic Media Tech\'s robust infrastructure, this margin is kept to a minimum.<br><br><strong style="color:rgba(255,255,255,0.75);">Session Duration:</strong> Each session is limited to <strong style="color:rgba(255,255,255,0.75);">3 minutes</strong> to prevent overruns and maintain service quality. This duration has been established based on statistical data covering a broad patient base and is designed to be sufficient for a typical patient conversation. Session durations may be extended at the clinic\'s request where necessary.<br><br><strong style="color:rgba(255,255,255,0.75);">Session Limits & Rollover:</strong> Monthly session minutes allocated to a package are valid only within the relevant month; unused minutes do not roll over to the following month. Should the monthly limit be exceeded, clients who contact Clinic Media Tech will be offered advantageous supplementary package options tailored to their clinic.'},
+    {n:'9',t:'LIMITATION OF LIABILITY',b:'Clinic Media Tech shall not be held liable for consequences arising from the use of assistant-generated information as the sole basis for clinical decision-making. The assistant acts solely in accordance with protocols approved by the Client and does not provide medical diagnosis or treatment advice.'},
+    {n:'10',t:'GOVERNING LAW & DISPUTE RESOLUTION',b:'This Agreement is governed by the laws of the Republic of Turkey. Disputes between the parties shall first be resolved through negotiation; if unresolved, the Istanbul Courts and Enforcement Offices shall have jurisdiction.'}
+  ]
+},
+de: {
+  label:'RECHTLICHES', title:'Dienstleistungsvertrag', date:'Letzte Aktualisierung: März 2026',
+  close:'VERSTANDEN, SCHLIESSEN', contact:'Für Fragen und Beratung: <a href="mailto:info@clinicmediatech.com" style="color:#4ECDC4;text-decoration:none;">info@clinicmediatech.com</a>',
+  privacyLink:'Datenschutzrichtlinie', homepage:'Startseite',
+  sections:[
+    {n:'1',t:'VERTRAGSPARTEIEN',b:'Dieser Dienstleistungsvertrag ("Vertrag") wird zwischen <strong style="color:rgba(255,255,255,0.8);">Clinic Media Tech</strong> ("Dienstleister") und dem Klinik- oder Unternehmensinhaber ("Auftraggeber") geschlossen, der das Bestellformular ausgefüllt hat. Mit dem Abschluss des Zahlungsvorgangs bestätigt der Auftraggeber, dass er alle Bedingungen dieses Vertrags gelesen, verstanden und akzeptiert hat.'},
+    {n:'2',t:'LEISTUNGSUMFANG',b:'Clinic Media Tech verpflichtet sich, eine mehrsprachige digitale virtuelle Assistenzinfrastruktur bereitzustellen, die in die Website des Auftraggebers integriert wird. Der Leistungsumfang richtet sich nach dem gewählten Paket (Starter, Pro oder VIP Ecosystem) und den im Bestellformular festgelegten Assistenzrollen. Der Leistungsumfang umfasst:<ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Klinikspezifisches Training und Einrichtung des digitalen Assistenten</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Technische Integration in die Website (innerhalb von 3 Werktagen)</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Monatlicher Leistungsbericht und Datenanalyse</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Sprachunterstützung gemäß gewähltem Paket</span></li></ul>'},
+    {n:'3',t:'ZAHLUNGSBEDINGUNGEN',b:'Die Zahlung besteht aus einer einmaligen Einrichtungsgebühr und der Abonnementgebühr für den ersten Monat. Alle Zahlungen erfolgen in USD und werden über die Iyzico-Infrastruktur mit 3D-Secure-Schutz abgewickelt. Das Abonnement ist monatlich und endet automatisch, wenn keine Verlängerung erfolgt; eine Kündigungsmitteilung ist nicht erforderlich.'},
+    {n:'4',t:'PFLICHTEN DES AUFTRAGGEBERS',b:'Der Auftraggeber verpflichtet sich, Klinikdokumente, Behandlungsprotokolle und Markeninformationen, die für das Training des Assistenten erforderlich sind, rechtzeitig und vollständig bereitzustellen. Verzögerungen, die auf unvollständige oder verspätet übermittelte Informationen zurückzuführen sind, liegen nicht in der Verantwortung des Dienstleisters.'},
+    {n:'5',t:'KÜNDIGUNG & RÜCKERSTATTUNG',b:'Nach Beginn des Integrationsprozesses werden keine Rückerstattungen akzeptiert. Wurde die Einrichtung noch nicht begonnen, erfolgt eine vollständige Rückerstattung, sofern ein schriftlicher Stornoantrag innerhalb von <strong style="color:rgba(255,255,255,0.7);">48 Stunden</strong> nach der Zahlung gestellt wird.'},
+    {n:'6',t:'VERTRAULICHKEIT & DATENSICHERHEIT',b:'Alle Daten des Auftraggebers und Inhalte von Patientengesprächen werden streng vertraulich behandelt und nicht an Dritte weitergegeben. Unsere Infrastruktur wird über Partner betrieben, die mit GDPR und SOC 2 Typ II konform sind. Ausführliche Informationen zur Verarbeitung personenbezogener Daten finden Sie in unserer <strong style="color:rgba(255,255,255,0.7);">Datenschutzrichtlinie</strong>.'},
+    {n:'7',t:'GEISTIGES EIGENTUM',b:'Alle Rechte am geistigen Eigentum der Clinic Media Tech-Plattform, der Software und der Systeme liegen beim Dienstleister. Dem Auftraggeber wird lediglich eine nicht-exklusive, nicht übertragbare Lizenz zur Nutzung der Plattform für die Dauer des Vertrags eingeräumt.'},
+    {n:'8',t:'INFORMATIONEN ZU DIGITALEN ASSISTENTEN',b:'Die digitalen Assistenten von Clinic Media Tech sind keine echten Menschen; es handelt sich um virtuelle Repräsentanten, die mithilfe modernster Technologie in einer simultanen digitalen Umgebung agieren. Der Auftraggeber erkennt an, dass wie bei allen Systemen, die diese Technologie nutzen, eine Fehlerquote vorhanden sein kann. Dank der robusten Infrastruktur von Clinic Media Tech wird diese jedoch auf ein Minimum reduziert.<br><br><strong style="color:rgba(255,255,255,0.75);">Gesprächsdauer:</strong> Jedes Gespräch ist auf <strong style="color:rgba(255,255,255,0.75);">3 Minuten</strong> begrenzt, um Überschreitungen zu vermeiden und die Servicequalität zu gewährleisten. Diese Dauer wurde auf Basis statistischer Daten einer breiten Patientengruppe festgelegt. Auf Anfrage der Klinik können Gesprächsdauern verlängert werden.<br><br><strong style="color:rgba(255,255,255,0.75);">Gesprächslimits & Übertrag:</strong> Die monatlich zugewiesenen Gesprächsminuten gelten nur für den betreffenden Monat; nicht genutzte Minuten werden nicht auf den Folgemonat übertragen. Bei Überschreitung des monatlichen Limits werden Kliniken, die Clinic Media Tech kontaktieren, vorteilhafte Zusatzpakete angeboten.'},
+    {n:'9',t:'HAFTUNGSBESCHRÄNKUNG',b:'Clinic Media Tech haftet nicht für Folgen, die entstehen, wenn vom Assistenten generierte Informationen als alleinige Grundlage für klinische Entscheidungen verwendet werden. Der Assistent handelt ausschließlich gemäß den vom Auftraggeber genehmigten Protokollen und gibt keine medizinischen Diagnosen oder Behandlungsempfehlungen.'},
+    {n:'10',t:'ANWENDBARES RECHT & STREITBEILEGUNG',b:'Dieser Vertrag unterliegt dem Recht der Republik Türkei. Streitigkeiten werden zunächst durch Verhandlungen gelöst; bleibt dies erfolglos, sind die Gerichte und Vollstreckungsbehörden in Istanbul zuständig.'}
+  ]
+},
+fr: {
+  label:'JURIDIQUE', title:'Contrat de Service', date:'Dernière mise à jour : mars 2026',
+  close:'COMPRIS, FERMER', contact:'Pour toute question ou consultation : <a href="mailto:info@clinicmediatech.com" style="color:#4ECDC4;text-decoration:none;">info@clinicmediatech.com</a>',
+  privacyLink:'Politique de Confidentialité', homepage:'Accueil',
+  sections:[
+    {n:'1',t:'PARTIES',b:'Le présent Contrat de Service ("Contrat") est conclu entre <strong style="color:rgba(255,255,255,0.8);">Clinic Media Tech</strong> ("Prestataire") et le propriétaire de la clinique ou de l\'entreprise ("Client") ayant rempli le formulaire de commande. La finalisation du paiement confirme que le Client a lu, compris et accepté toutes les conditions du présent Contrat.'},
+    {n:'2',t:'PÉRIMÈTRE DU SERVICE',b:'Clinic Media Tech s\'engage à fournir une infrastructure d\'assistant virtuel numérique multilingue intégrée au site web du Client. Les services fournis sont déterminés par le forfait choisi (Starter, Pro ou VIP Ecosystem) et les rôles d\'assistant définis dans le formulaire de commande. Le périmètre comprend :<ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Formation et configuration de l\'assistant numérique spécifique à la clinique</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Intégration technique au site web (dans les 3 jours ouvrables)</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Rapport de performance mensuel et analyse des données</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>Support linguistique inclus dans le forfait choisi</span></li></ul>'},
+    {n:'3',t:'CONDITIONS DE PAIEMENT',b:'Le paiement comprend des frais d\'installation uniques et les frais d\'abonnement du premier mois. Tous les paiements sont facturés en USD et traités via Iyzico avec la protection 3D Secure. L\'abonnement est mensuel et expire automatiquement s\'il n\'est pas renouvelé ; aucun préavis de résiliation n\'est requis.'},
+    {n:'4',t:'OBLIGATIONS DU CLIENT',b:'Le Client s\'engage à fournir en temps et en heure les documents cliniques, protocoles de traitement et informations de marque nécessaires à la formation de l\'assistant. Les retards dus à des informations incomplètes ou tardives ne relèvent pas de la responsabilité du Prestataire.'},
+    {n:'5',t:'RÉSILIATION & REMBOURSEMENT',b:'Aucun remboursement ne sera accepté une fois le processus d\'intégration commencé. Si la configuration n\'a pas encore débuté, un remboursement intégral sera effectué à condition qu\'une demande d\'annulation écrite soit soumise dans les <strong style="color:rgba(255,255,255,0.7);">48 heures</strong> suivant le paiement.'},
+    {n:'6',t:'CONFIDENTIALITÉ & SÉCURITÉ DES DONNÉES',b:'Toutes les données du Client et les contenus des sessions avec les patients sont strictement confidentiels et ne sont pas partagés avec des tiers. Notre infrastructure est exploitée via des partenaires conformes aux normes RGPD et SOC 2 Type II. Pour plus d\'informations sur le traitement des données personnelles, veuillez consulter notre <strong style="color:rgba(255,255,255,0.7);">Politique de Confidentialité</strong>.'},
+    {n:'7',t:'PROPRIÉTÉ INTELLECTUELLE',b:'Tous les droits de propriété intellectuelle sur la plateforme, les logiciels et les systèmes de Clinic Media Tech appartiennent au Prestataire. Le Client bénéficie uniquement d\'une licence d\'utilisation non exclusive et non transférable pour la durée du contrat.'},
+    {n:'8',t:'INFORMATIONS SUR LES ASSISTANTS NUMÉRIQUES',b:'Les assistants numériques de Clinic Media Tech ne sont pas de vraies personnes ; ce sont des représentants virtuels produits grâce à une technologie de pointe opérant dans un environnement numérique simultané. Le Client reconnaît qu\'une marge d\'erreur peut exister, comme pour tout système utilisant cette technologie. Grâce à l\'infrastructure robuste de Clinic Media Tech, cette marge est cependant réduite au minimum.<br><br><strong style="color:rgba(255,255,255,0.75);">Durée des sessions :</strong> Chaque session est limitée à <strong style="color:rgba(255,255,255,0.75);">3 minutes</strong> afin d\'éviter les dépassements et de maintenir la qualité du service. Cette durée a été établie sur la base de données statistiques couvrant une large base de patients. Les durées peuvent être prolongées à la demande de la clinique.<br><br><strong style="color:rgba(255,255,255,0.75);">Limites & Report :</strong> Les minutes de session mensuelles allouées à un forfait ne sont valables que pour le mois concerné ; les minutes non utilisées ne sont pas reportées au mois suivant. En cas de dépassement, les cliniques qui contactent Clinic Media Tech se verront proposer des options de forfait supplémentaire avantageuses.'},
+    {n:'9',t:'LIMITATION DE RESPONSABILITÉ',b:'Clinic Media Tech ne peut être tenu responsable des conséquences découlant de l\'utilisation des informations générées par l\'assistant comme seule base de prise de décision clinique. L\'assistant agit uniquement conformément aux protocoles approuvés par le Client et ne fournit pas de diagnostic médical ni de conseils de traitement.'},
+    {n:'10',t:'DROIT APPLICABLE & RÉSOLUTION DES LITIGES',b:'Le présent Contrat est régi par le droit de la République de Turquie. Les litiges entre les parties seront d\'abord résolus par négociation ; à défaut, les tribunaux et services d\'exécution d\'Istanbul seront compétents.'}
+  ]
+},
+ar: {
+  label:'قانوني', title:'اتفاقية الخدمة', date:'آخر تحديث: مارس 2026',
+  close:'فهمت، أغلق', contact:'للاستفسارات والأسئلة: <a href="mailto:info@clinicmediatech.com" style="color:#4ECDC4;text-decoration:none;">info@clinicmediatech.com</a>',
+  privacyLink:'سياسة الخصوصية', homepage:'الرئيسية',
+  sections:[
+    {n:'1',t:'الأطراف',b:'تُبرم اتفاقية الخدمة هذه ("الاتفاقية") بين <strong style="color:rgba(255,255,255,0.8);">Clinic Media Tech</strong> ("مزود الخدمة") وصاحب العيادة أو الشركة ("العميل") الذي أكمل استمارة الشراء. يُؤكد إتمام عملية الدفع أن العميل قد قرأ جميع شروط هذه الاتفاقية وفهمها وقبلها.'},
+    {n:'2',t:'نطاق الخدمة',b:'تلتزم Clinic Media Tech بتوفير بنية تحتية لمساعد رقمي افتراضي متعدد اللغات يتم دمجه في موقع العميل الإلكتروني. تُحدَّد الخدمات المقدَّمة وفقاً للحزمة المختارة والأدوار المحددة في استمارة الطلب. يشمل نطاق الخدمة:<ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>تدريب وإعداد المساعد الرقمي الخاص بالعيادة</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>التكامل التقني مع الموقع الإلكتروني (خلال 3 أيام عمل)</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>تقرير أداء شهري وتحليل بيانات</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#4ECDC4;flex-shrink:0;">—</span><span>دعم اللغات المضمَّنة في الحزمة المختارة</span></li></ul>'},
+    {n:'3',t:'شروط الدفع',b:'يتكون الدفع من رسوم إعداد لمرة واحدة واشتراك الشهر الأول. تُحصَّل جميع المدفوعات بالدولار الأمريكي وتُعالَج عبر Iyzico بحماية 3D Secure. الاشتراك شهري وينتهي تلقائياً إذا لم يتم تجديده؛ لا يلزم أي إشعار بالإلغاء.'},
+    {n:'4',t:'التزامات العميل',b:'يوافق العميل على تقديم وثائق العيادة والبروتوكولات العلاجية ومعلومات العلامة التجارية اللازمة لتدريب المساعد في الوقت المناسب وبشكل كامل. لا تتحمل الشركة المسؤولية عن التأخيرات الناجمة عن معلومات غير مكتملة أو متأخرة.'},
+    {n:'5',t:'الإلغاء والاسترداد',b:'لن تُقبل طلبات الاسترداد بعد بدء عملية التكامل. إذا لم يبدأ الإعداد بعد، سيتم رد المبلغ كاملاً شريطة تقديم طلب إلغاء خطي خلال <strong style="color:rgba(255,255,255,0.7);">48 ساعة</strong> من الدفع.'},
+    {n:'6',t:'السرية وأمن البيانات',b:'تُحفظ جميع بيانات العميل ومحتويات جلسات المرضى بسرية تامة ولا تُشارك مع أطراف ثالثة. تعمل بنيتنا التحتية عبر شركاء متوافقين مع معايير GDPR وSOC 2 النوع الثاني. لمزيد من المعلومات حول معالجة البيانات الشخصية، يرجى الرجوع إلى <strong style="color:rgba(255,255,255,0.7);">سياسة الخصوصية</strong>.'},
+    {n:'7',t:'الملكية الفكرية',b:'جميع حقوق الملكية الفكرية لمنصة Clinic Media Tech وبرمجياتها وأنظمتها مملوكة لمزود الخدمة. يُمنح العميل فقط ترخيص استخدام غير حصري وغير قابل للتحويل طوال مدة الاتفاقية.'},
+    {n:'8',t:'معلومات حول المساعدين الرقميين',b:'المساعدون الرقميون في Clinic Media Tech ليسوا بشراً حقيقيين؛ بل هم ممثلون افتراضيون تم إنتاجهم باستخدام تقنية متطورة تعمل في بيئة رقمية متزامنة. يقر العميل بوجود هامش خطأ محتمل كما هو الحال في جميع الأنظمة التي تستخدم هذه التقنية. ومع ذلك، تُبقي البنية التحتية القوية لـ Clinic Media Tech هذا الهامش عند أدنى مستوى.<br><br><strong style="color:rgba(255,255,255,0.75);">مدة الجلسات:</strong> تقتصر كل جلسة على <strong style="color:rgba(255,255,255,0.75);">3 دقائق</strong> لمنع التجاوزات والحفاظ على جودة الخدمة. تم تحديد هذه المدة بناءً على بيانات إحصائية تغطي قاعدة مرضى واسعة. يمكن تمديد المدة بناءً على طلب العيادة عند الحاجة.<br><br><strong style="color:rgba(255,255,255,0.75);">حدود الجلسات والترحيل:</strong> دقائق الجلسات الشهرية المخصصة للحزمة سارية فقط خلال الشهر المعني؛ لا تُرحَّل الدقائق غير المستخدمة إلى الشهر التالي. عند تجاوز الحد الشهري، ستُقدَّم للعيادات التي تتواصل مع Clinic Media Tech خيارات حزم إضافية مميزة.'},
+    {n:'9',t:'تحديد المسؤولية',b:'لا يمكن تحميل Clinic Media Tech المسؤولية عن العواقب الناجمة عن استخدام المعلومات التي ينتجها المساعد كمصدر وحيد لاتخاذ القرارات السريرية. يعمل المساعد وفقاً للبروتوكولات المعتمدة من العميل فقط ولا يقدم تشخيصات طبية أو نصائح علاجية.'},
+    {n:'10',t:'القانون الواجب التطبيق وتسوية النزاعات',b:'تخضع هذه الاتفاقية لقوانين جمهورية تركيا. تُحسم النزاعات بين الطرفين أولاً عن طريق التفاوض؛ وإذا لم يتم ذلك، تختص محاكم إسطنبول ودوائر التنفيذ.'}
+  ]
+}
+};
+
+function renderContractModal() {
+    var lang = (typeof currentLang !== 'undefined') ? currentLang : 'tr';
+    var c = CONTRACT_CONTENT[lang] || CONTRACT_CONTENT['tr'];
+    var HS = 'font-family:\'Mona Sans\',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;';
+    var html = '<p style="font-family:\'Mona Sans\',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:4px;color:#4ECDC4;margin-bottom:0.75rem;">'+c.label+'</p>';
+    html += '<h2 style="font-family:\'Mona Sans\',sans-serif;font-size:1.6rem;font-weight:800;color:#FFFFFF;margin-bottom:0.4rem;line-height:1.2;">'+c.title+'</h2>';
+    html += '<p style="font-size:0.75rem;color:rgba(136,146,164,0.45);margin-bottom:2rem;">'+c.date+'</p>';
+    html += '<div style="font-size:0.88rem;color:#8892A4;line-height:1.9;display:flex;flex-direction:column;gap:1.75rem;">';
+    c.sections.forEach(function(s){
+        html += '<div><h3 style="'+HS+'">'+s.n+'. '+s.t+'</h3><p>'+s.b+'</p></div>';
+    });
+    html += '</div>';
+    html += '<div style="margin-top:2rem;padding:1.25rem 1.5rem;background:rgba(78,205,196,0.04);border:1px solid rgba(78,205,196,0.1);border-radius:4px;">';
+    html += '<p style="font-size:0.82rem;color:rgba(136,146,164,0.7);line-height:1.7;">'+c.contact+'</p></div>';
+    html += '<div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">';
+    html += '<button onclick="closeContractModal()" style="background:linear-gradient(135deg,rgba(78,205,196,0.15),rgba(78,205,196,0.08));border:1px solid rgba(78,205,196,0.4);color:#4ECDC4;font-family:\'Mona Sans\',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:1px;padding:0.75rem 2.5rem;border-radius:980px;cursor:pointer;" onmouseover="this.style.background=\'linear-gradient(135deg,rgba(78,205,196,0.25),rgba(78,205,196,0.15))\'" onmouseout="this.style.background=\'linear-gradient(135deg,rgba(78,205,196,0.15),rgba(78,205,196,0.08))\'">'+c.close+'</button>';
+    html += '<button onclick="window.location.href=\'https://www.clinicmediatech.com\'" style="background:none;border:1px solid rgba(192,192,192,0.2);color:rgba(192,192,192,0.6);font-family:\'Mona Sans\',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:1px;padding:0.75rem 2rem;border-radius:980px;cursor:pointer;" onmouseover="this.style.borderColor=\'rgba(192,192,192,0.4)\';this.style.color=\'rgba(255,255,255,0.8)\'" onmouseout="this.style.borderColor=\'rgba(192,192,192,0.2)\';this.style.color=\'rgba(192,192,192,0.6)\'">🏠 '+c.homepage+'</button>';
+    html += '</div>';
+    document.getElementById('contract-modal-body').innerHTML = html;
+}
+
+function openContractModal() {
+    renderContractModal();
+    var modal = document.getElementById('modal-contract');
+    if (modal) { modal.style.display = 'flex'; modal.scrollTop = 0; }
+    return false;
+}
+function closeContractModal() {
+    var modal = document.getElementById('modal-contract');
+    if (modal) modal.style.display = 'none';
+}
 </script>
 
 <!-- TESLİMAT & İADE MODALİ -->
@@ -4973,7 +5389,7 @@ window.addEventListener('hashchange', checkPaymentResult);
             <h2 class="modal-legal-title" style="font-family:'Mona Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#FFFFFF;margin-bottom:2rem;line-height:1.2;">Teslimat ve İade Politikası</h2>
             <div class="modal-legal-body" style="font-size:0.88rem;color:#8892A4;line-height:1.9;display:flex;flex-direction:column;gap:1.5rem;">
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">HİZMET TESLİMATI</h3><p>Clinic Media Tech olarak sunduğumuz hizmetler tamamen dijital niteliktedir. Satın alım sonrası kurulum süreci 3 iş günü içinde tamamlanır ve hizmet, müşterinin web sitesine entegre edilerek teslim edilir. Fiziksel bir ürün gönderimi söz konusu değildir.</p></div>
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">İPTAL VE İADE KOŞULLARI</h3><p>Hizmetin dijital niteliği gereği, entegrasyon süreci başladıktan sonra iade talepleri kabul edilemez. Ancak hizmetin tarafımızdan sözleşmede belirtilen koşullarda sunulamaması durumunda ödenen tutar eksiksiz iade edilir.</p><p style="margin-top:0.75rem;">Ön ödeme yapılmış ve henüz kurulum başlamamış siparişler için iptal talebi, ödeme tarihinden itibaren 48 saat içinde <a href="/cdn-cgi/l/email-protection#c2abaca4ad82a1aeabacaba1afa7a6aba3b6a7a1aaeca1adaf" style="color:#C0C0C0;text-decoration:none;"><span class="__cf_email__" data-cfemail="f49d9a929bb497989d9a9d979991909d958091979cda979b99">[email&#160;protected]</span></a> adresine iletilmelidir.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">İPTAL VE İADE KOŞULLARI</h3><p>Hizmetin dijital niteliği gereği, entegrasyon süreci başladıktan sonra iade talepleri kabul edilemez. Ancak hizmetin tarafımızdan sözleşmede belirtilen koşullarda sunulamaması durumunda ödenen tutar eksiksiz iade edilir.</p><p style="margin-top:0.75rem;">Ön ödeme yapılmış ve henüz kurulum başlamamış siparişler için iptal talebi, ödeme tarihinden itibaren 48 saat içinde <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a> adresine iletilmelidir.</p></div>
             </div>
         </div>
     </div>
@@ -5004,6 +5420,14 @@ window.addEventListener('hashchange', checkPaymentResult);
 
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">7. ÇEREZLER (COOKIES)</h3><p>Web sitemiz, kullanıcı deneyimini iyileştirmek ve site performansını analiz etmek amacıyla çerezler kullanabilir. Çerezler; oturum çerezleri (tarayıcı kapatıldığında silinen) ve kalıcı çerezler (belirli bir süre cihazınızda kalan) olmak üzere ikiye ayrılır. Tarayıcı ayarlarınızı değiştirerek çerezleri devre dışı bırakabilirsiniz; ancak bu durumda sitenin bazı işlevleri kısıtlanabilir.</p></div>
 
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. HAKLARINIZ</h3><p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kişisel verilerinizin işlenip işlenmediğini öğrenme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlenmişse buna ilişkin bilgi talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yanlış veya eksik verilerin düzeltilmesini isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal koşullar çerçevesinde silinmesini veya yok edilmesini talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlemenin kısıtlanmasını isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Otomatik sistemler aracılığıyla aleyhinize oluşan sonuçlara itiraz etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Zararın giderilmesini talep etme</span></li></ul><p style="margin-top:0.75rem;">Taleplerinizi <a href="/cdn-cgi/l/email-protection#066f68606946656a6f686f656b63626f677263656e2865696b" style="color:#C0C0C0;text-decoration:none;"><span class="__cf_email__" data-cfemail="cca5a2aaa38cafa0a5a2a5afa1a9a8a5adb8a9afa4e2afa3a1">[email&#160;protected]</span></a> adresine yazılı olarak iletebilirsiniz. Talepler en geç <strong style="color:rgba(255,255,255,0.7);">30 gün</strong> içinde yanıtlanır.</p></div>
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. HAKLARINIZ</h3><p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kişisel verilerinizin işlenip işlenmediğini öğrenme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlenmişse buna ilişkin bilgi talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yanlış veya eksik verilerin düzeltilmesini isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal koşullar çerçevesinde silinmesini veya yok edilmesini talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlemenin kısıtlanmasını isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Otomatik sistemler aracılığıyla aleyhinize oluşan sonuçlara itiraz etme</span></li></ul><p style="margin-top:0.75rem;">Taleplerinizi <a href="mailto:info@clinicmediatech.com" style="color:#C0C0C0;text-decoration:none;">info@clinicmediatech.com</a> adresine yazılı olarak iletebilirsiniz. Talepler en geç <strong style="color:rgba(255,255,255,0.7);">48 saat</strong> içerisinde yanıtlanır.</p></div>
 
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLİTİKA DEĞİŞİKLİKLERİ</h3><p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler yapılması halinde güncel metin bu sayfada yayımlanır. Web sitemizi kullanmaya devam etmeni
+
+            </div>
+            <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;padding-bottom:2.5rem;">
+                <button onclick="closeModal('gizlilik')" id="gizlilik-close-btn" style="background:linear-gradient(135deg,rgba(192,192,192,0.1),rgba(192,192,192,0.05));border:1px solid rgba(192,192,192,0.3);color:rgba(255,255,255,0.8);font-family:'Mona Sans',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:1px;padding:0.75rem 2.5rem;border-radius:980px;cursor:pointer;">ANLADIM, KAPAT</button>
+                <button onclick="window.location.href='https://www.clinicmediatech.com'" id="gizlilik-homepage-btn" style="background:none;border:1px solid rgba(192,192,192,0.2);color:rgba(192,192,192,0.6);font-family:'Mona Sans',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:1px;padding:0.75rem 2rem;border-radius:980px;cursor:pointer;">🏠 Anasayfa</button>
+            </div>
+        </div>
+    </div>
+</div>
