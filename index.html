@@ -37,68 +37,528 @@
 @keyframes dsPulse { 0%,100% { opacity:0.7; transform:scale(1); } 50% { opacity:1; transform:scale(1.15); } }
 @media (max-width: 600px) { .ds-btn-text { display: none; } .dijital-sube-btn { padding: 0.6rem 0.9rem; } }
 
-/* ─── DİJİTAL ŞUBE MODAL ─── */
-#modal-dijitalsube { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.92); backdrop-filter:blur(16px); align-items:flex-start; justify-content:center; overflow-y:auto; padding:2rem 1rem; }
-.ds-modal-container { background:#0a0a0a; border:1px solid rgba(192,192,192,0.1); max-width:960px; width:100%; position:relative; overflow:hidden; margin:auto; border-radius:2px; }
-.ds-modal-accent { height:2px; background:linear-gradient(to right, transparent, #4ECDC4, var(--gold), transparent); opacity:0.6; }
-.ds-modal-header { padding:2.5rem 3rem 2rem; border-bottom:1px solid rgba(192,192,192,0.07); text-align:center; }
-.ds-modal-close { position:absolute; top:1.2rem; right:1.5rem; background:none; border:none; color:rgba(136,146,164,0.5); font-size:1.2rem; cursor:pointer; transition:color 0.2s; }
-.ds-modal-close:hover { color:#fff; }
-.ds-modal-label { font-family:'Mona Sans',sans-serif; font-size:0.62rem; font-weight:700; letter-spacing:4px; color:var(--teal); margin-bottom:0.8rem; }
-.ds-modal-title { font-family:'Mona Sans',sans-serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:800; color:var(--white); line-height:1.2; margin-bottom:0.5rem; }
-.ds-modal-title em { font-style:normal; color:var(--gold); }
-.ds-modal-subtitle { font-size:0.88rem; color:var(--grey); max-width:600px; margin:0 auto; line-height:1.7; }
-.ds-stats { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; padding:1.5rem 2rem; border-bottom:1px solid rgba(192,192,192,0.06); background:rgba(78,205,196,0.02); }
-.ds-stat { text-align:center; }
-.ds-stat-num { font-family:'Mona Sans',sans-serif; font-size:1.6rem; font-weight:800; color:var(--gold); letter-spacing:-0.5px; }
-.ds-stat-label { font-size:0.68rem; color:var(--grey); margin-top:0.15rem; }
-.ds-section-title { font-family:'Mona Sans',sans-serif; font-size:0.62rem; font-weight:700; letter-spacing:4px; color:var(--gold); margin-bottom:1.5rem; text-align:center; }
-.ds-process { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:rgba(192,192,192,0.06); margin:0 2rem; }
-.ds-process-card { background:rgba(8,8,8,0.95); padding:1.8rem 1.5rem; text-align:center; transition:background 0.3s; }
-.ds-process-card:hover { background:rgba(20,20,20,0.98); }
-.ds-process-num { font-family:'Mona Sans',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:2px; color:var(--teal); margin-bottom:0.8rem; }
-.ds-process-icon { font-size:1.5rem; margin-bottom:0.8rem; display:block; }
-.ds-process-title { font-family:'Mona Sans',sans-serif; font-size:0.85rem; font-weight:700; color:var(--white); margin-bottom:0.4rem; }
-.ds-process-desc { font-size:0.78rem; color:var(--grey); line-height:1.6; }
-.ds-process-time { display:inline-block; margin-top:0.8rem; font-size:0.6rem; letter-spacing:2px; color:var(--gold); background:rgba(192,192,192,0.06); padding:0.25rem 0.7rem; border-radius:2px; }
-.ds-packages { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(192,192,192,0.06); margin:0 2rem; }
-.ds-pkg { background:rgba(8,8,8,0.95); padding:2rem 1.8rem; position:relative; transition:all 0.3s; display:flex; flex-direction:column; }
-.ds-pkg:hover { background:rgba(18,18,18,0.98); }
-.ds-pkg.ds-featured { background:rgba(15,15,18,0.98); border-top:2px solid var(--gold); }
-.ds-pkg-badge { position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--navy); font-family:'Mona Sans',sans-serif; font-size:0.55rem; font-weight:700; letter-spacing:2px; padding:0.3rem 1rem; white-space:nowrap; }
-.ds-pkg-name { font-family:'Mona Sans',sans-serif; font-size:1.2rem; font-weight:800; color:var(--white); margin-bottom:0.3rem; }
-.ds-pkg-price { display:flex; align-items:baseline; gap:0.3rem; margin:0.8rem 0 0.2rem; }
-.ds-pkg-amount { font-family:'Mona Sans',sans-serif; font-size:2.2rem; font-weight:800; color:var(--gold); letter-spacing:-1px; }
-.ds-pkg-period { font-size:0.8rem; color:var(--grey); }
-.ds-pkg-setup { font-size:0.72rem; color:rgba(136,146,164,0.5); margin-bottom:1.5rem; }
-.ds-pkg-divider { height:1px; background:rgba(192,192,192,0.08); margin-bottom:1.2rem; }
-.ds-pkg-features { list-style:none; flex:1; padding:0; margin:0; }
-.ds-pkg-features li { font-size:0.82rem; color:var(--grey); padding:0.5rem 0; display:flex; align-items:flex-start; gap:0.6rem; line-height:1.5; }
-.ds-pkg-features li::before { content:'→'; color:var(--gold); font-size:0.7rem; flex-shrink:0; margin-top:0.15rem; }
-.ds-pkg-cta { display:block; margin-top:1.5rem; width:100%; padding:0.9rem; text-align:center; border-radius:980px; font-family:'Mona Sans',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.5px; cursor:pointer; transition:all 0.3s; text-decoration:none; }
-.ds-pkg .ds-pkg-cta { background:transparent; border:1px solid rgba(192,192,192,0.2); color:var(--white); }
-.ds-pkg .ds-pkg-cta:hover { background:rgba(192,192,192,0.08); border-color:rgba(192,192,192,0.4); }
-.ds-pkg.ds-featured .ds-pkg-cta { background:#ffffff; border:none; color:#080808; }
-.ds-pkg.ds-featured .ds-pkg-cta:hover { background:#E0E0E0; transform:translateY(-1px); }
-.ds-compliance { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; padding:1.5rem 2rem; }
-.ds-compliance-item { display:flex; align-items:center; gap:0.5rem; padding:0.5rem 1rem; border:1px solid rgba(192,192,192,0.1); border-radius:4px; background:rgba(255,255,255,0.02); }
-.ds-compliance-icon { font-size:0.9rem; }
-.ds-compliance-name { font-family:'Mona Sans',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:1px; color:rgba(192,192,192,0.65); }
-.ds-modal-footer { padding:1.5rem 3rem; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(192,192,192,0.07); }
-.ds-modal-note { font-size:0.72rem; color:rgba(136,146,164,0.4); }
-@media (max-width:768px) { .ds-modal-header{padding:2rem 1.5rem 1.5rem;} .ds-process{grid-template-columns:1fr 1fr;margin:0 1rem;} .ds-packages{grid-template-columns:1fr;margin:0 1rem;} .ds-modal-footer{padding:1.25rem 1.5rem;flex-direction:column;gap:1rem;text-align:center;} .ds-stats{gap:1.5rem;} }
-@media (max-width:480px) { .ds-process{grid-template-columns:1fr;} }
+/* ═══════════════════════════════════════════════════════
+   DİJİTAL ŞUBE MODAL — PREMIUM SILICON VALLEY EDITION
+   ═══════════════════════════════════════════════════════ */
 
+#modal-dijitalsube {
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(1,1,6,0.97); backdrop-filter:blur(60px) saturate(180%);
+  align-items:flex-start; justify-content:center;
+  overflow-y:auto; padding:2rem 1rem 6rem;
+}
 
-/* ─── VIDEO CARDS ─── */
-.ds-video-card { transition: all 0.3s; }
-.ds-video-card:hover { background: rgba(18,18,18,0.98) !important; }
-.ds-video-card:hover .ds-play-btn { background: rgba(255,255,255,0.25) !important; transform: scale(1.1); }
-.ds-video-thumb video { transition: transform 0.5s; }
-.ds-video-card:hover .ds-video-thumb video { transform: scale(1.05); }
-@media (max-width: 768px) { .ds-video-grid { grid-template-columns: 1fr 1fr !important; margin: 0 1rem !important; } }
-@media (max-width: 480px) { .ds-video-grid { grid-template-columns: 1fr !important; } }
+.ds-modal-container {
+  max-width:1100px; width:100%; margin:auto;
+  position:relative; border-radius:24px; overflow:hidden;
+  background:linear-gradient(160deg,#0c0c18 0%,#080810 50%,#05050e 100%);
+  border:1px solid rgba(255,255,255,0.07);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.02),
+    0 80px 200px -30px rgba(0,0,0,0.95),
+    0 0 120px rgba(78,205,196,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
 
+/* Grid bg pattern */
+.ds-modal-container::before {
+  content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(78,205,196,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78,205,196,0.015) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 70%);
+}
+
+/* Top accent line */
+.ds-modal-accent {
+  height:2px; width:100%; position:relative; z-index:2;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(78,205,196,0.4) 20%,
+    rgba(78,205,196,0.9) 40%,
+    rgba(192,160,96,1) 55%,
+    rgba(78,205,196,0.6) 75%,
+    transparent 100%);
+  animation:shimmerLine 5s ease-in-out infinite;
+  background-size:300% 100%;
+}
+@keyframes shimmerLine { 0%,100%{background-position:100% 0} 50%{background-position:0% 0} }
+
+.ds-modal-orb1, .ds-modal-orb2 {
+  position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+}
+.ds-modal-orb1 {
+  width:800px; height:800px; top:-400px; right:-300px;
+  background:radial-gradient(circle, rgba(78,205,196,0.04) 0%, transparent 60%);
+}
+.ds-modal-orb2 {
+  width:600px; height:600px; bottom:-250px; left:-200px;
+  background:radial-gradient(circle, rgba(192,160,96,0.035) 0%, transparent 60%);
+}
+
+.ds-modal-close {
+  position:absolute; top:1.6rem; right:1.6rem; z-index:20;
+  width:36px; height:36px; border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,0.4); font-size:0.85rem;
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.25s;
+}
+.ds-modal-close:hover {
+  background:rgba(255,255,255,0.1); color:#fff;
+  border-color:rgba(255,255,255,0.25); transform:scale(1.08) rotate(90deg);
+}
+
+/* ── HERO ── */
+.ds-modal-hero {
+  position:relative; z-index:1;
+  padding:4.5rem 5rem 3.5rem; text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.ds-hero-eyebrow {
+  display:flex; align-items:center; justify-content:center; gap:1.5rem;
+  margin-bottom:2.2rem;
+}
+.ds-hero-badge {
+  display:inline-flex; align-items:center; gap:0.55rem;
+  background:rgba(78,205,196,0.06); border:1px solid rgba(78,205,196,0.2);
+  border-radius:980px; padding:0.38rem 1rem 0.38rem 0.65rem;
+  cursor:default;
+}
+.ds-badge-dot {
+  width:6px; height:6px; border-radius:50%; background:#4ECDC4;
+  box-shadow:0 0 10px rgba(78,205,196,1);
+  animation:livePulse 2s ease-in-out infinite;
+}
+@keyframes livePulse {
+  0%,100%{opacity:0.5;transform:scale(1);box-shadow:0 0 6px rgba(78,205,196,0.5)}
+  50%{opacity:1;transform:scale(1.4);box-shadow:0 0 16px rgba(78,205,196,1)}
+}
+.ds-badge-text {
+  font-family:'Mona Sans',sans-serif; font-size:0.6rem;
+  font-weight:700; letter-spacing:3px; color:#4ECDC4;
+}
+.ds-hero-divider { width:1px; height:18px; background:rgba(255,255,255,0.08); }
+.ds-hero-brand {
+  font-family:'Mona Sans',sans-serif; font-size:0.6rem;
+  font-weight:700; letter-spacing:4px; color:rgba(192,160,96,0.5);
+}
+
+.ds-hero-title {
+  font-family:'Mona Sans',sans-serif;
+  font-size:clamp(2.2rem,4.8vw,3.8rem);
+  font-weight:900; line-height:1.02; letter-spacing:-2px;
+  color:#fff; margin-bottom:1.4rem;
+}
+.ds-hero-title em {
+  font-style:normal;
+  background:linear-gradient(110deg,#4ECDC4 0%,#a8f0ec 35%,#e8d5a3 65%,#C0A060 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  background-size:250% 100%; animation:gradShift 5s ease infinite;
+}
+@keyframes gradShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.ds-hero-sub {
+  font-size:1rem; color:rgba(136,146,164,0.7);
+  max-width:580px; margin:0 auto 2.8rem; line-height:1.8;
+  font-weight:400;
+}
+
+.ds-hero-actions {
+  display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;
+}
+.ds-hero-cta {
+  display:inline-flex; align-items:center; gap:0.65rem;
+  background:linear-gradient(135deg,#ffffff 0%,#e4e4e4 100%);
+  color:#05050e; font-family:'Mona Sans',sans-serif;
+  font-size:0.82rem; font-weight:800; letter-spacing:0.4px;
+  padding:0.9rem 2.2rem; border-radius:12px; cursor:pointer;
+  border:none; transition:all 0.25s;
+  box-shadow:0 10px 40px rgba(255,255,255,0.12), 0 2px 8px rgba(0,0,0,0.5);
+  text-decoration:none;
+}
+.ds-hero-cta:hover {
+  transform:translateY(-3px);
+  box-shadow:0 20px 60px rgba(255,255,255,0.2), 0 2px 8px rgba(0,0,0,0.5);
+}
+.ds-hero-cta svg { transition:transform 0.2s; }
+.ds-hero-cta:hover svg { transform:translateX(4px); }
+.ds-hero-cta-ghost {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  background:transparent; color:rgba(255,255,255,0.5);
+  font-family:'Mona Sans',sans-serif; font-size:0.8rem; font-weight:700;
+  padding:0.9rem 1.8rem; border-radius:12px; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.1); transition:all 0.25s; text-decoration:none;
+}
+.ds-hero-cta-ghost:hover { color:#fff; border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.04); }
+
+/* ── KPI STRIP ── */
+.ds-kpi-strip {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  position:relative; z-index:1;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+.ds-kpi {
+  padding:2.2rem 1.5rem; text-align:center;
+  border-right:1px solid rgba(255,255,255,0.04);
+  position:relative; overflow:hidden; cursor:default;
+  transition:background 0.3s;
+}
+.ds-kpi:last-child { border-right:none; }
+.ds-kpi:hover { background:rgba(78,205,196,0.03); }
+.ds-kpi::after {
+  content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  width:0; height:1px; background:#4ECDC4; transition:width 0.4s;
+}
+.ds-kpi:hover::after { width:60%; }
+.ds-kpi-num {
+  font-family:'Mona Sans',sans-serif; font-size:2.6rem;
+  font-weight:900; letter-spacing:-2.5px; line-height:1;
+  color:#fff; margin-bottom:0.35rem;
+}
+.ds-kpi-num sub { font-size:1.1rem; letter-spacing:0; vertical-align:baseline; }
+.ds-kpi-label {
+  font-size:0.6rem; letter-spacing:2.5px; text-transform:uppercase;
+  color:rgba(136,146,164,0.45); margin-bottom:0.2rem;
+}
+.ds-kpi-sub { font-size:0.68rem; color:rgba(78,205,196,0.55); font-weight:600; }
+
+/* ── SECTION HEADER ── */
+.ds-section-wrap { position:relative; z-index:1; }
+.ds-section-header {
+  display:flex; align-items:center; gap:1.2rem;
+  padding:3rem 4.5rem 1.8rem;
+}
+.ds-section-header::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(90deg, rgba(255,255,255,0.07), transparent);
+}
+.ds-section-label {
+  font-family:'Mona Sans',sans-serif; font-size:0.57rem;
+  font-weight:700; letter-spacing:4.5px; color:rgba(192,160,96,0.55);
+  text-transform:uppercase; white-space:nowrap;
+}
+.ds-section-num {
+  font-family:'Mona Sans',sans-serif; font-size:0.55rem;
+  font-weight:700; color:rgba(78,205,196,0.3); letter-spacing:2px;
+}
+
+/* ── PATIENT JOURNEY (Process) ── */
+.ds-journey {
+  display:grid; grid-template-columns:repeat(5,1fr);
+  margin:0 3rem 3.5rem; position:relative;
+}
+.ds-journey::before {
+  content:''; position:absolute; top:3.2rem; left:10%; right:10%; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(78,205,196,0.15) 20%, rgba(78,205,196,0.15) 80%, transparent);
+  z-index:0;
+}
+.ds-journey-step {
+  padding:0 1rem 2rem; text-align:center; position:relative; z-index:1;
+  cursor:default;
+}
+.ds-journey-icon {
+  width:54px; height:54px; border-radius:14px; margin:0 auto 1.2rem;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(8,8,16,0.9); border:1px solid rgba(78,205,196,0.15);
+  transition:all 0.3s;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+.ds-journey-step:hover .ds-journey-icon {
+  border-color:rgba(78,205,196,0.4);
+  box-shadow:0 8px 32px rgba(78,205,196,0.12), 0 4px 20px rgba(0,0,0,0.4);
+  transform:translateY(-3px);
+}
+.ds-journey-icon svg { width:22px; height:22px; }
+.ds-journey-num {
+  font-family:'Mona Sans',sans-serif; font-size:0.55rem;
+  font-weight:700; letter-spacing:2px; color:rgba(78,205,196,0.4);
+  margin-bottom:0.5rem; display:block;
+}
+.ds-journey-title {
+  font-family:'Mona Sans',sans-serif; font-size:0.82rem;
+  font-weight:800; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; line-height:1.3;
+}
+.ds-journey-desc {
+  font-size:0.72rem; color:rgba(136,146,164,0.55); line-height:1.6;
+}
+.ds-journey-step.ds-journey-vip .ds-journey-icon {
+  border-color:rgba(192,160,96,0.25);
+  background:linear-gradient(135deg,rgba(192,160,96,0.08),rgba(8,8,16,0.9));
+}
+.ds-journey-step.ds-journey-vip .ds-journey-title { color:rgba(192,160,96,0.9); }
+
+/* ── VIDEO GRID ── */
+.ds-videos {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:rgba(255,255,255,0.035);
+  margin:0 3rem 3.5rem; border-radius:16px; overflow:hidden;
+  box-shadow:0 4px 40px rgba(0,0,0,0.3);
+}
+.ds-vid {
+  background:#06060d; cursor:pointer;
+  position:relative; overflow:hidden; transition:background 0.3s;
+}
+.ds-vid:hover { background:#0b0b16; }
+.ds-vid-thumb {
+  position:relative; aspect-ratio:16/9; overflow:hidden; background:#03030a;
+}
+.ds-vid-thumb video {
+  width:100%; height:100%; object-fit:cover;
+  pointer-events:none; display:block;
+  transition:transform 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.ds-vid:hover .ds-vid-thumb video { transform:scale(1.08); }
+.ds-vid-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(3,3,10,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.35s;
+}
+.ds-vid:hover .ds-vid-overlay {
+  background:linear-gradient(to top,rgba(3,3,10,0.75) 0%,rgba(0,0,0,0.05) 50%, transparent 100%);
+}
+.ds-vid-play {
+  width:56px; height:56px; border-radius:50%;
+  background:rgba(255,255,255,0.08); backdrop-filter:blur(20px);
+  border:1.5px solid rgba(255,255,255,0.2);
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.3s;
+  transform:scale(0.8); opacity:0.55;
+  box-shadow:0 4px 30px rgba(0,0,0,0.5);
+}
+.ds-vid:hover .ds-vid-play {
+  transform:scale(1.1); opacity:1;
+  background:rgba(78,205,196,0.18);
+  border-color:rgba(78,205,196,0.5);
+  box-shadow:0 12px 48px rgba(0,0,0,0.6), 0 0 30px rgba(78,205,196,0.2);
+}
+.ds-vid-info { padding:0.9rem 1.1rem 1rem; border-top:1px solid rgba(255,255,255,0.04); }
+.ds-vid-top { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.2rem; }
+.ds-vid-flag { font-size:1rem; line-height:1; }
+.ds-vid-name {
+  font-family:'Mona Sans',sans-serif; font-size:0.73rem;
+  font-weight:700; color:rgba(255,255,255,0.85); flex:1;
+}
+.ds-vid-lang {
+  font-size:0.52rem; font-weight:700; letter-spacing:2.5px;
+  color:rgba(192,160,96,0.5); text-transform:uppercase;
+}
+/* Lang filter tabs */
+.ds-vid-tabs {
+  display:flex; gap:0.5rem; padding:0 3rem 1.5rem; flex-wrap:wrap;
+  position:relative; z-index:1;
+}
+.ds-vid-tab {
+  padding:0.3rem 1rem; border-radius:980px; cursor:pointer;
+  font-family:'Mona Sans',sans-serif; font-size:0.6rem; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase; transition:all 0.2s;
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+  color:rgba(136,146,164,0.5);
+}
+.ds-vid-tab.active, .ds-vid-tab:hover {
+  background:rgba(78,205,196,0.08); border-color:rgba(78,205,196,0.25);
+  color:rgba(78,205,196,0.9);
+}
+
+/* ── VIDEO LIGHTBOX ── */
+#ds-lightbox {
+  display:none; position:fixed; inset:0; z-index:99999;
+  background:rgba(0,0,3,0.96); backdrop-filter:blur(20px);
+  align-items:center; justify-content:center;
+}
+#ds-lightbox.active { display:flex; }
+.ds-lb-inner {
+  max-width:900px; width:92%; position:relative;
+}
+.ds-lb-video {
+  width:100%; border-radius:16px; overflow:hidden;
+  box-shadow:0 40px 120px rgba(0,0,0,0.9), 0 0 60px rgba(78,205,196,0.06);
+  border:1px solid rgba(255,255,255,0.06);
+}
+.ds-lb-video video { width:100%; display:block; max-height:80vh; object-fit:contain; background:#000; }
+.ds-lb-close {
+  position:absolute; top:-3rem; right:0;
+  width:40px; height:40px; border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.6); font-size:0.9rem;
+  display:flex; align-items:center; justify-content:center; transition:all 0.2s;
+}
+.ds-lb-close:hover { background:rgba(255,255,255,0.12); color:#fff; transform:scale(1.1); }
+.ds-lb-title {
+  margin-top:1.2rem; text-align:center;
+  font-family:'Mona Sans',sans-serif; font-size:0.75rem;
+  font-weight:700; letter-spacing:2px; color:rgba(255,255,255,0.4);
+  text-transform:uppercase;
+}
+
+/* ── PACKAGES ── */
+.ds-pkgs {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  margin:0 3rem 0.5rem; position:relative;
+  border-radius:20px; overflow:visible;
+  gap:1px; background:rgba(255,255,255,0.04);
+}
+.ds-pkg {
+  background:#070710; padding:2.8rem 2.4rem;
+  display:flex; flex-direction:column; position:relative;
+  transition:background 0.3s; overflow:hidden;
+}
+.ds-pkg:first-child { border-radius:20px 0 0 20px; }
+.ds-pkg:last-child { border-radius:0 20px 20px 0; }
+.ds-pkg:hover { background:#0c0c1c; }
+.ds-pkg-star {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  background:rgba(192,160,96,0.1); border:1px solid rgba(192,160,96,0.22);
+  border-radius:980px; padding:0.28rem 0.75rem;
+  font-family:'Mona Sans',sans-serif; font-size:0.52rem;
+  font-weight:700; letter-spacing:2px; color:rgba(192,160,96,0.8);
+  margin-bottom:1.4rem; width:fit-content;
+}
+.ds-pkg.ds-featured {
+  background:linear-gradient(170deg,#0f0f22 0%,#0a0a18 100%);
+  border-radius:0; z-index:1;
+  box-shadow:0 0 0 1px rgba(192,160,96,0.18), 0 40px 100px rgba(0,0,0,0.6),
+             inset 0 1px 0 rgba(192,160,96,0.08);
+}
+.ds-pkg.ds-featured::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 90% 50% at 50% 0%, rgba(192,160,96,0.07) 0%, transparent 60%);
+  pointer-events:none;
+}
+.ds-pkg-tier {
+  font-family:'Mona Sans',sans-serif; font-size:0.6rem;
+  font-weight:700; letter-spacing:3.5px; text-transform:uppercase;
+  color:rgba(136,146,164,0.35); margin-bottom:0.4rem;
+}
+.ds-pkg-name {
+  font-family:'Mona Sans',sans-serif; font-size:1.7rem;
+  font-weight:900; color:#fff; line-height:1; margin-bottom:1.6rem;
+  letter-spacing:-0.5px;
+}
+.ds-pkg.ds-featured .ds-pkg-name {
+  background:linear-gradient(120deg,#fff 20%,rgba(232,213,163,0.9) 60%,rgba(192,160,96,0.85) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.ds-pkg-price-row { display:flex; align-items:flex-end; gap:0.25rem; margin-bottom:0.3rem; }
+.ds-pkg-price {
+  font-family:'Mona Sans',sans-serif; font-size:3.2rem;
+  font-weight:900; letter-spacing:-2.5px; color:#fff; line-height:1;
+}
+.ds-pkg-cur { font-size:1.3rem; font-weight:700; color:rgba(255,255,255,0.4); align-self:flex-start; padding-top:0.5rem; }
+.ds-pkg-per { font-size:0.78rem; color:rgba(136,146,164,0.35); margin-bottom:0.25rem; }
+.ds-pkg-setup-note {
+  font-size:0.66rem; color:rgba(136,146,164,0.28);
+  margin-bottom:1.8rem; padding-bottom:1.6rem;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.ds-pkg-tagline {
+  font-size:0.8rem; color:rgba(136,146,164,0.55);
+  line-height:1.65; margin-bottom:1.6rem; font-style:italic;
+}
+.ds-pkg-features {
+  list-style:none; padding:0; margin:0; flex:1;
+  display:flex; flex-direction:column;
+}
+.ds-pkg-features li {
+  display:flex; align-items:flex-start; gap:0.7rem;
+  padding:0.55rem 0; border-bottom:1px solid rgba(255,255,255,0.03);
+  font-size:0.78rem; color:rgba(136,146,164,0.65); line-height:1.55;
+}
+.ds-pkg-features li:last-child { border-bottom:none; }
+.ds-pkg-features li .check {
+  width:17px; height:17px; border-radius:50%; flex-shrink:0;
+  background:rgba(78,205,196,0.08); border:1px solid rgba(78,205,196,0.22);
+  display:flex; align-items:center; justify-content:center; margin-top:0.08rem;
+}
+.ds-pkg-features li .check svg { width:8px; height:8px; }
+.ds-pkg.ds-featured .ds-pkg-features li { color:rgba(215,225,240,0.82); }
+.ds-pkg.ds-featured .ds-pkg-features li .check {
+  background:rgba(192,160,96,0.1); border-color:rgba(192,160,96,0.28);
+}
+.ds-pkg-cta {
+  display:flex; align-items:center; justify-content:center; gap:0.5rem;
+  margin-top:2.2rem; padding:1rem 1.5rem; border-radius:12px;
+  font-family:'Mona Sans',sans-serif; font-size:0.8rem; font-weight:800;
+  letter-spacing:0.3px; cursor:pointer; transition:all 0.25s; text-decoration:none;
+  border:none;
+}
+.ds-pkg .ds-pkg-cta {
+  background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.5);
+  border:1px solid rgba(255,255,255,0.09);
+}
+.ds-pkg .ds-pkg-cta:hover { background:rgba(255,255,255,0.08); color:#fff; border-color:rgba(255,255,255,0.18); }
+.ds-pkg.ds-featured .ds-pkg-cta {
+  background:linear-gradient(135deg,#fff,#e0e0e0);
+  color:#05050e; border:none;
+  box-shadow:0 10px 40px rgba(255,255,255,0.14);
+}
+.ds-pkg.ds-featured .ds-pkg-cta:hover { transform:translateY(-3px); box-shadow:0 20px 60px rgba(255,255,255,0.22); }
+.ds-pkg-note {
+  text-align:center; font-size:0.66rem;
+  color:rgba(136,146,164,0.22); margin:1.5rem 3rem 0;
+}
+
+/* ── TRUST + COMPLIANCE ── */
+.ds-trust {
+  display:flex; align-items:center; justify-content:center;
+  gap:0.6rem; flex-wrap:wrap;
+  padding:2rem 4rem;
+  border-top:1px solid rgba(255,255,255,0.04);
+  position:relative; z-index:1;
+}
+.ds-trust-badge {
+  display:flex; align-items:center; gap:0.45rem;
+  padding:0.42rem 0.9rem; border-radius:8px;
+  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06);
+  transition:all 0.2s;
+}
+.ds-trust-badge:hover { background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.12); }
+.ds-trust-icon { font-size:0.85rem; }
+.ds-trust-text {
+  font-family:'Mona Sans',sans-serif; font-size:0.6rem;
+  font-weight:700; letter-spacing:1.5px; color:rgba(192,192,192,0.35);
+  text-transform:uppercase;
+}
+
+/* ── FOOTER ── */
+.ds-modal-footer {
+  padding:1.6rem 4.5rem; display:flex; align-items:center;
+  justify-content:space-between; flex-wrap:wrap; gap:1rem;
+  border-top:1px solid rgba(255,255,255,0.04);
+  background:rgba(255,255,255,0.01); position:relative; z-index:1;
+}
+.ds-footer-note { font-size:0.68rem; color:rgba(136,146,164,0.22); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:980px) {
+  .ds-modal-hero { padding:3.5rem 2.5rem 3rem; }
+  .ds-section-header { padding:2.5rem 2.5rem 1.5rem; }
+  .ds-journey { grid-template-columns:repeat(3,1fr); margin:0 2rem 3rem; }
+  .ds-journey-step:nth-child(4), .ds-journey-step:nth-child(5) { grid-column:span 1; }
+  .ds-videos { margin:0 2rem 3rem; }
+  .ds-pkgs { margin:0 1.5rem 1rem; }
+  .ds-vid-tabs { padding:0 2rem 1.5rem; }
+  .ds-trust, .ds-modal-footer { padding-left:2.5rem; padding-right:2.5rem; }
+}
+@media (max-width:768px) {
+  .ds-kpi-strip { grid-template-columns:repeat(2,1fr); }
+  .ds-kpi { border-bottom:1px solid rgba(255,255,255,0.04); }
+  .ds-journey { grid-template-columns:1fr 1fr; margin:0 1.5rem 2.5rem; }
+  .ds-journey::before { display:none; }
+  .ds-videos { grid-template-columns:1fr 1fr; margin:0 1.5rem 2.5rem; }
+  .ds-pkgs { grid-template-columns:1fr; margin:0 1rem 1rem; }
+  .ds-pkg:first-child, .ds-pkg:last-child { border-radius:0; }
+}
+@media (max-width:500px) {
+  .ds-journey, .ds-videos { grid-template-columns:1fr; }
+  .ds-modal-hero { padding:3rem 1.5rem 2.5rem; }
+  .ds-hero-title { font-size:2rem; letter-spacing:-1px; }
+  .ds-hero-actions { flex-direction:column; }
+  .ds-hero-cta, .ds-hero-cta-ghost { width:100%; justify-content:center; }
+}
 </style>
     <style>
         :root {
@@ -141,10 +601,23 @@
         .nav-links a { color: var(--grey); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
         .nav-links a:hover { color: var(--gold); }
 
-        .lang-switcher { display: flex; align-items: center; gap: 0.25rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(192,192,192,0.12); border-radius: 980px; padding: 0.3rem 0.4rem; }
-        .lang-btn { background: none; border: none; color: var(--grey); font-family: 'Mona Sans', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; cursor: pointer; padding: 0.3rem 0.7rem; border-radius: 980px; transition: all 0.25s; white-space: nowrap; }
-        .lang-btn:hover { color: var(--white); }
-        .lang-btn.active { background: rgba(192,192,192,0.15); color: var(--white); }
+        .lang-switcher { position: relative; z-index: 1000; }
+        .lang-current { display: flex; align-items: center; gap: 0.45rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(192,192,192,0.12); border-radius: 980px; padding: 0.4rem 0.85rem 0.4rem 0.65rem; cursor: pointer; transition: all 0.25s; white-space: nowrap; }
+        .lang-current:hover { border-color: rgba(192,192,192,0.3); background: rgba(255,255,255,0.07); }
+        .lang-current .lang-flag { font-size: 0.95rem; line-height: 1; }
+        .lang-current .lang-code { font-family: 'Mona Sans', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; color: var(--white); }
+        .lang-current .lang-arrow { font-size: 0.55rem; color: var(--grey); transition: transform 0.25s; margin-left: 0.1rem; }
+        .lang-switcher.open .lang-current .lang-arrow { transform: rotate(180deg); }
+        .lang-dropdown { position: absolute; top: calc(100% + 6px); right: 0; background: rgba(12,12,18,0.98); border: 1px solid rgba(192,192,192,0.15); border-radius: 12px; padding: 0.35rem; min-width: 150px; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: all 0.2s ease; backdrop-filter: blur(20px); box-shadow: 0 12px 40px rgba(0,0,0,0.6); }
+        .lang-switcher.open .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .lang-option { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.85rem; border-radius: 8px; cursor: pointer; transition: all 0.15s; border: none; background: none; width: 100%; text-align: left; }
+        .lang-option:hover { background: rgba(255,255,255,0.06); }
+        .lang-option.active { background: rgba(78,205,196,0.08); }
+        .lang-option .lang-flag { font-size: 0.95rem; line-height: 1; }
+        .lang-option .lang-name { font-family: 'Mona Sans', sans-serif; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.7); }
+        .lang-option.active .lang-name { color: var(--white); }
+        .lang-option .lang-check { margin-left: auto; font-size: 0.7rem; color: rgba(78,205,196,0.8); opacity: 0; }
+        .lang-option.active .lang-check { opacity: 1; }
 
         body[dir="rtl"] .problem-item { flex-direction: row-reverse; }
         body[dir="rtl"] .problem-item::before { left: auto; right: 0; }
@@ -590,6 +1063,15 @@
     <style>
         * { animation-delay: 0s !important; }
         .hero-eyebrow, .hero-data-ref, .hero-main-headline, .hero-sub, .hero-cta, .hero-ticker-wrap, .scroll-indicator { opacity: 1 !important; }
+        /* RTL support for Arabic */
+        [dir="rtl"] { text-align: right; }
+        [dir="rtl"] nav { direction: ltr; }
+        [dir="rtl"] .logo { direction: ltr; }
+        [dir="rtl"] section, [dir="rtl"] .hero-content, [dir="rtl"] .ds-modal-hero { direction: rtl; }
+        [dir="rtl"] .problem-item { transform-origin: right; }
+        [dir="rtl"] .problem-item:hover { transform: translateX(-8px); }
+        [dir="rtl"] .problem-item::before { left: auto; right: 0; }
+        [dir="rtl"] .lang-dropdown { right: auto; left: 0; }
     </style>
 </head>
 <body>
@@ -604,9 +1086,19 @@
     </ul>
     <div style="display:flex;align-items:center;gap:0.75rem;">
         <button class="dijital-sube-btn" onclick="openModal('dijitalsube')"><span class="ds-icon">⚡</span><span class="ds-btn-text" data-i18n="ds_btn">Dijital Şube</span></button>
-        <div class="lang-switcher">
-            <button class="lang-btn active" onclick="setLang('tr')">TR</button>
-            <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <div class="lang-switcher" id="langSwitcher">
+            <div class="lang-current" onclick="toggleLangDropdown()">
+                <span class="lang-flag" id="langCurrentFlag">🇹🇷</span>
+                <span class="lang-code" id="langCurrentCode">TR</span>
+                <span class="lang-arrow">▼</span>
+            </div>
+            <div class="lang-dropdown" id="langDropdown">
+                <button class="lang-option active" data-lang="tr" onclick="selectLang('tr')"><span class="lang-flag">🇹🇷</span><span class="lang-name">Türkçe</span><span class="lang-check">✓</span></button>
+                <button class="lang-option" data-lang="en" onclick="selectLang('en')"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span></button>
+                <button class="lang-option" data-lang="de" onclick="selectLang('de')"><span class="lang-flag">🇩🇪</span><span class="lang-name">Deutsch</span><span class="lang-check">✓</span></button>
+                <button class="lang-option" data-lang="fr" onclick="selectLang('fr')"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span></button>
+                <button class="lang-option" data-lang="ar" onclick="selectLang('ar')"><span class="lang-flag">🇸🇦</span><span class="lang-name">العربية</span><span class="lang-check">✓</span></button>
+            </div>
         </div>
     </div>
 </nav>
@@ -1221,7 +1713,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
             Hayal Edin...<br>
             <em>her dilde, kesintisiz, sizin adınıza 7/24 konuşan bir asistan.</em>
         </h1>
-        <button onclick="openModal('form')" class="hero-cta" style="cursor:pointer;">
+        <button onclick="openModal('dijitalsube')" class="hero-cta" style="cursor:pointer;">
             <span data-i18n="hero_cta">GERÇEKLEŞTİRMEK İÇİN</span>
             <span class="arrow"></span>
         </a>
@@ -1493,7 +1985,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
                     </div>
                 </div>
                 <div style="margin-top:2rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center;">
-                    <button onclick="openModal('form')" class="hero-cta" style="opacity:1;animation:none;font-size:0.8rem;cursor:pointer;">
+                    <button onclick="openModal('dijitalsube')" class="hero-cta" style="opacity:1;animation:none;font-size:0.8rem;cursor:pointer;">
                         <span data-i18n="iv_cta">SİSTEMİ CANLI GÖRÜN</span>
                         <span class="arrow"></span>
                     </button>
@@ -1695,218 +2187,437 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
 
 
 <!-- DİJİTAL ŞUBE MODAL -->
-<div id="modal-dijitalsube" onclick="if(event.target===this)closeModal('dijitalsube')">
-    <div class="ds-modal-container">
-        <div class="ds-modal-accent"></div>
-        <button class="ds-modal-close" onclick="closeModal('dijitalsube')">✕</button>
-        <div class="ds-modal-header">
-            <p class="ds-modal-label" data-i18n="ds_label">DİJİTAL ŞUBE</p>
-            <h2 class="ds-modal-title" data-i18n-html="ds_title">Kliniğinizin <em>dijital şubesi</em> 7/24 açık</h2>
-            <p class="ds-modal-subtitle" data-i18n="ds_subtitle">Eş zamanlı dijital asistan ile hastalarınızı 33 dilde karşılayın. 3 iş gününde canlıya geçin.</p>
-        </div>
-        <div class="ds-stats">
-            <div class="ds-stat"><div class="ds-stat-num">7/24</div><div class="ds-stat-label" data-i18n="ds_stat1">Kesintisiz hizmet</div></div>
-            <div class="ds-stat"><div class="ds-stat-num">33</div><div class="ds-stat-label" data-i18n="ds_stat2">Dil desteği</div></div>
-            <div class="ds-stat"><div class="ds-stat-num">3</div><div class="ds-stat-label" data-i18n="ds_stat3">Gün kurulum</div></div>
-            <div class="ds-stat"><div class="ds-stat-num">%100</div><div class="ds-stat-label" data-i18n="ds_stat4">Veri güvenliği</div></div>
-        </div>
-        <div style="padding:2rem 0 1.5rem;">
-            <p class="ds-section-title" data-i18n="ds_process_label">SÜREÇ</p>
-            <div class="ds-process">
-                <div class="ds-process-card"><div class="ds-process-num">01</div><div class="ds-process-icon">🔍</div><div class="ds-process-title" data-i18n="ds_p1_title">Analiz</div><div class="ds-process-desc" data-i18n="ds_p1_desc">İş akışınızı, hasta profilinizi ve fiyat politikanızı inceliyoruz.</div><div class="ds-process-time" data-i18n="ds_p1_time">GÜN 1</div></div>
-                <div class="ds-process-card"><div class="ds-process-num">02</div><div class="ds-process-icon">🧠</div><div class="ds-process-title" data-i18n="ds_p2_title">Öğrenme</div><div class="ds-process-desc" data-i18n="ds_p2_desc">Dijital personeli kliniğinize özel bilgilerle ve marka üslubunuzla eğitiyoruz.</div><div class="ds-process-time" data-i18n="ds_p2_time">GÜN 1–2</div></div>
-                <div class="ds-process-card"><div class="ds-process-num">03</div><div class="ds-process-icon">🔗</div><div class="ds-process-title" data-i18n="ds_p3_title">Entegrasyon</div><div class="ds-process-desc" data-i18n="ds_p3_desc">WhatsApp, web sitesi ve CRM sistemlerinize sorunsuz entegre edip test ediyoruz.</div><div class="ds-process-time" data-i18n="ds_p3_time">GÜN 2–3</div></div>
-                <div class="ds-process-card"><div class="ds-process-num">04</div><div class="ds-process-icon">🚀</div><div class="ds-process-title" data-i18n="ds_p4_title">Canlıya Alma</div><div class="ds-process-desc" data-i18n="ds_p4_desc">Dijital ekibiniz 7/24, 33 dilde hasta karşılamaya başlıyor.</div><div class="ds-process-time" data-i18n="ds_p4_time">GÜN 3</div></div>
-            </div>
-        </div>
-        
-        <!-- DİJİTAL PERSONELLER -->
-        <div style="padding:2rem 0 1.5rem;">
-            <p class="ds-section-title" data-i18n="ds_staff_label">DİJİTAL PERSONELLER</p>
-            <p style="text-align:center;font-size:0.82rem;color:var(--grey);max-width:560px;margin:0 auto 1.5rem;line-height:1.7;" data-i18n="ds_staff_desc">Kliniğinizi temsil eden dijital personellerimiz, hastalarınızla kendi dillerinde iletişim kurar.</p>
-
-            <!-- Video Grid -->
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(192,192,192,0.06);margin:0 2rem;" class="ds-video-grid">
-
-                <!-- TR: Karşılama -->
-                <div class="ds-video-card" style="background:rgba(8,8,8,0.95);padding:0;position:relative;overflow:hidden;cursor:pointer;" onclick="event.stopPropagation();playDsVideo(this,'karsilamavebilgiedinmetr.mp4')">
-                    <div class="ds-video-thumb" style="position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                        <video poster="" src="karsilamavebilgiedinmetr.mp4" preload="auto" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;" loading="lazy"></video>
-                        <div class="ds-play-btn" style="position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding:0.8rem 1rem;">
-                        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-                            <span style="font-size:0.9rem;">🇹🇷</span>
-                            <span style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--white);" data-i18n="ds_v1_title">Karşılama & Bilgi Edinme</span>
-                        </div>
-                        <span style="font-size:0.62rem;letter-spacing:1.5px;color:var(--gold);font-family:'Mona Sans',sans-serif;font-weight:600;">TÜRKÇE</span>
-                    </div>
-                </div>
-
-                <!-- TR: Randevu & Fiyat -->
-                <div class="ds-video-card" style="background:rgba(8,8,8,0.95);padding:0;position:relative;overflow:hidden;cursor:pointer;" onclick="event.stopPropagation();playDsVideo(this,'randevuvefiyatbelirlemetr.mp4')">
-                    <div class="ds-video-thumb" style="position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                        <video poster="" src="randevuvefiyatbelirlemetr.mp4" preload="auto" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;" loading="lazy"></video>
-                        <div class="ds-play-btn" style="position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding:0.8rem 1rem;">
-                        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-                            <span style="font-size:0.9rem;">🇹🇷</span>
-                            <span style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--white);" data-i18n="ds_v2_title">Randevu & Fiyat</span>
-                        </div>
-                        <span style="font-size:0.62rem;letter-spacing:1.5px;color:var(--gold);font-family:'Mona Sans',sans-serif;font-weight:600;">TÜRKÇE</span>
-                    </div>
-                </div>
-
-                <!-- TR: Özel İstek -->
-                <div class="ds-video-card" style="background:rgba(8,8,8,0.95);padding:0;position:relative;overflow:hidden;cursor:pointer;" onclick="event.stopPropagation();playDsVideo(this,'%C3%B6zelistektr.mp4')">
-                    <div class="ds-video-thumb" style="position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                        <video poster="" src="%C3%B6zelistektr.mp4" preload="auto" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;" loading="lazy"></video>
-                        <div class="ds-play-btn" style="position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding:0.8rem 1rem;">
-                        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-                            <span style="font-size:0.9rem;">🇹🇷</span>
-                            <span style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--white);" data-i18n="ds_v3_title">Özel İstek</span>
-                        </div>
-                        <span style="font-size:0.62rem;letter-spacing:1.5px;color:var(--gold);font-family:'Mona Sans',sans-serif;font-weight:600;">TÜRKÇE</span>
-                    </div>
-                </div>
-
-                <!-- EN: Welcome -->
-                <div class="ds-video-card" style="background:rgba(8,8,8,0.95);padding:0;position:relative;overflow:hidden;cursor:pointer;" onclick="event.stopPropagation();playDsVideo(this,'enkars%C4%B1lama.mp4')">
-                    <div class="ds-video-thumb" style="position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                        <video poster="" src="enkars%C4%B1lama.mp4" preload="auto" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;" loading="lazy"></video>
-                        <div class="ds-play-btn" style="position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding:0.8rem 1rem;">
-                        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-                            <span style="font-size:0.9rem;">🇬🇧</span>
-                            <span style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--white);" data-i18n="ds_v4_title">Welcome & Info</span>
-                        </div>
-                        <span style="font-size:0.62rem;letter-spacing:1.5px;color:var(--gold);font-family:'Mona Sans',sans-serif;font-weight:600;">ENGLISH</span>
-                    </div>
-                </div>
-
-                <!-- EN: Pricing -->
-                <div class="ds-video-card" style="background:rgba(8,8,8,0.95);padding:0;position:relative;overflow:hidden;cursor:pointer;" onclick="event.stopPropagation();playDsVideo(this,'enfiyat.mp4')">
-                    <div class="ds-video-thumb" style="position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                        <video poster="" src="enfiyat.mp4" preload="auto" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;" loading="lazy"></video>
-                        <div class="ds-play-btn" style="position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding:0.8rem 1rem;">
-                        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-                            <span style="font-size:0.9rem;">🇬🇧</span>
-                            <span style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--white);" data-i18n="ds_v5_title">Pricing</span>
-                        </div>
-                        <span style="font-size:0.62rem;letter-spacing:1.5px;color:var(--gold);font-family:'Mona Sans',sans-serif;font-weight:600;">ENGLISH</span>
-                    </div>
-                </div>
-
-                <!-- DE: Karşılama -->
-                <div class="ds-video-card" style="background:rgba(8,8,8,0.95);padding:0;position:relative;overflow:hidden;cursor:pointer;" onclick="event.stopPropagation();playDsVideo(this,'c95d830cb9.mp4')">
-                    <div class="ds-video-thumb" style="position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                        <video poster="" src="c95d830cb9.mp4" preload="auto" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;" loading="lazy"></video>
-                        <div class="ds-play-btn" style="position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding:0.8rem 1rem;">
-                        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-                            <span style="font-size:0.9rem;">🇩🇪</span>
-                            <span style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--white);" data-i18n="ds_v6_title">Begrüßung</span>
-                        </div>
-                        <span style="font-size:0.62rem;letter-spacing:1.5px;color:var(--gold);font-family:'Mona Sans',sans-serif;font-weight:600;">DEUTSCH</span>
-                    </div>
-                </div>
-
-                <!-- DE: Operasyon -->
-                <div class="ds-video-card" style="background:rgba(8,8,8,0.95);padding:0;position:relative;overflow:hidden;cursor:pointer;" onclick="event.stopPropagation();playDsVideo(this,'almkars%C4%B1lama.mp4')">
-                    <div class="ds-video-thumb" style="position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                        <video poster="" src="almkars%C4%B1lama.mp4" preload="auto" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;" loading="lazy"></video>
-                        <div class="ds-play-btn" style="position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding:0.8rem 1rem;">
-                        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-                            <span style="font-size:0.9rem;">🇩🇪</span>
-                            <span style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--white);" data-i18n="ds_v7_title">Operasyon Süreci</span>
-                        </div>
-                        <span style="font-size:0.62rem;letter-spacing:1.5px;color:var(--gold);font-family:'Mona Sans',sans-serif;font-weight:600;">DEUTSCH</span>
-                    </div>
-                </div>
-
-                <!-- DE: Randevu & Fiyat -->
-                <div class="ds-video-card" style="background:rgba(8,8,8,0.95);padding:0;position:relative;overflow:hidden;cursor:pointer;" onclick="event.stopPropagation();playDsVideo(this,'0517e8d166.mp4')">
-                    <div class="ds-video-thumb" style="position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                        <video poster="" src="0517e8d166.mp4" preload="auto" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;" loading="lazy"></video>
-                        <div class="ds-play-btn" style="position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding:0.8rem 1rem;">
-                        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-                            <span style="font-size:0.9rem;">🇩🇪</span>
-                            <span style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--white);" data-i18n="ds_v8_title">Termin & Preise</span>
-                        </div>
-                        <span style="font-size:0.62rem;letter-spacing:1.5px;color:var(--gold);font-family:'Mona Sans',sans-serif;font-weight:600;">DEUTSCH</span>
-                    </div>
-                </div>
-
-                <!-- AR: Karşılama -->
-                <div class="ds-video-card" style="background:rgba(8,8,8,0.95);padding:0;position:relative;overflow:hidden;cursor:pointer;" onclick="event.stopPropagation();playDsVideo(this,'aa2b772465.mp4')">
-                    <div class="ds-video-thumb" style="position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                        <video poster="" src="aa2b772465.mp4" preload="auto" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;" loading="lazy"></video>
-                        <div class="ds-play-btn" style="position:absolute;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding:0.8rem 1rem;">
-                        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.3rem;">
-                            <span style="font-size:0.9rem;">🌙</span>
-                            <span style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;color:var(--white);" data-i18n="ds_v9_title">ترحيب</span>
-                        </div>
-                        <span style="font-size:0.62rem;letter-spacing:1.5px;color:var(--gold);font-family:'Mona Sans',sans-serif;font-weight:600;" data-i18n="ds_v9_lang">ARAPÇA</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div style="padding:1rem 0 2rem;">
-            <p class="ds-section-title" data-i18n="ds_pkg_label">PAKETLER</p>
-            <div class="ds-packages">
-                <div class="ds-pkg"><div class="ds-pkg-name" data-i18n="ds_pkg1_name">Başlangıç</div><div class="ds-pkg-price"><span class="ds-pkg-amount">550$</span><span class="ds-pkg-period" data-i18n="ds_pkg_mo">/ay</span></div><div class="ds-pkg-setup" data-i18n="ds_pkg1_setup">Kurulum: 950$ (tek seferlik)</div><div class="ds-pkg-divider"></div><ul class="ds-pkg-features"><li data-i18n="ds_pkg1_f1">1 dijital personel</li><li data-i18n="ds_pkg1_f2">Türkçe & İngilizce dil desteği</li><li data-i18n="ds_pkg1_f3">Temel web entegrasyonu</li><li data-i18n="ds_pkg1_f4">Aylık 200 görüşme limiti</li><li>SOC 2, GDPR, HIPAA</li></ul><a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" class="ds-pkg-cta" data-i18n="ds_pkg_cta">BAŞVUR</a></div>
-                <div class="ds-pkg ds-featured"><div class="ds-pkg-badge" data-i18n="ds_pkg2_badge">EN ÇOK TERCİH EDİLEN</div><div class="ds-pkg-name">Pro</div><div class="ds-pkg-price"><span class="ds-pkg-amount">950$</span><span class="ds-pkg-period" data-i18n="ds_pkg_mo">/ay</span></div><div class="ds-pkg-setup" data-i18n="ds_pkg2_setup">Kurulum: 1.500$ (tek seferlik)</div><div class="ds-pkg-divider"></div><ul class="ds-pkg-features"><li data-i18n="ds_pkg2_f1">3 dijital personel</li><li data-i18n="ds_pkg2_f2">5 dil desteği</li><li data-i18n="ds_pkg2_f3">WhatsApp & CRM entegrasyonu</li><li data-i18n="ds_pkg2_f4">Aylık 500 görüşme limiti</li><li>SOC 2, GDPR, HIPAA</li></ul><a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" class="ds-pkg-cta" data-i18n="ds_pkg_cta">BAŞVUR</a></div>
-                <div class="ds-pkg"><div class="ds-pkg-name" data-i18n="ds_pkg3_name">VIP Ekosistem</div><div class="ds-pkg-price"><span class="ds-pkg-amount">1.750$</span><span class="ds-pkg-period" data-i18n="ds_pkg_mo">/ay</span></div><div class="ds-pkg-setup" data-i18n="ds_pkg3_setup">Kurulum: 3.350$ (tek seferlik)</div><div class="ds-pkg-divider"></div><ul class="ds-pkg-features"><li data-i18n="ds_pkg3_f1">5+2 dijital personel</li><li data-i18n="ds_pkg3_f2">30 dil desteği</li><li data-i18n="ds_pkg3_f3">Özel senaryolar & VIP akışlar</li><li data-i18n="ds_pkg3_f4">Aylık 1.000 görüşme limiti</li><li data-i18n="ds_pkg3_f5">7/24 teknik öncelik</li><li>SOC 2, GDPR, HIPAA</li></ul><a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" class="ds-pkg-cta" data-i18n="ds_pkg_cta">BAŞVUR</a></div>
-            </div>
-            <p style="text-align:center;font-size:0.72rem;color:rgba(136,146,164,0.4);margin-top:1rem;padding:0 2rem;" data-i18n="ds_pkg_note">Yıllık planlamalar veya kliniğinize özel mimari paketler için bilgi alabilirsiniz.</p>
-        </div>
-        <div class="ds-compliance">
-            <div class="ds-compliance-item"><span class="ds-compliance-icon">🛡️</span><span class="ds-compliance-name">SOC 2 Type II</span></div>
-            <div class="ds-compliance-item"><span class="ds-compliance-icon">🇪🇺</span><span class="ds-compliance-name">GDPR</span></div>
-            <div class="ds-compliance-item"><span class="ds-compliance-icon">🏥</span><span class="ds-compliance-name">HIPAA</span></div>
-            <div class="ds-compliance-item"><span class="ds-compliance-icon">🇹🇷</span><span class="ds-compliance-name">KVKK</span></div>
-        </div>
-        <div class="ds-modal-footer">
-            <div class="logo" style="font-size:0.9rem;">CLINIC <span>MEDIA</span> TECH</div>
-            <div class="ds-modal-note">boran@clinicmediatech.com</div>
-            <button onclick="closeModal('dijitalsube');openModal('form')" class="hero-cta" style="opacity:1;animation:none;font-size:0.78rem;cursor:pointer;"><span data-i18n="ds_footer_cta">HEMEN BAŞLA</span><span class="arrow"></span></button>
-        </div>
+<!-- VIDEO LIGHTBOX -->
+<div id="ds-lightbox" onclick="if(event.target===this)closeDsLightbox()">
+  <div class="ds-lb-inner">
+    <button class="ds-lb-close" onclick="closeDsLightbox()">✕</button>
+    <div class="ds-lb-video">
+      <video id="ds-lb-video-el" controls playsinline></video>
     </div>
+    <div class="ds-lb-title" id="ds-lb-title"></div>
+  </div>
 </div>
 
+<div id="modal-dijitalsube" onclick="if(event.target===this)closeModal('dijitalsube')">
+  <div class="ds-modal-container">
+    <div class="ds-modal-accent"></div>
+    <div class="ds-modal-orb1"></div>
+    <div class="ds-modal-orb2"></div>
+    <button class="ds-modal-close" onclick="closeModal('dijitalsube')">✕</button>
+
+    <!-- ══ HERO ══ -->
+    <div class="ds-modal-hero">
+      <div class="ds-hero-eyebrow">
+        <div class="ds-hero-badge">
+          <span class="ds-badge-dot"></span>
+          <span class="ds-badge-text">DIJITAL ŞUBE — CLINIC MEDIA TECH</span>
+        </div>
+      </div>
+
+      <h2 class="ds-hero-title">
+        Kliniğiniz artık tek bir lokasyon değil.<br><em>Sınırları olmayan, sürekli çalışan bir sistem.</em>
+      </h2>
+      <p class="ds-hero-sub" style="margin-bottom:1rem;">
+        Dijital şubeniz: 7/24 açık. 33 dilde akıcı.
+      </p>
+      <p class="ds-hero-sub">
+        Eş zamanlı dijital asistan ile hastalarınızı 33 dilde karşılayın. 3 iş gününde canlıya geçin.
+      </p>
+      <div class="ds-hero-actions">
+        <a href="javascript:void(0)" onclick="document.getElementById('ds-packages-section').scrollIntoView({behavior:'smooth'})" class="ds-hero-cta">
+          Kliniğimi Dönüştür
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="javascript:void(0)" class="ds-hero-cta-ghost" onclick="document.getElementById('ds-demo-section').scrollIntoView({behavior:'smooth'})">
+          Demo İzle ↓
+        </a>
+      </div>
+    </div>
+
+    <!-- ══ KPI STRIP ══ -->
+    <div class="ds-kpi-strip">
+      <div class="ds-kpi">
+        <div class="ds-kpi-num">7<sub>/24</sub></div>
+        <div class="ds-kpi-label">Kesintisiz Aktif</div>
+        <div class="ds-kpi-sub">Tatil, gece, bayram yok</div>
+      </div>
+      <div class="ds-kpi">
+        <div class="ds-kpi-num">33</div>
+        <div class="ds-kpi-label">Dil Desteği</div>
+        <div class="ds-kpi-sub">Anadil deneyimi</div>
+      </div>
+      <div class="ds-kpi">
+        <div class="ds-kpi-num">3</div>
+        <div class="ds-kpi-label">Gün Kurulum</div>
+        <div class="ds-kpi-sub">Karmaşık kurulum gerektirmez</div>
+      </div>
+
+    </div>
+
+    <!-- ══ PATIENT JOURNEY ══ -->
+    <div class="ds-section-wrap">
+      <div class="ds-section-header">
+        <span class="ds-section-num">01</span>
+        <span class="ds-section-label">Hasta Deneyim Döngüsü — Dijital Kadronuz</span>
+      </div>
+      <div class="ds-journey">
+
+        <div class="ds-journey-step">
+          <div class="ds-journey-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="ds-journey-num">01</span>
+          <div class="ds-journey-title">Karşılama & Bilgi Uzmanı</div>
+          <div class="ds-journey-desc">İlk temas. Hastanın beklentilerini analiz ederek kliniğe uygun yönlendirme yapar.</div>
+        </div>
+
+        <div class="ds-journey-step">
+          <div class="ds-journey-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <span class="ds-journey-num">02</span>
+          <div class="ds-journey-title">Operasyon & Süreç Desteği</div>
+          <div class="ds-journey-desc">Arka planı yönetir. Süreçlerin sorunsuz ve hızlı ilerlemesi için tam koordinasyon sağlar.</div>
+        </div>
+
+        <div class="ds-journey-step">
+          <div class="ds-journey-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <span class="ds-journey-num">03</span>
+          <div class="ds-journey-title">Randevu & Fiyatlandırma</div>
+          <div class="ds-journey-desc">Fiyat politikanıza göre net bütçe sunar, takviminizle senkronize randevu oluşturur.</div>
+        </div>
+
+        <div class="ds-journey-step">
+          <div class="ds-journey-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="1.8" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <span class="ds-journey-num">04</span>
+          <div class="ds-journey-title">Ameliyat Sonrası Destek</div>
+          <div class="ds-journey-desc">İyileşme sürecinde hastanın aklına takılan her soruyu anında yanıtlayarak güven pekiştirir.</div>
+        </div>
+
+        <div class="ds-journey-step ds-journey-vip">
+          <div class="ds-journey-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="ds-journey-num">05</span>
+          <div class="ds-journey-title">Özel İstek Asistanı</div>
+          <div class="ds-journey-desc">VIP & özelleştirilmiş talepler için çözüm odaklı proaktif asistan. Standart dışı senaryoları yönetir.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ DEMO VIDEOS ══ -->
+    <div class="ds-section-wrap" id="ds-demo-section">
+      <div class="ds-section-header">
+        <span class="ds-section-num">02</span>
+        <span class="ds-section-label">Dijital Asistanlarınızdan Bazılarına Göz Atın</span>
+      </div>
+      <div class="ds-vid-tabs">
+        <button class="ds-vid-tab active" onclick="filterVids(this,'all')">Tümü</button>
+        <button class="ds-vid-tab" onclick="filterVids(this,'tr')">🇹🇷 Türkçe</button>
+        <button class="ds-vid-tab" onclick="filterVids(this,'en')">🇬🇧 English</button>
+        <button class="ds-vid-tab" onclick="filterVids(this,'de')">🇩🇪 Deutsch</button>
+        <button class="ds-vid-tab" onclick="filterVids(this,'ar')">🌙 عربي</button>
+      </div>
+      <div class="ds-videos">
+
+        <div class="ds-vid" data-lang="tr" onclick="event.stopPropagation();playDsVideo('https://clinicmediatech.b-cdn.net/karsilamavebilgiedinmetr.mp4','Karşılama & Bilgi Edinme — Türkçe')">
+          <div class="ds-vid-thumb">
+            <video src="https://clinicmediatech.b-cdn.net/karsilamavebilgiedinmetr.mp4" preload="metadata" muted playsinline></video>
+            <div class="ds-vid-overlay"><div class="ds-vid-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg></div></div>
+          </div>
+          <div class="ds-vid-info">
+            <div class="ds-vid-top"><span class="ds-vid-flag">🇹🇷</span><span class="ds-vid-name">Karşılama & Bilgi Edinme</span></div>
+            <span class="ds-vid-lang">Türkçe</span>
+          </div>
+        </div>
+
+        <div class="ds-vid" data-lang="tr" onclick="event.stopPropagation();playDsVideo('https://clinicmediatech.b-cdn.net/randevuvefiyatbelirlemetr.mp4','Randevu & Fiyat Belirleme — Türkçe')">
+          <div class="ds-vid-thumb">
+            <video src="https://clinicmediatech.b-cdn.net/randevuvefiyatbelirlemetr.mp4" preload="metadata" muted playsinline></video>
+            <div class="ds-vid-overlay"><div class="ds-vid-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg></div></div>
+          </div>
+          <div class="ds-vid-info">
+            <div class="ds-vid-top"><span class="ds-vid-flag">🇹🇷</span><span class="ds-vid-name">Randevu & Fiyat Belirleme</span></div>
+            <span class="ds-vid-lang">Türkçe</span>
+          </div>
+        </div>
+
+        <div class="ds-vid" data-lang="tr" onclick="event.stopPropagation();playDsVideo('https://clinicmediatech.b-cdn.net/o%CC%88zelistektr.mp4','Özel İstek Yönetimi — Türkçe')">
+          <div class="ds-vid-thumb">
+            <video src="https://clinicmediatech.b-cdn.net/o%CC%88zelistektr.mp4" preload="metadata" muted playsinline></video>
+            <div class="ds-vid-overlay"><div class="ds-vid-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg></div></div>
+          </div>
+          <div class="ds-vid-info">
+            <div class="ds-vid-top"><span class="ds-vid-flag">🇹🇷</span><span class="ds-vid-name">Özel İstek Yönetimi</span></div>
+            <span class="ds-vid-lang">Türkçe</span>
+          </div>
+        </div>
+
+        <div class="ds-vid" data-lang="en" onclick="event.stopPropagation();playDsVideo('https://clinicmediatech.b-cdn.net/enkars%C4%B1lama.mp4','Welcome & Information — English')">
+          <div class="ds-vid-thumb">
+            <video src="https://clinicmediatech.b-cdn.net/enkars%C4%B1lama.mp4" preload="metadata" muted playsinline></video>
+            <div class="ds-vid-overlay"><div class="ds-vid-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg></div></div>
+          </div>
+          <div class="ds-vid-info">
+            <div class="ds-vid-top"><span class="ds-vid-flag">🇬🇧</span><span class="ds-vid-name">Welcome & Information</span></div>
+            <span class="ds-vid-lang">English</span>
+          </div>
+        </div>
+
+        <div class="ds-vid" data-lang="en" onclick="event.stopPropagation();playDsVideo('https://clinicmediatech.b-cdn.net/enfiyat.mp4','Pricing & Packages — English')">
+          <div class="ds-vid-thumb">
+            <video src="https://clinicmediatech.b-cdn.net/enfiyat.mp4" preload="metadata" muted playsinline></video>
+            <div class="ds-vid-overlay"><div class="ds-vid-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg></div></div>
+          </div>
+          <div class="ds-vid-info">
+            <div class="ds-vid-top"><span class="ds-vid-flag">🇬🇧</span><span class="ds-vid-name">Pricing & Packages</span></div>
+            <span class="ds-vid-lang">English</span>
+          </div>
+        </div>
+
+        <div class="ds-vid" data-lang="de" onclick="event.stopPropagation();playDsVideo('https://clinicmediatech.b-cdn.net/c95d830cb9.mp4','Begrüßung & Information — Deutsch')">
+          <div class="ds-vid-thumb">
+            <video src="https://clinicmediatech.b-cdn.net/c95d830cb9.mp4" preload="metadata" muted playsinline></video>
+            <div class="ds-vid-overlay"><div class="ds-vid-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg></div></div>
+          </div>
+          <div class="ds-vid-info">
+            <div class="ds-vid-top"><span class="ds-vid-flag">🇩🇪</span><span class="ds-vid-name">Begrüßung & Information</span></div>
+            <span class="ds-vid-lang">Deutsch</span>
+          </div>
+        </div>
+
+        <div class="ds-vid" data-lang="de" onclick="event.stopPropagation();playDsVideo('https://clinicmediatech.b-cdn.net/almkars%C4%B1lama.mp4','Operationsprozess — Deutsch')">
+          <div class="ds-vid-thumb">
+            <video src="https://clinicmediatech.b-cdn.net/almkars%C4%B1lama.mp4" preload="metadata" muted playsinline></video>
+            <div class="ds-vid-overlay"><div class="ds-vid-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg></div></div>
+          </div>
+          <div class="ds-vid-info">
+            <div class="ds-vid-top"><span class="ds-vid-flag">🇩🇪</span><span class="ds-vid-name">Operationsprozess</span></div>
+            <span class="ds-vid-lang">Deutsch</span>
+          </div>
+        </div>
+
+        <div class="ds-vid" data-lang="de" onclick="event.stopPropagation();playDsVideo('https://clinicmediatech.b-cdn.net/0517e8d166.mp4','Termin & Preise — Deutsch')">
+          <div class="ds-vid-thumb">
+            <video src="https://clinicmediatech.b-cdn.net/0517e8d166.mp4" preload="metadata" muted playsinline></video>
+            <div class="ds-vid-overlay"><div class="ds-vid-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg></div></div>
+          </div>
+          <div class="ds-vid-info">
+            <div class="ds-vid-top"><span class="ds-vid-flag">🇩🇪</span><span class="ds-vid-name">Termin & Preise</span></div>
+            <span class="ds-vid-lang">Deutsch</span>
+          </div>
+        </div>
+
+        <div class="ds-vid" data-lang="ar" onclick="event.stopPropagation();playDsVideo('https://clinicmediatech.b-cdn.net/aa2b772465.mp4','ترحيب ومعلومات — عربي')">
+          <div class="ds-vid-thumb">
+            <video src="https://clinicmediatech.b-cdn.net/aa2b772465.mp4" preload="metadata" muted playsinline></video>
+            <div class="ds-vid-overlay"><div class="ds-vid-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg></div></div>
+          </div>
+          <div class="ds-vid-info">
+            <div class="ds-vid-top"><span class="ds-vid-flag">🌙</span><span class="ds-vid-name">ترحيب ومعلومات</span></div>
+            <span class="ds-vid-lang">Arapça</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ PACKAGES ══ -->
+    <div class="ds-section-wrap" id="ds-packages-section">
+      <div class="ds-section-header">
+        <span class="ds-section-num">03</span>
+        <span class="ds-section-label">Kurumsal Ekosistem Paketleri</span>
+      </div>
+      <div class="ds-pkgs">
+
+        <!-- Başlangıç -->
+        <div class="ds-pkg">
+          <div class="ds-pkg-tier">Başlangıç</div>
+          <div class="ds-pkg-name">Başlangıç</div>
+          <div class="ds-pkg-price-row">
+            <span class="ds-pkg-cur">$</span>
+            <span class="ds-pkg-price">550</span>
+            <span class="ds-pkg-per">/ay</span>
+          </div>
+          <div class="ds-pkg-setup-note">+ $950 tek seferlik kurulum ücreti</div>
+          <p class="ds-pkg-tagline">"Dijital dönüşüme sağlam bir adımla başlamak istiyorum."</p>
+          <ul class="ds-pkg-features">
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>1 dijital personel — kliniğe özel eğitimli</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Türkçe & İngilizce dil desteği</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Temel web sitesi entegrasyonu</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>200 aylık görüşme kapasitesi</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Aylık performans raporu</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Haftalık veri analizi</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>GDPR · HIPAA · SOC 2 · KVKK</li>
+          </ul>
+          <a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" class="ds-pkg-cta">Başvur →</a>
+        </div>
+
+        <!-- Pro (Featured) -->
+        <div class="ds-pkg ds-featured">
+          <div class="ds-pkg-star">✦ EN ÇOK TERCİH EDİLEN</div>
+          <div class="ds-pkg-tier">Pro</div>
+          <div class="ds-pkg-name">Pro</div>
+          <div class="ds-pkg-price-row">
+            <span class="ds-pkg-cur">$</span>
+            <span class="ds-pkg-price">950</span>
+            <span class="ds-pkg-per">/ay</span>
+          </div>
+          <div class="ds-pkg-setup-note">+ $1.500 tek seferlik kurulum ücreti</div>
+          <p class="ds-pkg-tagline">"Uluslararası hasta tabanımı büyütmek ve rakiplerimin önüne geçmek istiyorum."</p>
+          <ul class="ds-pkg-features">
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>3 dijital personel — rol bazlı uzmanlaşma</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>5 dil desteği — TR, EN + 3 seçmeli</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>WhatsApp & CRM entegrasyonu</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>500 aylık görüşme kapasitesi</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Post-op hasta takip desteği</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Haftalık detaylı analiz raporu</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Günlük veri analizi</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Öncelikli teknik destek hattı</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#C0A060" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>GDPR · HIPAA · SOC 2 · KVKK</li>
+          </ul>
+          <a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" class="ds-pkg-cta">Başvur →</a>
+        </div>
+
+        <!-- VIP Ekosistem -->
+        <div class="ds-pkg">
+          <div class="ds-pkg-tier">VIP Ekosistem</div>
+          <div class="ds-pkg-name">VIP Ekosistem</div>
+          <div class="ds-pkg-price-row">
+            <span class="ds-pkg-cur">$</span>
+            <span class="ds-pkg-price">1.750</span>
+            <span class="ds-pkg-per">/ay</span>
+          </div>
+          <div class="ds-pkg-setup-note">+ $3.350 tek seferlik kurulum ücreti</div>
+          <p class="ds-pkg-tagline">"Çoklu pazar stratejim var. Tüm küresel pazarlarda aynı kalite standardını istiyorum."</p>
+          <ul class="ds-pkg-features">
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>5+2 dijital personel — özel rol tanımlı</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>30 dil desteği — tam küresel kapsam</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Özel senaryolar & VIP hasta akışları</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>1.000 aylık görüşme kapasitesi</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>10 dilde 3 tanıtım videosu üretimi</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>7/24 öncelikli teknik destek</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Anlık veri analizi</li>
+            <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#4ECDC4" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>GDPR · HIPAA · SOC 2 · KVKK</li>
+          </ul>
+          <a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" class="ds-pkg-cta">Başvur →</a>
+        </div>
+
+      </div>
+      <p class="ds-pkg-note" style="font-size:0.88rem; color:rgba(255,255,255,0.55); text-align:center; margin-top:1.5rem; padding:1rem 2rem; background:rgba(78,205,196,0.05); border:1px solid rgba(78,205,196,0.15); border-radius:10px; line-height:1.7;">Eğer planlar yeterli gelmediyse, <a href="javascript:void(0)" onclick="closeModal('dijitalsube');openModal('form')" style="color:#4ECDC4; text-decoration:underline; font-weight:700;">size özel plan için iletişime geçiniz</a>. Yıllık planlar ve kurumunuza özel mimari çözümler için birebir teklif hazırlıyoruz.</p>
+    </div>
+
+    <!-- ══ AVANTAJLAR ══ -->
+    <div class="ds-section-wrap" style="padding-bottom:3rem;">
+      <div class="ds-section-header">
+        <span class="ds-section-num">04</span>
+        <span class="ds-section-label">Neden Dijital Şube?</span>
+      </div>
+
+      <style>
+        .ds-adv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.04); margin:0 3rem 2rem; border-radius:16px; overflow:hidden; }
+        .ds-adv-card { background:#06060d; padding:2.2rem 2rem; display:flex; flex-direction:column; gap:1rem; transition:background 0.3s; cursor:default; }
+        .ds-adv-card:hover { background:#0c0c1a; }
+        .ds-adv-top { display:flex; align-items:flex-start; gap:1rem; }
+        .ds-adv-num { font-family:'Mona Sans',sans-serif; font-size:0.5rem; font-weight:700; letter-spacing:3px; color:rgba(78,205,196,0.35); padding-top:0.15rem; white-space:nowrap; }
+        .ds-adv-title { font-family:'Mona Sans',sans-serif; font-size:1rem; font-weight:800; color:#fff; line-height:1.25; }
+        .ds-adv-title em { font-style:normal; color:#4ECDC4; }
+        .ds-adv-body { font-size:0.78rem; color:rgba(136,146,164,0.65); line-height:1.8; }
+        .ds-adv-stat { margin-top:auto; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.04); font-family:'Mona Sans',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:2px; color:rgba(192,160,96,0.45); }
+        @media(max-width:900px){ .ds-adv-grid { grid-template-columns:1fr 1fr; margin:0 2rem 2rem; } }
+        @media(max-width:600px){ .ds-adv-grid { grid-template-columns:1fr; margin:0 1.5rem 2rem; } }
+      </style>
+
+      <div class="ds-adv-grid">
+
+        <div class="ds-adv-card">
+          <div class="ds-adv-top">
+            <span class="ds-adv-num">01</span>
+            <div class="ds-adv-title">İlk temas <em>gelirin yarısını</em> belirler</div>
+          </div>
+          <div class="ds-adv-body">Sağlık turizminde hasta kararını ilk 3 dakikada verir. Yanıt almayan hasta bir sonraki kliniğe geçer. Dijital şubeniz bu pencereyi kapatmaz — tam tersine her an açılmaya hazırdır.</div>
+          <div class="ds-adv-stat">7/24 · 365 GÜN KESİNTİSİZ</div>
+        </div>
+
+        <div class="ds-adv-card">
+          <div class="ds-adv-top">
+            <span class="ds-adv-num">02</span>
+            <div class="ds-adv-title">Dil engeli <em>en büyük dönüşümü</em> engeller</div>
+          </div>
+          <div class="ds-adv-body">Hasta kendi dilinde cevap alamadığında güvensizlik yaşar ve vazgeçer. 33 dilde anadil düzeyinde iletişim, çeviriden değil gerçek bir deneyimden gelir. Bu fark direkt rezervasyona yansır.</div>
+          <div class="ds-adv-stat">33 DİL · ANADIL DENEYİMİ</div>
+        </div>
+
+        <div class="ds-adv-card">
+          <div class="ds-adv-top">
+            <span class="ds-adv-num">03</span>
+            <div class="ds-adv-title">Ekibiniz <em>kapanış için</em> var, karşılama için değil</div>
+          </div>
+          <div class="ds-adv-body">Satış ekibinizin saatlerini "Ne kadar tutar?", "Kaç gün kalacağım?" sorularına harcaması lüks değil, kayıptır. Dijital şube bu filtreden geçmiş, karar vermeye hazır adayları önünüze getirir.</div>
+          <div class="ds-adv-stat">SATIŞA HAZIR HASTA AKIŞI</div>
+        </div>
+
+        <div class="ds-adv-card">
+          <div class="ds-adv-top">
+            <span class="ds-adv-num">04</span>
+            <div class="ds-adv-title">Ameliyat sonrası <em>marka sadakati</em> inşa eder</div>
+          </div>
+          <div class="ds-adv-body">Hastanın eve döndükten sonra yaşadığı sessizlik en büyük güvensizlik kaynağıdır. Post-op destek bu boşluğu kapatır; memnun hasta kendi ağında kliniğinizin en güçlü referansı olur.</div>
+          <div class="ds-adv-stat">POST-OP DESTEK · REFERANS ETKİSİ</div>
+        </div>
+
+        <div class="ds-adv-card">
+          <div class="ds-adv-top">
+            <span class="ds-adv-num">05</span>
+            <div class="ds-adv-title">Her görüşme bir <em>pazar araştırması</em>dır</div>
+          </div>
+          <div class="ds-adv-body">Hangi ülkeden kaç hasta geldi, ne sordular, nerede ayrıldılar? Bu veriler bir spreadsheet'te kaybolmaz; kliniğinizin pazarlama ve fiyatlandırma stratejisini gerçek zamanlı şekillendirir.</div>
+          <div class="ds-adv-stat">VERİ ODAKLI BÜYÜME STRATEJİSİ</div>
+        </div>
+
+        <div class="ds-adv-card">
+          <div class="ds-adv-top">
+            <span class="ds-adv-num">06</span>
+            <div class="ds-adv-title">Büyüme <em>IT bütçesine</em> bağlı değil</div>
+          </div>
+          <div class="ds-adv-body">Kurulum 3 iş günü, entegrasyon mevcut sitenize tek satır kod. Geliştirici tutmaya, yeni altyapı kurmaya, aylar süren projelere gerek yok. Siz klinisyen olmaya devam edersiniz.</div>
+          <div class="ds-adv-stat">3 İŞ GÜNÜ · KARMAŞIK KURULUM YOK</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TRUST BAR -->
+    <div class="ds-trust">
+      <div class="ds-trust-badge"><span class="ds-trust-icon">🛡️</span><span class="ds-trust-text">SOC 2 Type II</span></div>
+      <div class="ds-trust-badge"><span class="ds-trust-icon">🇪🇺</span><span class="ds-trust-text">GDPR</span></div>
+      <div class="ds-trust-badge"><span class="ds-trust-icon">🏥</span><span class="ds-trust-text">HIPAA</span></div>
+      <div class="ds-trust-badge"><span class="ds-trust-icon">🇹🇷</span><span class="ds-trust-text">KVKK</span></div>
+    </div>
+
+    <!-- ══ FOOTER ══ -->
+    <div class="ds-modal-footer">
+      <div class="logo" style="font-size:0.85rem; letter-spacing:3px;">CLINIC <span>MEDIA</span> TECH</div>
+      <div class="ds-footer-note">Her görüşme uçtan uca şifreli · Veri işleme süreçlerimiz, SOC 2 Type II güvenlik standartlarını destekleyen ve GDPR veri koruma gerekliliklerine uygun altyapı sağlayıcıları üzerinden yürütülmektedir.</div>
+      <button onclick="document.getElementById('ds-packages-section').scrollIntoView({behavior:'smooth'})" class="hero-cta" style="opacity:1;animation:none;font-size:0.78rem;cursor:pointer;">
+        <span>HEMEN BAŞLA</span><span class="arrow"></span>
+      </button>
+      <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;">
+        <svg viewBox="0 0 48 32" width="48" height="32" style="opacity:0.4;"><rect width="48" height="32" rx="4" fill="#1A1F71"/><text x="24" y="20" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="10" font-weight="bold">VISA</text></svg>
+        <svg viewBox="0 0 48 32" width="48" height="32" style="opacity:0.4;"><rect width="48" height="32" rx="4" fill="#1a1a2e"/><circle cx="19" cy="16" r="10" fill="#EB001B" opacity="0.9"/><circle cx="29" cy="16" r="10" fill="#F79E1B" opacity="0.9"/><path d="M24 8.5a10 10 0 000 15" fill="#FF5F00" opacity="0.9"/></svg>
+        <svg viewBox="0 0 48 32" width="48" height="32" style="opacity:0.4;"><rect width="48" height="32" rx="4" fill="#016FD0"/><text x="24" y="20" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="7" font-weight="bold">AMEX</text></svg>
+        <svg viewBox="0 0 48 32" width="48" height="32" style="opacity:0.4;"><rect width="48" height="32" rx="4" fill="#0f1b2d"/><text x="24" y="20" text-anchor="middle" fill="#4ECDC4" font-family="sans-serif" font-size="9" font-weight="bold">TROY</text></svg>
+        <span data-ds-pay style="font-family:'Mona Sans',sans-serif;font-size:0.55rem;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,0.2);">GÜVENLI ÖDEME</span>
+      </div>
+    </div>
+
+  </div>
+</div>
 <footer>
     <!-- Footer Nav Links -->
     <div class="footer-nav-links" style="padding:2rem 4rem;border-bottom:1px solid rgba(192,192,192,0.06);display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;">
@@ -1932,7 +2643,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAssista
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── GLOBAL CANVAS ───
 const canvas = document.getElementById('globalCanvas');
 const ctx = canvas.getContext('2d');
@@ -2506,10 +3217,680 @@ const translations = {
         feat_desc:'The presenter in your promo video and the digital assistant on your website share the same avatar. The patient experiences an incredible sense of familiarity and trust.',
         feat_s1:'Trust increase from native language content', feat_s2:'Uninterrupted patient service',
         feat_s3:'Language support in Multi package', feat_s4_num:'3 days', feat_s4:'Setup and integration time',
+    },
+    de: {
+        nav_services:'LÖSUNGEN', nav_problem:'DIE KOSTEN DES SCHWEIGENS', nav_interactive:'SO FUNKTIONIERT ES', nav_how:'INTEGRATIONSPROZESS', nav_offer:'ANWENDUNGSBEREICHE', nav_pricing:'PAKETE', nav_contact:'STARTEN',
+        live_btn:'Live-Assistent',
+        connecting:'Verbindung wird hergestellt...',
+        chat_welcome:'Hallo! Ich bin Derin. Wenn Sie lieber schreiben als das Mikrofon zu nutzen, geben Sie Ihre Nachricht hier ein — ich antworte per Sprache 🎤',
+        chat_placeholder:'Nachricht eingeben...',
+        chat_status_live:'Verbunden · Sprachantwort aktiv',
+        chat_status_typing:'Schreibt...',
+        chat_status_muted:'Mikrofon aus · Schreiben Sie weiter',
+        hero_eyebrow:'LIVE-DIGITALASSISTENT FÜR DAS GESUNDHEITSWESEN',
+        hero_data_source:'SICHERN SIE SICH MIT FORTSCHRITTLICHER TECHNOLOGIE IHRE FÜHRUNGSPOSITION',
+        hero_headline:'Stellen Sie sich vor...<br><em>ein Assistent, der rund um die Uhr, in jeder Sprache, für Sie spricht.</em>',
+        hero_cta:'JETZT UMSETZEN',
+        problem_label:'DIE KOSTEN DES SCHWEIGENS',
+        problem_title:'Traditionelle Websites sprechen nicht —<br>sie <strong>warten</strong> einfach.',
+        problem_desc:'Doch Ihre Besucher suchen sofortige Antworten, Empathie für ihre Fragen und einen ersten Kontakt, der Vertrauen aufbaut. Jede unbeantwortete Frage und jedes unerfüllte Bedürfnis bedeutet, dass ein potenzieller Patient still zum Wettbewerber wechselt.',
+        problem_q1:'Fragen sofort beantworten',
+        problem_q2:'Eine echte Verbindung aufbauen',
+        problem_q3:'Die richtige Information in der ersten Sekunde liefern',
+        problem_q1_desc:'Lösen Sie jede Frage Ihrer Besucher ohne Verzögerung — durch ein interaktives, persönliches Erlebnis in Echtzeit.',
+        problem_q2_desc:'Bieten Sie Ihren Besuchern nicht nur Antworten, sondern einen warmherzigen Dialog, der zuhört, versteht und echtes Vertrauen aufbaut.',
+        problem_q3_desc:'Vermitteln Sie komplexe Abläufe direkt und klar — visuell und akustisch, statt durch lange Texte.',
+        problem_answer:'Die Antwort auf alle drei — <strong style="color:var(--white);">Ihr digitaler Assistent, integriert in Ihre Website.</strong>',
+        services_label:'LÖSUNGEN',
+        services_title:'Auf Ihre Größe zugeschnitten —<br><em style="font-style:italic;color:var(--gold);font-weight:600;">jedes Paket von Grund auf erstellt.</em>',
+        services_desc:'Von Kliniken und Medizintourismus-Plattformen bis hin zu Gesundheitsberatungen und Suchtbehandlungszentren — maßgeschneiderte KI-Assistenten-Infrastruktur für jeden Bereich des Gesundheitswesens.',
+        svc1_badge:'STANDARD', svc1_tag:'GRUNDINTEGRATION',
+        svc1_title:'Mehrsprachiger KI-Assistent,<br>in 3 Werktagen einsatzbereit.',
+        svc1_desc:'Ein KI-Assistent, der in Ihre Website integriert ist, in 3 Sprachen arbeitet und rund um die Uhr verfügbar ist. Er begrüßt Besucher, informiert und leitet an Ihr Team weiter.',
+        svc1_f1:'24/7 Sprach- und Textzugang', svc1_f2:'Türkisch, Englisch + 1 Sprache',
+        svc1_f3:'3 Avatar-Optionen', svc1_f4:'Detaillierte Berichte nach Gesprächen',
+        svc2_badge:'PREMIUM', svc2_tag:'MARKENKONSISTENZ',
+        svc2_title:'Das Gesicht aus Ihrem Werbevideo<br>begrüßt auf Ihrer Website.',
+        svc2_desc:'Alle Standard-Funktionen, plus 8 Sprachen und Video-Avatar-Abgleich. Der Präsentator Ihres Werbevideos und Ihr Website-Assistent teilen dieselbe Identität.',
+        svc2_f1:'8 Sprachen', svc2_f2:'Werbevideo in 2 Sprachen',
+        svc2_f3:'Video-Avatar — Web-Assistent-Abgleich', svc2_f4:'Conversion-fokussiertes Reporting',
+        svc2_f5:'Nachbehandlungs-Support',
+        svc3_badge:'MULTI', svc3_tag:'MULTIMARKT-REICHWEITE',
+        svc3_title:'30 Sprachen,<br>plattformübergreifend.',
+        svc3_desc:'Alle Premium-Funktionen, plus 30 Sprachen und 3 Werbevideos in 10 Sprachen. Eine umfassende Lösung für Unternehmen in mehreren Märkten.',
+        svc3_f1:'30 Sprachen', svc3_f2:'3 Werbevideos in 10 Sprachen',
+        svc3_f3:'Plattformübergreifende Integration', svc3_f4:'Alle Premium-Funktionen inklusive', svc3_f5:'Wachstumsberatung',
+        svc_learn:'DETAILS ANSEHEN →',
+        how_label:'INTEGRATIONSPROZESS', how_title:'Briefing · Schulung · Integration',
+        nav_how_footer:'INTEGRATIONSPROZESS', nav_offer_footer:'ANWENDUNGSBEREICHE',
+        nav_about_footer:'ÜBER UNS', nav_contact_footer:'KONTAKT', nav_faq_footer:'FAQ',
+        ticker_items: [
+            {stat:'7/24', text:'Live-Patientenerlebnis in der Muttersprache', source:'Clinic Media Tech · 2026'},
+            {stat:'30+', text:'Unterstützte Weltsprachen', source:'Multi-Paket · Clinic Media Tech'},
+            {stat:'3 Tage', text:'Einrichtungs- und Integrationszeit', source:'Alle Pakete · Clinic Media Tech'},
+            {stat:'66%', text:'Gesundheitsfachkräfte nutzen KI im Jahr 2024', source:'AMA Survey · 2024'},
+            {stat:'70%', text:'Aktive KI-Einführung im Gesundheitswesen', source:'NVIDIA Healthcare Report · 2025'},
+            {stat:'3,2$', text:'Durchschnittliche Rendite pro 1$ KI-Investition', source:'Deloitte Healthcare · 2025'},
+            {stat:'47%', text:'Gesundheitseinrichtungen nutzen oder planen KI-Assistenten', source:'Binariks Healthcare AI · 2025'},
+            {stat:'64%', text:'Patienten offen für KI-gestützte Assistenten', source:'TempDev AI Healthcare · 2025'},
+            {stat:'89%', text:'Bestätigen, dass Videoinhalte das Markenvertrauen stärken', source:'HubSpot Video Trends · 2025'},
+            {stat:'85%', text:'Führungskräfte sagen, KI steigert den Umsatz', source:'NVIDIA Survey · 2025'},
+            {stat:'+300%', text:'Lead-Qualitätssteigerung nach KI-Assistenten-Integration', source:'Conversational AI Research · 2025'},
+            {stat:'92%', text:'Gesundheitsführer: KI verbessert die Effizienz', source:'Deloitte · 2024'},
+        ],
+        form_label:'GESPRÄCH VEREINBAREN', form_title:'Wir rufen Sie an.',
+        form_name_label:'VOLLSTÄNDIGER NAME *', form_name_ph:'Ihr vollständiger Name',
+        form_email_label:'E-MAIL *', form_email_ph:'beispiel@mail.com',
+        form_phone_label:'TELEFON', form_optional:'(optional)', form_phone_ph:'+49 xxx xxx xx xx',
+        form_submit:'SENDEN', form_error:'Etwas ist schiefgelaufen, bitte versuchen Sie es erneut.',
+        form_success_title:'Anfrage erhalten.', form_success_desc:'Wir melden uns innerhalb von 24 Stunden.',
+        faq_label:'HÄUFIG GESTELLTE FRAGEN', faq_title:'FAQ', faq_cta:'GESPRÄCH VEREINBAREN',
+        faq_q1:'Muss ich meine bestehende Website oder Systeme ändern?',
+        faq_a1:'Nein, es sind keine Infrastrukturänderungen oder eine neue Website erforderlich. Unser interaktiver Video-Assistent wird mit einer einzigen Codezeile in Ihre bestehende Website integriert — innerhalb von Minuten live.',
+        faq_q2:'Wie wird die Datensicherheit der Besucher gewährleistet?',
+        faq_a2:'Alle Patienten-, Kunden- und Besucherdaten werden nach internationalen Sicherheitsstandards verarbeitet. Unser System entspricht vollständig den KVKK- und DSGVO-Anforderungen. Daten werden niemals an Dritte weitergegeben.',
+        faq_q3:'Wie funktioniert die Preisgestaltung?',
+        faq_a3:'Jede Einrichtung hat unterschiedlichen Besucherverkehr, Servicebereiche und operative Ziele. Wir bieten maßgeschneiderte Paketoptionen (Standard, Premium, Multi). Vereinbaren Sie ein Gespräch mit unserem Team.',
+        faq_q4:'Kann der Assistent mit internationalen Besuchern in verschiedenen Sprachen kommunizieren?',
+        faq_a4:'Absolut. Ihr Assistent kann so konfiguriert werden, dass er Besucher sofort in ihrer eigenen Sprache begrüßt. So können Sie Anfragen aus aller Welt rund um die Uhr bearbeiten.',
+        faq_q5:'Liefert der Assistent nur Informationen oder trägt er auch zu Terminen und Verkäufen bei?',
+        faq_a5:'Unser Assistent ist kein gewöhnlicher Info-Bot — er ist ein leistungsstarkes Vorverkaufs- und Triage-Tool. Während er Fragen beantwortet, analysiert er Bedürfnisse, sammelt Kontaktinformationen und liefert Ihrem Team einen strukturierten Bericht.',
+        about_label:'ÜBER UNS', about_title:'ÜBER UNS',
+        about_v1_title:'UNSERE VISION: Die Kommunikationslücke schließen', about_v1_desc:'In der digitalen Welt funktionieren die meisten Websites noch wie statische Broschüren — dabei wollen Besucher gehört, verstanden und sofort beantwortet werden. Wir haben es uns zur Aufgabe gemacht, diese einseitige Dynamik aufzubrechen.',
+        about_v2_title:'WAS WIR TUN: Der digitale Repräsentant Ihrer Einrichtung', about_v2_desc:'Wir entwickeln intelligente, interaktive digitale Vertreter, die die Sprache, Serviceprotokolle und Zielgruppenerwartungen Ihrer Einrichtung perfekt beherrschen.',
+        about_v3_title:'AUSWIRKUNG AUF VERTRIEB & BETRIEB', about_v3_desc:'Unsere Technologie liefert mehr als Informationen — sie analysiert Besucherbedürfnisse, sammelt sicher Kontaktdaten und liefert Ihrem Team strukturierte strategische Einblicke.',
+        about_v4_title:'FÜR WEN: Fachleute, die Grenzen überschreiten', about_v4_desc:'Entwickelt für alle Gesundheits-, Beratungs- und Medizintechnik-Profis, die international tätig sind und ihren digitalen ersten Eindruck perfektionieren möchten.',
+        about_cta:'GESPRÄCH VEREINBAREN',
+        contact_modal_label:'KONTAKT', contact_modal_title:'Kontaktieren Sie uns.',
+        contact_modal_email_label:'E-MAIL', contact_modal_wa_label:'WHATSAPP',
+        contact_modal_wa_text:'Schreiben Sie für einen schnellen Anruf', contact_modal_note:'Antwort innerhalb von 24 Stunden garantiert',
+        how_desc:'Insgesamt 3 Werktage. Individuelle Inhalte werden erstellt, der Assistent wird trainiert und in Ihre Website integriert.',
+        step1_title:'Analyse & Inhaltsvorbereitung',
+        step1_desc:'Wir analysieren Ihre Dienstleistungen, Zielgruppe und Kommunikationsanforderungen. Das Assistenten-Skript wird nach kultureller und sprachlicher Ausrichtung entwickelt.',
+        step1_time:'TAG 1',
+        step2_title:'Assistenten-Schulung & Sprachkonfiguration',
+        step2_desc:'Der vorbereitete Inhalt wird in den Assistenten geladen. Gewählte Sprachen, Avatar-Charakter und Antwortflüsse werden konfiguriert.',
+        step2_time:'TAG 1 – 2',
+        step3_title:'Integration & Livegang',
+        step3_desc:'Der Assistent wird in Ihre Website integriert und geht nach Ihrer Freigabe live. Noch am selben Tag bereit für das erste Besuchergespräch.',
+        step3_time:'TAG 3',
+        delivery_label:'GESAMTE EINRICHTUNGSZEIT', delivery_days:'3 Werktage', delivery_note:'Ab dem ersten Gespräch',
+        demo_cta:'JETZT STARTEN →',
+        offer_label:'ANWENDUNGSBEREICHE',
+        offer_headline:'Ihr Assistent, bei jedem Schritt Ihres Geschäfts an Ihrer Seite.',
+        offer_desc:'Der Assistent lernt, welche Prozesse er bedienen soll — und bleibt vom Besucherempfang bis zum Nachsorge-Support aktiv.',
+        uc1_title:'Besucherempfang', uc1_desc:'Besucher werden beim Eintreffen sofort in ihrer eigenen Sprache begrüßt. Der erste Eindruck wird automatisch richtig gesetzt.',
+        uc2_title:'Mehrsprachige Information', uc2_desc:'Ihre Dienstleistungen, Abläufe und Bedingungen werden in bis zu 30 Sprachen per Sprache oder Text bereitgestellt.',
+        uc3_title:'Bedarfsanalyse', uc3_desc:'Im natürlichen Gespräch erfasst der Assistent die Anfrage, Erwartungen und Prioritäten des Besuchers in strukturierter Form.',
+        uc4_title:'Termin- & Anfragenerfassung', uc4_desc:'Kontaktdaten, Präferenzen und Terminanfragen werden gesammelt, ohne dass der Besucher ein Formular ausfüllen muss.',
+        uc5_title:'Intelligente Zusammenfassung für Ihr Team', uc5_desc:'Nach jedem Gespräch wird eine strukturierte Zusammenfassung an Ihr Team gesendet. Das Follow-up beginnt mit vollem Kontext.',
+        uc6_title:'Nachsorge-Support', uc6_desc:'Fragen nach einem Eingriff, einer Behandlung oder Dienstleistung werden vom Assistenten beantwortet. Fälle, die Teameingriff erfordern, werden eskaliert.',
+        uc7_title:'Avatar & Werbeinhalte', uc7_desc:'Der Präsentator in Ihrem Werbevideo und Ihr Website-Assistent teilen dieselbe Identität. Markenkonsistenz schafft Vertrauen.',
+        uc8_title:'24/7 Digitaler Empfang', uc8_desc:'Anfragen außerhalb der Geschäftszeiten gehen nie verloren. Der Assistent ist jeden Tag, in jeder Zeitzone aktiv.',
+        iv_label:'DIGITALER VIRTUELLER ASSISTENT',
+        iv_headline:'Besucher kommt, Assistent übernimmt —<br>Ihr Team <em style="font-style:italic;color:var(--gold);font-weight:600;">startet mit vollem Kontext.</em>',
+        iv_desc:'Setzen Sie die Standards Ihrer Branche mit einem interaktiven Lösungspartner, der ganz auf Ihre Unternehmens-DNA zugeschnitten ist.',
+        iv_steps_label:'SO FUNKTIONIERT ES',
+        iv_step1_title:'Besucher erreicht Ihre Website',
+        iv_step1_desc:'Der Assistent spricht in den von Ihnen gewählten Sprachen — egal woher Ihr Besucher kommt, er wird in seiner eigenen Sprache empfangen.',
+        iv_step2_title:'Das Gespräch beginnt',
+        iv_step2_desc:'Der Assistent erfasst Bedürfnisse und Kontaktinformationen in einem natürlichen Gesprächsfluss. Keine Formulare nötig.',
+        iv_step3_title:'Strukturierter Bericht wird an Ihr Team geliefert',
+        iv_step3_desc:'Nach Gesprächsende werden alle Daten analysiert und an Ihr Team übermittelt. Das Follow-up beginnt mit vollem Kontext.',
+        iv_step4_title:'Ihr Team agiert informiert',
+        iv_step4_desc:'Der Besucher wurde bereits durch den Assistenten mit Ihrem Unternehmen vertraut gemacht. Ihr Team baut darauf auf.',
+        iv_cta:'SYSTEM LIVE ANSEHEN',
+        pricing_label:'PAKETE', pricing_title:'Wählen Sie das richtige Paket.',
+        pricing_desc:'Drei Integrationsstufen — jeweils auf Ihre Unternehmensgröße und Ziele zugeschnitten.',
+        p1_tier:'STANDARD', p1_title:'Grundintegration', p1_badge:'3 Sprachen',
+        p1_f1:'24/7 Sprach- und Textzugang', p1_f2:'Türkisch, Englisch + 1 Sprache',
+        p1_f3:'3 Avatar-Optionen', p1_f4:'Berichte nach Gesprächen',
+        p1_f5:'Automatisierter Weiterleitungsfluss', p1_f6:'3 Werktage Einrichtung',
+        p2_tier:'PREMIUM', p2_title:'Markenkonsistenz', p2_badge:'8 Sprachen',
+        p2_f1:'Alle Standard-Funktionen', p2_f2:'8 Sprachen',
+        p2_f3:'Werbevideo in 2 Sprachen', p2_f4:'Video-Avatar — Web-Assistent-Abgleich',
+        p2_f5:'Nachbehandlungs-Support', p2_f6:'Conversion-Reporting', p2_f7:'Prioritäts-Support',
+        p3_tier:'MULTI', p3_title:'Multimarkt-Reichweite', p3_badge:'30 Sprachen',
+        p3_f1:'Alle Premium-Funktionen', p3_f2:'30 Sprachen',
+        p3_f3:'3 Werbevideos in 10 Sprachen', p3_f4:'Plattformübergreifende Integration',
+        p3_f5:'A/B-Tests und Optimierung', p3_f6:'Wachstumsberatung', p3_f7:'Skalierbare Architektur',
+        cta_quote:'ANGEBOT ANFORDERN',
+        pricing_note:'Zusätzliche Gesprächsminuten und Sprachaktualisierungen sind in allen Paketen verfügbar. Die Preise werden individuell nach Ihrem Geschäftsverkehr und Ihren Anforderungen festgelegt.',
+        why_label:'FORSCHUNG',
+        why_c1_title:'IN 3 WERKTAGEN LIVE', why_c1_desc:'Keine langwierigen Integrationen. Wir nehmen Ihre Dokumente, konfigurieren Ihren Assistenten und gehen innerhalb von 3 Werktagen live.',
+        why_c2_title:'SPRICHT 30+ SPRACHEN', why_c2_desc:'Native-Qualität in Türkisch, Arabisch, Russisch, Englisch und 30+ weiteren Sprachen. Die Sprachbarriere wird zum Problem Ihrer Konkurrenz.',
+        why_c3_title:'KEINE VORLAGEN', why_c3_desc:'Jeder Assistent wird ausschließlich für Ihre Dienstleistungen, Protokolle und Zielgruppe konfiguriert.',
+        why_c4_title:'ECHTZEIT-REPORTING', why_c4_desc:'Jedes Gespräch wird analysiert und an Ihr Vertriebsteam gemeldet. Sie wissen, was der Patient will, bevor er anruft.',
+        why_c5_title:'PARTNERSCHAFT, KEINE SOFTWARE', why_c5_desc:'Wir verkaufen keine Lizenzen. Wir werden Partner Ihrer Wachstumsziele.',
+        why_c6_title:'ENTERPRISE-SICHERHEIT', why_c6_desc:'Patientendaten werden auf erstklassiger Infrastruktur geschützt, der globale Institutionen vertrauen.',
+        why_c7_title:'AVATAR-KONSISTENZ', why_c7_desc:'In Premium- und Multi-Paketen sind das Gesicht in Ihren Werbevideos und Ihr Website-Assistent derselbe Avatar.',
+        why_c8_title:'NACHSORGE-SUPPORT', why_c8_desc:'Wir begleiten Ihren Patienten nach der Rückkehr. Ein Assistent, der Nachsorgefragen beantwortet, baut Markenloyalität auf.',
+        why_c9_title:'WARME LEADS', why_c9_desc:'Nur Patienten, die wissen, was sie wollen, und bereits Vertrauen aufgebaut haben, erreichen Ihr Vertriebsteam.',
+        why_c10_title:'24/7, UNERMÜDLICH', why_c11_title:'ANTWORTZEIT UNTER 500ms', why_c11_desc:'Angetrieben von der Tavus-Infrastruktur bleibt die Antwortzeit unter 500ms. Ein Patient fragt — der Assistent antwortet sofort.', why_c10_desc:'Keine Feiertage, keine Krankentage. Jeder Patient — von Dubai um Mitternacht bis Istanbul um 9 Uhr — erhält denselben energiegeladenen Empfang.',
+        why_d1_text:'Durchschnittliche Rendite pro 1$ KI-Investition',
+        why_d2_text:'der Krankenhäuser nutzen aktiv KI',
+        why_d3_text:'Zunahme digitaler Termine durch KI-Chatbot',
+        why_d4_text:'der Gesundheitsführer: KI verbessert Effizienz',
+        why_d5_text:'der Patienten begrüßen mehr Technologie',
+        why_title:'Nischenkompetenz.<br><strong>Von Grund auf gebaut.</strong>',
+        why_statement:'Wir sind keine Allzweck-Chatbot-Lösung. Wir sind maßgeschneiderte Infrastruktur, entwickelt mit tiefem Verständnis der Dynamik im Gesundheitswesen.',
+        why_sub:'Wir verwenden keine Vorlagen. Jeder Assistent wird nach Ihren Inhalten, Ihrer Zielgruppe und Ihren Sprachanforderungen konfiguriert.',
+        stat1_text:'Vorteil der Videoinhalte gegenüber textbasierten Inhalten', stat2_text:'Nutzer, die Videoqualität mit Markenglaubwürdigkeit verbinden',
+        stat3_text:'Lead-Qualitätssteigerung nach KI-Integration', stat4_text:'Vertrauenszuwachs durch muttersprachliche Inhalte',
+        contact_label:'LOSLEGEN',
+        contact_title:'Lassen Sie uns<br><strong>den ersten Schritt gemeinsam gehen.</strong>',
+        contact_desc:'Wählen Sie Ihr Paket — wir erstellen eine maßgeschneiderte Präsentation und rufen Sie innerhalb von 24 Stunden an.',
+        promise_title:'24-Stunden-Antwortgarantie', promise_sub:'Treffen Sie Ihre Wahl, wir rufen Sie an.',
+        cta_svc1_tag:'STANDARD-PAKET', cta_svc1_title:'Grundintegration.<br>3 Sprachen. Immer aktiv.', cta_svc1_desc:'KI-Assistent · 3 Sprachen · 24/7 aktiv · 3-Tage-Einrichtung',
+        cta_svc2_tag:'PREMIUM-PAKET', cta_svc2_title:'Video-Avatar-Abgleich.<br>8 Sprachen. Markenkonsistenz.', cta_svc2_desc:'Werbevideo · Avatar-Abgleich · 8 Sprachen · Nachsorge-Support',
+        cta_svc3_tag:'MULTI-PAKET', cta_svc3_title:'Multimarkt-Reichweite.<br>30 Sprachen. 3 Videos.', cta_svc3_desc:'30 Sprachen · 3 Videos in 10 Sprachen · Wachstumsberatung · Multiplattform',
+        cta_explore_tag:'NICHT SICHER, WELCHES?', cta_explore_title:'Kostenloses Kennenlerngespräch — lassen Sie uns gemeinsam bewerten.',
+        cta_quote_btn:'ANGEBOT ANFORDERN →', cta_24h:'ANTWORT INNERHALB VON 24 STUNDEN', cta_talk:'GESPRÄCH PLANEN →',
+        ds_btn: 'Digitale Filiale',
+        ds_label: 'DIGITALE FILIALE',
+        ds_title: 'Die <em>digitale Filiale</em> Ihrer Klinik ist 24/7 geöffnet',
+        ds_subtitle: 'Empfangen Sie Ihre Patienten in 33 Sprachen mit einem Echtzeit-Digitalassistenten. In 3 Werktagen live.',
+        ds_stat1: 'Ununterbrochener Service', ds_stat2: 'Sprachunterstützung', ds_stat3: 'Tage bis zur Einrichtung', ds_stat4: 'Datenkonformität',
+        ds_process_label: 'PROZESS',
+        ds_p1_title: 'Analyse', ds_p1_desc: 'Wir prüfen Ihre Arbeitsabläufe, Patientenprofile und Preisrichtlinien.', ds_p1_time: 'TAG 1',
+        ds_p2_title: 'Schulung', ds_p2_desc: 'Wir schulen das digitale Personal mit Ihrem klinikspezifischen Wissen und Ihrer Markenstimme.', ds_p2_time: 'TAG 1–2',
+        ds_p3_title: 'Integration', ds_p3_desc: 'Nahtlose Integration und Tests mit WhatsApp, Website und CRM.', ds_p3_time: 'TAG 2–3',
+        ds_p4_title: 'Livegang', ds_p4_desc: 'Ihr digitales Team empfängt Patienten 24/7 in 33 Sprachen.', ds_p4_time: 'TAG 3',
+        ds_pkg_label: 'PAKETE', ds_pkg_mo: '/Mo.',
+        ds_pkg1_name: 'Starter', ds_pkg1_setup: 'Einrichtung: 950$ (einmalig)',
+        ds_pkg1_f1: '1 digitaler Mitarbeiter', ds_pkg1_f2: 'Türkisch & Englisch', ds_pkg1_f3: 'Grundlegende Web-Integration', ds_pkg1_f4: '200 Gespräche/Monat',
+        ds_pkg2_badge: 'BELIEBTESTE', ds_pkg2_setup: 'Einrichtung: 1.500$ (einmalig)',
+        ds_pkg2_f1: '3 digitale Mitarbeiter', ds_pkg2_f2: '5 Sprachen', ds_pkg2_f3: 'WhatsApp & CRM-Integration', ds_pkg2_f4: '500 Gespräche/Monat',
+        ds_pkg3_name: 'VIP Ecosystem', ds_pkg3_setup: 'Einrichtung: 3.350$ (einmalig)',
+        ds_pkg3_f1: '5+2 digitale Mitarbeiter', ds_pkg3_f2: '30 Sprachen', ds_pkg3_f3: 'Individuelle Szenarien & VIP-Flows', ds_pkg3_f4: '1.000 Gespräche/Monat', ds_pkg3_f5: '24/7 Prioritäts-Support',
+        ds_pkg_cta: 'BEWERBEN', ds_pkg_note: 'Kontaktieren Sie uns für Jahrespläne oder individuelle Architekturpakete.',
+        ds_footer_cta: 'JETZT STARTEN',
+        ds_staff_label: 'DIGITALES PERSONAL',
+        ds_staff_desc: 'Unsere digitalen Mitarbeiter kommunizieren mit Ihren Patienten in deren Muttersprache.',
+        ds_v1_title: 'Empfang & Information', ds_v2_title: 'Termin & Preise', ds_v3_title: 'Sonderwünsche',
+        ds_v4_title: 'Empfang & Info', ds_v5_title: 'Preise',
+        ds_v6_title: 'Empfang', ds_v7_title: 'OP-Ablauf', ds_v8_title: 'Termin & Preise',
+        ds_v9_title: 'Empfang', ds_v9_lang: 'ARABISCH',
+        footer_copy:'© 2026 Clinic Media Tech — Alle Rechte vorbehalten',
+        trust_label:'VERTRAUENSWÜRDIGE INFRASTRUKTUR & COMPLIANCE',
+        badge_soc2:'Zertifizierter Infrastrukturanbieter', badge_gdpr:'Über konforme Infrastruktur',
+        badge_hipaa:'Gesundheitsdaten-Sensibilität',
+        gdpr_notice:'Unsere Datenverarbeitung erfolgt über Infrastrukturanbieter, die SOC 2 Type II-Sicherheitsstandards unterstützen und vollständig DSGVO-konform sind.',
+        tick1_text:'Live-Erlebnis in der Muttersprache des Patienten', tick1_src:'Clinic Media Tech · 2026',
+        tick2_text:'Von einer Plattform unterstützte Sprachen', tick2_src:'Multi-Paket',
+        tick3_stat:'3 Tage', tick3_text:'Einrichtungs- und Integrationszeit', tick3_src:'Alle Pakete',
+        tick4_text:'Besucher, die Vertrauen als wichtigstes Kriterium betrachten',
+        tick5_text:'Vertrauenszuwachs durch muttersprachliche Inhalte',
+        tick7_text:'Nutzer bestätigen positive Wirkung von Videoinhalten auf Markenvertrauen',
+        cmp_left_title:'KONVENTIONELLER ANSATZ',
+        cmp_l1:'Besucher füllt ein Formular aus und wartet', cmp_l2:'Anfragen außerhalb der Geschäftszeiten bleiben unbeantwortet',
+        cmp_l3:'Team kontaktiert ohne Kontext', cmp_l4:'Folgefragen unbeantwortet, Besucher unsicher',
+        cmp_r1:'Besucher erhält sofort Antwort in seiner Sprache', cmp_r2:'24/7 ununterbrochener Zugang',
+        cmp_r3:'Team agiert mit strukturierten Gesprächsdaten', cmp_r4:'Folgefragen in Echtzeit beantwortet',
+        lang_tr:'🇹🇷 TÜRKISCH', lang_ar:'🌙 ARABISCH', lang_ru:'🇷🇺 RUSSISCH', lang_en:'🇬🇧 ENGLISCH', lang_de:'🇩🇪 DEUTSCH', lang_fr:'🇫🇷 FRANZÖSISCH', lang_es:'🇪🇸 SPANISCH', lang_it:'🇮🇹 ITALIENISCH', lang_zh:'🇨🇳 CHINESISCH', lang_ja:'🇯🇵 JAPANISCH', lang_ko:'🇰🇷 KOREANISCH', lang_pt:'🇧🇷 PORTUGIESISCH', lang_nl:'🇳🇱 NIEDERLÄNDISCH', lang_more:'+ 20 WEITERE SPRACHEN',
+        stat_247:'Ununterbrochener Service', stat_setup:'Einrichtungszeit',
+        stat_langs:'Sprachunterstützung', stat_patients:'Empfangene Patienten/Monat', stat_days_num:'3 Tage',
+        stat_days_suffix:' Tage',
+        feat_label:'PREMIUM & MULTI — EXKLUSIVE FUNKTION',
+        feat_title:'Video-Avatar = Website-Assistent.<br><em style="font-style:italic;color:#4ECDC4;">Der Patient spricht mit dem vertrauten Gesicht aus Ihrem Video.</em>',
+        feat_desc:'Der Präsentator in Ihrem Werbevideo und der digitale Assistent auf Ihrer Website teilen denselben Avatar. Der Patient erlebt ein unglaubliches Gefühl der Vertrautheit und des Vertrauens.',
+        feat_s1:'Vertrauenszuwachs durch muttersprachliche Inhalte', feat_s2:'Ununterbrochener Patientenservice',
+        feat_s3:'Sprachunterstützung im Multi-Paket', feat_s4_num:'3 Tage', feat_s4:'Einrichtungs- und Integrationszeit',
+    },
+    fr: {
+        nav_services:'SOLUTIONS', nav_problem:'LE COÛT DU SILENCE', nav_interactive:'COMMENT ÇA MARCHE', nav_how:'PROCESSUS D\'INTÉGRATION', nav_offer:'CAS D\'UTILISATION', nav_pricing:'FORFAITS', nav_contact:'COMMENCER',
+        live_btn:'Assistant en direct',
+        connecting:'Connexion en cours...',
+        chat_welcome:'Bonjour ! Je suis Derin. Si vous préférez écrire plutôt qu\'utiliser le micro, tapez votre message ici — je vous réponds par la voix 🎤',
+        chat_placeholder:'Tapez votre message...',
+        chat_status_live:'Connecté · Réponse vocale active',
+        chat_status_typing:'En train d\'écrire...',
+        chat_status_muted:'Micro désactivé · Continuez par écrit',
+        hero_eyebrow:'ASSISTANT NUMÉRIQUE EN DIRECT POUR LA SANTÉ',
+        hero_data_source:'ASSUREZ VOTRE POSITION DE LEADER GRÂCE À UNE TECHNOLOGIE DE POINTE',
+        hero_headline:'Imaginez...<br><em>un assistant qui parle en votre nom, 24h/24, dans toutes les langues.</em>',
+        hero_cta:'POUR LE RÉALISER',
+        problem_label:'LE COÛT DU SILENCE',
+        problem_title:'Les sites web traditionnels ne parlent pas —<br>ils <strong>attendent</strong>, tout simplement.',
+        problem_desc:'Pourtant, vos visiteurs recherchent des réponses instantanées, de l\'empathie pour leurs questions et un premier contact qui inspire confiance. Chaque question sans réponse signifie un patient potentiel qui passe silencieusement chez votre concurrent.',
+        problem_q1:'Répondre aux questions instantanément',
+        problem_q2:'Créer un lien authentique',
+        problem_q3:'Fournir la bonne information dès la première seconde',
+        problem_q1_desc:'Résolvez chaque question de vos visiteurs sans délai — grâce à une expérience interactive et personnalisée, en temps réel.',
+        problem_q2_desc:'Offrez à vos visiteurs non pas de simples réponses, mais un dialogue chaleureux qui écoute, comprend et inspire une vraie confiance.',
+        problem_q3_desc:'Communiquez les processus complexes de manière directe et claire — par le visuel et l\'audio, pas par des murs de texte.',
+        problem_answer:'La réponse aux trois — <strong style="color:var(--white);">votre assistant numérique, intégré à votre site web.</strong>',
+        services_label:'SOLUTIONS',
+        services_title:'Structuré selon votre échelle —<br><em style="font-style:italic;color:var(--gold);font-weight:600;">chaque forfait construit sur mesure.</em>',
+        services_desc:'Des cliniques aux plateformes de tourisme médical, des cabinets de conseil en santé aux centres de désintoxication — une infrastructure d\'assistant IA conçue pour chaque segment de la santé.',
+        svc1_badge:'STANDARD', svc1_tag:'INTÉGRATION DE BASE',
+        svc1_title:'Assistant IA multilingue,<br>en ligne en 3 jours ouvrés.',
+        svc1_desc:'Un assistant IA intégré à votre site web, actif en 3 langues, disponible 24h/24 et 7j/7. Il accueille les visiteurs, fournit des informations et les dirige vers votre équipe.',
+        svc1_f1:'Accès vocal et textuel 24h/24', svc1_f2:'Turc, Anglais + 1 langue',
+        svc1_f3:'3 options d\'avatar', svc1_f4:'Rapports détaillés après chaque conversation',
+        svc2_badge:'PREMIUM', svc2_tag:'COHÉRENCE DE MARQUE',
+        svc2_title:'Le visage de votre vidéo promotionnelle<br>accueille sur votre site.',
+        svc2_desc:'Toutes les fonctionnalités Standard, plus 8 langues et correspondance vidéo-avatar. Le présentateur de votre vidéo et votre assistant web partagent la même identité.',
+        svc2_f1:'8 langues', svc2_f2:'Vidéo promotionnelle en 2 langues',
+        svc2_f3:'Correspondance vidéo-avatar — assistant web', svc2_f4:'Reporting axé conversion',
+        svc2_f5:'Support post-intervention',
+        svc3_badge:'MULTI', svc3_tag:'PORTÉE MULTI-MARCHÉS',
+        svc3_title:'30 langues,<br>support multiplateforme.',
+        svc3_desc:'Toutes les fonctionnalités Premium, plus 30 langues et 3 vidéos promotionnelles en 10 langues. Une solution complète pour les entreprises opérant sur plusieurs marchés.',
+        svc3_f1:'30 langues', svc3_f2:'3 vidéos promo en 10 langues',
+        svc3_f3:'Intégration multiplateforme', svc3_f4:'Toutes les fonctionnalités Premium incluses', svc3_f5:'Conseil en croissance',
+        svc_learn:'VOIR LES DÉTAILS →',
+        how_label:'PROCESSUS D\'INTÉGRATION', how_title:'Briefing · Formation · Intégration',
+        nav_how_footer:'PROCESSUS D\'INTÉGRATION', nav_offer_footer:'CAS D\'UTILISATION',
+        nav_about_footer:'À PROPOS', nav_contact_footer:'CONTACT', nav_faq_footer:'FAQ',
+        ticker_items: [
+            {stat:'7/24', text:'Expérience patient en direct dans leur langue maternelle', source:'Clinic Media Tech · 2026'},
+            {stat:'30+', text:'Langues mondiales prises en charge', source:'Forfait Multi · Clinic Media Tech'},
+            {stat:'3 jours', text:'Délai de configuration et d\'intégration', source:'Tous les forfaits · Clinic Media Tech'},
+            {stat:'66%', text:'Professionnels de santé utilisant l\'IA en 2024', source:'AMA Survey · 2024'},
+            {stat:'70%', text:'Taux d\'adoption active de l\'IA dans la santé', source:'NVIDIA Healthcare Report · 2025'},
+            {stat:'3,2$', text:'Retour moyen pour chaque 1$ investi en IA', source:'Deloitte Healthcare · 2025'},
+            {stat:'47%', text:'Établissements de santé utilisant ou planifiant des assistants IA', source:'Binariks Healthcare AI · 2025'},
+            {stat:'64%', text:'Patients ouverts aux assistants alimentés par l\'IA', source:'TempDev AI Healthcare · 2025'},
+            {stat:'89%', text:'Confirment que la vidéo renforce la confiance envers la marque', source:'HubSpot Video Trends · 2025'},
+            {stat:'85%', text:'Dirigeants affirmant que l\'IA augmente les revenus', source:'NVIDIA Survey · 2025'},
+            {stat:'+300%', text:'Amélioration de la qualité des leads après intégration IA', source:'Conversational AI Research · 2025'},
+            {stat:'92%', text:'Leaders santé : l\'IA améliore l\'efficacité opérationnelle', source:'Deloitte · 2024'},
+        ],
+        form_label:'DEMANDER UN RENDEZ-VOUS', form_title:'Nous vous appelons.',
+        form_name_label:'NOM COMPLET *', form_name_ph:'Votre nom complet',
+        form_email_label:'E-MAIL *', form_email_ph:'exemple@mail.com',
+        form_phone_label:'TÉLÉPHONE', form_optional:'(facultatif)', form_phone_ph:'+33 x xx xx xx xx',
+        form_submit:'ENVOYER', form_error:'Un problème est survenu, veuillez réessayer.',
+        form_success_title:'Demande reçue.', form_success_desc:'Nous vous recontacterons sous 24 heures.',
+        faq_label:'QUESTIONS FRÉQUENTES', faq_title:'FAQ', faq_cta:'DEMANDER UN RENDEZ-VOUS',
+        faq_q1:'Dois-je modifier mon site web ou mes systèmes existants ?',
+        faq_a1:'Non, aucune modification d\'infrastructure n\'est nécessaire. Notre assistant vidéo interactif s\'intègre à votre site existant avec une seule ligne de code — en quelques minutes.',
+        faq_q2:'Comment la sécurité des données des visiteurs est-elle assurée ?',
+        faq_a2:'Toutes les données sont traitées selon les normes internationales de sécurité. Notre système est entièrement conforme au RGPD. Les données ne sont jamais partagées avec des tiers.',
+        faq_q3:'Comment fonctionne la tarification ?',
+        faq_a3:'Chaque établissement a des besoins différents. Nous proposons des options de forfaits sur mesure (Standard, Premium, Multi). Planifiez un échange avec notre équipe.',
+        faq_q4:'L\'assistant peut-il communiquer avec des visiteurs internationaux dans différentes langues ?',
+        faq_a4:'Absolument. Votre assistant peut être configuré pour accueillir les visiteurs instantanément dans leur propre langue. Gérez les demandes du monde entier, 24h/24.',
+        faq_q5:'L\'assistant fournit-il uniquement des informations, ou contribue-t-il aussi aux rendez-vous et aux ventes ?',
+        faq_a5:'Notre assistant n\'est pas un simple bot d\'information — c\'est un outil puissant de pré-vente et de triage. Il analyse les besoins, collecte les coordonnées et fournit à votre équipe un rapport structuré.',
+        about_label:'À PROPOS', about_title:'À PROPOS DE NOUS',
+        about_v1_title:'NOTRE VISION : Combler le fossé de communication', about_v1_desc:'Dans le monde numérique, la plupart des sites web fonctionnent encore comme des brochures statiques — pourtant les visiteurs veulent être entendus, compris et obtenir des réponses instantanées.',
+        about_v2_title:'CE QUE NOUS FAISONS : Le représentant numérique de votre établissement', about_v2_desc:'Nous concevons des représentants numériques intelligents et interactifs qui maîtrisent parfaitement la langue, les protocoles de service et les attentes de votre public cible.',
+        about_v3_title:'IMPACT SUR LES VENTES ET LES OPÉRATIONS', about_v3_desc:'Notre technologie va au-delà de l\'information — elle analyse les besoins des visiteurs, collecte les coordonnées en toute sécurité et fournit des insights stratégiques structurés à votre équipe.',
+        about_v4_title:'POUR QUI : Les professionnels qui transcendent les frontières', about_v4_desc:'Conçu pour tous les professionnels de la santé, du conseil et de la technologie médicale qui opèrent à l\'international et veulent perfectionner leur première impression numérique.',
+        about_cta:'DEMANDER UN RENDEZ-VOUS',
+        contact_modal_label:'CONTACT', contact_modal_title:'Contactez-nous.',
+        contact_modal_email_label:'E-MAIL', contact_modal_wa_label:'WHATSAPP',
+        contact_modal_wa_text:'Écrivez pour un appel rapide', contact_modal_note:'Réponse garantie sous 24 heures',
+        how_desc:'3 jours ouvrés au total. Le contenu personnalisé est préparé, l\'assistant est formé et intégré à votre site web.',
+        step1_title:'Analyse et préparation du contenu',
+        step1_desc:'Nous analysons vos services, votre public cible et vos exigences de communication. Le script de l\'assistant est développé selon l\'alignement culturel et linguistique.',
+        step1_time:'JOUR 1',
+        step2_title:'Formation de l\'assistant et configuration linguistique',
+        step2_desc:'Le contenu préparé est chargé dans l\'assistant. Les langues choisies, le personnage avatar et les flux de réponse sont configurés.',
+        step2_time:'JOUR 1 – 2',
+        step3_title:'Intégration et mise en ligne',
+        step3_desc:'L\'assistant est intégré à votre site web et mis en ligne après votre validation. Prêt pour sa première conversation visiteur le jour même.',
+        step3_time:'JOUR 3',
+        delivery_label:'DURÉE TOTALE DE MISE EN PLACE', delivery_days:'3 jours ouvrés', delivery_note:'À partir du premier échange',
+        demo_cta:'COMMENCER MAINTENANT →',
+        offer_label:'CAS D\'UTILISATION',
+        offer_headline:'Votre assistant, à vos côtés à chaque étape de votre activité.',
+        offer_desc:'L\'assistant apprend quels processus il doit servir — et reste actif de l\'accueil des visiteurs au support après-service.',
+        uc1_title:'Accueil des visiteurs', uc1_desc:'Les visiteurs sont accueillis dans leur propre langue dès leur arrivée. La première impression est automatiquement correcte.',
+        uc2_title:'Information multilingue', uc2_desc:'Vos services, processus et conditions sont délivrés en jusqu\'à 30 langues, par voix ou texte.',
+        uc3_title:'Analyse des besoins', uc3_desc:'Par conversation naturelle, l\'assistant collecte la demande, les attentes et les priorités du visiteur de manière structurée.',
+        uc4_title:'Capture de rendez-vous et demandes', uc4_desc:'Les coordonnées, préférences et demandes de rendez-vous sont collectées sans que le visiteur remplisse de formulaire.',
+        uc5_title:'Résumé intelligent pour votre équipe', uc5_desc:'Après chaque conversation, un résumé structuré est envoyé à votre équipe. Le suivi commence avec un contexte complet.',
+        uc6_title:'Support post-intervention', uc6_desc:'Les questions après une intervention, un traitement ou un service sont gérées par l\'assistant. Les cas nécessitant votre équipe sont escaladés.',
+        uc7_title:'Avatar et contenu promotionnel', uc7_desc:'Le présentateur de votre vidéo promo et votre assistant web partagent la même identité. La cohérence de marque renforce la confiance.',
+        uc8_title:'Réception numérique 24h/24', uc8_desc:'Les demandes en dehors des heures de bureau ne sont jamais perdues. L\'assistant est actif chaque jour, dans chaque fuseau horaire.',
+        iv_label:'ASSISTANT VIRTUEL NUMÉRIQUE',
+        iv_headline:'Le visiteur arrive, l\'assistant prend le relais —<br>votre équipe <em style="font-style:italic;color:var(--gold);font-weight:600;">intervient avec le contexte déjà en main.</em>',
+        iv_desc:'Définissez les standards de votre secteur avec un partenaire de solution interactif configuré entièrement selon l\'ADN de votre entreprise.',
+        iv_steps_label:'COMMENT ÇA MARCHE',
+        iv_step1_title:'Le visiteur arrive sur votre site',
+        iv_step1_desc:'L\'assistant parle dans les langues que vous choisissez — peu importe d\'où vient votre visiteur, il est accueilli dans sa propre langue.',
+        iv_step2_title:'La conversation commence',
+        iv_step2_desc:'L\'assistant collecte les besoins et les coordonnées dans un flux conversationnel naturel. Aucun formulaire à remplir.',
+        iv_step3_title:'Un rapport structuré est livré à votre équipe',
+        iv_step3_desc:'À la fin de la conversation, toutes les données sont analysées et envoyées à votre équipe. Le suivi commence avec un contexte complet.',
+        iv_step4_title:'Votre équipe agit avec l\'information',
+        iv_step4_desc:'Le visiteur a déjà été présenté à votre entreprise par l\'assistant et a établi la confiance. Votre équipe construit sur cette base.',
+        iv_cta:'VOIR LE SYSTÈME EN DIRECT',
+        pricing_label:'FORFAITS', pricing_title:'Choisissez le forfait qui vous convient.',
+        pricing_desc:'Trois niveaux d\'intégration — chacun configuré selon votre échelle et vos objectifs.',
+        p1_tier:'STANDARD', p1_title:'Intégration de base', p1_badge:'3 langues',
+        p1_f1:'Accès vocal et textuel 24h/24', p1_f2:'Turc, Anglais + 1 langue',
+        p1_f3:'3 options d\'avatar', p1_f4:'Rapports après conversations',
+        p1_f5:'Flux de routage automatisé', p1_f6:'Configuration en 3 jours ouvrés',
+        p2_tier:'PREMIUM', p2_title:'Cohérence de marque', p2_badge:'8 langues',
+        p2_f1:'Toutes les fonctionnalités Standard', p2_f2:'8 langues',
+        p2_f3:'Vidéo promo en 2 langues', p2_f4:'Correspondance vidéo-avatar — assistant web',
+        p2_f5:'Support post-intervention', p2_f6:'Reporting axé conversion', p2_f7:'Support technique prioritaire',
+        p3_tier:'MULTI', p3_title:'Portée multi-marchés', p3_badge:'30 langues',
+        p3_f1:'Toutes les fonctionnalités Premium', p3_f2:'30 langues',
+        p3_f3:'3 vidéos promo en 10 langues', p3_f4:'Intégration multiplateforme',
+        p3_f5:'Tests A/B et optimisation', p3_f6:'Conseil en croissance', p3_f7:'Architecture évolutive',
+        cta_quote:'DEMANDER UN DEVIS',
+        pricing_note:'Des minutes de conversation supplémentaires et des mises à jour linguistiques sont disponibles pour tous les forfaits. Les tarifs sont déterminés individuellement selon votre trafic et vos besoins.',
+        why_label:'RECHERCHE',
+        why_c1_title:'EN LIGNE EN 3 JOURS OUVRÉS', why_c1_desc:'Pas d\'intégrations longues. Nous prenons vos documents, configurons votre assistant et allons en production sous 3 jours ouvrés.',
+        why_c2_title:'PARLE 30+ LANGUES', why_c2_desc:'Communication de qualité native en turc, arabe, russe, anglais et 30+ langues supplémentaires. La barrière linguistique devient le problème de vos concurrents.',
+        why_c3_title:'PAS DE MODÈLES', why_c3_desc:'Chaque assistant est configuré uniquement pour vos services, protocoles et public cible.',
+        why_c4_title:'REPORTING EN TEMPS RÉEL', why_c4_desc:'Chaque conversation est analysée et transmise à votre équipe commerciale. Vous savez ce que veut le patient avant même qu\'il n\'appelle.',
+        why_c5_title:'PARTENARIAT, PAS LOGICIEL', why_c5_desc:'Nous ne vendons pas de licences. Nous devenons partenaires de vos objectifs de croissance.',
+        why_c6_title:'SÉCURITÉ ENTERPRISE', why_c6_desc:'Les données patients sont protégées sur une infrastructure de premier plan à laquelle font confiance les institutions mondiales.',
+        why_c7_title:'COHÉRENCE AVATAR', why_c7_desc:'Dans les forfaits Premium et Multi, le visage de vos vidéos promo et votre assistant web sont le même avatar.',
+        why_c8_title:'SUPPORT POST-INTERVENTION', why_c8_desc:'Nous accompagnons votre patient après son retour. Un assistant qui répond aux questions post-opératoires fidélise durablement.',
+        why_c9_title:'LEADS QUALIFIÉS', why_c9_desc:'Seuls les patients qui savent ce qu\'ils veulent et qui ont déjà confiance atteignent votre équipe commerciale.',
+        why_c10_title:'24/7, JAMAIS FATIGUÉ', why_c11_title:'TEMPS DE RÉPONSE < 500ms', why_c11_desc:'Propulsé par l\'infrastructure Tavus, le temps de réponse reste sous 500ms. Un patient demande — l\'assistant répond instantanément.', why_c10_desc:'Pas de vacances, pas d\'arrêts maladie. Chaque patient — de Dubaï à minuit à Istanbul à 9h — reçoit le même accueil énergique.',
+        why_d1_text:'Retour moyen pour chaque 1$ investi en IA',
+        why_d2_text:'des hôpitaux utilisent activement l\'IA',
+        why_d3_text:'augmentation des rendez-vous numériques via chatbot IA',
+        why_d4_text:'des leaders santé : l\'IA améliore l\'efficacité',
+        why_d5_text:'des patients accueillent plus de technologie dans leurs soins',
+        why_title:'Expertise de niche.<br><strong>Construit sur mesure.</strong>',
+        why_statement:'Nous ne sommes pas une solution chatbot généraliste. Nous sommes une infrastructure sur mesure, développée avec une compréhension approfondie des dynamiques de l\'écosystème de la santé.',
+        why_sub:'Nous n\'utilisons pas de modèles. Chaque assistant est configuré selon votre contenu, votre public cible et vos exigences linguistiques.',
+        stat1_text:'Avantage de rétention du contenu vidéo sur le texte', stat2_text:'Utilisateurs associant qualité vidéo et crédibilité de marque',
+        stat3_text:'Amélioration de la qualité des leads après intégration IA', stat4_text:'Augmentation de confiance grâce au contenu en langue maternelle',
+        contact_label:'COMMENCER',
+        contact_title:'Faisons<br><strong>le premier pas ensemble.</strong>',
+        contact_desc:'Choisissez votre forfait — nous préparerons une présentation sur mesure et vous appellerons sous 24 heures.',
+        promise_title:'Garantie de réponse sous 24h', promise_sub:'Faites votre choix, nous vous appelons.',
+        cta_svc1_tag:'FORFAIT STANDARD', cta_svc1_title:'Intégration de base.<br>3 langues. Toujours actif.', cta_svc1_desc:'Assistant IA · 3 langues · 24/7 actif · Config. 3 jours',
+        cta_svc2_tag:'FORFAIT PREMIUM', cta_svc2_title:'Correspondance vidéo-avatar.<br>8 langues. Cohérence de marque.', cta_svc2_desc:'Vidéo promo · Correspondance avatar · 8 langues · Support post-intervention',
+        cta_svc3_tag:'FORFAIT MULTI', cta_svc3_title:'Portée multi-marchés.<br>30 langues. 3 vidéos.', cta_svc3_desc:'30 langues · 3 vidéos en 10 langues · Conseil en croissance · Multiplateforme',
+        cta_explore_tag:'VOUS HÉSITEZ ?', cta_explore_title:'Appel découverte gratuit — évaluons ensemble.',
+        cta_quote_btn:'DEMANDER UN DEVIS →', cta_24h:'RÉPONSE SOUS 24 HEURES', cta_talk:'PLANIFIER UN APPEL →',
+        ds_btn: 'Filiale numérique',
+        ds_label: 'FILIALE NUMÉRIQUE',
+        ds_title: 'La <em>filiale numérique</em> de votre clinique est ouverte 24h/24',
+        ds_subtitle: 'Accueillez vos patients en 33 langues avec un assistant numérique en temps réel. En ligne en 3 jours ouvrés.',
+        ds_stat1: 'Service ininterrompu', ds_stat2: 'Support linguistique', ds_stat3: 'Jours pour la mise en place', ds_stat4: 'Conformité des données',
+        ds_process_label: 'PROCESSUS',
+        ds_p1_title: 'Analyse', ds_p1_desc: 'Nous examinons vos flux de travail, profils patients et politiques tarifaires.', ds_p1_time: 'JOUR 1',
+        ds_p2_title: 'Formation', ds_p2_desc: 'Nous formons le personnel numérique avec vos connaissances spécifiques et votre voix de marque.', ds_p2_time: 'JOUR 1–2',
+        ds_p3_title: 'Intégration', ds_p3_desc: 'Intégration transparente et tests avec WhatsApp, site web et CRM.', ds_p3_time: 'JOUR 2–3',
+        ds_p4_title: 'Mise en ligne', ds_p4_desc: 'Votre équipe numérique accueille les patients 24h/24 en 33 langues.', ds_p4_time: 'JOUR 3',
+        ds_pkg_label: 'FORFAITS', ds_pkg_mo: '/mois',
+        ds_pkg1_name: 'Starter', ds_pkg1_setup: 'Installation : 950$ (unique)',
+        ds_pkg1_f1: '1 membre du personnel numérique', ds_pkg1_f2: 'Turc & Anglais', ds_pkg1_f3: 'Intégration web de base', ds_pkg1_f4: '200 conversations/mois',
+        ds_pkg2_badge: 'LE PLUS POPULAIRE', ds_pkg2_setup: 'Installation : 1 500$ (unique)',
+        ds_pkg2_f1: '3 membres du personnel numérique', ds_pkg2_f2: '5 langues', ds_pkg2_f3: 'Intégration WhatsApp & CRM', ds_pkg2_f4: '500 conversations/mois',
+        ds_pkg3_name: 'VIP Ecosystem', ds_pkg3_setup: 'Installation : 3 350$ (unique)',
+        ds_pkg3_f1: '5+2 membres du personnel numérique', ds_pkg3_f2: '30 langues', ds_pkg3_f3: 'Scénarios personnalisés & flux VIP', ds_pkg3_f4: '1 000 conversations/mois', ds_pkg3_f5: 'Support prioritaire 24h/24',
+        ds_pkg_cta: 'POSTULER', ds_pkg_note: 'Contactez-nous pour les plans annuels ou les forfaits d\'architecture personnalisée.',
+        ds_footer_cta: 'COMMENCER',
+        ds_staff_label: 'PERSONNEL NUMÉRIQUE',
+        ds_staff_desc: 'Nos membres du personnel numérique communiquent avec vos patients dans leur langue maternelle.',
+        ds_v1_title: 'Accueil & Information', ds_v2_title: 'Rendez-vous & Tarifs', ds_v3_title: 'Demandes spéciales',
+        ds_v4_title: 'Accueil & Info', ds_v5_title: 'Tarifs',
+        ds_v6_title: 'Accueil', ds_v7_title: 'Processus opératoire', ds_v8_title: 'Rendez-vous & Tarifs',
+        ds_v9_title: 'Accueil', ds_v9_lang: 'ARABE',
+        footer_copy:'© 2026 Clinic Media Tech — Tous droits réservés',
+        trust_label:'INFRASTRUCTURE DE CONFIANCE & CONFORMITÉ',
+        badge_soc2:'Fournisseur d\'infrastructure certifié', badge_gdpr:'Via infrastructure conforme',
+        badge_hipaa:'Sensibilité des données de santé',
+        gdpr_notice:'Notre traitement des données est effectué via des fournisseurs d\'infrastructure supportant les standards de sécurité SOC 2 Type II et entièrement conformes aux exigences RGPD.',
+        tick1_text:'Expérience en direct dans la langue du patient', tick1_src:'Clinic Media Tech · 2026',
+        tick2_text:'Langues prises en charge depuis une seule plateforme', tick2_src:'Forfait Multi',
+        tick3_stat:'3 jours', tick3_text:'Délai de configuration et d\'intégration', tick3_src:'Tous les forfaits',
+        tick4_text:'Visiteurs considérant la confiance comme critère n°1',
+        tick5_text:'Hausse de confiance grâce au contenu en langue maternelle',
+        tick7_text:'Utilisateurs confirmant l\'impact positif de la vidéo sur la confiance de marque',
+        cmp_left_title:'APPROCHE CONVENTIONNELLE',
+        cmp_l1:'Le visiteur remplit un formulaire et attend', cmp_l2:'Les demandes hors horaires restent sans réponse',
+        cmp_l3:'L\'équipe contacte sans contexte', cmp_l4:'Questions de suivi sans réponse, visiteur dans l\'incertitude',
+        cmp_r1:'Le visiteur reçoit une réponse instantanée dans sa langue', cmp_r2:'Accès ininterrompu 24h/24',
+        cmp_r3:'L\'équipe agit avec des données de conversation structurées', cmp_r4:'Questions de suivi répondues en temps réel',
+        lang_tr:'🇹🇷 TURC', lang_ar:'🌙 ARABE', lang_ru:'🇷🇺 RUSSE', lang_en:'🇬🇧 ANGLAIS', lang_de:'🇩🇪 ALLEMAND', lang_fr:'🇫🇷 FRANÇAIS', lang_es:'🇪🇸 ESPAGNOL', lang_it:'🇮🇹 ITALIEN', lang_zh:'🇨🇳 CHINOIS', lang_ja:'🇯🇵 JAPONAIS', lang_ko:'🇰🇷 CORÉEN', lang_pt:'🇧🇷 PORTUGAIS', lang_nl:'🇳🇱 NÉERLANDAIS', lang_more:'+ 20 AUTRES LANGUES',
+        stat_247:'Service ininterrompu', stat_setup:'Durée de mise en place',
+        stat_langs:'Support linguistique', stat_patients:'Patients accueillis/mois', stat_days_num:'3 jours',
+        stat_days_suffix:' jours',
+        feat_label:'PREMIUM & MULTI — FONCTIONNALITÉ EXCLUSIVE',
+        feat_title:'Avatar vidéo = assistant web.<br><em style="font-style:italic;color:#4ECDC4;">Le patient parle au visage familier de votre vidéo.</em>',
+        feat_desc:'Le présentateur de votre vidéo promo et l\'assistant numérique de votre site web partagent le même avatar. Le patient ressent un sentiment incroyable de familiarité et de confiance.',
+        feat_s1:'Hausse de confiance grâce au contenu en langue maternelle', feat_s2:'Service patient ininterrompu',
+        feat_s3:'Support linguistique dans le forfait Multi', feat_s4_num:'3 jours', feat_s4:'Délai de configuration et d\'intégration',
+    },
+    ar: {
+        nav_services:'الحلول', nav_problem:'تكلفة الصمت', nav_interactive:'كيف يعمل', nav_how:'عملية التكامل', nav_offer:'حالات الاستخدام', nav_pricing:'الباقات', nav_contact:'ابدأ الآن',
+        live_btn:'مساعد مباشر',
+        connecting:'جارٍ الاتصال...',
+        chat_welcome:'مرحباً! أنا ديرين. إذا كنت تفضل الكتابة بدلاً من الميكروفون، اكتب رسالتك هنا — سأرد بالصوت 🎤',
+        chat_placeholder:'اكتب رسالتك...',
+        chat_status_live:'متصل · يرد بالصوت',
+        chat_status_typing:'يكتب...',
+        chat_status_muted:'الميكروفون مغلق · تابع بالكتابة',
+        hero_eyebrow:'مساعد رقمي مباشر مخصص للرعاية الصحية',
+        hero_data_source:'احجز مكانتك الريادية في القطاع بتقنيات متقدمة',
+        hero_headline:'تخيّل...<br><em>مساعداً يتحدث باسمك، على مدار الساعة، بكل اللغات.</em>',
+        hero_cta:'لتحقيق ذلك',
+        problem_label:'تكلفة الصمت',
+        problem_title:'المواقع التقليدية لا تتحدث —<br>إنها فقط <strong>تنتظر.</strong>',
+        problem_desc:'لكن زوّارك يبحثون عن إجابات فورية وتعاطف مع أسئلتهم وتواصل أولي يبني الثقة. كل سؤال بلا إجابة يعني مريضاً محتملاً ينتقل بصمت إلى منافسك.',
+        problem_q1:'أجب عن الأسئلة فوراً',
+        problem_q2:'ابنِ رابطة حقيقية',
+        problem_q3:'قدّم المعلومة الصحيحة من الثانية الأولى',
+        problem_q1_desc:'أزل كل تساؤل في ذهن زوّارك دون تأخير — من خلال تجربة تفاعلية ومباشرة في الوقت الحقيقي.',
+        problem_q2_desc:'قدّم لزوّارك ليس مجرد إجابات، بل حواراً دافئاً يستمع ويفهم ويبني ثقة حقيقية.',
+        problem_q3_desc:'أوصل العمليات المعقدة بوضوح تام — بصرياً وسمعياً، وليس بنصوص طويلة.',
+        problem_answer:'الإجابة على كل ذلك — <strong style="color:var(--white);">مساعدك الرقمي، مدمج في موقعك الإلكتروني.</strong>',
+        services_label:'الحلول',
+        services_title:'مُهيكل حسب حجمك —<br><em style="font-style:italic;color:var(--gold);font-weight:600;">كل باقة مبنية من الصفر.</em>',
+        services_desc:'من العيادات ومنصات السياحة العلاجية إلى الاستشارات الصحية ومراكز علاج الإدمان — بنية تحتية مخصصة للمساعد الذكي لكل قطاع صحي.',
+        svc1_badge:'أساسي', svc1_tag:'تكامل أساسي',
+        svc1_title:'مساعد ذكي متعدد اللغات،<br>جاهز خلال 3 أيام عمل.',
+        svc1_desc:'مساعد ذكي مدمج في موقعك، يعمل بـ 3 لغات، متاح على مدار الساعة. يستقبل الزوّار ويقدم المعلومات ويوجّههم لفريقك.',
+        svc1_f1:'وصول صوتي ونصي 24/7', svc1_f2:'تركي، إنجليزي + لغة واحدة',
+        svc1_f3:'3 خيارات للأفاتار', svc1_f4:'تقارير مفصلة بعد كل محادثة',
+        svc2_badge:'بريميوم', svc2_tag:'تناسق العلامة التجارية',
+        svc2_title:'الوجه في فيديو الترويج<br>يستقبل على موقعك.',
+        svc2_desc:'جميع مزايا الباقة الأساسية، بالإضافة إلى 8 لغات ومطابقة أفاتار الفيديو. المقدّم في فيديو الترويج ومساعد الموقع يشتركان في نفس الهوية.',
+        svc2_f1:'8 لغات', svc2_f2:'فيديو ترويجي بلغتين',
+        svc2_f3:'مطابقة أفاتار الفيديو — مساعد الويب', svc2_f4:'تقارير مركّزة على التحويل',
+        svc2_f5:'دعم ما بعد العملية',
+        svc3_badge:'مالتي', svc3_tag:'وصول متعدد الأسواق',
+        svc3_title:'30 لغة،<br>دعم متعدد المنصات.',
+        svc3_desc:'جميع مزايا بريميوم، بالإضافة إلى 30 لغة و3 فيديوهات ترويجية بـ 10 لغات. حل شامل للمؤسسات العاملة في أسواق متعددة.',
+        svc3_f1:'30 لغة', svc3_f2:'3 فيديوهات ترويجية بـ 10 لغات',
+        svc3_f3:'تكامل متعدد المنصات', svc3_f4:'جميع مزايا بريميوم مشمولة', svc3_f5:'استشارات النمو',
+        svc_learn:'عرض التفاصيل →',
+        how_label:'عملية التكامل', how_title:'إحاطة · تدريب · تكامل',
+        nav_how_footer:'عملية التكامل', nav_offer_footer:'حالات الاستخدام',
+        nav_about_footer:'من نحن', nav_contact_footer:'تواصل', nav_faq_footer:'الأسئلة الشائعة',
+        ticker_items: [
+            {stat:'7/24', text:'تجربة مباشرة للمريض بلغته الأم', source:'Clinic Media Tech · 2026'},
+            {stat:'+30', text:'لغة عالمية مدعومة', source:'باقة مالتي · Clinic Media Tech'},
+            {stat:'3 أيام', text:'مدة الإعداد والتكامل', source:'جميع الباقات · Clinic Media Tech'},
+            {stat:'%66', text:'متخصصو الرعاية الصحية يستخدمون الذكاء الاصطناعي في 2024', source:'AMA Survey · 2024'},
+            {stat:'%70', text:'معدل تبني فعّال للذكاء الاصطناعي في الرعاية الصحية', source:'NVIDIA Healthcare Report · 2025'},
+            {stat:'3.2$', text:'عائد متوسط لكل 1$ مستثمر في الذكاء الاصطناعي', source:'Deloitte Healthcare · 2025'},
+            {stat:'%47', text:'مؤسسات صحية تستخدم أو تخطط لاستخدام مساعدين أذكياء', source:'Binariks Healthcare AI · 2025'},
+            {stat:'%64', text:'مرضى منفتحون على التفاعل مع مساعدين مدعومين بالذكاء الاصطناعي', source:'TempDev AI Healthcare · 2025'},
+            {stat:'%89', text:'يؤكدون أن المحتوى المرئي يعزز ثقة العلامة التجارية', source:'HubSpot Video Trends · 2025'},
+            {stat:'%85', text:'مدراء تنفيذيون يقولون إن الذكاء الاصطناعي زاد الإيرادات', source:'NVIDIA Survey · 2025'},
+            {stat:'+300%', text:'تحسن جودة العملاء المحتملين بعد تكامل المساعد الذكي', source:'Conversational AI Research · 2025'},
+            {stat:'%92', text:'قادة صحيون: الذكاء الاصطناعي يحسّن الكفاءة التشغيلية', source:'Deloitte · 2024'},
+        ],
+        form_label:'طلب اجتماع', form_title:'سنتصل بك.',
+        form_name_label:'الاسم الكامل *', form_name_ph:'اسمك الكامل',
+        form_email_label:'البريد الإلكتروني *', form_email_ph:'example@mail.com',
+        form_phone_label:'الهاتف', form_optional:'(اختياري)', form_phone_ph:'+966 xxx xxx xx xx',
+        form_submit:'إرسال', form_error:'حدث خطأ ما، يرجى المحاولة مرة أخرى.',
+        form_success_title:'تم استلام الطلب.', form_success_desc:'سنعاود الاتصال بك خلال 24 ساعة.',
+        faq_label:'الأسئلة الشائعة', faq_title:'الأسئلة الشائعة', faq_cta:'طلب اجتماع',
+        faq_q1:'هل أحتاج إلى تغيير موقعي الإلكتروني أو أنظمتي الحالية؟',
+        faq_a1:'لا، لا حاجة لأي تغييرات في البنية التحتية. يتم دمج مساعدنا المرئي التفاعلي في موقعك الحالي بسطر واحد فقط من الشفرة — يعمل خلال دقائق.',
+        faq_q2:'كيف يتم ضمان أمان بيانات الزوّار؟',
+        faq_a2:'جميع البيانات تُعالج وفق المعايير الدولية للأمان. نظامنا متوافق تماماً مع KVKK وGDPR. لا تُشارك البيانات أبداً مع أطراف ثالثة.',
+        faq_q3:'كيف تعمل الأسعار؟',
+        faq_a3:'لكل مؤسسة احتياجات مختلفة. نقدم خيارات باقات مخصصة (أساسي، بريميوم، مالتي). حدد موعداً مع فريقنا.',
+        faq_q4:'هل يمكن للمساعد التواصل مع الزوّار الدوليين بلغات مختلفة؟',
+        faq_a4:'بالتأكيد. يمكن تهيئة مساعدك لاستقبال الزوّار فوراً بلغتهم. تعامل مع الاستفسارات من أي مكان في العالم، على مدار الساعة.',
+        faq_q5:'هل يقدم المساعد معلومات فقط أم يساهم في المواعيد والمبيعات أيضاً؟',
+        faq_a5:'مساعدنا ليس روبوت معلومات عادياً — إنه أداة قوية لما قبل البيع والفرز. يحلل الاحتياجات ويجمع معلومات الاتصال ويقدم لفريقك تقريراً منظماً.',
+        about_label:'من نحن', about_title:'من نحن',
+        about_v1_title:'رؤيتنا: سد فجوة التواصل', about_v1_desc:'في العالم الرقمي، لا تزال معظم المواقع تعمل كالكتيبات الثابتة — لكن الزوّار يريدون أن يُسمعوا ويُفهموا ويحصلوا على إجابات فورية.',
+        about_v2_title:'ماذا نفعل: الممثل الرقمي لمؤسستك', about_v2_desc:'نصمم ممثلين رقميين أذكياء وتفاعليين يتقنون لغة مؤسستك وبروتوكولات الخدمة وتوقعات الجمهور المستهدف.',
+        about_v3_title:'التأثير على المبيعات والعمليات', about_v3_desc:'تقنيتنا تتجاوز تقديم المعلومات — تحلل احتياجات الزوّار وتجمع بيانات الاتصال بأمان وتقدم رؤى استراتيجية منظمة لفريقك.',
+        about_v4_title:'لمن: المتخصصون الذين يتجاوزون الحدود', about_v4_desc:'مصمم لجميع متخصصي الرعاية الصحية والاستشارات والتقنية الطبية الذين يعملون دولياً ويريدون إتقان انطباعهم الرقمي الأول.',
+        about_cta:'طلب اجتماع',
+        contact_modal_label:'تواصل', contact_modal_title:'تواصل معنا.',
+        contact_modal_email_label:'البريد الإلكتروني', contact_modal_wa_label:'واتساب',
+        contact_modal_wa_text:'اكتب لمكالمة سريعة', contact_modal_note:'ضمان الرد خلال 24 ساعة',
+        how_desc:'3 أيام عمل إجمالاً. يتم إعداد المحتوى المخصص وتدريب المساعد ودمجه في موقعك.',
+        step1_title:'التحليل وإعداد المحتوى',
+        step1_desc:'نحلل خدماتك وجمهورك المستهدف ومتطلبات التواصل. يُطوّر سيناريو المساعد وفق التوافق الثقافي واللغوي.',
+        step1_time:'اليوم 1',
+        step2_title:'تدريب المساعد وتهيئة اللغات',
+        step2_desc:'يُحمّل المحتوى المُعدّ في المساعد. تُهيّأ اللغات المختارة وشخصية الأفاتار وتدفقات الردود.',
+        step2_time:'اليوم 1 – 2',
+        step3_title:'التكامل والإطلاق',
+        step3_desc:'يُدمج المساعد في موقعك ويبدأ العمل بعد موافقتك. جاهز لاستقبال أول زائر في نفس اليوم.',
+        step3_time:'اليوم 3',
+        delivery_label:'إجمالي مدة الإعداد', delivery_days:'3 أيام عمل', delivery_note:'من أول اجتماع',
+        demo_cta:'ابدأ الآن →',
+        offer_label:'حالات الاستخدام',
+        offer_headline:'مساعدك، بجانبك في كل خطوة من أعمالك.',
+        offer_desc:'يتعلم المساعد أي العمليات سيخدمها — ويبقى نشطاً من استقبال الزوّار حتى دعم ما بعد الخدمة.',
+        uc1_title:'استقبال الزوّار', uc1_desc:'يُستقبل الزوّار بلغتهم فور وصولهم. الانطباع الأول يُضبط تلقائياً بالشكل الصحيح.',
+        uc2_title:'معلومات متعددة اللغات', uc2_desc:'خدماتك وعملياتك وشروطك تُقدّم بما يصل إلى 30 لغة، صوتياً أو نصياً.',
+        uc3_title:'تحليل الاحتياجات', uc3_desc:'من خلال محادثة طبيعية، يجمع المساعد طلب الزائر وتوقعاته وأولوياته بشكل منظم.',
+        uc4_title:'جمع المواعيد والطلبات', uc4_desc:'تُجمع بيانات الاتصال والتفضيلات وطلبات المواعيد دون أن يملأ الزائر أي نموذج.',
+        uc5_title:'ملخص ذكي لفريقك', uc5_desc:'بعد كل محادثة، يُرسل ملخص منظم لفريقك. المتابعة تبدأ بسياق كامل.',
+        uc6_title:'دعم ما بعد العملية', uc6_desc:'الأسئلة بعد العملية أو العلاج أو الخدمة يتعامل معها المساعد. الحالات التي تتطلب تدخل الفريق تُصعّد.',
+        uc7_title:'أفاتار ومحتوى ترويجي', uc7_desc:'المقدّم في فيديو الترويج ومساعد موقعك يشتركان في نفس الهوية. تناسق العلامة التجارية يبني الثقة.',
+        uc8_title:'استقبال رقمي 24/7', uc8_desc:'الطلبات خارج ساعات العمل لا تضيع أبداً. المساعد نشط كل يوم، في كل منطقة زمنية.',
+        iv_label:'مساعد افتراضي رقمي',
+        iv_headline:'الزائر يصل، المساعد يتولى —<br>فريقك <em style="font-style:italic;color:var(--gold);font-weight:600;">يتدخل والسياق جاهز.</em>',
+        iv_desc:'ضع معايير قطاعك مع شريك حلول تفاعلي مُهيّأ بالكامل وفق هوية مؤسستك.',
+        iv_steps_label:'كيف يعمل',
+        iv_step1_title:'الزائر يصل إلى موقعك',
+        iv_step1_desc:'المساعد يتحدث باللغات التي تختارها — أينما كان زائرك، يُستقبل بلغته.',
+        iv_step2_title:'تبدأ المحادثة',
+        iv_step2_desc:'يجمع المساعد الاحتياجات ومعلومات الاتصال في تدفق محادثة طبيعي. لا نماذج للتعبئة.',
+        iv_step3_title:'تقرير منظم يُسلّم لفريقك',
+        iv_step3_desc:'عند انتهاء المحادثة، تُحلل جميع البيانات وتُرسل لفريقك. المتابعة تبدأ بسياق كامل.',
+        iv_step4_title:'فريقك يتفاعل بمعلومات جاهزة',
+        iv_step4_desc:'الزائر تعرّف على مؤسستك عبر المساعد وبنى الثقة. فريقك يبني على هذا الأساس.',
+        iv_cta:'شاهد النظام مباشرة',
+        pricing_label:'الباقات', pricing_title:'اختر الباقة المناسبة لك.',
+        pricing_desc:'ثلاثة مستويات تكامل — كل منها مُهيّأ حسب حجم مؤسستك وأهدافها.',
+        p1_tier:'أساسي', p1_title:'تكامل أساسي', p1_badge:'3 لغات',
+        p1_f1:'وصول صوتي ونصي 24/7', p1_f2:'تركي، إنجليزي + لغة واحدة',
+        p1_f3:'3 خيارات أفاتار', p1_f4:'تقارير بعد المحادثات',
+        p1_f5:'تدفق توجيه آلي', p1_f6:'إعداد في 3 أيام عمل',
+        p2_tier:'بريميوم', p2_title:'تناسق العلامة التجارية', p2_badge:'8 لغات',
+        p2_f1:'جميع مزايا الأساسي', p2_f2:'8 لغات',
+        p2_f3:'فيديو ترويجي بلغتين', p2_f4:'مطابقة أفاتار الفيديو — مساعد الويب',
+        p2_f5:'دعم ما بعد العملية', p2_f6:'تقارير مركزة على التحويل', p2_f7:'دعم تقني أولوي',
+        p3_tier:'مالتي', p3_title:'وصول متعدد الأسواق', p3_badge:'30 لغة',
+        p3_f1:'جميع مزايا بريميوم', p3_f2:'30 لغة',
+        p3_f3:'3 فيديوهات ترويجية بـ 10 لغات', p3_f4:'تكامل متعدد المنصات',
+        p3_f5:'اختبارات A/B والتحسين', p3_f6:'استشارات النمو', p3_f7:'بنية قابلة للتوسع',
+        cta_quote:'طلب عرض سعر',
+        pricing_note:'دقائق محادثة إضافية وتحديثات لغوية متاحة في جميع الباقات. تُحدد الأسعار فردياً حسب حركة مؤسستك ومتطلباتها.',
+        why_label:'بحث',
+        why_c1_title:'جاهز خلال 3 أيام عمل', why_c1_desc:'بدون تكاملات طويلة. نأخذ مستنداتك ونُهيّئ مساعدك ونطلقه خلال 3 أيام عمل.',
+        why_c2_title:'يتحدث 30+ لغة', why_c2_desc:'تواصل بجودة أصلية بالتركية والعربية والروسية والإنجليزية و30+ لغة أخرى.',
+        why_c3_title:'بدون قوالب', why_c3_desc:'كل مساعد يُهيّأ حصرياً لخدماتك وبروتوكولاتك وجمهورك المستهدف.',
+        why_c4_title:'تقارير فورية', why_c4_desc:'كل محادثة تُحلل وتُرسل لفريق المبيعات. تعرف ما يريده المريض قبل أن يتصل.',
+        why_c5_title:'شراكة، ليس برنامجاً', why_c5_desc:'لا نبيع تراخيص. نصبح شركاء في أهداف نموك.',
+        why_c6_title:'أمان على مستوى المؤسسات', why_c6_desc:'بيانات المرضى محمية على بنية تحتية من الدرجة الأولى تثق بها المؤسسات العالمية.',
+        why_c7_title:'تناسق الأفاتار', why_c7_desc:'في باقتي بريميوم ومالتي، الوجه في فيديوهاتك الترويجية ومساعد موقعك هو نفس الأفاتار.',
+        why_c8_title:'دعم ما بعد العملية', why_c8_desc:'نرافق مريضك بعد عودته. مساعد يجيب عن أسئلة ما بعد العملية يبني ولاءً دائماً.',
+        why_c9_title:'عملاء محتملون مؤهلون', why_c9_desc:'فقط المرضى الذين يعرفون ما يريدون وبنوا الثقة بالفعل يصلون لفريق المبيعات.',
+        why_c10_title:'24/7 بلا تعب', why_c11_title:'زمن استجابة أقل من 500 مللي ثانية', why_c11_desc:'بدعم بنية Tavus، يبقى زمن الاستجابة أقل من 500 مللي ثانية. المريض يسأل — المساعد يرد فوراً.', why_c10_desc:'بلا إجازات، بلا أيام مرضية. كل مريض — من دبي منتصف الليل إلى إسطنبول الساعة 9 صباحاً — يحصل على نفس الاستقبال.',
+        why_d1_text:'عائد متوسط لكل 1$ مستثمر في الذكاء الاصطناعي',
+        why_d2_text:'من المستشفيات تستخدم الذكاء الاصطناعي بفعالية',
+        why_d3_text:'زيادة في المواعيد الرقمية عبر روبوت المحادثة',
+        why_d4_text:'من قادة الصحة: الذكاء الاصطناعي يحسّن الكفاءة',
+        why_d5_text:'من المرضى يرحبون بمزيد من التقنية في رعايتهم',
+        why_title:'خبرة متخصصة.<br><strong>مبنية من الصفر.</strong>',
+        why_statement:'لسنا حل روبوت محادثة عام. نحن بنية تحتية مخصصة، طُوّرت بفهم عميق لديناميكيات منظومة الرعاية الصحية.',
+        why_sub:'لا نستخدم قوالب. كل مساعد يُهيّأ حسب محتوى خدماتك وجمهورك المستهدف ومتطلباتك اللغوية.',
+        stat1_text:'ميزة الاحتفاظ بالمحتوى المرئي مقارنة بالنصي', stat2_text:'مستخدمون يربطون جودة الفيديو بمصداقية العلامة',
+        stat3_text:'تحسن جودة العملاء المحتملين بعد تكامل الذكاء الاصطناعي', stat4_text:'زيادة الثقة من المحتوى باللغة الأم',
+        contact_label:'ابدأ الآن',
+        contact_title:'لنخطو<br><strong>الخطوة الأولى معاً.</strong>',
+        contact_desc:'اختر باقتك — سنُعدّ عرضاً مخصصاً ونتصل بك خلال 24 ساعة.',
+        promise_title:'ضمان الرد خلال 24 ساعة', promise_sub:'اختر، وسنتصل بك.',
+        cta_svc1_tag:'الباقة الأساسية', cta_svc1_title:'تكامل أساسي.<br>3 لغات. دائماً نشط.', cta_svc1_desc:'مساعد ذكي · 3 لغات · 24/7 · إعداد 3 أيام',
+        cta_svc2_tag:'باقة بريميوم', cta_svc2_title:'مطابقة أفاتار الفيديو.<br>8 لغات. تناسق العلامة.', cta_svc2_desc:'فيديو ترويجي · مطابقة أفاتار · 8 لغات · دعم ما بعد العملية',
+        cta_svc3_tag:'باقة مالتي', cta_svc3_title:'وصول متعدد الأسواق.<br>30 لغة. 3 فيديوهات.', cta_svc3_desc:'30 لغة · 3 فيديوهات بـ 10 لغات · استشارات نمو · متعدد المنصات',
+        cta_explore_tag:'غير متأكد أيها تختار؟', cta_explore_title:'مكالمة استكشافية مجانية — لنقيّم معاً.',
+        cta_quote_btn:'طلب عرض سعر →', cta_24h:'الرد خلال 24 ساعة', cta_talk:'حدد موعد مكالمة →',
+        ds_btn: 'الفرع الرقمي',
+        ds_label: 'الفرع الرقمي',
+        ds_title: '<em>الفرع الرقمي</em> لعيادتك مفتوح 24/7',
+        ds_subtitle: 'استقبل مرضاك بـ 33 لغة مع مساعد رقمي فوري. جاهز خلال 3 أيام عمل.',
+        ds_stat1: 'خدمة متواصلة', ds_stat2: 'دعم لغوي', ds_stat3: 'أيام للإعداد', ds_stat4: 'امتثال البيانات',
+        ds_process_label: 'العملية',
+        ds_p1_title: 'التحليل', ds_p1_desc: 'نراجع سير عملك وملفات المرضى وسياسات التسعير.', ds_p1_time: 'اليوم 1',
+        ds_p2_title: 'التدريب', ds_p2_desc: 'ندرّب الموظف الرقمي بمعرفتك المتخصصة وصوت علامتك التجارية.', ds_p2_time: 'اليوم 1–2',
+        ds_p3_title: 'التكامل', ds_p3_desc: 'تكامل سلس واختبار مع واتساب والموقع وCRM.', ds_p3_time: 'اليوم 2–3',
+        ds_p4_title: 'الإطلاق', ds_p4_desc: 'فريقك الرقمي يستقبل المرضى 24/7 بـ 33 لغة.', ds_p4_time: 'اليوم 3',
+        ds_pkg_label: 'الباقات', ds_pkg_mo: '/شهر',
+        ds_pkg1_name: 'ستارتر', ds_pkg1_setup: 'التأسيس: 950$ (مرة واحدة)',
+        ds_pkg1_f1: 'موظف رقمي واحد', ds_pkg1_f2: 'تركي وإنجليزي', ds_pkg1_f3: 'تكامل ويب أساسي', ds_pkg1_f4: '200 محادثة/شهر',
+        ds_pkg2_badge: 'الأكثر شعبية', ds_pkg2_setup: 'التأسيس: 1,500$ (مرة واحدة)',
+        ds_pkg2_f1: '3 موظفين رقميين', ds_pkg2_f2: '5 لغات', ds_pkg2_f3: 'تكامل واتساب وCRM', ds_pkg2_f4: '500 محادثة/شهر',
+        ds_pkg3_name: 'VIP Ecosystem', ds_pkg3_setup: 'التأسيس: 3,350$ (مرة واحدة)',
+        ds_pkg3_f1: '5+2 موظفين رقميين', ds_pkg3_f2: '30 لغة', ds_pkg3_f3: 'سيناريوهات مخصصة وتدفقات VIP', ds_pkg3_f4: '1,000 محادثة/شهر', ds_pkg3_f5: 'دعم أولوي 24/7',
+        ds_pkg_cta: 'تقديم', ds_pkg_note: 'تواصل معنا للخطط السنوية أو حزم البنية المخصصة.',
+        ds_footer_cta: 'ابدأ الآن',
+        ds_staff_label: 'الموظفون الرقميون',
+        ds_staff_desc: 'موظفونا الرقميون يتواصلون مع مرضاك بلغتهم الأم.',
+        ds_v1_title: 'الاستقبال والمعلومات', ds_v2_title: 'المواعيد والأسعار', ds_v3_title: 'الطلبات الخاصة',
+        ds_v4_title: 'الاستقبال', ds_v5_title: 'الأسعار',
+        ds_v6_title: 'الاستقبال', ds_v7_title: 'مراحل العملية', ds_v8_title: 'المواعيد والأسعار',
+        ds_v9_title: 'الاستقبال', ds_v9_lang: 'العربية',
+        footer_copy:'© 2026 Clinic Media Tech — جميع الحقوق محفوظة',
+        trust_label:'بنية تحتية موثوقة وامتثال',
+        badge_soc2:'مزود بنية تحتية معتمد', badge_gdpr:'عبر بنية تحتية متوافقة',
+        badge_hipaa:'حساسية بيانات الرعاية الصحية',
+        gdpr_notice:'تتم معالجة بياناتنا عبر مزودي بنية تحتية يدعمون معايير أمان SOC 2 Type II ومتوافقين تماماً مع متطلبات حماية البيانات GDPR.',
+        tick1_text:'تجربة مباشرة بلغة المريض الأم', tick1_src:'Clinic Media Tech · 2026',
+        tick2_text:'لغات مدعومة من منصة واحدة', tick2_src:'باقة مالتي',
+        tick3_stat:'3 أيام', tick3_text:'مدة الإعداد والتكامل', tick3_src:'جميع الباقات',
+        tick4_text:'زوّار يعتبرون الثقة المعيار الأول',
+        tick5_text:'زيادة الثقة من المحتوى باللغة الأم',
+        tick7_text:'مستخدمون يؤكدون التأثير الإيجابي للفيديو على ثقة العلامة التجارية',
+        cmp_left_title:'النهج التقليدي',
+        cmp_l1:'الزائر يملأ نموذجاً وينتظر', cmp_l2:'الاستفسارات خارج ساعات العمل بلا رد',
+        cmp_l3:'الفريق يتواصل بدون سياق', cmp_l4:'أسئلة المتابعة بلا رد، والزائر في حيرة',
+        cmp_r1:'الزائر يحصل على رد فوري بلغته', cmp_r2:'وصول متواصل 24/7',
+        cmp_r3:'الفريق يتفاعل ببيانات محادثة منظمة', cmp_r4:'أسئلة المتابعة تُجاب فوراً',
+        lang_tr:'🇹🇷 تركي', lang_ar:'🌙 عربي', lang_ru:'🇷🇺 روسي', lang_en:'🇬🇧 إنجليزي', lang_de:'🇩🇪 ألماني', lang_fr:'🇫🇷 فرنسي', lang_es:'🇪🇸 إسباني', lang_it:'🇮🇹 إيطالي', lang_zh:'🇨🇳 صيني', lang_ja:'🇯🇵 ياباني', lang_ko:'🇰🇷 كوري', lang_pt:'🇧🇷 برتغالي', lang_nl:'🇳🇱 هولندي', lang_more:'+ 20 لغة أخرى',
+        stat_247:'خدمة متواصلة', stat_setup:'مدة الإعداد',
+        stat_langs:'دعم لغوي', stat_patients:'مرضى مُستقبلون/شهرياً', stat_days_num:'3 أيام',
+        stat_days_suffix:' أيام',
+        feat_label:'بريميوم ومالتي — ميزة حصرية',
+        feat_title:'أفاتار الفيديو = مساعد الموقع.<br><em style="font-style:italic;color:#4ECDC4;">المريض يتحدث مع الوجه المألوف من الفيديو.</em>',
+        feat_desc:'المقدّم في فيديو الترويج والمساعد الرقمي على موقعك يشتركان في نفس الأفاتار. المريض يشعر بإحساس لا يُصدق بالألفة والثقة.',
+        feat_s1:'زيادة الثقة من المحتوى باللغة الأم', feat_s2:'خدمة مرضى متواصلة',
+        feat_s3:'دعم لغوي في باقة مالتي', feat_s4_num:'3 أيام', feat_s4:'مدة الإعداد والتكامل',
     }
 };
 
 let currentLang = 'tr';
+
+// ─── LANG DROPDOWN ───
+function toggleLangDropdown() {
+    document.getElementById('langSwitcher').classList.toggle('open');
+}
+function selectLang(lang) {
+    document.getElementById('langSwitcher').classList.remove('open');
+    setLang(lang);
+}
+document.addEventListener('click', function(e) {
+    const sw = document.getElementById('langSwitcher');
+    if (sw && !sw.contains(e.target)) sw.classList.remove('open');
+});
 // ─── TICKER RENDER ───
 function renderTicker(t) {
     const el = document.getElementById('hero-ticker');
@@ -2536,10 +3917,15 @@ function renderTicker(t) {
 function setLang(lang) {
     currentLang = lang;
     const t = translations[lang];
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
-    });
-    document.body.setAttribute('dir', 'ltr');
+    // Update dropdown UI
+    const langMeta = {tr:{flag:'🇹🇷',code:'TR'},en:{flag:'🇬🇧',code:'EN'},de:{flag:'🇩🇪',code:'DE'},fr:{flag:'🇫🇷',code:'FR'},ar:{flag:'🇸🇦',code:'AR'}};
+    const meta = langMeta[lang] || langMeta.tr;
+    const cf = document.getElementById('langCurrentFlag');
+    const cc = document.getElementById('langCurrentCode');
+    if(cf) cf.textContent = meta.flag;
+    if(cc) cc.textContent = meta.code;
+    document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
+    document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', lang);
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -2563,13 +3949,16 @@ function setLang(lang) {
 
     // ─── FOOTER LEGAL LINKS ───
     const logo = document.getElementById('iyzico-logo-band');
-    if (logo) logo.src = lang === 'en' ? logo.dataset.en : logo.dataset.tr;
+    if (logo) logo.src = (lang === 'en' || lang === 'de' || lang === 'fr' || lang === 'ar') ? (logo.dataset.en || logo.dataset.tr) : logo.dataset.tr;
     const legalLinks = {
         tr: { teslimat: 'TESLİMAT & İADE', gizlilik: 'GİZLİLİK POLİTİKASI' },
-        en: { teslimat: 'DELIVERY & RETURNS', gizlilik: 'PRIVACY POLICY' }
+        en: { teslimat: 'DELIVERY & RETURNS', gizlilik: 'PRIVACY POLICY' },
+        de: { teslimat: 'LIEFERUNG & RÜCKGABE', gizlilik: 'DATENSCHUTZ' },
+        fr: { teslimat: 'LIVRAISON & RETOURS', gizlilik: 'CONFIDENTIALITÉ' },
+        ar: { teslimat: 'التسليم والإرجاع', gizlilik: 'سياسة الخصوصية' }
     };
-    if (document.getElementById('footer-link-teslimat')) document.getElementById('footer-link-teslimat').textContent = legalLinks[lang].teslimat;
-    if (document.getElementById('footer-link-gizlilik')) document.getElementById('footer-link-gizlilik').textContent = legalLinks[lang].gizlilik;
+    if (document.getElementById('footer-link-teslimat')) document.getElementById('footer-link-teslimat').textContent = (legalLinks[lang]||legalLinks.en).teslimat;
+    if (document.getElementById('footer-link-gizlilik')) document.getElementById('footer-link-gizlilik').textContent = (legalLinks[lang]||legalLinks.en).gizlilik;
 
     // ─── PAYMENT BAR ───
 
@@ -2590,7 +3979,7 @@ function setLang(lang) {
     };
     const teslimatModal = document.getElementById('modal-teslimat');
     if (teslimatModal) {
-        const c = teslimatContent[lang];
+        const c = teslimatContent[lang] || teslimatContent['en'];
         teslimatModal.querySelector('.modal-legal-label').textContent = c.label;
         teslimatModal.querySelector('.modal-legal-title').textContent = c.title;
         teslimatModal.querySelector('.modal-legal-body').innerHTML = c.body;
@@ -2633,11 +4022,282 @@ function setLang(lang) {
     };
     const gizlilikModal = document.getElementById('modal-gizlilik');
     if (gizlilikModal) {
-        const c = gizlilikContent[lang];
+        const c = gizlilikContent[lang] || gizlilikContent['en'];
         gizlilikModal.querySelector('.modal-legal-label').textContent = c.label;
         gizlilikModal.querySelector('.modal-legal-title').textContent = c.title;
         gizlilikModal.querySelector('.modal-legal-date').textContent = c.date;
         gizlilikModal.querySelector('.modal-legal-body').innerHTML = c.body;
+    }
+
+    // ─── DİJİTAL ŞUBE MODAL ───
+    const dsContent = {
+        tr: {
+            badge:'DIJITAL ŞUBE — CLINIC MEDIA TECH',
+            title:'Kliniğiniz artık tek bir lokasyon değil.<br><em>Sınırları olmayan, sürekli çalışan bir sistem.</em>',
+            sub1:'Dijital şubeniz: 7/24 açık. 33 dilde akıcı.',
+            sub2:'Eş zamanlı dijital asistan ile hastalarınızı 33 dilde karşılayın. 3 iş gününde canlıya geçin.',
+            cta:'Kliniğimi Dönüştür', demo:'Demo İzle ↓',
+            kpi1:'Kesintisiz Aktif', kpi1s:'Tatil, gece, bayram yok',
+            kpi2:'Dil Desteği', kpi2s:'Anadil deneyimi',
+            kpi3:'Gün Kurulum', kpi3s:'Karmaşık kurulum gerektirmez',
+            sec1:'Hasta Deneyim Döngüsü — Dijital Kadronuz',
+            j1:'Karşılama & Bilgi Uzmanı', j1d:'İlk temas. Hastanın beklentilerini analiz ederek kliniğe uygun yönlendirme yapar.',
+            j2:'Operasyon & Süreç Desteği', j2d:'Arka planı yönetir. Süreçlerin sorunsuz ve hızlı ilerlemesi için tam koordinasyon sağlar.',
+            j3:'Randevu & Fiyatlandırma', j3d:'Fiyat politikanıza göre net bütçe sunar, takviminizle senkronize randevu oluşturur.',
+            j4:'Ameliyat Sonrası Destek', j4d:'İyileşme sürecinde hastanın aklına takılan her soruyu anında yanıtlayarak güven pekiştirir.',
+            j5:'Özel İstek Asistanı', j5d:'VIP & özelleştirilmiş talepler için çözüm odaklı proaktif asistan. Standart dışı senaryoları yönetir.',
+            sec2:'Dijital Asistanlarınızdan Bazılarına Göz Atın',
+            tabAll:'Tümü',
+            sec3:'Kurumsal Ekosistem Paketleri',
+            pkg1n:'Başlangıç', pkg1q:'"Dijital dönüşüme sağlam bir adımla başlamak istiyorum."',
+            pkg1f1:'1 dijital personel — kliniğe özel eğitimli', pkg1f2:'Türkçe & İngilizce dil desteği', pkg1f3:'Temel web sitesi entegrasyonu', pkg1f4:'200 aylık görüşme kapasitesi', pkg1f5:'Aylık performans raporu', pkg1f6:'Haftalık veri analizi',
+            pkg1setup:'+ $950 tek seferlik kurulum ücreti',
+            pkgCta:'Başvur →',
+            pkg2star:'✦ EN ÇOK TERCİH EDİLEN',
+            pkg2q:'"Uluslararası hasta tabanımı büyütmek ve rakiplerimin önüne geçmek istiyorum."',
+            pkg2f1:'3 dijital personel — rol bazlı uzmanlaşma', pkg2f2:'5 dil desteği — TR, EN + 3 seçmeli', pkg2f3:'WhatsApp & CRM entegrasyonu', pkg2f4:'500 aylık görüşme kapasitesi', pkg2f5:'Post-op hasta takip desteği', pkg2f6:'Haftalık detaylı analiz raporu', pkg2f7:'Günlük veri analizi', pkg2f8:'Öncelikli teknik destek hattı',
+            pkg2setup:'+ $1.500 tek seferlik kurulum ücreti',
+            pkg3n:'VIP Ekosistem', pkg3q:'"Çoklu pazar stratejim var. Tüm küresel pazarlarda aynı kalite standardını istiyorum."',
+            pkg3f1:'5+2 dijital personel — özel rol tanımlı', pkg3f2:'30 dil desteği — tam küresel kapsam', pkg3f3:'Özel senaryolar & VIP hasta akışları', pkg3f4:'1.000 aylık görüşme kapasitesi', pkg3f5:'10 dilde 3 tanıtım videosu üretimi', pkg3f6:'7/24 öncelikli teknik destek', pkg3f7:'Anlık veri analizi',
+            pkg3setup:'+ $3.350 tek seferlik kurulum ücreti',
+            pkgNote:'Eğer planlar yeterli gelmediyse, <a href="javascript:void(0)" onclick="closeModal(\'dijitalsube\');openModal(\'form\')" style="color:#4ECDC4;text-decoration:underline;font-weight:700;">size özel plan için iletişime geçiniz</a>. Yıllık planlar ve kurumunuza özel mimari çözümler için birebir teklif hazırlıyoruz.',
+            sec4:'Neden Dijital Şube?',
+            a1t:'İlk temas <em>gelirin yarısını</em> belirler', a1d:'Sağlık turizminde hasta kararını ilk 3 dakikada verir. Yanıt almayan hasta bir sonraki kliniğe geçer. Dijital şubeniz bu pencereyi kapatmaz — tam tersine her an açılmaya hazırdır.', a1s:'7/24 · 365 GÜN KESİNTİSİZ',
+            a2t:'Dil engeli <em>en büyük dönüşümü</em> engeller', a2d:'Hasta kendi dilinde cevap alamadığında güvensizlik yaşar ve vazgeçer. 33 dilde anadil düzeyinde iletişim, çeviriden değil gerçek bir deneyimden gelir. Bu fark direkt rezervasyona yansır.', a2s:'33 DİL · ANADIL DENEYİMİ',
+            a3t:'Ekibiniz <em>kapanış için</em> var, karşılama için değil', a3d:'Satış ekibinizin saatlerini "Ne kadar tutar?", "Kaç gün kalacağım?" sorularına harcaması lüks değil, kayıptır. Dijital şube bu filtreden geçmiş, karar vermeye hazır adayları önünüze getirir.', a3s:'SATIŞA HAZIR HASTA AKIŞI',
+            a4t:'Ameliyat sonrası <em>marka sadakati</em> inşa eder', a4d:'Hastanın eve döndükten sonra yaşadığı sessizlik en büyük güvensizlik kaynağıdır. Post-op destek bu boşluğu kapatır; memnun hasta kendi ağında kliniğinizin en güçlü referansı olur.', a4s:'POST-OP DESTEK · REFERANS ETKİSİ',
+            a5t:'Her görüşme bir <em>pazar araştırması</em>dır', a5d:'Hangi ülkeden kaç hasta geldi, ne sordular, nerede ayrıldılar? Bu veriler bir spreadsheet\'te kaybolmaz; kliniğinizin pazarlama ve fiyatlandırma stratejisini gerçek zamanlı şekillendirir.', a5s:'VERİ ODAKLI BÜYÜME STRATEJİSİ',
+            a6t:'Büyüme <em>IT bütçesine</em> bağlı değil', a6d:'Kurulum 3 iş günü, entegrasyon mevcut sitenize tek satır kod. Geliştirici tutmaya, yeni altyapı kurmaya, aylar süren projelere gerek yok. Siz klinisyen olmaya devam edersiniz.', a6s:'3 İŞ GÜNÜ · KARMAŞIK KURULUM YOK',
+            footerNote:'Her görüşme uçtan uca şifreli · Veri işleme süreçlerimiz, SOC 2 Type II güvenlik standartlarını destekleyen ve GDPR veri koruma gerekliliklerine uygun altyapı sağlayıcıları üzerinden yürütülmektedir.',
+            footerCta:'HEMEN BAŞLA', payLabel:'GÜVENLİ ÖDEME'
+        },
+        en: {
+            badge:'DIGITAL BRANCH — CLINIC MEDIA TECH',
+            title:'Your clinic is no longer a single location.<br><em>A borderless, always-on system.</em>',
+            sub1:'Your digital branch: open 24/7. Fluent in 33 languages.',
+            sub2:'Welcome your patients in 33 languages with a real-time digital assistant. Go live in 3 business days.',
+            cta:'Transform My Clinic', demo:'Watch Demo ↓',
+            kpi1:'Always Active', kpi1s:'No holidays, nights or breaks',
+            kpi2:'Language Support', kpi2s:'Native-level experience',
+            kpi3:'Days Setup', kpi3s:'No complex installation needed',
+            sec1:'Patient Experience Cycle — Your Digital Staff',
+            j1:'Welcome & Information Specialist', j1d:'First contact. Analyses patient expectations and routes them appropriately for your clinic.',
+            j2:'Operations & Process Support', j2d:'Manages the back-end. Ensures smooth, fast coordination across all processes.',
+            j3:'Appointment & Pricing', j3d:'Provides clear budgets based on your pricing policy and creates calendar-synced appointments.',
+            j4:'Post-Op Support', j4d:'Instantly answers every question during the recovery period, reinforcing trust.',
+            j5:'Special Request Assistant', j5d:'A solution-oriented, proactive assistant for VIP & custom requests. Handles non-standard scenarios.',
+            sec2:'Preview Some of Your Digital Assistants',
+            tabAll:'All',
+            sec3:'Enterprise Ecosystem Packages',
+            pkg1n:'Starter', pkg1q:'"I want to take a solid first step into digital transformation."',
+            pkg1f1:'1 digital staff member — clinic-trained', pkg1f2:'Turkish & English language support', pkg1f3:'Basic website integration', pkg1f4:'200 monthly conversation capacity', pkg1f5:'Monthly performance report', pkg1f6:'Weekly data analysis',
+            pkg1setup:'+ $950 one-time setup fee',
+            pkgCta:'Apply →',
+            pkg2star:'✦ MOST POPULAR',
+            pkg2q:'"I want to grow my international patient base and stay ahead of competitors."',
+            pkg2f1:'3 digital staff — role-based specialisation', pkg2f2:'5 language support — TR, EN + 3 elective', pkg2f3:'WhatsApp & CRM integration', pkg2f4:'500 monthly conversation capacity', pkg2f5:'Post-op patient follow-up support', pkg2f6:'Weekly detailed analysis report', pkg2f7:'Daily data analysis', pkg2f8:'Priority technical support line',
+            pkg2setup:'+ $1,500 one-time setup fee',
+            pkg3n:'VIP Ecosystem', pkg3q:'"I have a multi-market strategy. I want the same quality standard across all global markets."',
+            pkg3f1:'5+2 digital staff — custom role definitions', pkg3f2:'30 language support — full global coverage', pkg3f3:'Custom scenarios & VIP patient flows', pkg3f4:'1,000 monthly conversation capacity', pkg3f5:'3 promo videos in 10 languages', pkg3f6:'24/7 priority technical support', pkg3f7:'Real-time data analysis',
+            pkg3setup:'+ $3,350 one-time setup fee',
+            pkgNote:'If the plans don\'t suit your needs, <a href="javascript:void(0)" onclick="closeModal(\'dijitalsube\');openModal(\'form\')" style="color:#4ECDC4;text-decoration:underline;font-weight:700;">contact us for a custom plan</a>. We prepare tailored proposals for annual plans and custom architecture solutions.',
+            sec4:'Why Digital Branch?',
+            a1t:'First contact determines <em>half the revenue</em>', a1d:'In health tourism, patients decide in the first 3 minutes. Without an answer, they move to the next clinic. Your digital branch doesn\'t close this window — it\'s always open.', a1s:'24/7 · 365 DAYS UNINTERRUPTED',
+            a2t:'Language barrier <em>blocks the biggest conversion</em>', a2d:'When patients can\'t get answers in their own language, they lose trust and leave. Native-level communication in 33 languages comes from a real experience, not translation. This difference translates directly into bookings.', a2s:'33 LANGUAGES · NATIVE EXPERIENCE',
+            a3t:'Your team is for <em>closing</em>, not greeting', a3d:'Having your sales team spend hours on "How much does it cost?" and "How long do I stay?" isn\'t a luxury — it\'s a loss. The digital branch delivers decision-ready candidates who\'ve already been filtered.', a3s:'SALES-READY PATIENT FLOW',
+            a4t:'Post-op builds <em>brand loyalty</em>', a4d:'The silence a patient experiences after returning home is the biggest source of insecurity. Post-op support fills this gap; a satisfied patient becomes your clinic\'s strongest referral.', a4s:'POST-OP SUPPORT · REFERRAL EFFECT',
+            a5t:'Every conversation is <em>market research</em>', a5d:'Which countries did patients come from, what did they ask, where did they drop off? This data doesn\'t get lost in a spreadsheet — it shapes your clinic\'s marketing and pricing strategy in real time.', a5s:'DATA-DRIVEN GROWTH STRATEGY',
+            a6t:'Growth doesn\'t depend on <em>IT budget</em>', a6d:'Setup in 3 business days, integration is a single line of code on your existing site. No need to hire developers, build new infrastructure, or run months-long projects. You keep being a clinician.', a6s:'3 BUSINESS DAYS · NO COMPLEX SETUP',
+            footerNote:'Every conversation is end-to-end encrypted · Our data processing is conducted through infrastructure providers supporting SOC 2 Type II security standards and fully compliant with GDPR.',
+            footerCta:'GET STARTED', payLabel:'SECURE PAYMENT'
+        },
+        de: {
+            badge:'DIGITALE FILIALE — CLINIC MEDIA TECH',
+            title:'Ihre Klinik ist nicht mehr nur ein Standort.<br><em>Ein grenzenloses, immer aktives System.</em>',
+            sub1:'Ihre digitale Filiale: 24/7 geöffnet. Fließend in 33 Sprachen.',
+            sub2:'Empfangen Sie Ihre Patienten in 33 Sprachen mit einem Echtzeit-Digitalassistenten. In 3 Werktagen live.',
+            cta:'Meine Klinik transformieren', demo:'Demo ansehen ↓',
+            kpi1:'Immer aktiv', kpi1s:'Keine Feiertage, Nächte oder Pausen',
+            kpi2:'Sprachunterstützung', kpi2s:'Muttersprachliches Erlebnis',
+            kpi3:'Tage Einrichtung', kpi3s:'Keine komplexe Installation',
+            sec1:'Patientenerlebnis-Zyklus — Ihr digitales Personal',
+            j1:'Empfang & Informationsspezialist', j1d:'Erster Kontakt. Analysiert Patientenerwartungen und leitet klinikgerecht weiter.',
+            j2:'Operations- & Prozessunterstützung', j2d:'Verwaltet den Hintergrund. Sorgt für reibungslose, schnelle Koordination.',
+            j3:'Termin & Preisgestaltung', j3d:'Bietet klare Budgets und erstellt kalendersynchronisierte Termine.',
+            j4:'Post-OP-Unterstützung', j4d:'Beantwortet sofort jede Frage während der Genesungsphase.',
+            j5:'Sonderwunsch-Assistent', j5d:'Lösungsorientierter Assistent für VIP- & individuelle Anfragen.',
+            sec2:'Einige Ihrer digitalen Assistenten ansehen',
+            tabAll:'Alle',
+            sec3:'Enterprise-Ökosystem-Pakete',
+            pkg1n:'Starter', pkg1q:'"Ich möchte einen soliden ersten Schritt in die digitale Transformation machen."',
+            pkg1f1:'1 digitaler Mitarbeiter — klinikgeschult', pkg1f2:'Türkisch & Englisch', pkg1f3:'Grundlegende Web-Integration', pkg1f4:'200 Gespräche/Monat', pkg1f5:'Monatlicher Leistungsbericht', pkg1f6:'Wöchentliche Datenanalyse',
+            pkg1setup:'+ 950$ einmalige Einrichtungsgebühr',
+            pkgCta:'Bewerben →',
+            pkg2star:'✦ AM BELIEBTESTEN',
+            pkg2q:'"Ich möchte meine internationale Patientenbasis ausbauen."',
+            pkg2f1:'3 digitale Mitarbeiter — rollenbasiert', pkg2f2:'5 Sprachen — TR, EN + 3 wählbar', pkg2f3:'WhatsApp & CRM-Integration', pkg2f4:'500 Gespräche/Monat', pkg2f5:'Post-op Patientennachsorge', pkg2f6:'Wöchentlicher Analysebericht', pkg2f7:'Tägliche Datenanalyse', pkg2f8:'Prioritäts-Supportlinie',
+            pkg2setup:'+ 1.500$ einmalige Einrichtungsgebühr',
+            pkg3n:'VIP Ecosystem', pkg3q:'"Ich habe eine Multimarkt-Strategie und möchte überall denselben Qualitätsstandard."',
+            pkg3f1:'5+2 digitale Mitarbeiter — individuelle Rollen', pkg3f2:'30 Sprachen — volle globale Abdeckung', pkg3f3:'Individuelle Szenarien & VIP-Flows', pkg3f4:'1.000 Gespräche/Monat', pkg3f5:'3 Werbevideos in 10 Sprachen', pkg3f6:'24/7 Prioritäts-Support', pkg3f7:'Echtzeit-Datenanalyse',
+            pkg3setup:'+ 3.350$ einmalige Einrichtungsgebühr',
+            pkgNote:'Falls die Pläne nicht ausreichen, <a href="javascript:void(0)" onclick="closeModal(\'dijitalsube\');openModal(\'form\')" style="color:#4ECDC4;text-decoration:underline;font-weight:700;">kontaktieren Sie uns für einen individuellen Plan</a>. Wir erstellen maßgeschneiderte Angebote für Jahrespläne und individuelle Architekturlösungen.',
+            sec4:'Warum Digitale Filiale?',
+            a1t:'Erster Kontakt bestimmt <em>die Hälfte des Umsatzes</em>', a1d:'Im Gesundheitstourismus entscheidet der Patient in den ersten 3 Minuten. Ohne Antwort geht er zur nächsten Klinik. Ihre digitale Filiale ist immer bereit.', a1s:'24/7 · 365 TAGE UNUNTERBROCHEN',
+            a2t:'Sprachbarriere <em>blockiert die größte Conversion</em>', a2d:'Wenn Patienten keine Antwort in ihrer Sprache bekommen, verlieren sie Vertrauen. Kommunikation auf Muttersprachniveau in 33 Sprachen macht den Unterschied.', a2s:'33 SPRACHEN · MUTTERSPRACHLICH',
+            a3t:'Ihr Team ist zum <em>Abschließen</em> da, nicht zum Begrüßen', a3d:'Ihre Vertriebszeit für FAQ zu verwenden ist kein Luxus — es ist Verlust. Die digitale Filiale liefert entscheidungsbereite Kandidaten.', a3s:'VERTRIEBSBEREITER PATIENTENFLUSS',
+            a4t:'Post-OP baut <em>Markenloyalität</em> auf', a4d:'Die Stille nach der Rückkehr des Patienten erzeugt Unsicherheit. Post-OP-Unterstützung schließt diese Lücke.', a4s:'POST-OP · EMPFEHLUNGSEFFEKT',
+            a5t:'Jedes Gespräch ist <em>Marktforschung</em>', a5d:'Woher kamen Patienten, was fragten sie, wo brachen sie ab? Diese Daten formen Ihre Marketing- und Preisstrategie in Echtzeit.', a5s:'DATENGETRIEBENE WACHSTUMSSTRATEGIE',
+            a6t:'Wachstum hängt nicht vom <em>IT-Budget</em> ab', a6d:'Einrichtung in 3 Tagen, Integration per einer Codezeile. Keine Entwickler, keine Monate-Projekte.', a6s:'3 WERKTAGE · KEIN KOMPLEXES SETUP',
+            footerNote:'Jedes Gespräch ist Ende-zu-Ende verschlüsselt · Unsere Datenverarbeitung erfolgt über SOC 2 Type II und DSGVO-konforme Infrastrukturanbieter.',
+            footerCta:'JETZT STARTEN', payLabel:'SICHERE ZAHLUNG'
+        },
+        fr: {
+            badge:'FILIALE NUMÉRIQUE — CLINIC MEDIA TECH',
+            title:'Votre clinique n\'est plus un seul emplacement.<br><em>Un système sans frontières, toujours actif.</em>',
+            sub1:'Votre filiale numérique : ouverte 24h/24. Fluide en 33 langues.',
+            sub2:'Accueillez vos patients en 33 langues avec un assistant numérique en temps réel. En ligne en 3 jours ouvrés.',
+            cta:'Transformer ma clinique', demo:'Voir la démo ↓',
+            kpi1:'Toujours actif', kpi1s:'Pas de vacances, nuits ou pauses',
+            kpi2:'Support linguistique', kpi2s:'Expérience en langue maternelle',
+            kpi3:'Jours de mise en place', kpi3s:'Pas d\'installation complexe',
+            sec1:'Cycle d\'expérience patient — Votre personnel numérique',
+            j1:'Accueil & Spécialiste info', j1d:'Premier contact. Analyse les attentes du patient et oriente vers la clinique.',
+            j2:'Support opérations & processus', j2d:'Gère l\'arrière-plan. Assure une coordination fluide et rapide.',
+            j3:'Rendez-vous & Tarification', j3d:'Fournit des budgets clairs et crée des rendez-vous synchronisés.',
+            j4:'Support post-opératoire', j4d:'Répond instantanément à chaque question pendant la période de convalescence.',
+            j5:'Assistant demandes spéciales', j5d:'Assistant proactif pour les demandes VIP & personnalisées.',
+            sec2:'Aperçu de vos assistants numériques',
+            tabAll:'Tous',
+            sec3:'Forfaits écosystème entreprise',
+            pkg1n:'Starter', pkg1q:'"Je veux faire un premier pas solide vers la transformation numérique."',
+            pkg1f1:'1 membre du personnel numérique — formé en clinique', pkg1f2:'Turc & Anglais', pkg1f3:'Intégration web de base', pkg1f4:'200 conversations/mois', pkg1f5:'Rapport de performance mensuel', pkg1f6:'Analyse de données hebdomadaire',
+            pkg1setup:'+ 950$ frais d\'installation uniques',
+            pkgCta:'Postuler →',
+            pkg2star:'✦ LE PLUS POPULAIRE',
+            pkg2q:'"Je veux développer ma base de patients internationaux."',
+            pkg2f1:'3 membres du personnel — spécialisation par rôle', pkg2f2:'5 langues — TR, EN + 3 au choix', pkg2f3:'Intégration WhatsApp & CRM', pkg2f4:'500 conversations/mois', pkg2f5:'Suivi post-op des patients', pkg2f6:'Rapport d\'analyse hebdomadaire', pkg2f7:'Analyse quotidienne des données', pkg2f8:'Ligne de support prioritaire',
+            pkg2setup:'+ 1 500$ frais d\'installation uniques',
+            pkg3n:'VIP Ecosystem', pkg3q:'"J\'ai une stratégie multi-marchés et je veux le même standard de qualité partout."',
+            pkg3f1:'5+2 membres — rôles personnalisés', pkg3f2:'30 langues — couverture mondiale', pkg3f3:'Scénarios personnalisés & flux VIP', pkg3f4:'1 000 conversations/mois', pkg3f5:'3 vidéos promo en 10 langues', pkg3f6:'Support prioritaire 24h/24', pkg3f7:'Analyse de données en temps réel',
+            pkg3setup:'+ 3 350$ frais d\'installation uniques',
+            pkgNote:'Si les plans ne vous conviennent pas, <a href="javascript:void(0)" onclick="closeModal(\'dijitalsube\');openModal(\'form\')" style="color:#4ECDC4;text-decoration:underline;font-weight:700;">contactez-nous pour un plan personnalisé</a>. Nous préparons des offres sur mesure pour les plans annuels et les solutions d\'architecture personnalisées.',
+            sec4:'Pourquoi une filiale numérique ?',
+            a1t:'Le premier contact détermine <em>la moitié du revenu</em>', a1d:'En tourisme de santé, le patient décide en 3 minutes. Sans réponse, il passe à la clinique suivante. Votre filiale numérique est toujours prête.', a1s:'24/7 · 365 JOURS SANS INTERRUPTION',
+            a2t:'La barrière linguistique <em>bloque la plus grande conversion</em>', a2d:'Quand les patients n\'obtiennent pas de réponse dans leur langue, ils perdent confiance. Une communication en langue maternelle dans 33 langues fait la différence.', a2s:'33 LANGUES · EXPÉRIENCE NATIVE',
+            a3t:'Votre équipe est là pour <em>conclure</em>, pas pour accueillir', a3d:'Consacrer du temps commercial aux FAQ n\'est pas un luxe — c\'est une perte. La filiale numérique livre des candidats prêts à décider.', a3s:'FLUX DE PATIENTS PRÊTS À L\'ACHAT',
+            a4t:'Le post-op construit la <em>fidélité à la marque</em>', a4d:'Le silence après le retour du patient est la plus grande source d\'insécurité. Le support post-op comble ce vide.', a4s:'SUPPORT POST-OP · EFFET RECOMMANDATION',
+            a5t:'Chaque conversation est une <em>étude de marché</em>', a5d:'D\'où viennent les patients, qu\'ont-ils demandé, où ont-ils abandonné ? Ces données façonnent votre stratégie en temps réel.', a5s:'STRATÉGIE DE CROISSANCE DATA-DRIVEN',
+            a6t:'La croissance ne dépend pas du <em>budget IT</em>', a6d:'Installation en 3 jours, intégration en une ligne de code. Pas de développeurs à embaucher.', a6s:'3 JOURS OUVRÉS · PAS DE SETUP COMPLEXE',
+            footerNote:'Chaque conversation est chiffrée de bout en bout · Notre traitement des données est effectué via des fournisseurs conformes SOC 2 Type II et RGPD.',
+            footerCta:'COMMENCER', payLabel:'PAIEMENT SÉCURISÉ'
+        },
+        ar: {
+            badge:'الفرع الرقمي — CLINIC MEDIA TECH',
+            title:'عيادتك لم تعد موقعاً واحداً.<br><em>نظام بلا حدود، يعمل باستمرار.</em>',
+            sub1:'فرعك الرقمي: مفتوح 24/7. بطلاقة في 33 لغة.',
+            sub2:'استقبل مرضاك بـ 33 لغة مع مساعد رقمي فوري. جاهز خلال 3 أيام عمل.',
+            cta:'حوّل عيادتي', demo:'شاهد العرض ↓',
+            kpi1:'نشط دائماً', kpi1s:'بلا عطلات أو توقف',
+            kpi2:'دعم لغوي', kpi2s:'تجربة بلغة الأم',
+            kpi3:'أيام إعداد', kpi3s:'بدون تركيب معقد',
+            sec1:'دورة تجربة المريض — طاقمك الرقمي',
+            j1:'أخصائي الاستقبال والمعلومات', j1d:'التواصل الأول. يحلل توقعات المريض ويوجهه بشكل مناسب.',
+            j2:'دعم العمليات والإجراءات', j2d:'يدير الخلفية. يضمن تنسيقاً سلساً وسريعاً.',
+            j3:'المواعيد والتسعير', j3d:'يقدم ميزانيات واضحة وينشئ مواعيد متزامنة مع التقويم.',
+            j4:'دعم ما بعد العملية', j4d:'يجيب فوراً عن كل سؤال خلال فترة التعافي.',
+            j5:'مساعد الطلبات الخاصة', j5d:'مساعد استباقي للطلبات VIP والمخصصة.',
+            sec2:'معاينة بعض مساعديك الرقميين',
+            tabAll:'الكل',
+            sec3:'باقات النظام المؤسسي',
+            pkg1n:'ستارتر', pkg1q:'"أريد خطوة أولى قوية نحو التحول الرقمي."',
+            pkg1f1:'موظف رقمي واحد — مدرب للعيادة', pkg1f2:'تركي وإنجليزي', pkg1f3:'تكامل ويب أساسي', pkg1f4:'200 محادثة/شهر', pkg1f5:'تقرير أداء شهري', pkg1f6:'تحليل بيانات أسبوعي',
+            pkg1setup:'+ 950$ رسوم تأسيس لمرة واحدة',
+            pkgCta:'تقديم →',
+            pkg2star:'✦ الأكثر شعبية',
+            pkg2q:'"أريد تنمية قاعدة مرضاي الدوليين."',
+            pkg2f1:'3 موظفين رقميين — تخصص حسب الدور', pkg2f2:'5 لغات — TR, EN + 3 اختيارية', pkg2f3:'تكامل واتساب وCRM', pkg2f4:'500 محادثة/شهر', pkg2f5:'متابعة ما بعد العملية', pkg2f6:'تقرير تحليلي أسبوعي', pkg2f7:'تحليل بيانات يومي', pkg2f8:'خط دعم فني أولوي',
+            pkg2setup:'+ 1,500$ رسوم تأسيس لمرة واحدة',
+            pkg3n:'VIP Ecosystem', pkg3q:'"لدي استراتيجية متعددة الأسواق وأريد نفس معيار الجودة في كل مكان."',
+            pkg3f1:'5+2 موظفين — أدوار مخصصة', pkg3f2:'30 لغة — تغطية عالمية كاملة', pkg3f3:'سيناريوهات مخصصة وتدفقات VIP', pkg3f4:'1,000 محادثة/شهر', pkg3f5:'3 فيديوهات ترويجية بـ 10 لغات', pkg3f6:'دعم أولوي 24/7', pkg3f7:'تحليل بيانات فوري',
+            pkg3setup:'+ 3,350$ رسوم تأسيس لمرة واحدة',
+            pkgNote:'إذا لم تناسبك الخطط، <a href="javascript:void(0)" onclick="closeModal(\'dijitalsube\');openModal(\'form\')" style="color:#4ECDC4;text-decoration:underline;font-weight:700;">تواصل معنا لخطة مخصصة</a>. نُعدّ عروضاً مخصصة للخطط السنوية وحلول البنية المعمارية.',
+            sec4:'لماذا الفرع الرقمي؟',
+            a1t:'التواصل الأول يحدد <em>نصف الإيرادات</em>', a1d:'في السياحة الصحية، يقرر المريض خلال 3 دقائق. بدون رد ينتقل للعيادة التالية. فرعك الرقمي جاهز دائماً.', a1s:'24/7 · 365 يوماً بلا انقطاع',
+            a2t:'حاجز اللغة <em>يمنع أكبر تحويل</em>', a2d:'عندما لا يحصل المريض على رد بلغته، يفقد الثقة. التواصل بلغة الأم في 33 لغة يصنع الفارق.', a2s:'33 لغة · تجربة بلغة الأم',
+            a3t:'فريقك <em>للإغلاق</em> وليس للاستقبال', a3d:'إنفاق وقت المبيعات على الأسئلة الشائعة خسارة. الفرع الرقمي يقدم مرشحين جاهزين للقرار.', a3s:'تدفق مرضى جاهزين للبيع',
+            a4t:'ما بعد العملية يبني <em>ولاء العلامة</em>', a4d:'صمت ما بعد العودة أكبر مصدر لعدم الأمان. دعم ما بعد العملية يسد هذه الفجوة.', a4s:'دعم ما بعد العملية · تأثير الإحالة',
+            a5t:'كل محادثة <em>بحث سوقي</em>', a5d:'من أين جاء المرضى وماذا سألوا وأين توقفوا؟ هذه البيانات تشكل استراتيجيتك فورياً.', a5s:'استراتيجية نمو قائمة على البيانات',
+            a6t:'النمو لا يعتمد على <em>ميزانية IT</em>', a6d:'الإعداد في 3 أيام، التكامل بسطر كود واحد. بدون مطورين أو مشاريع طويلة.', a6s:'3 أيام عمل · بدون إعداد معقد',
+            footerNote:'كل محادثة مشفرة من طرف إلى طرف · معالجة البيانات عبر مزودي بنية تحتية متوافقين مع SOC 2 Type II وGDPR.',
+            footerCta:'ابدأ الآن', payLabel:'دفع آمن'
+        }
+    };
+    const ds = dsContent[lang] || dsContent['en'];
+    const dsM = document.getElementById('modal-dijitalsube');
+    if (dsM) {
+        const q = (sel) => dsM.querySelector(sel);
+        const qa = (sel) => dsM.querySelectorAll(sel);
+        // Hero
+        const badge = q('.ds-badge-text'); if(badge) badge.textContent = ds.badge;
+        const heroTitle = q('.ds-hero-title'); if(heroTitle) heroTitle.innerHTML = ds.title;
+        const subs = qa('.ds-hero-sub'); if(subs[0]) subs[0].textContent = ds.sub1; if(subs[1]) subs[1].textContent = ds.sub2;
+        const heroCta = q('.ds-hero-cta'); if(heroCta) { heroCta.innerHTML = ds.cta + ' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'; }
+        const ghost = q('.ds-hero-cta-ghost'); if(ghost) ghost.textContent = ds.demo;
+        // KPI
+        const kpis = qa('.ds-kpi');
+        if(kpis[0]){kpis[0].querySelector('.ds-kpi-label').textContent=ds.kpi1; kpis[0].querySelector('.ds-kpi-sub').textContent=ds.kpi1s;}
+        if(kpis[1]){kpis[1].querySelector('.ds-kpi-label').textContent=ds.kpi2; kpis[1].querySelector('.ds-kpi-sub').textContent=ds.kpi2s;}
+        if(kpis[2]){kpis[2].querySelector('.ds-kpi-label').textContent=ds.kpi3; kpis[2].querySelector('.ds-kpi-sub').textContent=ds.kpi3s;}
+        // Section headers
+        const secLabels = qa('.ds-section-label');
+        if(secLabels[0]) secLabels[0].textContent = ds.sec1;
+        if(secLabels[1]) secLabels[1].textContent = ds.sec2;
+        if(secLabels[2]) secLabels[2].textContent = ds.sec3;
+        if(secLabels[3]) secLabels[3].textContent = ds.sec4;
+        // Journey steps
+        const jSteps = qa('.ds-journey-step');
+        const jData = [[ds.j1,ds.j1d],[ds.j2,ds.j2d],[ds.j3,ds.j3d],[ds.j4,ds.j4d],[ds.j5,ds.j5d]];
+        jSteps.forEach((s,i) => { if(jData[i]){ s.querySelector('.ds-journey-title').textContent=jData[i][0]; s.querySelector('.ds-journey-desc').textContent=jData[i][1]; }});
+        // Video tabs
+        const tabAllBtn = q('.ds-vid-tab.active, .ds-vid-tab:first-child');
+        if(tabAllBtn) tabAllBtn.textContent = ds.tabAll;
+        // Packages
+        const pkgs = qa('.ds-pkg');
+        if(pkgs[0]){
+            pkgs[0].querySelector('.ds-pkg-name').textContent=ds.pkg1n; pkgs[0].querySelector('.ds-pkg-tier').textContent=ds.pkg1n;
+            pkgs[0].querySelector('.ds-pkg-tagline').textContent=ds.pkg1q;
+            pkgs[0].querySelector('.ds-pkg-setup-note').textContent=ds.pkg1setup;
+            const f=pkgs[0].querySelectorAll('.ds-pkg-features li');
+            [ds.pkg1f1,ds.pkg1f2,ds.pkg1f3,ds.pkg1f4,ds.pkg1f5,ds.pkg1f6].forEach((t,i)=>{if(f[i]){const sp=f[i].querySelector('.check');f[i].textContent='';if(sp)f[i].prepend(sp);f[i].append(t);}});
+            pkgs[0].querySelector('.ds-pkg-cta').textContent=ds.pkgCta;
+        }
+        if(pkgs[1]){
+            const star=pkgs[1].querySelector('.ds-pkg-star'); if(star) star.textContent=ds.pkg2star;
+            pkgs[1].querySelector('.ds-pkg-tagline').textContent=ds.pkg2q;
+            pkgs[1].querySelector('.ds-pkg-setup-note').textContent=ds.pkg2setup;
+            const f=pkgs[1].querySelectorAll('.ds-pkg-features li');
+            [ds.pkg2f1,ds.pkg2f2,ds.pkg2f3,ds.pkg2f4,ds.pkg2f5,ds.pkg2f6,ds.pkg2f7,ds.pkg2f8].forEach((t,i)=>{if(f[i]){const sp=f[i].querySelector('.check');f[i].textContent='';if(sp)f[i].prepend(sp);f[i].append(t);}});
+            pkgs[1].querySelector('.ds-pkg-cta').textContent=ds.pkgCta;
+        }
+        if(pkgs[2]){
+            pkgs[2].querySelector('.ds-pkg-name').textContent=ds.pkg3n; pkgs[2].querySelector('.ds-pkg-tier').textContent=ds.pkg3n;
+            pkgs[2].querySelector('.ds-pkg-tagline').textContent=ds.pkg3q;
+            pkgs[2].querySelector('.ds-pkg-setup-note').textContent=ds.pkg3setup;
+            const f=pkgs[2].querySelectorAll('.ds-pkg-features li');
+            [ds.pkg3f1,ds.pkg3f2,ds.pkg3f3,ds.pkg3f4,ds.pkg3f5,ds.pkg3f6,ds.pkg3f7].forEach((t,i)=>{if(f[i]){const sp=f[i].querySelector('.check');f[i].textContent='';if(sp)f[i].prepend(sp);f[i].append(t);}});
+            pkgs[2].querySelector('.ds-pkg-cta').textContent=ds.pkgCta;
+        }
+        // Package note
+        const pkgNote = q('.ds-pkg-note'); if(pkgNote) pkgNote.innerHTML = ds.pkgNote;
+        // Advantages
+        const advCards = qa('.ds-adv-card');
+        const aData = [[ds.a1t,ds.a1d,ds.a1s],[ds.a2t,ds.a2d,ds.a2s],[ds.a3t,ds.a3d,ds.a3s],[ds.a4t,ds.a4d,ds.a4s],[ds.a5t,ds.a5d,ds.a5s],[ds.a6t,ds.a6d,ds.a6s]];
+        advCards.forEach((c,i)=>{if(aData[i]){c.querySelector('.ds-adv-title').innerHTML=aData[i][0]; c.querySelector('.ds-adv-body').textContent=aData[i][1]; c.querySelector('.ds-adv-stat').textContent=aData[i][2];}});
+        // Footer
+        const fNote = q('.ds-footer-note'); if(fNote) fNote.textContent = ds.footerNote;
+        const fCta = q('.ds-modal-footer .hero-cta span'); if(fCta) fCta.textContent = ds.footerCta;
+        // Payment label
+        const payLbl = dsM.querySelector('[data-ds-pay]'); if(payLbl) payLbl.textContent = ds.payLabel || 'GÜVENLİ ÖDEME';
     }
 }
 
@@ -2756,6 +4416,57 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
 init();
 setLang('tr');
+
+// ── Dijital Şube Video Lightbox ──
+function playDsVideo(src, title) {
+  var lb = document.getElementById('ds-lightbox');
+  var vid = document.getElementById('ds-lb-video-el');
+  var ttl = document.getElementById('ds-lb-title');
+  if (!lb || !vid) return;
+  vid.src = src;
+  if (ttl) ttl.textContent = title || '';
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  vid.play().catch(function(){});
+}
+function closeDsLightbox() {
+  var lb = document.getElementById('ds-lightbox');
+  var vid = document.getElementById('ds-lb-video-el');
+  if (!lb || !vid) return;
+  vid.pause();
+  vid.src = '';
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDsLightbox();
+});
+
+// ── Video dil filtresi ──
+function filterVids(btn, lang) {
+  var tabs = document.querySelectorAll('.ds-vid-tab');
+  tabs.forEach(function(t){ t.classList.remove('active'); });
+  btn.classList.add('active');
+  var vids = document.querySelectorAll('.ds-vid[data-lang]');
+  vids.forEach(function(v){
+    v.style.display = (lang === 'all' || v.getAttribute('data-lang') === lang) ? '' : 'none';
+  });
+}
+
+// Hash ile dijital şube otomatik aç
+function checkHashAndOpenModal() {
+    if (window.location.hash === '#dijitalsube') {
+        setTimeout(function() {
+            const modal = document.getElementById('modal-dijitalsube');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }, 600);
+    }
+}
+checkHashAndOpenModal();
+window.addEventListener('hashchange', checkHashAndOpenModal);
 </script>
 
 <!-- TESLİMAT & İADE MODALİ -->
@@ -2801,6 +4512,4 @@ setLang('tr');
 
                 <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">8. HAKLARINIZ</h3><p>KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p><ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;padding-left:0;list-style:none;"><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Kişisel verilerinizin işlenip işlenmediğini öğrenme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlenmişse buna ilişkin bilgi talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yanlış veya eksik verilerin düzeltilmesini isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Yasal koşullar çerçevesinde silinmesini veya yok edilmesini talep etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>İşlemenin kısıtlanmasını isteme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Otomatik sistemler aracılığıyla aleyhinize oluşan sonuçlara itiraz etme</span></li><li style="display:flex;gap:0.6rem;"><span style="color:#C0C0C0;flex-shrink:0;">—</span><span>Zararın giderilmesini talep etme</span></li></ul><p style="margin-top:0.75rem;">Taleplerinizi <a href="/cdn-cgi/l/email-protection#066f68606946656a6f686f656b63626f677263656e2865696b" style="color:#C0C0C0;text-decoration:none;"><span class="__cf_email__" data-cfemail="cca5a2aaa38cafa0a5a2a5afa1a9a8a5adb8a9afa4e2afa3a1">[email&#160;protected]</span></a> adresine yazılı olarak iletebilirsiniz. Talepler en geç <strong style="color:rgba(255,255,255,0.7);">30 gün</strong> içinde yanıtlanır.</p></div>
 
-                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLİTİKA DEĞİŞİKLİKLERİ</h3><p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler yapılması halinde güncel metin bu sayfada yayımlanır. Web sitemizi kullanmaya devam etmeniz, güncel politikayı kabul ettiğiniz anlamına gelir.</p></div>
-
-                <div style="background:rgba(192,192,192,0.04);border:1px solid rgba(192,192,192,0.08);padding:1.25rem 1.5rem;border-radius:2px;"><p style="font-size:0.
+                <div><h3 style="font-family:'Mona Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#FFFFFF;margin-bottom:0.6rem;">9. POLİTİKA DEĞİŞİKLİKLERİ</h3><p>Bu politika zaman zaman güncellenebilir. Önemli değişiklikler yapılması halinde güncel metin bu sayfada yayımlanır. Web sitemizi kullanmaya devam etmeni
