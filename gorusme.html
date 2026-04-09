@@ -53,11 +53,12 @@
   .badge-enc svg { width: 10px; height: 10px; fill: #3a5248; }
   .frame { flex: 1; }
   .frame iframe { width: 100%; height: 100%; border: none; display: block; background: #000; }
-  #error { position: fixed; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 20; }
+  #error { position: fixed; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 20; padding: 20px; }
   #error.active { display: flex; }
   .err-icon { font-size: 40px; margin-bottom: 20px; }
   .err-title { font-family: 'Instrument Serif', serif; font-size: 24px; margin-bottom: 8px; text-align: center; }
-  .err-sub { font-size: 13px; color: var(--muted); text-align: center; max-width: 340px; line-height: 1.6; margin-bottom: 28px; font-weight: 300; }
+  .err-sub { font-size: 13px; color: var(--muted); text-align: center; max-width: 340px; line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .err-detail { font-size: 11px; color: #d08080; background: rgba(176,96,96,0.08); border: 1px solid rgba(176,96,96,0.2); padding: 10px 14px; border-radius: 8px; max-width: 480px; word-break: break-all; margin-bottom: 22px; font-family: monospace; text-align: left; }
   .retry-btn { background: var(--surface); color: var(--text); border: 1px solid var(--border); padding: 11px 30px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.2s; margin-bottom: 16px; }
   .retry-btn:hover { background: rgba(23,168,122,0.08); border-color: rgba(23,168,122,0.3); }
   .err-contact { font-size: 12px; color: var(--muted); background: var(--surface); padding: 10px 20px; border-radius: 12px; border: 1px solid var(--border); text-align: center; }
@@ -107,6 +108,7 @@
   <div class="err-icon">⚠️</div>
   <div class="err-title">Bağlantı Kurulamadı</div>
   <div class="err-sub">Görüşme başlatılırken bir sorun oluştu. Lütfen tekrar deneyin.</div>
+  <div class="err-detail" id="errDetail"></div>
   <button class="retry-btn" onclick="location.reload()">Tekrar Dene</button>
   <div class="err-contact">
     <a href="https://wa.me/905379265751" target="_blank">WhatsApp ile ulaşın</a>
@@ -117,6 +119,12 @@
 const API_KEY    = "2a6f54dbd77a46618f33c24b403446cc";
 const PERSONA_ID = "pb5016a419b9";
 const REPLICA_ID = "r9fa0878977a";
+
+function showError(msg) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('errDetail').textContent = msg || '';
+  document.getElementById('error').classList.add('active');
+}
 
 async function start() {
   const status = document.getElementById('status');
@@ -137,7 +145,10 @@ async function start() {
       })
     });
     const data = await res.json();
-    if (!data.conversation_url) throw new Error('URL alınamadı');
+    if (!res.ok || !data.conversation_url) {
+      showError('HTTP ' + res.status + ' — ' + JSON.stringify(data));
+      return;
+    }
     status.textContent = 'Hazır, yükleniyor...';
     await new Promise(r => setTimeout(r, 800));
     document.getElementById('frame').src = data.conversation_url;
@@ -147,8 +158,7 @@ async function start() {
       document.getElementById('meeting').classList.add('active');
     }, 600);
   } catch (err) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('error').classList.add('active');
+    showError(err.message || String(err));
   }
 }
 
